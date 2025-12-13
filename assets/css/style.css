@@ -1,0 +1,53 @@
+/* assets/css/style.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0f172a;
+  --gold: #d4af37;
+  --gold-hover: #f5d28a;
+  --charcoal: #1e293b;
+  --light-bg: #f8fafc;
+}
+
+.bg-navy { background-color: var(--navy); }
+.bg-gold { background-color: var(--gold); }
+.bg-charcoal { background-color: var(--charcoal); }
+.bg-light { background-color: var(--light-bg); }
+
+.text-gold { color: var(--gold); }
+.text-navy { color: var(--navy); }
+
+.hover\:bg-gold-hover:hover { background-color: var(--gold-hover); }
+
+.btn-gold {
+  @apply bg-gold text-navy font-bold py-4 px-10 rounded-full transition hover:bg-gold-hover transform hover:scale-105;
+}
+
+.btn-outline-gold {
+  @apply border-2 border-gold text-gold font-bold py-4 px-10 rounded-full transition hover:bg-gold hover:text-navy transform hover:scale-105;
+}
+
+.card {
+  @apply bg-white rounded-2xl shadow-xl p-8 text-center transition hover:shadow-2xl;
+}
+
+.small-card {
+  @apply bg-white rounded-xl shadow p-6 text-center transition hover:shadow-2xl;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+.hero-overlay {
+  background: linear-gradient(rgba(15,23,42,0.88), rgba(15,23,42,0.75));
+}
+@keyframes ping {
+    75%, 100% { transform: scale(1.4); opacity: 0; }
+  }
+  .animate-ping {
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
