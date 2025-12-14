@@ -326,190 +326,288 @@
                 </div>
             </div>
         </section>
-        <!-- ========== PROJECTS ========== -->
-        <section id="projects" data-observer-id="projects" class="py-24 bg-white">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-8">Featured Projects</h2>
-                <div class="swiper projectSwiper">
-                    <div class="swiper-wrapper">
-                        <!-- Project slides remain unchanged -->
-                        <div class="swiper-slide p-2">
-                            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                                <div class="relative">
-                                    <img src="assets/images/projects/network.jpg" alt="Cellular Network Boosting" class="w-full h-56 object-cover" />
-                                    <button onclick="openModal('cellular-network-boosting')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                        <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                            <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                        </div>
-                                    </button>
+<!-- ========== PROJECTS ========== -->
+<section id="projects" data-observer-id="projects" class="py-24 bg-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-8">Featured Projects</h2>
+        <div class="swiper projectSwiper">
+            <div class="swiper-wrapper">
+                <!-- Existing projects remain unchanged -->
+                <div class="swiper-slide p-2">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+                        <div class="relative">
+                            <img src="assets/images/projects/network.jpg" alt="Cellular Network Boosting" class="w-full h-56 object-cover" />
+                            <button onclick="openModal('cellular-network-boosting')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
+                                <div class="bg-white bg-opacity-90 rounded-full p-3">
+                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
-                                <div class="p-4">
-                                    <h3 class="font-bold text-lg">Cellular Network Boosting</h3>
-                                    <p class="text-gray-600 text-sm">Strengthened Safaricom & Airtel signals in basement office</p>
-                                    <button onclick="openModal('cellular-network-boosting')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                                </div>
-                            </div>
+                            </button>
                         </div>
-                        <div class="swiper-slide p-2">
-                            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                                <div class="relative">
-                                    <img src="assets/images/projects/garden-speaker.jpg" alt="Garden Speaker System" class="w-full h-56 object-cover" />
-                                    <button onclick="openModal('garden-speaker')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                        <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                            <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class="p-4">
-                                    <h3 class="font-bold text-lg">Garden Speaker System</h3>
-                                    <p class="text-gray-600 text-sm">Weatherproof outdoor audio for villa in Karen</p>
-                                    <button onclick="openModal('garden-speaker')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide p-2">
-                            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                                <div class="relative">
-                                    <img src="assets/images/projects/office-project.jpg" alt="Corporate Office Project" class="w-full h-56 object-cover" />
-                                    <button onclick="openModal('office-project')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                        <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                            <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class="p-4">
-                                    <h3 class="font-bold text-lg">Corporate Office – Westlands</h3>
-                                    <p class="text-gray-600 text-sm">Full AV, access control & network infrastructure</p>
-                                    <button onclick="openModal('office-project')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide p-2">
-                            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                                <div class="relative">
-                                    <img src="assets/images/projects/project1.jpg" alt="Smart Home – Karen" class="w-full h-56 object-cover" />
-                                    <button onclick="openModal('project1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                        <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                            <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class="p-4">
-                                    <h3 class="font-bold text-lg">Smart Home – Karen</h3>
-                                    <p class="text-gray-600 text-sm">Full automation + Starlink + 32ch CCTV</p>
-                                    <button onclick="openModal('project1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide p-2">
-                            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                                <div class="relative">
-                                    <img src="assets/images/projects/runda-mansion.jpg" alt="Runda Mansion" class="w-full h-56 object-cover" />
-                                    <button onclick="openModal('runda-mansion')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                        <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                            <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class="p-4">
-                                    <h3 class="font-bold text-lg">Mansion – Runda</h3>
-                                    <p class="text-gray-600 text-sm">64ch CCTV + gate automation + intercom</p>
-                                    <button onclick="openModal('runda-mansion')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide p-2">
-                            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                                <div class="relative">
-                                    <img src="assets/images/projects/sliding-gate-motor.jpg" alt="Sliding Gate Motor" class="w-full h-56 object-cover" />
-                                    <button onclick="openModal('sliding-gate-motor')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                        <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                            <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class="p-4">
-                                    <h3 class="font-bold text-lg">Sliding Gate Motor</h3>
-                                    <p class="text-gray-600 text-sm">Heavy-duty commercial gate with app control</p>
-                                    <button onclick="openModal('sliding-gate-motor')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide p-2">
-                            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                                <div class="relative">
-                                    <img src="assets/images/projects/smart-control-panel.jpg" alt="Smart Control Panel" class="w-full h-56 object-cover" />
-                                    <button onclick="openModal('smart-control-panel')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                        <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                            <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class="p-4">
-                                    <h3 class="font-bold text-lg">Smart Home Control Panel</h3>
-                                    <p class="text-gray-600 text-sm">Centralized control for lighting, climate & security</p>
-                                    <button onclick="openModal('smart-control-panel')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide p-2">
-                            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                                <div class="relative">
-                                    <img src="assets/images/projects/smart-curtain-motor.jpg" alt="Smart Curtain Motor" class="w-full h-56 object-cover" />
-                                    <button onclick="openModal('smart-curtain-motor')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                        <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                            <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class="p-4">
-                                    <h3 class="font-bold text-lg">Smart Curtain Motor</h3>
-                                    <p class="text-gray-600 text-sm">Automated blinds with sun-tracking & voice control</p>
-                                    <button onclick="openModal('smart-curtain-motor')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide p-2">
-                            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                                <div class="relative">
-                                    <img src="assets/images/projects/starlink-installations.jpg" alt="Starlink Installation" class="w-full h-56 object-cover" />
-                                    <button onclick="openModal('starlink-installation')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                        <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                            <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class="p-4">
-                                    <h3 class="font-bold text-lg">Starlink Installation – Kiambu</h3>
-                                    <p class="text-gray-600 text-sm">Full setup with surge protection & WiFi mesh</p>
-                                    <button onclick="openModal('starlink-installation')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide p-2">
-                            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                                <div class="relative">
-                                    <img src="assets/images/projects/zoned-amplified.jpg" alt="Zoned Amplifier Project" class="w-full h-56 object-cover" />
-                                    <button onclick="openModal('zoned-amplifier-project')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                        <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                            <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class="p-4">
-                                    <h3 class="font-bold text-lg">Zoned Amplifier System</h3>
-                                    <p class="text-gray-600 text-sm">Multi-room audio with independent zone control</p>
-                                    <button onclick="openModal('zoned-amplifier-project')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                                </div>
-                            </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg">Cellular Network Boosting</h3>
+                            <p class="text-gray-600 text-sm">Strengthened Safaricom & Airtel signals in basement office</p>
+                            <button onclick="openModal('cellular-network-boosting')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
                         </div>
                     </div>
-                    <div class="swiper-button-next !text-gold !w-10 !h-10 !top-1/2"></div>
-                    <div class="swiper-button-prev !text-gold !w-10 !h-10 !top-1/2"></div>
-                    <div class="swiper-pagination !bottom-0 mt-4"></div>
                 </div>
+                <div class="swiper-slide p-2">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+                        <div class="relative">
+                            <img src="assets/images/projects/garden-speaker.jpg" alt="Garden Speaker System" class="w-full h-56 object-cover" />
+                            <button onclick="openModal('garden-speaker')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
+                                <div class="bg-white bg-opacity-90 rounded-full p-3">
+                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg">Garden Speaker System</h3>
+                            <p class="text-gray-600 text-sm">Weatherproof outdoor audio for villa in Karen</p>
+                            <button onclick="openModal('garden-speaker')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide p-2">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+                        <div class="relative">
+                            <img src="assets/images/projects/office-project.jpg" alt="Corporate Office Project" class="w-full h-56 object-cover" />
+                            <button onclick="openModal('office-project')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
+                                <div class="bg-white bg-opacity-90 rounded-full p-3">
+                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg">Corporate Office – Westlands</h3>
+                            <p class="text-gray-600 text-sm">Full AV, access control & network infrastructure</p>
+                            <button onclick="openModal('office-project')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide p-2">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+                        <div class="relative">
+                            <img src="assets/images/projects/project1.jpg" alt="Smart Home – Karen" class="w-full h-56 object-cover" />
+                            <button onclick="openModal('project1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
+                                <div class="bg-white bg-opacity-90 rounded-full p-3">
+                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg">Smart Home – Karen</h3>
+                            <p class="text-gray-600 text-sm">Full automation + Starlink + 32ch CCTV</p>
+                            <button onclick="openModal('project1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide p-2">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+                        <div class="relative">
+                            <img src="assets/images/projects/runda-mansion.jpg" alt="Runda Mansion" class="w-full h-56 object-cover" />
+                            <button onclick="openModal('runda-mansion')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
+                                <div class="bg-white bg-opacity-90 rounded-full p-3">
+                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg">Mansion – Runda</h3>
+                            <p class="text-gray-600 text-sm">64ch CCTV + gate automation + intercom</p>
+                            <button onclick="openModal('runda-mansion')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide p-2">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+                        <div class="relative">
+                            <img src="assets/images/projects/sliding-gate-motor.jpg" alt="Sliding Gate Motor" class="w-full h-56 object-cover" />
+                            <button onclick="openModal('sliding-gate-motor')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
+                                <div class="bg-white bg-opacity-90 rounded-full p-3">
+                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg">Sliding Gate Motor</h3>
+                            <p class="text-gray-600 text-sm">Heavy-duty commercial gate with app control</p>
+                            <button onclick="openModal('sliding-gate-motor')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide p-2">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+                        <div class="relative">
+                            <img src="assets/images/projects/smart-control-panel.jpg" alt="Smart Control Panel" class="w-full h-56 object-cover" />
+                            <button onclick="openModal('smart-control-panel')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
+                                <div class="bg-white bg-opacity-90 rounded-full p-3">
+                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg">Smart Home Control Panel</h3>
+                            <p class="text-gray-600 text-sm">Centralized control for lighting, climate & security</p>
+                            <button onclick="openModal('smart-control-panel')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide p-2">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+                        <div class="relative">
+                            <img src="assets/images/projects/smart-curtain-motor.jpg" alt="Smart Curtain Motor" class="w-full h-56 object-cover" />
+                            <button onclick="openModal('smart-curtain-motor')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
+                                <div class="bg-white bg-opacity-90 rounded-full p-3">
+                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg">Smart Curtain Motor</h3>
+                            <p class="text-gray-600 text-sm">Automated blinds with sun-tracking & voice control</p>
+                            <button onclick="openModal('smart-curtain-motor')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide p-2">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+                        <div class="relative">
+                            <img src="assets/images/projects/starlink-installations.jpg" alt="Starlink Installation" class="w-full h-56 object-cover" />
+                            <button onclick="openModal('starlink-installation')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
+                                <div class="bg-white bg-opacity-90 rounded-full p-3">
+                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg">Starlink Installation – Kiambu</h3>
+                            <p class="text-gray-600 text-sm">Full setup with surge protection & WiFi mesh</p>
+                            <button onclick="openModal('starlink-installation')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide p-2">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+                        <div class="relative">
+                            <img src="assets/images/projects/zoned-amplified.jpg" alt="Zoned Amplifier Project" class="w-full h-56 object-cover" />
+                            <button onclick="openModal('zoned-amplifier-project')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
+                                <div class="bg-white bg-opacity-90 rounded-full p-3">
+                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg">Zoned Amplifier System</h3>
+                            <p class="text-gray-600 text-sm">Multi-room audio with independent zone control</p>
+                            <button onclick="openModal('zoned-amplifier-project')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========== NEW PROJECTS ADDED BELOW ========== -->
+
+                <!-- 1. CCTV Installations -->
+                <div class="swiper-slide p-2">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+                        <div class="relative">
+                            <img src="assets/images/projects/cctv-installations1.jpg" alt="CCTV Installations" class="w-full h-56 object-cover" />
+                            <button onclick="openModal('cctv-installations1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
+                                <div class="bg-white bg-opacity-90 rounded-full p-3">
+                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg">CCTV Installations</h3>
+                            <p class="text-gray-600 text-sm">Professional surveillance system setup</p>
+                            <button onclick="openModal('cctv-installations1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Gate Automation -->
+                <div class="swiper-slide p-2">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+                        <div class="relative">
+                            <img src="assets/images/projects/gate-automation1.jpg" alt="Gate Automation" class="w-full h-56 object-cover" />
+                            <button onclick="openModal('gate-automation1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
+                                <div class="bg-white bg-opacity-90 rounded-full p-3">
+                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg">Gate Automation</h3>
+                            <p class="text-gray-600 text-sm">Smart entry system with remote access</p>
+                            <button onclick="openModal('gate-automation1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Smart Lighting -->
+                <div class="swiper-slide p-2">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+                        <div class="relative">
+                            <img src="assets/images/projects/smart-lightining1.jpg" alt="Smart Lighting" class="w-full h-56 object-cover" />
+                            <button onclick="openModal('smart-lightining1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
+                                <div class="bg-white bg-opacity-90 rounded-full p-3">
+                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg">Smart Lighting</h3>
+                            <p class="text-gray-600 text-sm">Automated, mood-based lighting control</p>
+                            <button onclick="openModal('smart-lightining1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Starlink Installations -->
+                <div class="swiper-slide p-2">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+                        <div class="relative">
+                            <img src="assets/images/projects/starlink-installations1.jpg" alt="Starlink Installations" class="w-full h-56 object-cover" />
+                            <button onclick="openModal('starlink-installations1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
+                                <div class="bg-white bg-opacity-90 rounded-full p-3">
+                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg">Starlink Installations</h3>
+                            <p class="text-gray-600 text-sm">High-speed satellite internet deployment</p>
+                            <button onclick="openModal('starlink-installations1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Zoned Music -->
+                <div class="swiper-slide p-2">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+                        <div class="relative">
+                            <img src="assets/images/projects/zoned-music1.jpg" alt="Zoned Music System" class="w-full h-56 object-cover" />
+                            <button onclick="openModal('zoned-music1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
+                                <div class="bg-white bg-opacity-90 rounded-full p-3">
+                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg">Zoned Music System</h3>
+                            <p class="text-gray-600 text-sm">Multi-zone audio with independent control</p>
+                            <button onclick="openModal('zoned-music1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </section>
+            <div class="swiper-button-next !text-gold !w-10 !h-10 !top-1/2"></div>
+            <div class="swiper-button-prev !text-gold !w-10 !h-10 !top-1/2"></div>
+            <div class="swiper-pagination !bottom-0 mt-4"></div>
+        </div>
+    </div>
+</section>
         <!-- ========== PRODUCTS ========== -->
         <section id="products" data-observer-id="products" class="py-24 bg-slate-50">
             <div class="container mx-auto px-6">
