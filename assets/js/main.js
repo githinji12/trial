@@ -100,3 +100,131 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 });
+// assets/js/main.js
+// Morel Tech Solution – Lightweight & Fast JavaScript
+// Apple / Stripe / Shopify–style UX
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* ========================================
+     1. Smooth scrolling (anchor links)
+  ======================================== */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      const target = document.querySelector(targetId);
+
+      if (target) {
+        e.preventDefault();
+        window.scrollTo({
+          top: target.offsetTop - 90,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  /* ========================================
+     2. Header scroll effect
+  ======================================== */
+  const header = document.querySelector('.site-header');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  }
+
+  /* ========================================
+     3. Mobile menu toggle
+  ======================================== */
+  const toggle = document.querySelector('.menu-toggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (toggle && mobileMenu) {
+    toggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    // Close menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+      });
+    });
+  }
+
+  /* ========================================
+     4. Lazy load images
+  ======================================== */
+  const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          if (img.dataset.src) img.src = img.dataset.src;
+          img.classList.remove('opacity-0');
+          observer.unobserve(img);
+        }
+      });
+    }, { rootMargin: '120px' });
+
+    lazyImages.forEach(img => {
+      img.classList.add('opacity-0');
+      observer.observe(img);
+    });
+  }
+
+  /* ========================================
+     5. WhatsApp Floating Button
+  ======================================== */
+  if (!window.location.pathname.includes('contact')) {
+    const whatsappHTML = `
+      <a href="https://wa.me/254791864441?text=Hi%20Morel%20Tech%2C%20I%20would%20like%20a%20quote"
+         target="_blank"
+         aria-label="Chat on WhatsApp"
+         class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-2xl transition transform hover:scale-105">
+        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2a10 10 0 00-8.94 14.53L2 22l5.66-1.49A10 10 0 1012 2z"/>
+        </svg>
+      </a>
+    `;
+    document.body.insertAdjacentHTML('beforeend', whatsappHTML);
+  }
+
+  /* ========================================
+     6. Contact form (optional)
+  ======================================== */
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Thank you! We will contact you shortly.');
+      this.reset();
+    });
+  }
+
+});
+// Add specific handler for the "View All Products" button
+document.addEventListener('click', (e) => {
+  if (e.target.matches('.subcategory-link[data-category="all"]')) {
+    // Clear the search input
+    searchInput.value = '';
+    // Close all accordions
+    document.querySelectorAll('.accordion-content').forEach(content => {
+      content.style.maxHeight = '0';
+      content.setAttribute('aria-hidden', 'true');
+    });
+    document.querySelectorAll('.accordion-header').forEach(h => {
+      h.setAttribute('aria-expanded', 'false');
+      h.querySelector('.accordion-arrow')?.classList.remove('rotate-180');
+    });
+    // Set the active group to 'all-products' and filter
+    const header = document.querySelector('[data-group="all-products"]');
+    if (header && !header.getAttribute('aria-expanded')) {
+      header.click(); // Trigger the accordion open
+    }
+    filterProducts();
+  }
+});

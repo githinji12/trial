@@ -5,233 +5,388 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Morel Tech Solution | Smart Homes, CCTV, Starlink & Security in Kenya</title>
     <meta name="description" content="Premium smart home automation, CCTV, piped music, Starlink & security installations in Nairobi, Karen, Runda, Tatu City and across Kenya."/>
-    <link rel="icon" type="image/png" href="/favicon.ico">
-    <script src="https://cdn.tailwindcss.com"></script> 
+    <link rel="icon" type="image/png" href="assets/images/favicon.ico"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/main.js" defer></script>
+ 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .navy-bg {
-            background-color: #0b112a;
-        }
-        .text-gold {
-            color: #d4af37;
-        }
-        .focus-ring:focus {
-            outline: 3px solid #d4af37;
-            outline-offset: 4px;
-        }
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-        .focus\:not-sr-only:focus {
-            position: static;
-            width: auto;
-            height: auto;
-            clip: auto;
-        }
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0,0,0,0.95);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal.active {
-            display: flex;
-        }
-        .modal-content {
-            width: 90%;
-            max-width: 900px;
-            aspect-ratio: 16/9;
-        }
-        .modal-content video {
-            width: 100%;
-            height: 100%;
-            background: #000;
-        }
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 2.5rem;
-            cursor: pointer;
-            z-index: 1001;
-        }
-        .nav-link-active {
-            background-color: #d4af37;
-            color: #0b112a !important;
-        }
+  <style>
+/* =====================
+   DESIGN TOKENS
+   (Apple / Stripe / Shopify)
+===================== */
+:root {
+    --bg-page: #0b112a;
+    --bg-surface: #ffffff;
 
-        /* ===== PRODUCT CARD STYLING (FIXED HEIGHT + NO OVERLAP) ===== */
-        #productGrid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
+    --ink-900: #0f172a;
+    --ink-700: #334155;
+    --ink-500: #64748b;
 
-        .product-card {
-            display: flex;
-            flex-direction: column;
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
-            height: 100%;
-        }
+    --border-subtle: #0b112a;
 
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
+    --accent-gold: #d4af37;
 
-        .product-image {
-            height: 180px; /* Fixed height */
-            width: 100%;
-            object-fit: cover;
-            background-color: #f8fafc;
-        }
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 18px;
 
-        .product-content {
-            padding: 1rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
 
-        .product-title {
-            font-weight: 700;
-            font-size: 1.125rem;
-            color: #0f172a;
-            margin: 0 0 0.25rem;
-        }
+    --ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* =====================
+   HEADER / NAVIGATION
+===================== */
+.site-header {
+    background: rgba(11, 17, 42, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
 
-        .product-meta, .product-desc {
-            font-size: 0.875rem;
-            color: #64748b;
-            margin: 0.25rem 0;
-        }
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-        .product-price {
-            font-weight: 800;
-            color: #d4af37;
-            font-size: 1.25rem;
-            margin-top: auto;
-            margin-bottom: 0;
-        }
+/* Brand */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 600;
+    color: #fff;
+}
 
-        /* ===== PAGINATION STYLING ===== */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 2.5rem;
-            gap: 0.75rem;
-        }
+.brand span {
+    opacity: 0.9;
+}
 
-        .pagination-numbers {
-            display: flex;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            gap: 0.5rem;
-        }
+/* Navigation */
+.nav-links {
+    display: flex;
+    gap: 1.75rem;
+}
 
-        .pagination-number,
-        .page-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 2.75rem;
-            height: 2.75rem;
-            border-radius: 9999px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: none;
-            background-color: #f1f5f9;
-            color: #334155;
-        }
+.nav-link {
+    position: relative;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(30, 111, 136, 0.247);
+    text-decoration: none;
+    padding: 0.25rem 0;
+    transition: color 0.2s ease;
+}
 
-        .pagination-number:hover,
-        .page-button:hover:not(:disabled) {
-            background-color: #d4af37;
-            color: white;
-        }
+.nav-link:hover {
+    color: #0b112a;
+}
 
-        .pagination-number.active {
-            background-color: #d4af37;
-            color: white;
-        }
+/* Active state */
+.nav-link.active {
+    color: #0b112a;
+    font-weight: 600;
+}
 
-        .page-button:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
+.nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: #d4af37;
+    border-radius: 2px;
+}
 
-        /* Optional: fade animation */
-        .fade-transition {
-            opacity: 1;
-            transition: opacity 0.3s ease;
-        }
+/* =====================
+   GLOBAL BASE
+===================== */
+html {
+    -webkit-text-size-adjust: 100%;
+}
 
-        .fade-transition.out {
-            opacity: 0;
-        }
-    </style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter',
+        'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--ink-700);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+}
+
+/* =====================
+   ACCESSIBILITY
+===================== */
+.focus-ring:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 3px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+/* =====================
+   MODAL (MOBILE FRIENDLY)
+===================== */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.85);
+    z-index: 1000;
+    padding: env(safe-area-inset-bottom);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    width: 92%;
+    max-width: 960px;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+.modal-close {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+}
+
+/* =====================
+   PRODUCT GRID
+   (MOBILE FIRST)
+===================== */
+#productGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+/* Tablet */
+@media (min-width: 640px) {
+    #productGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    #productGrid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.75rem;
+    }
+}
+
+/* =====================
+   PRODUCT CARD
+===================== */
+/* ===== PRODUCT CARD ===== */
+.product-card {
+    background: var(--bg-surface);
+    border-radius: var(--radius-md);
+    /* Keep the shadow for depth */
+    box-shadow: var(--shadow-sm);
+    /* Remove the border entirely */
+    /* border: 1px solid var(--border-subtle); */
+    overflow: hidden;
+    transition: box-shadow 0.3s var(--ease-ui),
+        transform 0.3s var(--ease-ui);
+}
+@media (hover: hover) {
+    .product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+    }
+}
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    /* Match the card's border-radius */
+    border-radius: 9999px;
+    background-color: #f1f5f9;
+}
+
+/* Slightly taller image on desktop */
+@media (min-width: 1024px) {
+    .product-image {
+        height: 220px;
+    }
+}
+
+.product-content {
+    padding: 0.75rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.product-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink-900);
+}
+
+.product-meta,
+.product-desc {
+    font-size: 0.875rem;
+    color: var(--ink-500);
+}
+
+.product-price {
+    margin-top: 0.75rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+}
+
+/* =====================
+   PAGINATION
+===================== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0 1rem;
+    gap: 0.5rem;
+}
+
+.pagination-number,
+.page-button {
+    min-width: 44px;
+    min-height: 44px; /* Apple tap target */
+    border-radius: 9999px;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-surface);
+    color: var(--ink-700);
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s var(--ease-ui),
+        border-color 0.2s var(--ease-ui),
+        color 0.2s var(--ease-ui);
+}
+
+.pagination-number.active,
+.pagination-number:hover,
+.page-button:hover:not(:disabled) {
+    background: var(--accent-gold);
+    border-color: var(--accent-gold);
+    color: #fff;
+}
+
+.page-button:disabled {
+    opacity: 0.4;
+}
+
+/* =====================
+   SUBCATEGORY (SHOPIFY STYLE)
+===================== */
+.subcategory-link {
+    @apply px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--ink-500);
+    border-radius: 9999px;
+}
+
+.subcategory-link.active-subcategory {
+    background-color: #fff9e6;
+    color: #a37c00;
+    border-color: #d4af37;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(212, 175, 55, 0.2);
+    color: var(--ink-900);
+    background: rgba(212, 175, 55, 0.12);
+    font-weight: 600;
+}
+
+/* =====================
+   MOTION REDUCTION
+===================== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
+</style>
+
 </head>
 <body class="bg-slate-50 text-slate-800">
     <a href="#main" class="sr-only focus:not-sr-only focus:bg-slate-900 focus:text-white p-2 focus:ring">Skip to main content</a>
-    <nav class="navy-bg text-white fixed w-full top-0 z-50 shadow-2xl">
-        <div class="container mx-auto px-6 py-5 flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <img src="assets/images/logo.png" alt="Morel Tech Solution Logo" class="h-14 rounded-lg">
-                <span class="text-2xl font-bold hidden md:block">Morel Tech Solution</span>
-            </div>
-            <ul id="navMenu" class="hidden md:flex space-x-3 items-center">
-                <li><a href="#home" data-section="home" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Home</a></li>
-                <li><a href="#about" data-section="about" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">About</a></li>
-                <li><a href="#services" data-section="services" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Services</a></li>
-                <li><a href="#projects" data-section="projects" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Projects</a></li>
-                <li><a href="#products" data-section="products" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Products</a></li>
-                <li><a href="#contact" data-section="contact" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Contact</a></li>
-            </ul>
-            <button id="mobileMenuButton" class="md:hidden text-white text-2xl font-bold focus-ring">☰</button>
-        </div>
-  <ul id="mobileNav" class="md:hidden hidden flex-col items-center space-y-2 py-6 bg-slate-900 w-full mt-2 rounded-xl shadow-2xl">
+<nav class="bg-[#0b112a] text-white fixed w-full top-0 z-50 shadow-md">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <!-- Logo -->
+    <div class="flex items-center space-x-3">
+      <img src="assets/images/logo.png" alt="Morel Tech Solution Logo" class="h-10 w-auto">
+      <span class="text-lg font-semibold hidden md:block">Morel Tech Solution</span>
+    </div>
+
+    <!-- Desktop Menu -->
+    <ul id="navMenu" class="hidden md:flex space-x-3 items-center">
+      <li><a href="#home" data-section="home" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Home</a></li>
+      <li><a href="#about" data-section="about" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">About</a></li>
+      <li><a href="#services" data-section="services" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Services</a></li>
+      <li><a href="#projects" data-section="projects" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Projects</a></li>
+      <li><a href="#products" data-section="products" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Products</a></li>
+      <li><a href="#contact" data-section="contact" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Contact</a></li>
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobileMenuButton" class="md:hidden text-white text-2xl font-bold focus-ring">☰</button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <ul id="mobileNav" class="md:hidden hidden flex-col items-center space-y-2 py-6 bg-blue-700 w-full mt-2 rounded-xl shadow-2xl">
     <li><a href="#home" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Home</a></li>
     <li><a href="#about" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">About</a></li>
     <li><a href="#services" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Services</a></li>
     <li><a href="#projects" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Projects</a></li>
     <li><a href="#products" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Products</a></li>
     <li><a href="#contact" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Contact</a></li>
-</ul>
-    </nav>
+  </ul>
+</nav>
+
     <main id="main" class="pt-20">
         <!-- ========== HOME ========== -->
         <section id="home" data-observer-id="home" class="min-h-screen flex items-center justify-center text-center text-white pt-20"
             style="background: linear-gradient(rgba(11,17,42,0.94), rgba(11,17,42,0.85)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-1">
                 <h1 class="text-4xl md:text-6xl font-black text-gold mb-6">Morel Tech Solution</h1>
                 <p class="text-xl md:text-3xl font-light mb-6">Smarter Spaces, Better Living.</p>
                 <p class="text-lg md:text-xl max-w-4xl mx-auto mb-10">
@@ -332,24 +487,7 @@
         <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-8">Featured Projects</h2>
         <div class="swiper projectSwiper">
             <div class="swiper-wrapper">
-                <!-- 1. Cellular Network Boosting -->
-                <div class="swiper-slide p-2">
-                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                        <div class="relative">
-                            <img src="assets/images/projects/network.jpg" alt="Cellular Network Boosting" class="w-full h-56 object-cover" />
-                            <button onclick="openModal('cellular-network-boosting')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">Cellular Network Boosting</h3>
-                            <p class="text-gray-600 text-sm">Strengthened Safaricom & Airtel signals in basement office</p>
-                            <button onclick="openModal('cellular-network-boosting')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
+           
 
                 <!-- 2. Garden Speaker System -->
                 <div class="swiper-slide p-2">
@@ -407,44 +545,29 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- 5. Mansion – Runda -->
-                <div class="swiper-slide p-2">
-                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                        <div class="relative">
-                            <img src="assets/images/projects/runda-mansion.jpg" alt="Mansion – Runda" class="w-full h-56 object-cover" />
-                            <button onclick="openModal('runda-mansion')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">Mansion – Runda</h3>
-                            <p class="text-gray-600 text-sm">64ch CCTV + gate automation + intercom</p>
-                            <button onclick="openModal('runda-mansion')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                        </div>
-                    </div>
+<!-- Structured Cabling Project -->
+<div class="swiper-slide p-2">
+    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+        <div class="relative">
+            <img src="assets/images/projects/structred-cabling1.jpg" alt="Structured Cabling" class="w-full h-56 object-cover" />
+            <button onclick="openModal('structured-cabling1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
+                <div class="bg-white bg-opacity-90 rounded-full p-3">
+                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
                 </div>
+            </button>
+        </div>
+        <div class="p-4">
+            <h3 class="font-bold text-lg">Structured Cabling</h3>
+            <p class="text-gray-600 text-sm">Structured cabling installation + network setup</p>
+            <button onclick="openModal('structured-cabling1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+        </div>
+    </div>
+</div>
 
-                <!-- 6. Sliding Gate Motor -->
-                <div class="swiper-slide p-2">
-                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                        <div class="relative">
-                            <img src="assets/images/projects/sliding-gate-motor.jpg" alt="Sliding Gate Motor" class="w-full h-56 object-cover" />
-                            <button onclick="openModal('sliding-gate-motor')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">Sliding Gate Motor</h3>
-                            <p class="text-gray-600 text-sm">Heavy-duty commercial gate with app control</p>
-                            <button onclick="openModal('sliding-gate-motor')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
+
+          
 
                 <!-- 7. Smart Home Control Panel -->
                 <div class="swiper-slide p-2">
@@ -484,24 +607,7 @@
                     </div>
                 </div>
 
-                <!-- 9. Starlink Installation – Kiambu -->
-                <div class="swiper-slide p-2">
-                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                        <div class="relative">
-                            <img src="assets/images/projects/starlink-installations.jpg" alt="Starlink Installation – Kiambu" class="w-full h-56 object-cover" />
-                            <button onclick="openModal('starlink-installation')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">Starlink Installation – Kiambu</h3>
-                            <p class="text-gray-600 text-sm">Full setup with surge protection & WiFi mesh</p>
-                            <button onclick="openModal('starlink-installation')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
+
 
                 <!-- 10. Zoned Amplifier System -->
                 <div class="swiper-slide p-2">
@@ -627,72 +733,199 @@
         </div>
     </div>
 </section>
-        <!-- ========== PRODUCTS ========== -->
-        <section id="products" data-observer-id="products" class="py-24 bg-slate-50">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">Our Product Catalog</h2>
-                <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
-                    Premium tech solutions for smart homes and businesses across Kenya.
-                </p>
-                <div class="mb-8 max-w-2xl mx-auto">
-                    <input
-                        type="text"
-                        id="productSearch"
-                        placeholder="Search products (e.g. iPhone, Samsung, 13 Pro, A54, projector, solar panel, soundbar, 55 inch TV, UPS, inverter, washing machine, vacuum cleaner, AirPods, JBL, Sonos, smart camera, nest cam, eufy, subwoofer, Klipsch, Polk, Harman Kardon, Dahua, Hikvision, WD Purple, Mikrotik)..."
-                        class="w-full px-6 py-3 border-2 border-slate-300 rounded-full focus:outline-none focus:border-yellow-500 shadow-sm focus-ring"
-                    />
-                </div>
-                <div id="categoryTabs" class="flex flex-wrap justify-center gap-2 mb-10">
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-yellow-500 text-white transition focus-ring" data-category="all">All Products</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="desktops">Desktops & All-in-One</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="laptops">Laptops</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="monitors">Monitors</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="av-receivers">AV Receivers</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="air-conditioners">Air Conditioners</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="dishwashers">Dishwashers</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="cookers">Cookers & Ovens</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="fridges">Fridges</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="phones">Phones</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="projectors">Projectors</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="solar">Solar Panels & Kits</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="soundbars">Soundbars</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="tvs">Televisions (TVs)</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="ups">UPS & Power Backup</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="security">Security Systems</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="networking">Networking</button>
-                 <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="smart-cameras">Smart Cameras</button>
-                     <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="speakers">Speakers</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="music">Amplifiers</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="smart">Smart Tech</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="washing-machines">Washing Machines</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="vacuum-cleaners">Vacuum Cleaners</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="wireless-audio">Wireless Audio</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="subwoofers">Subwoofers & Bass</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="bookshelf-speakers">Bookshelf Speakers</button>
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="access-controls">Access Controls</button>
-                    
- 
-                    <button class="px-4 py-2 rounded-full text-sm font-medium bg-slate-100 text-slate-700 hover:bg-yellow-500 hover:text-white transition focus-ring" data-category="surveillance">Surveillance Equipment</button>
-                </div>
-                <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Product cards will be rendered here by JavaScript -->
-                </div>
+<!-- ========== PRODUCTS ========== -->
+<section id="products" data-observer-id="products" class="py-24 bg-slate-50">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
+      Our Product Catalog
+    </h2>
 
-                <!-- ===== PAGINATION CONTROLS ===== -->
-                <div id="pagination" class="pagination">
-                    <button id="prevPage" class="page-button" disabled>← Previous</button>
-                    <ul id="pageNumbers" class="pagination-numbers"></ul>
-                    <button id="nextPage" class="page-button" disabled>Next →</button>
-                </div>
+    <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+      Premium tech solutions for smart homes and businesses across Kenya.
+    </p>
 
-                <div class="text-center mt-16">
-                    <p class="text-lg text-gray-700 mb-6">Need bulk pricing or a custom solution?</p>
-                    <a href="#contact" class="bg-yellow-600 hover:bg-yellow-500 text-slate-900 font-bold py-3 px-8 rounded-full text-lg shadow-lg transition focus-ring">
-                        Request Full Price List
-                    </a>
-                </div>
-            </div>
-        </section>
+    <!-- SEARCH -->
+    <div class="mb-8 max-w-2xl mx-auto">
+      <input
+        type="text"
+        id="productSearch"
+        placeholder="Search products (e.g. iPhone, Starlink, vacuum...)"
+        class="w-full px-6 py-3 border-2 border-slate-300 rounded-full focus:outline-none focus:border-yellow-500 shadow-sm focus-ring"
+      />
+    </div>
+
+    <!-- STANDALONE "All Products" TOGGLE BUTTON -->
+    <div class="mb-8 text-center">
+      <button id="allProductsBtn" class="px-8 py-3.5 bg-yellow-600 hover:bg-yellow-500 text-white rounded-full font-semibold shadow-md transition focus:outline-none focus:ring-2 focus:ring-yellow-500 text-lg">
+        All Products
+      </button>
+    </div>
+
+    <!-- ===== CATEGORY ACCORDION ===== -->
+    <div id="categoryAccordion" class="mb-12 space-y-4">
+      <!-- COMPUTING -->
+      <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+        <button class="accordion-header flex justify-between items-center w-full px-5 py-4 bg-white font-semibold text-slate-800 hover:bg-slate-50 focus:ring-2 focus:ring-yellow-500" data-group="computing">
+          <span>Computing & Office Equipment</span>
+          <span class="accordion-arrow transition-transform">▼</span>
+        </button>
+        <div class="accordion-content max-h-0 overflow-hidden bg-slate-50 transition-all">
+          <div class="px-5 py-4 flex flex-wrap gap-2">
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="desktops">Desktops</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="laptops">Laptops</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="monitors">Monitors</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full text-blue-600 font-semibold border border-blue-600 hover:bg-blue-50 transition" data-group="computing">View All</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TVs -->
+      <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+        <button class="accordion-header flex justify-between items-center w-full px-5 py-4 bg-white font-semibold text-slate-800 hover:bg-slate-50 focus:ring-2 focus:ring-yellow-500" data-group="tvs">
+          <span>TVs & Projection</span>
+          <span class="accordion-arrow transition-transform">▼</span>
+        </button>
+        <div class="accordion-content max-h-0 overflow-hidden bg-slate-50 transition-all">
+          <div class="px-5 py-4 flex flex-wrap gap-2">
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="tvs">Televisions</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="projectors">Projectors</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full text-blue-600 font-semibold border border-blue-600 hover:bg-blue-50 transition" data-group="tvs">View All</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- AUDIO -->
+      <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+        <button class="accordion-header flex justify-between items-center w-full px-5 py-4 bg-white font-semibold text-slate-800 hover:bg-slate-50 focus:ring-2 focus:ring-yellow-500" data-group="audio">
+          <span>Audio & Home Entertainment</span>
+          <span class="accordion-arrow transition-transform">▼</span>
+        </button>
+        <div class="accordion-content max-h-0 overflow-hidden bg-slate-50 transition-all">
+          <div class="px-5 py-4 flex flex-wrap gap-2">
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="av-receivers">AV Receivers</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="soundbars">Soundbars</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="speakers">Speakers</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="wireless-audio">Wireless Audio</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="subwoofers">Subwoofers</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="bookshelf-speakers">Bookshelf Speakers</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full text-blue-600 font-semibold border border-blue-600 hover:bg-blue-50 transition" data-group="audio">View All</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- APPLIANCES -->
+      <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+        <button class="accordion-header flex justify-between items-center w-full px-5 py-4 bg-white font-semibold text-slate-800 hover:bg-slate-50 focus:ring-2 focus:ring-yellow-500" data-group="appliances">
+          <span>Home Appliances</span>
+          <span class="accordion-arrow transition-transform">▼</span>
+        </button>
+        <div class="accordion-content max-h-0 overflow-hidden bg-slate-50 transition-all">
+          <div class="px-5 py-4 flex flex-wrap gap-2">
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="air-conditioners">Air Conditioners</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="dishwashers">Dishwashers</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="cookers">Cookers</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="fridges">Fridges</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="washing-machines">Washing Machines</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="vacuum-cleaners">Vacuum Cleaners</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full text-blue-600 font-semibold border border-blue-600 hover:bg-blue-50 transition" data-group="appliances">View All</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOBILE -->
+      <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+        <button class="accordion-header flex justify-between items-center w-full px-5 py-4 bg-white font-semibold text-slate-800 hover:bg-slate-50 focus:ring-2 focus:ring-yellow-500" data-group="mobile">
+          <span>Mobile Devices & Smart Watches</span>
+          <span class="accordion-arrow transition-transform">▼</span>
+        </button>
+        <div class="accordion-content max-h-0 overflow-hidden bg-slate-50 transition-all">
+          <div class="px-5 py-4 flex flex-wrap gap-2">
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="phones">Smartphones</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="smart">Smart Devices</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full text-blue-600 font-semibold border border-blue-600 hover:bg-blue-50 transition" data-group="mobile">View All</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- POWER -->
+      <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+        <button class="accordion-header flex justify-between items-center w-full px-5 py-4 bg-white font-semibold text-slate-800 hover:bg-slate-50 focus:ring-2 focus:ring-yellow-500" data-group="power">
+          <span>Power & Solar Solutions</span>
+          <span class="accordion-arrow transition-transform">▼</span>
+        </button>
+        <div class="accordion-content max-h-0 overflow-hidden bg-slate-50 transition-all">
+          <div class="px-5 py-4 flex flex-wrap gap-2">
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="solar">Solar Systems</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="ups">UPS & Backup Power</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full text-blue-600 font-semibold border border-blue-600 hover:bg-blue-50 transition" data-group="power">View All</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECURITY -->
+      <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+        <button class="accordion-header flex justify-between items-center w-full px-5 py-4 bg-white font-semibold text-slate-800 hover:bg-slate-50 focus:ring-2 focus:ring-yellow-500" data-group="security">
+          <span>Security & Surveillance</span>
+          <span class="accordion-arrow transition-transform">▼</span>
+        </button>
+        <div class="accordion-content max-h-0 overflow-hidden bg-slate-50 transition-all">
+          <div class="px-5 py-4 flex flex-wrap gap-2">
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="security">Security Systems</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="surveillance">Surveillance</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="smart-cameras">Smart Cameras</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="access-controls">Access Control</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full text-blue-600 font-semibold border border-blue-600 hover:bg-blue-50 transition" data-group="security">View All</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- NETWORKING -->
+      <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+        <button class="accordion-header flex justify-between items-center w-full px-5 py-4 bg-white font-semibold text-slate-800 hover:bg-slate-50 focus:ring-2 focus:ring-yellow-500" data-group="networking">
+          <span>Networking & Connectivity</span>
+          <span class="accordion-arrow transition-transform">▼</span>
+        </button>
+        <div class="accordion-content max-h-0 overflow-hidden bg-slate-50 transition-all">
+          <div class="px-5 py-4 flex flex-wrap gap-2">
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition" data-category="networking">Networking</button>
+            <button class="subcategory-link px-3 py-1.5 text-sm font-medium rounded-full text-blue-600 font-semibold border border-blue-600 hover:bg-blue-50 transition" data-group="networking">View All</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12"></div>
+
+    <!-- PAGINATION -->
+<!-- PAGINATION -->
+<div id="pagination" class="flex items-center justify-center gap-1 mt-10">
+  <button
+    id="prevPage"
+    class="w-10 h-10 flex items-center justify-center rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-500"
+    aria-label="Previous page"
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
+  <ul id="pageNumbers" class="flex gap-1"></ul>
+
+  <button
+    id="nextPage"
+    class="w-10 h-10 flex items-center justify-center rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-500"
+    aria-label="Next page"
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+</div>
+
+</section>
+
+
         <!-- ========== CONTACT ========== -->
         <section id="contact" data-observer-id="contact" class="py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white text-center">
             <div class="container mx-auto px-6">
@@ -747,7 +980,7 @@
         // FULL PRODUCT CATALOG
         // ==============================
         const products = [
-            // ... (ENTIRE PRODUCTS ARRAY FROM YOUR FILE - unchanged)
+
             // 💻 DESKTOPS & AIO
             { name: "HP ProDesk 400 G7", brand: "HP", model: "ProDesk 400 G7 (i3)", condition: "NEW", price: 58000, category: "desktops", img: "desktops/HP-ProDesk400G7 (i3).jpg" },
             { name: "HP ProDesk 400 G8", brand: "HP", model: "ProDesk 400 G8 (i5)", condition: "NEW", price: 81000, category: "desktops", img: "desktops/HP-ProDesk400G8 (i5).jpg" },
@@ -841,8 +1074,26 @@
             { name: "Denon AVR-S540BT", brand: "Denon", model: "AVR-S540BT", channels: "5.2ch", price: 80995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S540BT(5.2ch).jpg" },
             { name: "Denon AVR-S570BT", brand: "Denon", model: "AVR-S570BT", channels: "5.2ch", price: 89995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S570BT(5.2ch).jpg" },
             { name: "Onkyo TX-SR393", brand: "Onkyo", model: "TX-SR393", channels: "5.2ch", price: 86995, category: "av-receivers", img: "AV.Receivers/Onkyo-TX-SR393(5.2ch).jpg" },
-            { name: "Onkyo TX-SR494", brand: "Onkyo", model: "TX-SR494", channels: "5.2ch", price: 94995, category: "av-receivers", img: "AV.Receivers/Onkyo-TX-SR494(5.2ch).jpg" },
-            { name: "Pioneer VSX-330", brand: "Pioneer", model: "VSX-330", channels: "5.1ch", price: 68995, category: "av-receivers", img: "AV.Receivers/Pioneer-VSX-330(5.1ch).jpg" },
+           {
+  name: "Onkyo TX-SR494",
+  brand: "Onkyo",
+  model: "TX-SR494",
+  category: "av-receivers",
+  channels: "5.2ch",
+  price: 94995,
+  img: "AV.Receivers/Onkyo-TX-SR494(5.2ch).jpg",
+  desc: "A premium 5.2-channel home theater receiver with full 4K/120Hz HDMI 2.1 support, Dolby Atmos & DTS:X decoding, and 80W per channel of clean, dynamic power. Features Wi-Fi, Bluetooth, Chromecast built-in, and voice control (Google Assistant, Alexa). Perfect for immersive movie nights, gaming (ALLM, VRR), and multi-room audio. Includes dual subwoofer outputs for deeper, balanced bass."
+},
+            {
+  name: "Pioneer VSX-330",
+  brand: "Pioneer",
+  model: "VSX-330",
+  category: "av-receivers",
+  channels: "5.1ch",
+  price: 68995,
+  img: "AV.Receivers/Pioneer-VSX-330(5.1ch).jpg",
+  desc: "An affordable yet powerful 5.1-channel AV receiver with full 4K HDR passthrough, Bluetooth streaming, and Pioneer’s MCACC auto room calibration for optimized sound. Delivers 130W per channel for punchy, clear audio. Great for compact living rooms or first-time home theater setups. Easy setup with HDMI ARC and smartphone app control."
+},
             { name: "Pioneer VSX-534", brand: "Pioneer", model: "VSX-534", channels: "5.2ch", price: 94995, category: "av-receivers", img: "AV.Receivers/PioneerVSX-534(5.2ch).jpg" },
             { name: "Denon AVR-S660H", brand: "Denon", model: "AVR-S660H", channels: "5.2ch", price: 107995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S660H(5.2ch).jpg" },
             { name: "Denon AVR-S760H", brand: "Denon", model: "AVR-S760H", channels: "7.2ch", price: 124995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S760H(7.2ch).jpg" },
@@ -1425,8 +1676,7 @@
             { brand: "Tenda", model: "AC10U", price: 4500, category: "networking", img: "networking/Tenda-AC10U.jpg" },
             { brand: "Tenda", model: "AC23", price: 6500, category: "networking", img: "networking/Tenda-AC23.jpg" },
             { brand: "Asus", model: "RT-AX55", price: 18500, category: "networking", img: "networking/Asus-RT-AX55.jpg" },
-            // 🌐 OTHER NETWORKING (as fallback placeholders if needed)
-            // (You could optionally remove placeholder items here since full list is now present)
+           
             // ✅ NEW SURVEILLANCE EQUIPMENT CATEGORY — FULL LIST
             { brand: "D-LINK", model: "DES-1005P (4-Port PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1005P(4-Port PoE).jpg", price: 8500 },
             { brand: "D-LINK", model: "DES-1008P (8-Port PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1008P(8-Port PoE).jpg", price: 12500 },
@@ -1591,7 +1841,7 @@
 { brand: "Imou", name: "Cell Go Solar Camera", category: "smart-cameras", price: 15500, img: "smart-cameras/Imou-Cell-Go-Solar-Camera.jpg" },
 { brand: "Imou", name: "Cruiser 4G Solar Kit", category: "smart-cameras", price: 18500, img: "smart-cameras/Imou-Cruiser-4G-Solar-Kit.jpg" },
 { brand: "Hikvision", name: "Solar 4G Camera DS-2XS6A25G0", category: "smart-cameras", price: 32500, img: "smart-cameras/Hikvision-Solar-4G-Camera-DS-2XS6A25G0.jpg" },
-{ brand: "Generic", name: "4G Solar PTZ Camera", category: "smart-cameras", price: 8500, img: "smart-cameras/Generic-4G-Solar-PTZ-Camera.jpg" },
+{ brand: "Generic", name: "Generic 4G Solar PTZ Camera", category: "smart-cameras", price: 8500, img: "smart-cameras/Generic-4G-Solar-PTZ-Camera.jpg" },
 { brand: "Generic", name: "WiFi Solar Camera", category: "smart-cameras", price: 6500, img: "smart-cameras/Generic-WiFi-Solar-Camera.jpg" },
 { brand: "Eufy", name: "SoloCam S220 Solar", category: "smart-cameras", price: 21500, img: "smart-cameras/Eufy-SoloCam-S220-Solar.jpg" },
 { brand: "Eufy", name: "SoloCam S230 Solar Spotlight", category: "smart-cameras", price: 26500, img: "smart-cameras/Eufy-SoloCam-S230-Solar-Spotlight.jpg" },
@@ -1621,8 +1871,29 @@
 { brand: "Micca", name: "M-6C", model: "M-6C", category: "speakers", type: "In-Ceiling", size: "6.5\"", price: 13566, img: "speakers/Micca-M-6C(6.5-In-Ceiling).jpg" },
 { brand: "Micca", name: "M-8C", model: "M-8C", category: "speakers", type: "In-Ceiling", size: "8\"", price: 19551, img: "speakers/Micca-M-8C(8-In-Ceiling).jpg" },
 { brand: "Micca", name: "Reference Series R-8C", model: "R-8C", category: "speakers", type: "In-Ceiling/In-Wall", size: "8\"", price: 25000, img: "speakers/Micca-Reference-Series-R-8C(8).jpg" },
-{ brand: "Klipsch", name: "CDT-3650-C II", model: "CDT-3650-C II", category: "speakers", type: "In-Ceiling", size: "6.5\"", price: 35000, img: "speakers/Klipsch-CDT-3650-C-II(6.5).jpg" },
-{ brand: "Klipsch", name: "CDT-5650-C II", model: "CDT-5650-C II", category: "speakers", type: "In-Ceiling", size: "6.5\" Pivot", price: 38000, img: "speakers/Klipsch-CDT-5650-C-II(6.5Pivot).jpg" },
+{
+  brand: "Klipsch",
+  name: "CDT-3650-C II",
+  model: "CDT-3650-C II",
+  category: "in-ceiling",
+  type: "In-Ceiling Speaker",
+  size: "6.5\"",
+  price: 35000,
+  img: "speakers/Klipsch-CDT-3650-C-II(6.5).jpg",
+  desc: "Perfect for clean, high-fidelity background audio in living rooms, bedrooms, or offices. Features Klipsch’s signature Tractrix Horn technology for clear highs and a pivoting titanium tweeter for precise sound direction. Easy to install and paintable grille blends seamlessly into ceilings."
+},
+{
+  brand: "Klipsch",
+  name: "CDT-5650-C II",
+  model: "CDT-5650-C II",
+  category: "in-ceiling",
+  type: "In-Ceiling Speaker",
+  size: "6.5\" Pivot",
+  price: 38000,
+  img: "speakers/Klipsch-CDT-5650-C-II(6.5Pivot).jpg",
+  desc: "Premium in-ceiling speaker with a fully pivoting woofer *and* tweeter for flexible, targeted sound—ideal for home theaters or multi-purpose rooms. Delivers immersive, lifelike audio with deep bass and crisp dialogue. Includes moisture-resistant materials for use in bathrooms or covered patios."
+},
+
 { brand: "Klipsch", name: "CDT-5800-C II", model: "CDT-5800-C II", category: "speakers", type: "In-Ceiling", size: "8\" Premium", price: 52000, img: "speakers/Klipsch-CDT-5800-C-II(8Premium).jpg" },
 
 // --- In-Wall Speakers ---
@@ -1640,162 +1911,454 @@
 { brand: "Klipsch", name: "AWR-650-SM (Pair)", model: "AWR-650-SM", category: "speakers", type: "Rock Garden", size: "6.5\"", price: 78000, img: "speakers/Klipsch-AWR-650-SM-Rock-Speaker(Pair).jpg" },
 
 // --- Multi-room Music Streamers ---
-{ brand: "WiiM", name: "Pro", model: "WiiM Pro", category: "speakers", type: "Multi-room Streamer", price: 38733, img: "speakers/WiiM-Pro.jpg" },
-{ brand: "WiiM", name: "Ultra", model: "WiiM Ultra", category: "speakers", type: "Multi-room Streamer", price: 75052, img: "speakers/WiiM-Ultra.jpg" },
+{ brand: "WiiM", name: " WiiM Pro", model: "WiiM Pro", category: "speakers", type: "Multi-room Streamer", price: 38733, img: "speakers/WiiM-Pro.jpg" },
+{ brand: "WiiM", name: " WiiM Ultra", model: "WiiM Ultra", category: "speakers", type: "Multi-room Streamer", price: 75052, img: "speakers/WiiM-Ultra.jpg" },
 { brand: "WiiM", name: "Amp Pro", model: "WiiM Amp Pro", category: "speakers", type: "Multi-room Streamer", price: 92009, img: "speakers/WiiM-Amp-Pro.jpg" }
         ];
 
-        // ===== PAGINATION STATE =====
-        let currentPage = 1;
-        const productsPerPage = 12;
-        let filteredProducts = [...products];
 
-        // DOM Elements
-        const productGrid = document.getElementById('productGrid');
-        const paginationEl = document.getElementById('pagination');
-        const prevBtn = document.getElementById('prevPage');
-        const nextBtn = document.getElementById('nextPage');
-        const pageNumbersEl = document.getElementById('pageNumbers');
 
-        // ===== RENDER A SINGLE PRODUCT CARD =====
-        function createProductCard(product) {
-            let metaContent = '';
-            let conditionBadge = '';
 
-            if (['desktops', 'laptops', 'phones'].includes(product.category)) {
-                const conditionClass = product.condition === 'NEW'
-                    ? 'bg-green-100 text-green-800'
-                    : 'bg-amber-100 text-amber-800';
-                conditionBadge = `<span class="text-xs px-2 py-1 rounded ${conditionClass}">${product.condition}</span>`;
-                metaContent = product.model || '';
-            } else if (product.category === 'monitors') {
-                metaContent = product.spec || '';
-            } else if (product.category === 'av-receivers') {
-                metaContent = product.channels || '';
-            } else if (['air-conditioners', 'dishwashers', 'cookers', 'fridges'].includes(product.category)) {
-                metaContent = product.capacity || product.size || '';
-            } else if (product.category === 'projectors') {
-                metaContent = product.resolution || '';
-            } else if (product.category === 'solar') {
-                metaContent = product.size || '';
-            } else if (['washing-machines', 'vacuum-cleaners', 'wireless-audio'].includes(product.category)) {
-                metaContent = product.type || product.capacity || '';
-            } else if (product.category === 'tvs') {
-                metaContent = product.size || '';
-            } else if (product.category === 'ups') {
-                metaContent = product.capacity || '';
-            } else if (['subwoofers', 'bookshelf-speakers'].includes(product.category)) {
-                metaContent = product.type || '';
-                if (product.condition === 'Special Order' || product.status === 'Special Order') {
-                    conditionBadge = `<span class="text-xs px-2 py-1 rounded bg-purple-100 text-purple-800">Special Order</span>`;
-                }
-            }
 
-            // Handle price display
-            let priceDisplay = typeof product.price === 'number'
-                ? product.price.toLocaleString()
-                : product.price;
 
-            if (product.category === 'subwoofers' || product.category === 'bookshelf-speakers') {
-                if (product.condition === 'Special Order' || product.status === 'Special Order') {
-                    priceDisplay = 'Contact for Price';
-                }
-            }
+// ===== STATE =====
+let currentPage = 1;
+const productsPerPage = 12;
+let filteredProducts = [...products];
+let activeSubcategory = null; // Tracks selected subcategory
+let areAllGroupsExpanded = false; // Tracks "All Products" state // ← NEW: tracks selected subcategory like "desktops"
 
-            const imgPath = product.category === 'security'
-                ? `assets/images/products/${product.img}`
-                : `assets/images/${product.img}`;
+// DOM Elements
+const productGrid = document.getElementById('productGrid');
+const prevBtn = document.getElementById('prevPage');
+const nextBtn = document.getElementById('nextPage');
+const pageNumbersEl = document.getElementById('pageNumbers');
+const searchInput = document.getElementById('productSearch');
 
-            const title = product.name || `${product.brand} ${product.model}`;
+// ===== CATEGORY GROUP MAPPING =====
+const CATEGORY_GROUPS = {
+  computing: ['desktops', 'laptops', 'monitors'],
+  tvs: ['tvs', 'projectors'],
+  audio: ['av-receivers', 'soundbars', 'speakers', 'wireless-audio', 'music', 'subwoofers', 'bookshelf-speakers'],
+  appliances: ['air-conditioners', 'dishwashers', 'cookers', 'fridges', 'washing-machines', 'vacuum-cleaners'],
+  mobile: ['phones', 'smart'],
+  power: ['solar', 'ups'],
+  security: ['security', 'surveillance', 'smart-cameras', 'access-controls'],
+  networking: ['networking']
+};
+// ===== SEARCH ALIASES (unchanged) =====
+const SEARCH_TERM_ALIAS = {
+  'fridge': 'fridges',
+  'refrigerator': 'fridges',
+  'phone': 'phones',
+  'mobile': 'phones',
+  'washer': 'washing-machines',
+  'washing machine': 'washing-machines',
+  'tv': 'tvs',
+  'television': 'tvs',
+  'ac': 'air-conditioners',
+  'conditioner': 'air-conditioners',
+  'dishwasher': 'dishwashers',
+  'oven': 'cookers',
+  'cooker': 'cookers',
+  'vacuum': 'vacuum-cleaners',
+  'cleaner': 'vacuum-cleaners',
+  'computer': 'desktops',
+  'pc': 'desktops',
+  'notebook': 'laptops',
+  'smartphone': 'phones',
+  'speaker': 'wireless-audio soundbars speakers subwoofers bookshelf-speakers',
+  'headphone': 'wireless-audio',
+  'earbuds': 'wireless-audio',
+  'jbl': 'wireless-audio',
+  'sonos': 'wireless-audio',
+  'airpods': 'wireless-audio',
+  'watch': 'smart',
+  'lock': 'smart',
+  'curtain': 'smart',
+  'sensor': 'smart',
+  'switch': 'smart',
+  'doorbell': 'smart',
+  'gate': 'smart',
+  'ps5': 'smart',
+  'xbox': 'smart',
+  'echo': 'smart',
+  'nest': 'smart',
+  'remarkable': 'smart',
+  'amplifier': 'music',
+  'amp': 'music',
+  'multiroom': 'music',
+  'camera': 'smart-cameras surveillance',
+  'smart camera': 'smart-cameras',
+  'nest cam': 'smart-cameras',
+  'eufy': 'smart-cameras',
+  'subwoofer': 'subwoofers',
+  'bookshelf': 'bookshelf-speakers',
+  'klipsch': 'subwoofers bookshelf-speakers',
+  'polk': 'subwoofers',
+  'harman kardon': 'subwoofers wireless-audio',
+  'dahua': 'surveillance',
+  'hikvision': 'surveillance',
+  'wd purple': 'surveillance',
+  'mikrotik': 'surveillance',
+  'router': 'networking',
+  'access point': 'networking',
+  'ap': 'networking',
+  'extender': 'networking',
+  'mesh': 'networking',
+  'starlink': 'networking'
+};
 
-            return `
-                <div class="product-card fade-transition">
-                    <img src="${imgPath}"
-                         alt="${title}"
-                         class="product-image"
-                         onerror="this.src='https://via.placeholder.com/400x300?text=Image+Not+Found'; this.onerror=null;">
-                    <div class="product-content">
-                        <h3 class="product-title">${title}</h3>
-                        ${metaContent ? `<p class="product-meta">${metaContent}</p>` : ''}
-                        ${conditionBadge}
-                        <p class="product-price">KES ${priceDisplay}</p>
-                    </div>
-                </div>
-            `;
+// ===== HELPERS =====
+function normalize(str) {
+  return (str || '').toString().toLowerCase().trim();
+}
+
+function matchesSearch(product, term) {
+  if (!term) return true;
+  const text = [
+    product.name, product.brand, product.model, product.desc, product.spec,
+    product.channels, product.capacity, product.size, product.type,
+    product.condition, product.status
+  ].filter(Boolean).join(' ').toLowerCase();
+
+  if (text.includes(term)) return true;
+
+  const priceStr = typeof product.price === 'number'
+    ? product.price.toString()
+    : product.price.toString().replace(/,/g, '');
+  if (priceStr.includes(term.replace(/,/g, ''))) return true;
+
+  return false;
+}
+
+// ===== RENDER PRODUCT CARD =====
+function createProductCard(product) {
+  let metaContent = '';
+  let conditionBadge = '';
+  let descContent = '';
+
+  // Handle meta content & condition badge by category
+  if (['desktops', 'laptops', 'phones'].includes(product.category)) {
+    const conditionClass = product.condition === 'NEW'
+      ? 'bg-green-100 text-green-800'
+      : 'bg-amber-100 text-amber-800';
+    conditionBadge = `<span class="text-xs px-2 py-1 rounded ${conditionClass}">${product.condition}</span>`;
+    metaContent = product.model || '';
+  } else if (product.category === 'monitors') {
+    metaContent = product.spec || '';
+  } else if (product.category === 'av-receivers') {
+    metaContent = product.channels || '';
+  } else if (['air-conditioners', 'dishwashers', 'cookers', 'fridges'].includes(product.category)) {
+    metaContent = product.capacity || product.size || '';
+  } else if (product.category === 'projectors') {
+    metaContent = product.resolution || '';
+  } else if (product.category === 'solar') {
+    metaContent = product.size || '';
+  } else if (['washing-machines', 'vacuum-cleaners', 'wireless-audio'].includes(product.category)) {
+    metaContent = product.type || product.capacity || '';
+  } else if (product.category === 'tvs') {
+    metaContent = product.size || '';
+  } else if (product.category === 'ups') {
+    metaContent = product.capacity || '';
+  } else if (['subwoofers', 'bookshelf-speakers'].includes(product.category)) {
+    metaContent = product.type || '';
+    if (product.condition === 'Special Order' || product.status === 'Special Order') {
+      conditionBadge = `<span class="text-xs px-2 py-1 rounded bg-purple-100 text-purple-800">Special Order</span>`;
+    }
+  }
+
+  // Handle description (show for any product that has it)
+  if (product.desc) {
+    descContent = `<p class="product-desc">${product.desc}</p>`;
+  }
+
+  // Price display logic
+  let priceDisplay = typeof product.price === 'number'
+    ? product.price.toLocaleString()
+    : product.price;
+
+  if (
+    (product.category === 'subwoofers' || product.category === 'bookshelf-speakers') &&
+    (product.condition === 'Special Order' || product.status === 'Special Order')
+  ) {
+    priceDisplay = 'Contact for Price';
+  }
+
+  // Image path logic
+  const imgPath = product.category === 'security'
+    ? `assets/images/products/${product.img}`
+    : `assets/images/${product.img}`;
+
+  const title = product.name || `${product.brand} ${product.model}`;
+
+  // Return full card HTML
+  return `
+    <div class="product-card fade-transition">
+      <img src="${imgPath}"
+           alt="${title}"
+           class="product-image"
+           onerror="this.src='https://via.placeholder.com/400x300?text=Image+Not+Found'; this.onerror=null;">
+      <div class="product-content">
+        <h3 class="product-title">${title}</h3>
+        ${metaContent ? `<p class="product-meta">${metaContent}</p>` : ''}
+        ${descContent}
+        ${conditionBadge}
+        <p class="product-price">KES ${priceDisplay}</p>
+      </div>
+    </div>
+  `;
+}
+
+function filterProducts(overrideSearchTerm = null) {
+  const searchTerm = (overrideSearchTerm !== null) ? overrideSearchTerm : normalize(searchInput.value);
+
+  // NEW LOGIC: If "All Products" mode is ON, show everything
+  if (areAllGroupsExpanded) {
+    filteredProducts = products.filter(product => {
+      if (searchTerm) {
+        if (SEARCH_TERM_ALIAS[searchTerm]) {
+          const expandedCats = SEARCH_TERM_ALIAS[searchTerm].split(' ');
+          if (!expandedCats.includes(product.category)) return false;
         }
+        return matchesSearch(product, searchTerm);
+      }
+      return true;
+    });
+  } else {
+    // Normal accordion mode: only one group open
+    const openHeader = document.querySelector('.accordion-header[aria-expanded="true"]');
+    const activeGroup = openHeader ? openHeader.dataset.group : 'all';
 
-        // ===== RENDER CURRENT PAGE OF PRODUCTS =====
-        function renderCurrentPage() {
-            // Fade out
-            document.querySelectorAll('.product-card').forEach(card => {
-                card.classList.add('out');
-            });
+    let allowedCategories = ['all'];
+    if (activeGroup !== 'all') {
+      if (activeSubcategory) {
+        allowedCategories = [activeSubcategory];
+      } else {
+        allowedCategories = CATEGORY_GROUPS[activeGroup] || [activeGroup];
+      }
+    }
 
-            setTimeout(() => {
-                const startIndex = (currentPage - 1) * productsPerPage;
-                const endIndex = startIndex + productsPerPage;
-                const pageProducts = filteredProducts.slice(startIndex, endIndex);
-
-                productGrid.innerHTML = pageProducts.length
-                    ? pageProducts.map(createProductCard).join('')
-                    : '<p class="col-span-full text-center text-gray-500 py-8">No products found.</p>';
-
-                // Fade in new cards
-                document.querySelectorAll('.product-card').forEach(card => {
-                    card.classList.remove('out');
-                });
-
-                updatePaginationUI();
-            }, 300);
+    filteredProducts = products.filter(product => {
+      if (activeGroup !== 'all' && !allowedCategories.includes(product.category)) {
+        return false;
+      }
+      if (searchTerm) {
+        if (SEARCH_TERM_ALIAS[searchTerm]) {
+          const expandedCats = SEARCH_TERM_ALIAS[searchTerm].split(' ');
+          if (!expandedCats.includes(product.category)) return false;
         }
+        return matchesSearch(product, searchTerm);
+      }
+      return true;
+    });
+  }
 
-        // ===== UPDATE PAGINATION BUTTONS & NUMBERS =====
-        function updatePaginationUI() {
-            const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+  currentPage = 1;
+  renderCurrentPage();
 
-            // Update prev/next buttons
-            prevBtn.disabled = currentPage === 1;
-            nextBtn.disabled = currentPage === totalPages;
+  // Update subcategory highlights
+  document.querySelectorAll('.subcategory-link[data-category]').forEach(btn => {
+    const btnCat = btn.dataset.category;
+    if (btnCat === activeSubcategory) {
+      btn.classList.add('active-subcategory');
+    } else {
+      btn.classList.remove('active-subcategory');
+    }
+  });
+}
 
-            // Generate page numbers (limit to max 5 visible)
-            pageNumbersEl.innerHTML = '';
-            const maxVisible = 5;
-            let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
-            let endPage = Math.min(totalPages, startPage + maxVisible - 1);
-            if (endPage - startPage + 1 < maxVisible) {
-                startPage = Math.max(1, endPage - maxVisible + 1);
-            }
 
-            for (let i = startPage; i <= endPage; i++) {
-                const li = document.createElement('li');
-                const btn = document.createElement('button');
-                btn.className = `pagination-number ${i === currentPage ? 'active' : ''}`;
-                btn.textContent = i;
-                btn.addEventListener('click', () => {
-                    currentPage = i;
-                    renderCurrentPage();
-                });
-                li.appendChild(btn);
-                pageNumbersEl.appendChild(li);
-            }
-        }
+// ===== RENDER PAGE & PAGINATION =====
+function renderCurrentPage() {
+  document.querySelectorAll('.product-card').forEach(card => card.classList.add('out'));
+  setTimeout(() => {
+    const start = (currentPage - 1) * productsPerPage;
+    const end = start + productsPerPage;
+    const pageItems = filteredProducts.slice(start, end);
 
-        // NAVIGATION EVENT LISTENERS
-        prevBtn.addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                renderCurrentPage();
-            }
-        });
+    productGrid.innerHTML = pageItems.length
+      ? pageItems.map(createProductCard).join('')
+      : '<p class="col-span-full text-center text-gray-500 py-8">No products found.</p>';
 
-        nextBtn.addEventListener('click', () => {
-            const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
-            if (currentPage < totalPages) {
-                currentPage++;
-                renderCurrentPage();
-            }
-        });
+    document.querySelectorAll('.product-card').forEach(card => card.classList.remove('out'));
+    updatePaginationUI();
+  }, 300);
+}
 
+function updatePaginationUI() {
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+  prevBtn.disabled = currentPage === 1;
+  nextBtn.disabled = currentPage === totalPages;
+
+  pageNumbersEl.innerHTML = '';
+  const maxVisible = 5;
+  let start = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+  let end = Math.min(totalPages, start + maxVisible - 1);
+  if (end - start + 1 < maxVisible) {
+    start = Math.max(1, end - maxVisible + 1);
+  }
+
+  for (let i = start; i <= end; i++) {
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.className = `pagination-number ${i === currentPage ? 'active' : ''}`;
+    btn.textContent = i;
+    btn.addEventListener('click', () => {
+      currentPage = i;
+      renderCurrentPage();
+    });
+    li.appendChild(btn);
+    pageNumbersEl.appendChild(li);
+  }
+}
+
+// ===== ACCORDION CLICK HANDLERS =====
+document.querySelectorAll('.accordion-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const group = header.dataset.group;
+    const isCurrentlyOpen = header.getAttribute('aria-expanded') === 'true';
+
+
+      // Reset "All Products" state
+    areAllGroupsExpanded = false;
+    const allBtn = document.getElementById('allProductsBtn');
+    if (allBtn) allBtn.textContent = 'All Products';
+
+    // Close all accordions
+    document.querySelectorAll('.accordion-content').forEach(content => {
+      content.style.maxHeight = '0';
+      content.setAttribute('aria-hidden', 'true');
+    });
+    document.querySelectorAll('.accordion-header').forEach(h => {
+      h.setAttribute('aria-expanded', 'false');
+      h.querySelector('.accordion-arrow')?.classList.remove('rotate-180');
+    });
+
+    // Open this one if it wasn't already open
+    if (!isCurrentlyOpen) {
+      const content = header.nextElementSibling;
+      content.style.maxHeight = content.scrollHeight + 'px';
+      content.setAttribute('aria-hidden', 'false');
+      header.setAttribute('aria-expanded', 'true');
+      header.querySelector('.accordion-arrow')?.classList.add('rotate-180');
+      searchInput.value = '';
+      activeSubcategory = null; // ← Reset subcategory
+    }
+
+    filterProducts();
+  });
+
+  // Keyboard support
+  header.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      header.click();
+    }
+  });
+});
+
+// ===== SUBCATEGORY CLICK HANDLERS =====
+document.querySelectorAll('.subcategory-link[data-category]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const category = e.currentTarget.dataset.category;
+    // Toggle: if already selected, clear it
+    if (activeSubcategory === category) {
+      activeSubcategory = null;
+    } else {
+      activeSubcategory = category;
+    }
+    filterProducts();
+  });
+});
+
+// ===== "View All" buttons inside accordion =====
+document.querySelectorAll('.subcategory-link[data-group]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    activeSubcategory = null;
+    filterProducts();
+  });
+});
+// ===== "ALL PRODUCTS" TOGGLE BUTTON HANDLER =====
+document.getElementById('allProductsBtn').addEventListener('click', () => {
+  const allBtn = document.getElementById('allProductsBtn');
+  const accordionItems = document.querySelectorAll('.accordion-item');
+  const headers = document.querySelectorAll('.accordion-header');
+areAllGroupsExpanded = !areAllGroupsExpanded;
+
+  if (areAllGroupsExpanded) {
+    // Expand all
+    accordionItems.forEach(item => {
+      const header = item.querySelector('.accordion-header');
+      const content = header.nextElementSibling;
+      header.setAttribute('aria-expanded', 'true');
+      header.querySelector('.accordion-arrow')?.classList.add('rotate-180');
+      content.style.maxHeight = content.scrollHeight + 'px';
+      content.setAttribute('aria-hidden', 'false');
+    });
+    allBtn.textContent = 'Collapse All';
+  } else {
+    // Collapse all
+    accordionItems.forEach(item => {
+      const header = item.querySelector('.accordion-header');
+      const content = header.nextElementSibling;
+      header.setAttribute('aria-expanded', 'false');
+      header.querySelector('.accordion-arrow')?.classList.remove('rotate-180');
+      content.style.maxHeight = '0';
+      content.setAttribute('aria-hidden', 'true');
+    });
+    allBtn.textContent = 'All Products';
+  }
+
+  // Reset filter state
+  searchInput.value = '';
+  activeSubcategory = null;
+  filterProducts();
+});
+// ===== SEARCH INPUT (with debounce) =====
+let searchTimeout;
+searchInput.addEventListener('input', () => {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => {
+    // Close all accordions during search
+    document.querySelectorAll('.accordion-content').forEach(content => {
+      content.style.maxHeight = '0';
+      content.setAttribute('aria-hidden', 'true');
+    });
+    document.querySelectorAll('.accordion-header').forEach(h => {
+      h.setAttribute('aria-expanded', 'false');
+      h.querySelector('.accordion-arrow')?.classList.remove('rotate-180');
+    });
+    activeSubcategory = null;
+    filterProducts();
+  }, 300);
+});
+
+// ===== PAGINATION BUTTONS =====
+prevBtn.addEventListener('click', () => {
+  if (currentPage > 1) {
+    currentPage--;
+    renderCurrentPage();
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+  if (currentPage < totalPages) {
+    currentPage++;
+    renderCurrentPage();
+  }
+});
+
+// ===== INITIALIZE =====
+renderCurrentPage();
+
+// ===== INITIALIZE =====
+
+
+// ===== OTHER JS (Mobile Menu, Video Modal, Swiper, etc.) =====
+// --- Keep your existing mobile menu, modal, swiper, and observer code BELOW ---
+// (No changes needed to those sections)
 // --- MOBILE MENU (Enhanced) ---
 const mobileMenuButton = document.getElementById('mobileMenuButton');
 const mobileNav = document.getElementById('mobileNav');
@@ -1879,288 +2442,9 @@ mobileNav.setAttribute('id', 'mobileNav');
             }
         });
 
-        // --- CATEGORY FILTERING ---
-        const categoryButtons = document.querySelectorAll('#categoryTabs button');
-        categoryButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                categoryButtons.forEach(b => {
-                    b.classList.remove('bg-yellow-500', 'text-white');
-                    b.classList.add('bg-slate-100', 'text-slate-700');
-                });
-                btn.classList.add('bg-yellow-500', 'text-white');
-                btn.classList.remove('bg-slate-100', 'text-slate-700');
-                filterProducts();
-            });
-        });
+     
 
-        // --- SEARCH ---
-        document.getElementById('productSearch').addEventListener('input', function () {
-            const searchTerm = this.value.trim().toLowerCase();
-            if (searchTerm === '') {
-                filterProducts();
-                return;
-            }
-            // Switch to All Products
-            const allButton = document.querySelector('#categoryTabs button[data-category="all"]');
-            const buttons = document.querySelectorAll('#categoryTabs button');
-            buttons.forEach(btn => {
-                btn.classList.remove('bg-yellow-500', 'text-white');
-                btn.classList.add('bg-slate-100', 'text-slate-700');
-            });
-            allButton.classList.add('bg-yellow-500', 'text-white');
-
-            const termMap = {
-                'fridge': 'fridges',
-                'refrigerator': 'fridges',
-                'phone': 'phones',
-                'mobile': 'phones',
-                'washer': 'washing-machines',
-                'washing machine': 'washing-machines',
-                'tv': 'tvs',
-                'television': 'tvs',
-                'ac': 'air-conditioners',
-                'conditioner': 'air-conditioners',
-                'dishwasher': 'dishwashers',
-                'oven': 'cookers',
-                'cooker': 'cookers',
-                'vacuum': 'vacuum-cleaners',
-                'cleaner': 'vacuum-cleaners',
-                'computer': 'desktops',
-                'pc': 'desktops',
-                'notebook': 'laptops',
-                'smartphone': 'phones',
-                'fridge': 'fridges',
-                'speaker': 'wireless-audio soundbars smart-speakers in-ceiling in-wall wall-mount garden-speaker subwoofers bookshelf-speakers',
-                'headphone': 'wireless-audio',
-                'earbuds': 'wireless-audio',
-                'jbl': 'wireless-audio',
-                'sonos': 'wireless-audio smart-speakers',
-                'airpods': 'wireless-audio',
-                'watch': 'premium-watches',
-                'lock': 'smart-locks',
-                'curtain': 'smart-curtains',
-                'sensor': 'smart-sensors',
-                'switch': 'smart-switches',
-                'doorbell': 'smart-doorbells',
-                'gate': 'sliding-gate-motors swing-gate-motors',
-                'ps5': 'gaming-tech',
-                'xbox': 'gaming-tech',
-                'switch': 'gaming-tech',
-                'echo': 'smart-speakers',
-                'nest': 'smart-speakers smart-doorbells',
-                'remarkable': 'remarkable',
-                'amplifier': 'multiroom',
-                'amp': 'multiroom',
-                'multiroom': 'multiroom',
-                'camera': 'smart-cameras',
-                'smart camera': 'smart-cameras',
-                'nest cam': 'smart-cameras',
-                'eufy': 'smart-cameras',
-                'subwoofer': 'subwoofers',
-                'bookshelf': 'bookshelf-speakers',
-                'klipsch': 'subwoofers bookshelf-speakers',
-                'polk': 'subwoofers',
-                'harman kardon': 'subwoofers wireless-audio',
-                'dahua': 'surveillance',
-                'hikvision': 'surveillance',
-                'wd purple': 'surveillance',
-                'mikrotik': 'surveillance',
-                'router': 'networking',
-                'access point': 'networking',
-                'ap': 'networking',
-                'extender': 'networking',
-                'mesh': 'networking',
-                'starlink': 'networking',     
-  'smart': 'smart',
-  'watch': 'smart',
-  'apple watch': 'smart',
-  'samsung watch': 'smart',
-  'garmin': 'smart',
-  'huawei watch': 'smart',
-  'doorbell': 'smart',
-  'ring': 'smart',
-  'eufy': 'smart',
-  'nest doorbell': 'smart',
-  'curtain': 'smart',
-  'dooya': 'smart',
-  'tuya curtain': 'smart',
-  'smart lock': 'smart',
-  'yale': 'smart',
-  'philips lock': 'smart',
-  'boleshi': 'smart',
-  'aqara lock': 'smart',
-  'switch': 'smart',
-  'tuya switch': 'smart',
-  'smart plug': 'smart',
-  'ps5': 'smart',
-  'xbox': 'smart',
-  'nintendo switch': 'smart',
-  'echo dot': 'smart',
-  'nest audio': 'smart',
-  'sonos': 'smart',
-  'remarkable': 'smart',
-  'kindle scribe': 'smart',
-  'logitech rally': 'smart',
-  'gate motor': 'smart',
-  'centurion': 'smart',
-  'vintage gate': 'smart',
-  'sensor': 'smart',
-  'aqara sensor': 'smart',
-  'water leak': 'smart',
-  'gas sensor': 'smart',
-  'smart camera': 'smart-cameras',
-'nest cam': 'smart-cameras',
-'eufy': 'smart-cameras',
-'ezviz': 'smart-cameras',
-'imou': 'smart-cameras',
-'tapo': 'smart-cameras',
-'camera': 'smart-cameras surveillance',
-'bulb camera': 'smart-cameras',
-'solar camera': 'smart-cameras',
-'speaker': 'speakers subwoofers bookshelf-speakers wireless-audio',
-'klipsch': 'speakers subwoofers bookshelf-speakers',
-'micca': 'speakers',
-'in-ceiling': 'speakers',
-'in-wall': 'speakers',
-'wiim': 'speakers',
-'garden speaker': 'speakers'
-
-                  
-            };
-            const effectiveTerm = termMap[searchTerm] || searchTerm;
-            filterProducts(effectiveTerm);
-        });
-
-        function filterProducts(overrideTerm = null) {
-            const activeCat = document.querySelector('#categoryTabs .bg-yellow-500')?.dataset.category || 'all';
-            const term = (overrideTerm !== null) ? overrideTerm : document.getElementById('productSearch').value.toLowerCase();
-
-            filteredProducts = products.filter(p => {
-                if (activeCat !== 'all' && p.category !== activeCat) return false;
-
-                if (['desktops', 'laptops', 'phones'].includes(p.category)) {
-                    return (p.brand.toLowerCase().includes(term) ||
-                        (p.name && p.name.toLowerCase().includes(term)) ||
-                        p.model.toLowerCase().includes(term) ||
-                        (p.condition && p.condition.toLowerCase().includes(term)) ||
-                        p.price.toString().replace(/,/g, '').includes(term.replace(/,/g, '')));
-                }
-                // --- SPEAKERS ---
-if (p.category === 'speakers') {
-    return `
-        <div class="bg-white p-5 rounded-2xl shadow-md hover:shadow-lg transition border border-slate-100 flex flex-col">
-            <div class="w-full h-48 bg-slate-100 rounded-xl mb-4 overflow-hidden">
-                <img src="assets/images/${p.img}" 
-                    alt="${p.brand} ${p.model}" 
-                    class="w-full h-full object-cover"
-                    onerror="this.src='https://via.placeholder.com/400x300?text=${encodeURIComponent(p.brand + ' ' + p.model)}'; this.onerror=null;">
-            </div>
-            <h3 class="font-bold text-lg text-slate-900">${p.brand}</h3>
-            <p class="text-gray-600 text-sm mt-1">${p.name || p.model}</p>
-            <p class="text-gray-600 text-sm">${p.type} ${p.size ? '• ' + p.size : ''}</p>
-            <div class="mt-auto pt-2">
-                <span class="font-bold text-gold">KES ${p.price.toLocaleString()}</span>
-            </div>
-        </div>
-    `;
-}
-                if (p.category === 'monitors') {
-                    return (p.brand.toLowerCase().includes(term) ||
-                        p.name.toLowerCase().includes(term) ||
-                        p.spec?.toLowerCase().includes(term) ||
-                        p.price.toString().replace(/,/g, '').includes(term.replace(/,/g, '')));
-                }
-                if (p.category === 'av-receivers') {
-                    return (p.brand.toLowerCase().includes(term) ||
-                        p.model.toLowerCase().includes(term) ||
-                        p.channels?.toLowerCase().includes(term) ||
-                        p.price.toString().replace(/,/g, '').includes(term.replace(/,/g, '')));
-                }
-                if (['air-conditioners', 'dishwashers', 'cookers', 'fridges'].includes(p.category)) {
-                    return (p.brand.toLowerCase().includes(term) ||
-                        p.model.toLowerCase().includes(term) ||
-                        (p.capacity && p.capacity.toLowerCase().includes(term)) ||
-                        (p.size && p.size.toLowerCase().includes(term)) ||
-                        p.price.toString().replace(/,/g, '').includes(term.replace(/,/g, '')));
-                }
-                if (p.category === 'projectors') {
-                    return (p.brand.toLowerCase().includes(term) ||
-                        p.model.toLowerCase().includes(term) ||
-                        p.resolution?.toLowerCase().includes(term) ||
-                        p.price.toString().replace(/,/g, '').includes(term.replace(/,/g, '')));
-                }
-                if (p.category === 'solar') {
-                    return (p.brand.toLowerCase().includes(term) ||
-                        p.name.toLowerCase().includes(term) ||
-                        p.model.toLowerCase().includes(term) ||
-                        p.size?.toLowerCase().includes(term) ||
-                        p.price.toString().replace(/,/g, '').includes(term.replace(/,/g, '')));
-                }
-                if (p.category === 'soundbars' || p.category === 'tvs' || p.category === 'ups') {
-                    return (p.brand.toLowerCase().includes(term) ||
-                        p.model?.toLowerCase().includes(term) ||
-                        p.name?.toLowerCase().includes(term) ||
-                        p.size?.toLowerCase().includes(term) ||
-                        p.capacity?.toLowerCase().includes(term) ||
-                        p.price.toString().replace(/,/g, '').includes(term.replace(/,/g, '')));
-                }
-                if (p.category === 'washing-machines' || p.category === 'vacuum-cleaners') {
-                    return (p.brand.toLowerCase().includes(term) ||
-                        p.model?.toLowerCase().includes(term) ||
-                        (p.category === 'washing-machines' && p.capacity && p.capacity.toLowerCase().includes(term)) ||
-                        (p.category === 'vacuum-cleaners' && p.type && p.type.toLowerCase().includes(term)) ||
-                        p.price.toString().replace(/,/g, '').includes(term.replace(/,/g, '')));
-                }
-                if (p.category === 'wireless-audio') {
-                    return (p.brand.toLowerCase().includes(term) ||
-                        p.model.toLowerCase().includes(term) ||
-                        p.type.toLowerCase().includes(term) ||
-                        p.price.toString().replace(/,/g, '').includes(term.replace(/,/g, '')));
-                }
-                if (p.category === 'subwoofers' || p.category === 'bookshelf-speakers') {
-                    return (p.brand.toLowerCase().includes(term) ||
-                        p.model.toLowerCase().includes(term) ||
-                        (p.type && p.type.toLowerCase().includes(term)) ||
-                        (p.status && p.status.toLowerCase().includes(term)) ||
-                        (typeof p.price === 'string' ? p.price.toLowerCase().includes(term) : p.price.toString().replace(/,/g, '').includes(term.replace(/,/g, ''))));
-                }
-                if (p.category === 'music') {
-                    return (p.brand.toLowerCase().includes(term) ||
-                        p.model.toLowerCase().includes(term) ||
-                        p.price.toString().replace(/,/g, '').includes(term.replace(/,/g, '')));
-                }
-                if (p.category === 'networking') {
-                    return (p.brand.toLowerCase().includes(term) ||
-                        p.model.toLowerCase().includes(term) ||
-                        p.price.toString().replace(/,/g, '').includes(term.replace(/,/g, '')));
-                }
-                if (p.category === 'access-controls') {
-                    return (p.brand.toLowerCase().includes(term) ||
-                        p.name.toLowerCase().includes(term) ||
-                        p.model.toLowerCase().includes(term) ||
-                        p.price.toString().replace(/,/g, '').includes(term.replace(/,/g, '')));
-                }
-                if (p.category === 'surveillance') {
-                    return (p.brand.toLowerCase().includes(term) ||
-                        p.model.toLowerCase().includes(term) ||
-                        p.price.toString().replace(/,/g, '').includes(term.replace(/,/g, '')));
-                }
-                // generic security
-                else {
-                    return (p.name?.toLowerCase().includes(term) ||
-                        p.desc?.toLowerCase().includes(term) ||
-                        p.category?.toLowerCase().includes(term));
-                }
-                
-            });
-
-            currentPage = 1;
-            renderCurrentPage();
-        }
-
-        // INITIAL RENDER
-        renderCurrentPage();
-
+       
         // --- ACTIVE NAVIGATION ---
         const sections = document.querySelectorAll('main section');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -2188,5 +2472,6 @@ if (p.category === 'speakers') {
             }
         });
     </script>
+
 </body>
 </html>
