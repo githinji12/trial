@@ -2413,34 +2413,87 @@ mobileMenuButton.setAttribute('aria-expanded', 'false');
 mobileMenuButton.setAttribute('aria-controls', 'mobileNav');
 mobileNav.setAttribute('id', 'mobileNav');
 
-        // --- VIDEO MODAL ---
-        const videoModal = document.getElementById('videoModal');
-        const modalVideo = videoModal.querySelector('video');
-        const modalCloseButton = document.getElementById('modalCloseButton');
-        function openModal(videoId) {
-            const videoSrc = `assets/images/projects/${videoId}.mp4`;
-            modalVideo.src = videoSrc;
-            modalVideo.load();
-            videoModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => modalVideo.play(), 100);
-            modalCloseButton.focus();
+// ===== VIDEO MODAL =====
+const videoModal = document.getElementById('videoModal');
+const modalVideo = videoModal.querySelector('video');
+const modalCloseButton = document.getElementById('modalCloseButton');
+let lastFocusedElement = null;
+
+// --- Lock / unlock body scroll ---
+function lockBodyScroll() {
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.overflow = 'hidden';
+    document.body.style.paddingRight = scrollBarWidth + 'px';
+}
+function unlockBodyScroll() {
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+}
+
+// --- Open modal ---
+function openModal(videoId) {
+    lastFocusedElement = document.activeElement;
+    modalVideo.src = `assets/images/projects/${videoId}.mp4`;
+    modalVideo.load();
+
+    videoModal.classList.add('active'); // Add fade-in class
+    lockBodyScroll();
+
+    setTimeout(() => modalVideo.play(), 100);
+    modalCloseButton.focus();
+}
+
+// --- Close modal ---
+function closeModal() {
+    modalVideo.pause();
+    modalVideo.src = '';
+    videoModal.classList.remove('active'); // Fade out
+    unlockBodyScroll();
+    if (lastFocusedElement) lastFocusedElement.focus();
+}
+
+// --- Event listeners ---
+modalCloseButton.addEventListener('click', closeModal);
+
+// Click outside video to close
+videoModal.addEventListener('click', (e) => {
+    if (e.target === videoModal) closeModal();
+});
+
+// Escape key closes modal
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && videoModal.classList.contains('active')) closeModal();
+});
+
+// --- Focus trap inside modal ---
+videoModal.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') {
+        const focusable = videoModal.querySelectorAll('button, [href], video, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
         }
-        function closeModal() {
-            modalVideo.pause();
-            modalVideo.src = '';
-            videoModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        modalCloseButton.addEventListener('click', closeModal);
-        videoModal.addEventListener('click', (e) => {
-            if (e.target === videoModal) closeModal();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && videoModal.classList.contains('active')) {
-                closeModal();
-            }
-        });
+    }
+});
+
+// --- Mobile swipe down to close ---
+let touchStartY = 0;
+videoModal.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+});
+videoModal.addEventListener('touchmove', (e) => {
+    const touchEndY = e.touches[0].clientY;
+    const diff = touchEndY - touchStartY;
+    if (diff > 100) { // swipe down threshold
+        closeModal();
+    }
+});
+
 
      
 
