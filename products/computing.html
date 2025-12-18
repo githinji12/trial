@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Computing – Morel Tech Solution</title>
+  <meta name="description" content="Premium desktops, laptops & monitors from HP, Dell, Apple, Lenovo and more. New & refurbished models across Kenya."/>
+  <link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #f8fafc;
+      --bg-surface: #ffffff;
+      --ink-900: #0f172a;
+      --ink-700: #334155;
+      --ink-500: #64748b;
+      --border-subtle: #e2e8f0;
+      --accent-gold: #d4af37;
+      --radius-sm: 10px;
+      --radius-md: 14px;
+      --radius-lg: 18px;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    body {
+      background-color: var(--bg-page);
+      color: var(--ink-700);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .brand-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: box-shadow 0.3s var(--ease-ui), transform 0.2s var(--ease-ui);
+    }
+    .brand-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .product-image {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+    }
+    .specs-list {
+      font-size: 0.875rem;
+      color: var(--ink-500);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 1000;
+      padding: 1.5rem;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      background: white;
+      border-radius: var(--radius-lg);
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+    .filter-sidebar {
+      position: sticky;
+      top: 2rem;
+      height: fit-content;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    @media (max-width: 768px) {
+      .mobile-filter-trigger { display: block !important; }
+      .filter-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 85%;
+        height: 100vh;
+        z-index: 1000;
+        background: white;
+        padding: 1.5rem;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+      .filter-sidebar.active { transform: translateX(0); }
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s;
+      }
+      .overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    .mobile-filter-trigger { display: none; }
+    .focus-ring:focus-visible {
+      outline: 2px solid var(--accent-gold);
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+<body class="text-slate-800">
+  <nav class="bg-slate-900 text-white fixed w-full top-0 z-50 shadow-md">
+    <div class="container mx-auto px-4 py-3">
+      <a href="../#products" class="text-lg font-semibold">← Back to Catalog</a>
+    </div>
+  </nav>
+
+  <main class="pt-20 pb-16">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- FILTER SIDEBAR -->
+        <aside class="filter-sidebar" id="filterSidebar">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl font-bold">Filters</h2>
+            <button id="closeFilters" class="lg:hidden text-gray-500 hover:text-gray-900">✕</button>
+          </div>
+          <div class="space-y-5">
+            <div>
+              <label class="block font-medium mb-2">Search Model</label>
+              <input type="text" id="modelSearch" placeholder="e.g. MacBook Air, i5, 27\"..." class="w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-yellow-500">
+            </div>
+            <div>
+              <label class="block font-medium mb-2">Brand</label>
+              <select id="brandFilter" class="w-full p-2.5 border rounded-lg">
+                <option value="">All Brands</option>
+                <option value="HP">HP</option>
+                <option value="Dell">Dell</option>
+                <option value="Lenovo">Lenovo</option>
+                <option value="Apple">Apple</option>
+                <option value="Asus">Asus</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Acer">Acer</option>
+                <option value="LG">LG</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-medium mb-2">Type</label>
+              <select id="typeFilter" class="w-full p-2.5 border rounded-lg">
+                <option value="">All Types</option>
+                <option value="desktops">Desktops</option>
+                <option value="laptops">Laptops</option>
+                <option value="monitors">Monitors</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-medium mb-2">Condition</label>
+              <select id="conditionFilter" class="w-full p-2.5 border rounded-lg">
+                <option value="">All Conditions</option>
+                <option value="NEW">New</option>
+                <option value="REFURB">Refurbished</option>
+              </select>
+            </div>
+          </div>
+        </aside>
+
+        <!-- BRAND CARDS -->
+        <div class="flex-1">
+          <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-slate-900">Computing & Office Equipment</h1>
+            <button class="mobile-filter-trigger px-4 py-2 bg-yellow-600 text-white rounded font-medium" id="openFilters">
+              Filters
+            </button>
+          </div>
+
+          <div id="brandGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Brand cards will be generated by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL FOR FULL DETAILS -->
+  <div id="detailModal" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <div class="p-6">
+        <div class="flex justify-between items-start">
+          <h2 id="modalTitle" class="text-2xl font-bold text-slate-900"></h2>
+          <button id="closeModalBtn" class="text-gray-500 hover:text-gray-900 text-2xl focus:outline-none">&times;</button>
+        </div>
+        <div id="modalContent" class="mt-6"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERLAY FOR MOBILE FILTERS -->
+  <div class="overlay" id="filterOverlay"></div>
+
+  <script>
+    // ===== COMPUTING PRODUCTS DATA =====
+    const computingProducts = [
+      // 💻 DESKTOPS & AIO
+      { name: "HP ProDesk 400 G7", brand: "HP", model: "ProDesk 400 G7 (i3)", condition: "NEW", price: 58000, category: "desktops", img: "desktops/HP-ProDesk400G7 (i3).jpg" },
+      { name: "HP ProDesk 400 G8", brand: "HP", model: "ProDesk 400 G8 (i5)", condition: "NEW", price: 81000, category: "desktops", img: "desktops/HP-ProDesk400G8 (i5).jpg" },
+      { name: "Dell OptiPlex 3080", brand: "Dell", model: "OptiPlex 3080 (i3)", condition: "NEW", price: 59000, category: "desktops", img: "desktops/Dell-OptiPlex3080 (i3).jpg" },
+      { name: "Dell OptiPlex 3090", brand: "Dell", model: "OptiPlex 3090 (i5)", condition: "NEW", price: 83000, category: "desktops", img: "desktops/Dell-OptiPlex3090(i5).jpg" },
+      { name: "Lenovo ThinkCentre M720", brand: "Lenovo", model: "ThinkCentre M720 (i5)", condition: "NEW", price: 87000, category: "desktops", img: "desktops/Lenovo-ThinkCentre-M720(i5).jpg" },
+      { name: "HP 22-dd2000 AIO", brand: "HP", model: "22-dd2000 AIO (i3)", condition: "NEW", price: 81000, category: "desktops", img: "desktops/HP-22-dd2000-AIO(i3).jpg" },
+      { name: "HP 24-dd3000 AIO", brand: "HP", model: "24-dd3000 AIO (i5)", condition: "NEW", price: 102000, category: "desktops", img: "desktops/HP-24-dd3000-AIO(i5).jpg" },
+      { name: "Dell Inspiron 24 AIO", brand: "Dell", model: "Inspiron 24 AIO (i5)", condition: "NEW", price: 107000, category: "desktops", img: "desktops/Dell-Inspiron-24-AIO(i5).jpg" },
+      { name: "Lenovo IdeaCentre AIO 3", brand: "Lenovo", model: "IdeaCentre AIO 3 (Ryzen 5)", condition: "NEW", price: 104000, category: "desktops", img: "desktops/Lenovo-IdeaCentreAIO-3(Ryzen 5).png" },
+      { name: "HP Omen 25L", brand: "HP", model: "Omen 25L (i5 / RTX 3060)", condition: "NEW", price: 176000, category: "desktops", img: "desktops/HP Omen25L(i5RTX 3060).jpg" },
+      { name: "Lenovo Legion T5", brand: "Lenovo", model: "Legion T5 (i7 / RTX 3060)", condition: "NEW", price: 201000, category: "desktops", img: "desktops/Lenovo-LegionT5(i7RTX 3060).jpg" },
+      { name: "Asus ROG Strix G10", brand: "Asus", model: "ROG Strix G10 (i5 / RTX 3050)", condition: "NEW", price: 166000, category: "desktops", img: "desktops/AsusROGStrixG10(i5RTX 3050).jpg" },
+      { name: "Apple iMac 24\" M1", brand: "Apple", model: "iMac 24\" M1 (256GB)", condition: "NEW", price: 182000, category: "desktops", img: "desktops/iMac24M1(256GB).jpg" },
+      { name: "Apple iMac 24\" M1", brand: "Apple", model: "iMac 24\" M1 (512GB)", condition: "NEW", price: 202000, category: "desktops", img: "desktops/iMac24M1(512GB).jpg" },
+      { name: "HP ProDesk 600 G1", brand: "HP", model: "ProDesk 600 G1 (i5)", condition: "REFURB", price: 26000, category: "desktops", img: "desktops/HPProDesk600G1(i5).jpg" },
+      { name: "HP EliteDesk 800 G1", brand: "HP", model: "EliteDesk 800 G1 (i5 / SSD)", condition: "REFURB", price: 30000, category: "desktops", img: "desktops/HPEliteDesk800G1(i5SSD).jpg" },
+      { name: "Dell OptiPlex 7010", brand: "Dell", model: "OptiPlex 7010 (i5)", condition: "REFURB", price: 24000, category: "desktops", img: "desktops/DellOptiPlex7010(i5).jpg" },
+      { name: "Dell OptiPlex 7040", brand: "Dell", model: "OptiPlex 7040 (i5 / SSD)", condition: "REFURB", price: 31000, category: "desktops", img: "desktops/DellOptiPlex7040(i5SSD).jpg" },
+      { name: "Lenovo ThinkCentre M83", brand: "Lenovo", model: "ThinkCentre M83 (i5)", condition: "REFURB", price: 25000, category: "desktops", img: "desktops/LenovoThinkCentreM83(i5).jpg" },
+      { name: "Lenovo ThinkCentre M900", brand: "Lenovo", model: "ThinkCentre M900 (i5 / SSD)", condition: "REFURB", price: 32000, category: "desktops", img: "desktops/LenovoThinkCentreM900(i5SSD).jpg" },
+      { name: "Apple iMac 21.5\" 2015", brand: "Apple", model: "iMac 21.5\" 2015", condition: "REFURB", price: 53000, category: "desktops", img: "desktops/iMac21.5-2015.jpg" },
+      { name: "Apple iMac 27\" 2015", brand: "Apple", model: "iMac 27\" 2015", condition: "REFURB", price: 78000, category: "desktops", img: "desktops/iMac27-2015.jpg" },
+      // 💻 LAPTOPS
+      { name: "HP 250 G8 / G9", brand: "HP", model: "250 G8 / G9 (i3)", condition: "NEW", price: 54000, category: "laptops", img: "laptops/HP-250-G8-G9(i3).jpg" },
+      { name: "HP 255 G8", brand: "HP", model: "255 G8 (Ryzen 3)", condition: "NEW", price: 52000, category: "laptops", img: "laptops/HP-255-G8(Ryzen 3).jpg" },
+      { name: "Dell Inspiron 3511", brand: "Dell", model: "Inspiron 3511 (i3)", condition: "NEW", price: 55000, category: "laptops", img: "laptops/Dell-Inspiron-3511(i3).jpg" },
+      { name: "Dell Latitude 3410", brand: "Dell", model: "Latitude 3410 (i3)", condition: "NEW", price: 54500, category: "laptops", img: "laptops/Dell-Latitude-3410(i3).jpg" },
+      { name: "Lenovo V15 G2", brand: "Lenovo", model: "V15 G2 (i3)", condition: "NEW", price: 53000, category: "laptops", img: "laptops/Lenovo-V15-G2(i3).jpg" },
+      { name: "Lenovo Slim 3", brand: "Lenovo", model: "Slim 3 (Ryzen 3)", condition: "NEW", price: 52500, category: "laptops", img: "laptops/Lenovo-Slim-3(Ryzen 3).jpg" },
+      { name: "Asus X515", brand: "Asus", model: "X515 (i3)", condition: "NEW", price: 54000, category: "laptops", img: "laptops/Asus-X515(i3).jpg" },
+      { name: "Asus VivoBook 14", brand: "Asus", model: "VivoBook 14 (i3)", condition: "NEW", price: 50000, category: "laptops", img: "laptops/Asus-VivoBook-14(i3).jpg" },
+      { name: "HP 15s", brand: "HP", model: "15s i5", condition: "NEW", price: 73000, category: "laptops", img: "laptops/HP-15s-i5.jpg" },
+      { name: "HP ProBook 450 G8", brand: "HP", model: "ProBook 450 G8 (i5)", condition: "NEW", price: 91000, category: "laptops", img: "laptops/HP-ProBook-450-G8(i5).jpg" },
+      { name: "Dell Latitude 3420", brand: "Dell", model: "Latitude 3420 (i5)", condition: "NEW", price: 80000, category: "laptops", img: "laptops/Dell-Latitude-3420(i5).jpg" },
+      { name: "Lenovo ThinkPad L14", brand: "Lenovo", model: "ThinkPad L14 (i5)", condition: "NEW", price: 89000, category: "laptops", img: "laptops/Lenovo-ThinkPad-L14(i5).jpg" },
+      { name: "Lenovo IdeaPad 5", brand: "Lenovo", model: "IdeaPad 5 (Ryzen 5)", condition: "NEW", price: 77000, category: "laptops", img: "laptops/Lenovo-IdeaPad-5(Ryzen 5).jpg" },
+      { name: "Asus VivoBook X1502", brand: "Asus", model: "VivoBook X1502 (i5)", condition: "NEW", price: 79000, category: "laptops", img: "laptops/Asus-VivoBook-X1502(i5).jpg" },
+      { name: "HP EliteBook 840 G8", brand: "HP", model: "EliteBook 840 G8 (i7)", condition: "NEW", price: 148000, category: "laptops", img: "laptops/HP-EliteBook-840-G8(i7).jpg" },
+      { name: "HP Envy x360", brand: "HP", model: "Envy x360 (Ryzen 7)", condition: "NEW", price: 156000, category: "laptops", img: "laptops/HP-Envy-x360(Ryzen 7).jpg" },
+      { name: "Dell Latitude 5430", brand: "Dell", model: "Latitude 5430 (i7)", condition: "NEW", price: 159000, category: "laptops", img: "laptops/Dell-Latitude-5430(i7).jpg" },
+      { name: "Lenovo ThinkPad X1 Carbon", brand: "Lenovo", model: "ThinkPad X1 Carbon (i7)", condition: "NEW", price: 193000, category: "laptops", img: "laptops/Lenovo-ThinkPad-X1-Carbon(i7).jpg" },
+      { name: "MacBook Air", brand: "Apple", model: "MacBook Air M1", condition: "NEW", price: 145000, category: "laptops", img: "laptops/MacBook-Air-M1.jpg" },
+      { name: "MacBook Air", brand: "Apple", model: "MacBook Air M2", condition: "NEW", price: 180000, category: "laptops", img: "laptops/MacBook-Air-M2.jpg" },
+      { name: "MacBook Pro", brand: "Apple", model: "MacBook Pro M2", condition: "NEW", price: 250000, category: "laptops", img: "laptops/MacBook-Pro-M2.jpg" },
+      { name: "Dell Latitude E7240", brand: "Dell", model: "Latitude E7240", condition: "REFURB", price: 32000, category: "laptops", img: "laptops/Dell-Latitude-E7240.jpg" },
+      { name: "Dell Latitude E7450", brand: "Dell", model: "Latitude E7450", condition: "REFURB", price: 36000, category: "laptops", img: "laptops/Dell-Latitude-E7450.jpg" },
+      { name: "HP ProBook 640 G1", brand: "HP", model: "ProBook 640 G1", condition: "REFURB", price: 30000, category: "laptops", img: "laptops/HP-ProBook-640-G1.jpg" },
+      { name: "Lenovo ThinkPad T430", brand: "Lenovo", model: "ThinkPad T430", condition: "REFURB", price: 28000, category: "laptops", img: "laptops/Lenovo-ThinkPad-T430.jpg" },
+      { name: "Asus X453 / X551", brand: "Asus", model: "X453 / X551", condition: "REFURB", price: 25000, category: "laptops", img: "laptops/Asus-X453-X551.jpg" },
+      { name: "MacBook Air", brand: "Apple", model: "MacBook Air 2015–2017", condition: "REFURB", price: "44,000 – 62,000", category: "laptops", img: "laptops/MacBookAir-2015–2017.jpg" },
+      // 🖥️ MONITORS
+      { name: "HP 22″ Basic LED", brand: "HP", model: "22″ Basic LED", spec: "22″ / 1080p / 60 Hz", price: 15000, category: "monitors", img: "monitors/HP-22-BasicLED.jpg" },
+      { name: "HP 24″ Full HD LED", brand: "HP", model: "24″ Full HD LED", spec: "24″ / 1080p / 75 Hz", price: 20995, category: "monitors", img: "monitors/HP-24-Full-HD-LED.jpg" },
+      { name: "Dell P2422H", brand: "Dell", model: "P2422H", spec: "24″ / 1080p / IPS", price: 25995, category: "monitors", img: "monitors/Dell-P2422H-(24-IPS).jpg" },
+      { name: "Dell P2720DC", brand: "Dell", model: "P2720DC", spec: "27″ / 1440p / IPS + USB-C", price: 38995, category: "monitors", img: "monitors/Dell-P2720DC-(27-USB-C).jpg" },
+      { name: "Lenovo ThinkVision E24", brand: "Lenovo", model: "ThinkVision E24", spec: "24″ / 1080p / IPS", price: 20995, category: "monitors", img: "monitors/Lenovo-ThinkVision-E24.jpg" },
+      { name: "Lenovo ThinkVision E27", brand: "Lenovo", model: "ThinkVision E27", spec: "27″ / 1080p / IPS", price: 28995, category: "monitors", img: "monitors/Lenovo-ThinkVision-E27.jpg" },
+      { name: "Asus VA24EHE", brand: "Asus", model: "VA24EHE", spec: "24″ / 1080p / 75 Hz", price: 18995, category: "monitors", img: "monitors/Asus-VA24EHE.jpg" },
+      { name: "Samsung S24R350", brand: "Samsung", model: "S24R350", spec: "24″ / 1080p / IPS", price: 22995, category: "monitors", img: "monitors/Samsung-S24R350.jpg" },
+      { name: "Acer SB220Q", brand: "Acer", model: "SB220Q", spec: "22″ / 1080p / IPS", price: 11995, category: "monitors", img: "monitors/Acer-SB220Q.jpg" },
+      { name: "LG UltraGear 27GP950-B", brand: "LG", model: "UltraGear 27GP950-B", spec: "27″ QHD / 240 Hz / IPS / HDR", price: 59995, category: "monitors", img: "monitors/LG-UltraGear-27GP950-B.jpg" },
+      { name: "Dell UltraSharp U2723QE", brand: "Dell", model: "UltraSharp U2723QE", spec: "27″ 4K / IPS Black / USB-C Dock", price: 85995, category: "monitors", img: "monitors/Dell-UltraSharp-U2723QE.jpg" },
+      { name: "Samsung Odyssey G7", brand: "Samsung", model: "Odyssey G732", spec: "32″ QHD / 240 Hz / VA / QLED", price: 79995, category: "monitors", img: "monitors/Samsung-Odyssey-G732.jpg" }
+    ];
+
+    // DOM
+    const brandGrid = document.getElementById('brandGrid');
+    const modelSearch = document.getElementById('modelSearch');
+    const brandFilter = document.getElementById('brandFilter');
+    const typeFilter = document.getElementById('typeFilter');
+    const conditionFilter = document.getElementById('conditionFilter');
+    const openFilters = document.getElementById('openFilters');
+    const closeFilters = document.getElementById('closeFilters');
+    const filterOverlay = document.getElementById('filterOverlay');
+    const modal = document.getElementById('detailModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalContent');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    // Group by brand
+    const brands = {};
+    computingProducts.forEach(item => {
+      if (!brands[item.brand]) brands[item.brand] = [];
+      brands[item.brand].push(item);
+    });
+
+    // Render brand cards
+    function renderBrandCards(filteredData = computingProducts) {
+      const tempBrands = {};
+      filteredData.forEach(item => {
+        if (!tempBrands[item.brand]) tempBrands[item.brand] = [];
+        tempBrands[item.brand].push(item);
+      });
+
+      let html = '';
+      Object.entries(tempBrands).forEach(([brand, items]) => {
+        const images = [...new Set(items.map(i => i.img))].slice(0, 3);
+        const sample = items[0];
+        const types = [...new Set(items.map(i => i.category))].join(', ');
+
+        html += `
+          <div class="brand-card">
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-slate-900">${brand}</h3>
+              <p class="text-slate-600 text-sm mt-1">${items.length} models • ${types}</p>
+            </div>
+            <div class="px-5 pb-4">
+              <div class="flex space-x-2 overflow-x-auto py-2">
+                ${images.map(img => `
+                  <img src="../assets/images/${img}"
+                       class="product-image"
+                       loading="lazy"
+                       alt="${brand} computing">
+                `).join('')}
+              </div>
+              <ul class="specs-list mt-3 space-y-1">
+                <li>• ${sample.model || sample.spec || ''}</li>
+                <li>• From KES ${Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 99999)).toLocaleString()}</li>
+                <li>• ${[...new Set(items.map(i => i.condition))].join(' / ')}</li>
+              </ul>
+              <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
+                      onclick="showFullDetails('${brand}')">
+                View All Models
+              </button>
+            </div>
+          </div>
+        `;
+      });
+      brandGrid.innerHTML = html;
+    }
+
+    // Show modal
+    function showFullDetails(brand) {
+      const items = brands[brand];
+      let content = `<h3 class="text-xl font-semibold mb-4">All ${brand} Models</h3><div class="space-y-4">`;
+      items.sort((a, b) => {
+        if (a.condition === "NEW" && b.condition !== "NEW") return -1;
+        if (b.condition === "NEW" && a.condition !== "NEW") return 1;
+        return 0;
+      });
+
+      items.forEach(item => {
+        const typeLabel = { desktops: 'Desktop', laptops: 'Laptop', monitors: 'Monitor' }[item.category] || 'Device';
+        content += `
+          <div class="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition">
+            <div class="flex gap-4">
+              <img src="../assets/images/${item.img}" alt="${item.model}" class="w-24 h-24 object-cover rounded">
+              <div>
+                <h4 class="font-bold">${item.model || item.name}</h4>
+                <p class="text-slate-600 text-sm">${typeLabel}${item.spec ? ` • ${item.spec}` : ''}</p>
+                <p class="mt-2"><span class="inline-block px-2 py-1 rounded text-xs ${
+                  item.condition === 'NEW' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'
+                }">${item.condition}</span></p>
+                <p class="font-bold text-lg text-yellow-600 mt-2">KES ${typeof item.price === 'number' ? item.price.toLocaleString() : item.price}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      content += `</div>`;
+      modalTitle.textContent = brand + " – Computing";
+      modalContent.innerHTML = content;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close modal
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    closeModalBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
+
+    // Filters
+    function applyFilters() {
+      const searchTerm = modelSearch.value.toLowerCase().trim();
+      const brandSel = brandFilter.value;
+      const typeSel = typeFilter.value;
+      const conditionSel = conditionFilter.value;
+
+      const filtered = computingProducts.filter(item => {
+        if (brandSel && item.brand !== brandSel) return false;
+        if (typeSel && item.category !== typeSel) return false;
+        if (conditionSel && item.condition !== conditionSel) return false;
+        if (searchTerm) {
+          const text = [item.name, item.brand, item.model, item.spec].filter(Boolean).join(' ').toLowerCase();
+          if (!text.includes(searchTerm)) return false;
+        }
+        return true;
+      });
+      renderBrandCards(filtered);
+    }
+
+    [modelSearch, brandFilter, typeFilter, conditionFilter].forEach(el => {
+      el.addEventListener('input', applyFilters);
+    });
+
+    // Mobile filters
+    openFilters.addEventListener('click', () => {
+      document.getElementById('filterSidebar').classList.add('active');
+      filterOverlay.classList.add('active');
+    });
+    closeFilters.addEventListener('click', () => {
+      document.getElementById('filterSidebar').classList.remove('active');
+      filterOverlay.classList.remove('active');
+    });
+    filterOverlay.addEventListener('click', () => {
+      document.getElementById('filterSidebar').classList.remove('active');
+      filterOverlay.classList.remove('active');
+    });
+
+    // Init
+    renderBrandCards();
+  </script>
+</body>
+</html>

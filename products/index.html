@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Products – Morel Tech Solution</title>
+  <meta name="description" content="Complete catalog of computing, TVs, audio, appliances, mobile, power, security & networking products across Kenya."/>
+  <link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #0b112a;
+      --bg-surface: #ffffff;
+      --ink-900: #0f172a;
+      --ink-700: #334155;
+      --border-subtle: #0c3b99;
+      --accent-gold: #d4af37;
+      --radius-md: 14px;
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+      --ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    body {
+      background-color: var(--bg-page);
+      color: var(--ink-700);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .category-card {
+      background: var(--bg-surface);
+      padding: 2rem;
+      border-radius: var(--radius-md);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .category-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+    .category-card img {
+      height: 140px;
+      object-fit: contain;
+      margin-bottom: 1.25rem;
+      opacity: 0.9;
+    }
+    .category-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--ink-900);
+    }
+    .category-card p {
+      font-size: 0.95rem;
+      color: var(--ink-500);
+    }
+    .category-card-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      text-decoration: none;
+    }
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      transition: opacity 0.2s;
+    }
+    .back-button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body class="pt-16">
+  <nav class="bg-[#0b112a] text-white fixed w-full top-0 z-50 shadow-md">
+    <div class="container mx-auto px-4 py-3">
+      <a href="../#products" class="text-lg font-semibold">← Back to Home</a>
+    </div>
+  </nav>
+
+  <main class="pt-16 pb-16">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">All Product Categories</h1>
+        <p class="text-gray-300 max-w-2xl mx-auto">
+          Explore our full range of premium tech solutions for smart homes and businesses across Kenya.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <!-- Computing -->
+        <div class="category-card">
+          <a href="computing.html" class="category-card-link" aria-label="Browse Computing & Office Equipment"></a>
+          <img src="../assets/images/desktops/HP-ProDesk400G7 (i3).jpg" alt="Computing">
+          <h3>Computing & Office</h3>
+          <p>Desktops, laptops, monitors</p>
+        </div>
+        <!-- TVs -->
+        <div class="category-card">
+          <a href="tvs.html" class="category-card-link" aria-label="Browse TVs & Projectors"></a>
+          <img src="../assets/images/tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)55-inch.jpg" alt="TVs">
+          <h3>TVs & Projectors</h3>
+          <p>LED, QLED, OLED, 4K</p>
+        </div>
+        <!-- Audio -->
+        <div class="category-card">
+          <a href="audio.html" class="category-card-link" aria-label="Browse Audio & Home Entertainment"></a>
+          <img src="../assets/images/soundbars/Bose-Smart-Soundbar-700.jpg" alt="Audio">
+          <h3>Audio & Home Entertainment</h3>
+          <p>Receivers, soundbars, speakers</p>
+        </div>
+        <!-- Appliances -->
+        <div class="category-card">
+          <a href="appliances.html" class="category-card-link" aria-label="Browse Home Appliances"></a>
+          <img src="../assets/images/fridges/Samsung-RS54N3A13S8–535L.jpg" alt="Appliances">
+          <h3>Home Appliances</h3>
+          <p>Fridges, ACs, cookers, washers</p>
+        </div>
+        <!-- Mobile -->
+        <div class="category-card">
+          <a href="mobile.html" class="category-card-link" aria-label="Browse Mobile Devices & Smart Watches"></a>
+          <img src="../assets/images/phones/Apple-iPhone-15-Pro.jpg" alt="Mobile">
+          <h3>Mobile & Smart Tech</h3>
+          <p>Phones, watches, smart devices</p>
+        </div>
+        <!-- Power -->
+        <div class="category-card">
+          <a href="power.html" class="category-card-link" aria-label="Browse Power & Solar Solutions"></a>
+          <img src="../assets/images/solar-panels/Morel-Techs-Complete-Solar-Kit–3kW.jpg" alt="Power">
+          <h3>Power & Solar</h3>
+          <p>Inverters, batteries, kits</p>
+        </div>
+        <!-- Security -->
+        <div class="category-card">
+          <a href="security.html" class="category-card-link" aria-label="Browse Security & Surveillance"></a>
+          <img src="../assets/images/surveillance/HIKVISION-DS-2CD2T43G0-I5(4MP Bullet IR 50m).jpg" alt="Security">
+          <h3>Security & Surveillance</h3>
+          <p>CCTV, access control, smart cams</p>
+        </div>
+        <!-- Networking -->
+        <div class="category-card">
+          <a href="networking.html" class="category-card-link" aria-label="Browse Networking & Connectivity"></a>
+          <img src="../assets/images/networking/Starlink-Gen-3-Kit.jpg" alt="Networking">
+          <h3>Networking & Connectivity</h3>
+          <p>Starlink, routers, mesh, APs</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-slate-900 text-white py-6 text-center">
+    <p class="text-lg font-bold">Morel Tech Solution</p>
+    <p>Smarter Spaces, Better Living. © 2025</p>
+  </footer>
+</body>
+</html>

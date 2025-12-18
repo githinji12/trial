@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home Appliances – Morel Tech Solution</title>
+  <meta name="description" content="Premium refrigerators, air conditioners, washing machines, dishwashers & cookers from Samsung, LG, Hisense, Ramtons & more."/>
+  <link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #f8fafc;
+      --bg-surface: #ffffff;
+      --ink-900: #0f172a;
+      --ink-700: #334155;
+      --ink-500: #64748b;
+      --border-subtle: #e2e8f0;
+      --accent-gold: #d4af37;
+      --radius-sm: 10px;
+      --radius-md: 14px;
+      --radius-lg: 18px;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    body {
+      background-color: var(--bg-page);
+      color: var(--ink-700);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .brand-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: box-shadow 0.3s var(--ease-ui), transform 0.2s var(--ease-ui);
+    }
+    .brand-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .product-image {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+    }
+    .specs-list {
+      font-size: 0.875rem;
+      color: var(--ink-500);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 1000;
+      padding: 1.5rem;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      background: white;
+      border-radius: var(--radius-lg);
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+    .filter-sidebar {
+      position: sticky;
+      top: 2rem;
+      height: fit-content;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    @media (max-width: 768px) {
+      .mobile-filter-trigger { display: block !important; }
+      .filter-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 85%;
+        height: 100vh;
+        z-index: 1000;
+        background: white;
+        padding: 1.5rem;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+      .filter-sidebar.active { transform: translateX(0); }
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s;
+      }
+      .overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    .mobile-filter-trigger { display: none; }
+    .focus-ring:focus-visible {
+      outline: 2px solid var(--accent-gold);
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+<body class="text-slate-800">
+  <nav class="bg-slate-900 text-white fixed w-full top-0 z-50 shadow-md">
+    <div class="container mx-auto px-4 py-3">
+      <a href="../#products" class="text-lg font-semibold">← Back to Catalog</a>
+    </div>
+  </nav>
+
+  <main class="pt-20 pb-16">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- FILTER SIDEBAR -->
+        <aside class="filter-sidebar" id="filterSidebar">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl font-bold">Filters</h2>
+            <button id="closeFilters" class="lg:hidden text-gray-500 hover:text-gray-900">✕</button>
+          </div>
+          <div class="space-y-5">
+            <div>
+              <label class="block font-medium mb-2">Search Model</label>
+              <input type="text" id="modelSearch" placeholder="e.g. RF/407, AS-12CR4S..." class="w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-yellow-500">
+            </div>
+            <div>
+              <label class="block font-medium mb-2">Brand</label>
+              <select id="brandFilter" class="w-full p-2.5 border rounded-lg">
+                <option value="">All Brands</option>
+                <option value="Samsung">Samsung</option>
+                <option value="LG">LG</option>
+                <option value="Hisense">Hisense</option>
+                <option value="Ramtons">Ramtons</option>
+                <option value="Mika">Mika</option>
+                <option value="Bruhm">Bruhm</option>
+                <option value="Hotpoint">Hotpoint</option>
+                <option value="Von">Von</option>
+                <option value="Haier">Haier</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-medium mb-2">Type</label>
+              <select id="typeFilter" class="w-full p-2.5 border rounded-lg">
+                <option value="">All Types</option>
+                <option value="air-conditioners">Air Conditioners</option>
+                <option value="dishwashers">Dishwashers</option>
+                <option value="cookers">Cookers & Ovens</option>
+                <option value="fridges">Refrigerators</option>
+                <option value="washing-machines">Washing Machines</option>
+                <option value="vacuum-cleaners">Vacuum Cleaners</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-medium mb-2">Condition</label>
+              <select id="conditionFilter" class="w-full p-2.5 border rounded-lg">
+                <option value="">All Conditions</option>
+                <option value="NEW">New</option>
+                <option value="REFURBISHED">Refurbished</option>
+              </select>
+            </div>
+          </div>
+        </aside>
+
+        <!-- BRAND CARDS -->
+        <div class="flex-1">
+          <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-slate-900">Home Appliances</h1>
+            <button class="mobile-filter-trigger px-4 py-2 bg-yellow-600 text-white rounded font-medium" id="openFilters">
+              Filters
+            </button>
+          </div>
+
+          <div id="brandGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Cards will be generated by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL -->
+  <div id="detailModal" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <div class="p-6">
+        <div class="flex justify-between items-start">
+          <h2 id="modalTitle" class="text-2xl font-bold text-slate-900"></h2>
+          <button id="closeModalBtn" class="text-gray-500 hover:text-gray-900 text-2xl focus:outline-none">&times;</button>
+        </div>
+        <div id="modalContent" class="mt-6"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERLAY -->
+  <div class="overlay" id="filterOverlay"></div>
+
+  <script>
+    // ===== APPLIANCES PRODUCTS =====
+    const appliancesProducts = [
+      // ❄️ FRIDGES
+      { brand: "Samsung", name: "RR19T1444S8", size: "192L", price: 63995, category: "fridges", img: "fridges/SAMSUNG-RR19T1444S8–192L.jpg" },
+      { brand: "LG", name: "GL-B201ALLB", size: "190L", price: 67995, category: "fridges", img: "fridges/LG-GL-B201ALLB–190L.jpg" },
+      { brand: "Hisense", name: "REF251FL", size: "251L", price: 79800, category: "fridges", img: "fridges/HISENSE-REF251FL–251L.jpg" },
+      { brand: "Hisense", name: "REF300DR", size: "300L", price: 90000, category: "fridges", img: "fridges/HISENSE-REF300DR–300L.jpg" },
+      { brand: "Samsung", name: "RT31K3082S8", size: "253L", price: 103990, category: "fridges", img: "fridges/SAMSUNG-RT31K3082S8–253L.jpg" },
+      { brand: "LG", name: "GL-C322SLBB", size: "284L", price: 119995, category: "fridges", img: "fridges/LG-GL-C322SLBB–284L.jpg" },
+      { brand: "Hisense", name: "H590SS", size: "508L", price: 145000, category: "fridges", img: "fridges/Hisense-H590SS–508L.jpg" },
+      { brand: "Samsung", name: "RS54N3A13S8", size: "535L", price: 185000, category: "fridges", img: "fridges/Samsung-RS54N3A13S8–535L.jpg" },
+      // ❄️ AIR CONDITIONERS
+      { brand: "Hisense", name: "AS-12CR4S", capacity: "12,000 BTU", price: 63995, category: "air-conditioners", img: "air-conditioners/AS-12CR4S.jpg" },
+      { brand: "Samsung", name: "AR12TXFYAWK/AF", capacity: "12,000 BTU", price: 76995, category: "air-conditioners", img: "air-conditioners/AR12TXFYAWK-AF.jpg" },
+      { brand: "LG", name: "S3-Q12JA3AA", capacity: "12,000 BTU", price: 82995, category: "air-conditioners", img: "air-conditioners/S3-Q12JA3AA.jpg" },
+      { brand: "Hisense", name: "AS-18CR4S", capacity: "18,000 BTU", price: 92995, category: "air-conditioners", img: "air-conditioners/AS-18CR4S.jpg" },
+      { brand: "Samsung", name: "AR18TVFZAWK/AF", capacity: "18,000 BTU", price: 104995, category: "air-conditioners", img: "air-conditioners/AR18TVFZAWK-AF.jpg" },
+      { brand: "LG", name: "S3-Q18K233BA", capacity: "18,000 BTU", price: 119995, category: "air-conditioners", img: "air-conditioners/S3-Q18K233BA.jpg" },
+      // 🧼 DISHWASHERS
+      { brand: "Hisense", name: "H14DSS", capacity: "14-Place", price: 62995, category: "dishwashers", img: "dishwashers/H14DSS.jpg" },
+      { brand: "LG", name: "DFB512FP", capacity: "14-Place", price: 109995, category: "dishwashers", img: "dishwashers/DFB512FP.jpg" },
+      { brand: "Samsung", name: "DW60M5052", capacity: "14-Place", price: 89995, category: "dishwashers", img: "dishwashers/DW60M5052.jpg" },
+      { brand: "Ramtons", name: "RW/143", capacity: "12-Place", price: 66995, category: "dishwashers", img: "dishwashers/RW-143.jpg" },
+      // 🔥 COOKERS & OVENS
+      { brand: "Ramtons", name: "RF/407", size: "60 × 60", price: 60500, category: "cookers", img: "cookers/RF-407–3Gas +1Electric.jpg" },
+      { brand: "Hisense", name: "HFG60111X", size: "60 × 60", price: 54995, category: "cookers", img: "cookers/HFG60111X–4Gas.jpg" },
+      { brand: "Hotpoint", name: "CKR6640", size: "60 × 60", price: 56995, category: "cookers", img: "cookers/CKR6640–4Gas.jpg" },
+      { brand: "Von", name: "VAC9060", size: "60 × 90", price: 79995, category: "cookers", img: "cookers/VAC9060–5Gas(Premium).jpg" },
+      // 🧺 WASHING MACHINES
+      { brand: "Hisense", name: "WFQA8014EVJM", capacity: "8kg", price: 47995, category: "washing-machines", img: "washing-machines/Hisense-WFQA8014EVJM-8kg-Front-Load.jpg" },
+      { brand: "LG", name: "F4J3VYP2E", capacity: "9kg", price: 69995, category: "washing-machines", img: "washing-machines/LG-F4J3VYP2E-9kg-Front-Load.jpg" },
+      { brand: "Samsung", name: "WW80J5555FX", capacity: "8kg", price: 59995, category: "washing-machines", img: "washing-machines/Samsung-WW80J5555FX-8kg-EcoBubble.jpg" },
+      { brand: "Ramtons", name: "RW/147WD", capacity: "10/7kg", price: 73995, category: "washing-machines", img: "washing-machines/Ramtons-RW-147WD-10kg-7kg-Washer-Dryer.jpg" },
+      // 🧹 VACUUM CLEANERS
+      { brand: "Samsung", name: "Jet 70 Turbo", type: "Stick Vacuum", price: 36995, category: "vacuum-cleaners", img: "vacuum-cleaners/Samsung-Jet-70-Turbo-Stick-Vacuum.jpg" },
+      { brand: "LG", name: "A9 Lite", type: "Stick Vacuum", price: 54995, category: "vacuum-cleaners", img: "vacuum-cleaners/LG-A9-Lite-Stick-Vacuum.jpg" },
+      { brand: "Xiaomi", name: "Mi Robot Vacuum Mop 2", type: "Robot", price: 39995, category: "vacuum-cleaners", img: "vacuum-cleaners/Xiaomi-Mi-Robot-Vacuum-Mop-2-Robot-Vacuum.jpg" },
+      { brand: "Ramtons", name: "RM/368", type: "Bagless", price: 12995, category: "vacuum-cleaners", img: "vacuum-cleaners/Ramtons-RM-368-1800W-Bagless-Vacuum.jpg" }
+    ];
+
+    // Group by brand
+    const brands = {};
+    appliancesProducts.forEach(item => {
+      if (!brands[item.brand]) brands[item.brand] = [];
+      brands[item.brand].push(item);
+    });
+
+    // DOM
+    const brandGrid = document.getElementById('brandGrid');
+    const modelSearch = document.getElementById('modelSearch');
+    const brandFilter = document.getElementById('brandFilter');
+    const typeFilter = document.getElementById('typeFilter');
+    const conditionFilter = document.getElementById('conditionFilter');
+    const openFilters = document.getElementById('openFilters');
+    const closeFilters = document.getElementById('closeFilters');
+    const filterOverlay = document.getElementById('filterOverlay');
+    const modal = document.getElementById('detailModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalContent');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    // Render brand cards
+    function renderBrandCards(filteredData = appliancesProducts) {
+      const tempBrands = {};
+      filteredData.forEach(item => {
+        if (!tempBrands[item.brand]) tempBrands[item.brand] = [];
+        tempBrands[item.brand].push(item);
+      });
+
+      let html = '';
+      Object.entries(tempBrands).forEach(([brand, items]) => {
+        const images = [...new Set(items.map(i => i.img))].slice(0, 3);
+        const sample = items[0];
+        const allTypes = [...new Set(items.map(i => i.category))]
+          .map(t => t.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()))
+          .join(', ');
+
+        html += `
+          <div class="brand-card">
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-slate-900">${brand}</h3>
+              <p class="text-slate-600 text-sm mt-1">${items.length} models • ${allTypes}</p>
+            </div>
+            <div class="px-5 pb-4">
+              <div class="flex space-x-2 overflow-x-auto py-2">
+                ${images.map(img => `
+                  <img src="../assets/images/${img}"
+                       class="product-image"
+                       loading="lazy"
+                       alt="${brand} appliance">
+                `).join('')}
+              </div>
+              <ul class="specs-list mt-3 space-y-1">
+                <li>• ${sample.name || sample.size || sample.capacity || sample.type || ''}</li>
+                <li>• From KES ${
+                  Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 999999)).toLocaleString()
+                }</li>
+                <li>• ${[...new Set(items.map(i => i.condition || 'NEW'))].join(' / ')}</li>
+              </ul>
+              <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
+                      onclick="showFullDetails('${brand}')">
+                View All Models
+              </button>
+            </div>
+          </div>
+        `;
+      });
+      brandGrid.innerHTML = html;
+    }
+
+    // Show modal
+    function showFullDetails(brand) {
+      const items = brands[brand];
+      let content = `<h3 class="text-xl font-semibold mb-4">All ${brand} Appliances</h3><div class="space-y-4">`;
+      
+      items.sort((a, b) => {
+        if (a.condition === "NEW" && b.condition !== "NEW") return -1;
+        if (b.condition === "NEW" && a.condition !== "NEW") return 1;
+        return 0;
+      });
+
+      items.forEach(item => {
+        let meta = '';
+        if (item.category === 'fridges') meta = `• ${item.size}`;
+        else if (item.category === 'air-conditioners') meta = `• ${item.capacity}`;
+        else if (item.category === 'dishwashers') meta = `• ${item.capacity}`;
+        else if (item.category === 'cookers') meta = `• ${item.size}`;
+        else if (item.category === 'washing-machines') meta = `• ${item.capacity}`;
+        else if (item.category === 'vacuum-cleaners') meta = `• ${item.type}`;
+        else meta = '';
+
+        content += `
+          <div class="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition">
+            <div class="flex gap-4">
+              <img src="../assets/images/${item.img}" alt="${item.name}" class="w-24 h-24 object-cover rounded">
+              <div>
+                <h4 class="font-bold">${item.name}</h4>
+                <p class="text-slate-600 text-sm">${meta}</p>
+                <p class="mt-2"><span class="inline-block px-2 py-1 rounded text-xs ${
+                  item.condition === 'NEW' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'
+                }">${item.condition || 'NEW'}</span></p>
+                <p class="font-bold text-lg text-yellow-600 mt-2">KES ${typeof item.price === 'number' ? item.price.toLocaleString() : item.price}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      content += `</div>`;
+
+      modalTitle.textContent = brand + " – Appliances";
+      modalContent.innerHTML = content;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close modal
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    closeModalBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
+
+    // Apply filters
+    function applyFilters() {
+      const searchTerm = modelSearch.value.toLowerCase().trim();
+      const brandSel = brandFilter.value;
+      const typeSel = typeFilter.value;
+      const conditionSel = conditionFilter.value;
+
+      const filtered = appliancesProducts.filter(item => {
+        if (brandSel && item.brand !== brandSel) return false;
+        if (typeSel && item.category !== typeSel) return false;
+        if (conditionSel && item.condition !== conditionSel) return false;
+        if (searchTerm) {
+          const text = [item.name, item.brand, item.size, item.capacity, item.type].filter(Boolean).join(' ').toLowerCase();
+          if (!text.includes(searchTerm)) return false;
+        }
+        return true;
+      });
+      renderBrandCards(filtered);
+    }
+
+    [modelSearch, brandFilter, typeFilter, conditionFilter].forEach(el => {
+      el.addEventListener('input', applyFilters);
+    });
+
+    // Mobile filters
+    openFilters.addEventListener('click', () => {
+      document.getElementById('filterSidebar').classList.add('active');
+      filterOverlay.classList.add('active');
+    });
+    closeFilters.addEventListener('click', () => {
+      document.getElementById('filterSidebar').classList.remove('active');
+      filterOverlay.classList.remove('active');
+    });
+    filterOverlay.addEventListener('click', () => {
+      document.getElementById('filterSidebar').classList.remove('active');
+      filterOverlay.classList.remove('active');
+    });
+
+    // Initial render
+    renderBrandCards();
+  </script>
+</body>
+</html>
