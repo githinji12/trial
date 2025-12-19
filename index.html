@@ -178,6 +178,20 @@ body {
     cursor: pointer;
     backdrop-filter: blur(6px);
 }
+.brand-marquee {
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 /* =====================
    PRODUCT GRID
    (MOBILE FIRST)
@@ -227,9 +241,14 @@ body {
 }
 /* Slightly taller image on desktop */
 @media (min-width: 1024px) {
-    .product-image {
-        height: 220px;
-    }
+/* Enlarge product image in brand model cards */
+.product-image-large {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+}
 }
 .product-content {
     padding: 0.75rem 1rem 1rem;
@@ -726,6 +745,10 @@ body {
             <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
               Premium tech solutions for smart homes and businesses across Kenya.
             </p>
+
+
+
+
 <!-- ===== CATEGORY CARDS ===== -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
   <!-- Computing -->
@@ -794,6 +817,39 @@ body {
   </div>
 </div>
 </section>
+
+            <!-- ===== TRUSTED BRANDS MACQUÉE ===== -->
+<div class="overflow-hidden relative">
+  <div class="brand-marquee flex gap-16 items-center">
+    <!-- Logos (repeat once for infinite loop) -->
+    <img src="assets/images/brands/samsung.jpg" class="h-10" />
+    <img src="assets/images/brands/apple.jpg" class="h-10" />
+    <img src="assets/images/brands/lg.jpg" class="h-10" />
+    <img src="assets/images/brands/sony.jpg" class="h-10" />
+    <img src="assets/images/brands/hikvision.jpg" class="h-10" />
+    <img src="assets/images/brands/dahua.jpg" class="h-10" />
+    <img src="assets/images/brands/starlink.jpg" class="h-10" />
+    <img src="assets/images/brands/ubiquiti.jpg" class="h-10" />
+    <img src="assets/images/brands/denon.jpg" class="h-10" />
+    <img src="assets/images/brands/jbl.jpg" class="h-10" />
+    <img src="assets/images/brands/bose.jpg" class="h-10" />
+    <img src="assets/images/brands/hisense.jpg" class="h-10" />
+
+    <!-- DUPLICATE for seamless loop -->
+    <img src="assets/images/brands/samsung.jpg" class="h-10" />
+    <img src="assets/images/brands/apple.jpg" class="h-10" />
+    <img src="assets/images/brands/lg.jpg" class="h-10" />
+    <img src="assets/images/brands/sony.jpg" class="h-10" />
+    <img src="assets/images/brands/hikvision.jpg" class="h-10" />
+    <img src="assets/images/brands/dahua.jpg" class="h-10" />
+    <img src="assets/images/brands/starlink.jpg" class="h-10" />
+    <img src="assets/images/brands/ubiquiti.jpg" class="h-10" />
+    <img src="assets/images/brands/denon.jpg" class="h-10" />
+    <img src="assets/images/brands/jbl.jpg" class="h-10" />
+    <img src="assets/images/brands/bose.jpg" class="h-10" />
+    <img src="assets/images/brands/hisense.jpg" class="h-10" />
+  </div>
+</div>
         
         <!-- ========== CONTACT ========== -->
         <section id="contact" data-observer-id="contact" class="py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white text-center">
