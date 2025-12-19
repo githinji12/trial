@@ -158,7 +158,7 @@
                 <option value="air-conditioners">Air Conditioners</option>
                 <option value="dishwashers">Dishwashers</option>
                 <option value="cookers">Cookers & Ovens</option>
-                <option value="fridges">Refrigerators</option>
+                <option value="fridges">Fridges</option>
                 <option value="washing-machines">Washing Machines</option>
                 <option value="vacuum-cleaners">Vacuum Cleaners</option>
               </select>
@@ -210,42 +210,162 @@
   <script>
     // ===== APPLIANCES PRODUCTS =====
     const appliancesProducts = [
-      // ❄️ FRIDGES
-      { brand: "Samsung", name: "RR19T1444S8", size: "192L", price: 63995, category: "fridges", img: "fridges/SAMSUNG-RR19T1444S8–192L.jpg" },
-      { brand: "LG", name: "GL-B201ALLB", size: "190L", price: 67995, category: "fridges", img: "fridges/LG-GL-B201ALLB–190L.jpg" },
-      { brand: "Hisense", name: "REF251FL", size: "251L", price: 79800, category: "fridges", img: "fridges/HISENSE-REF251FL–251L.jpg" },
-      { brand: "Hisense", name: "REF300DR", size: "300L", price: 90000, category: "fridges", img: "fridges/HISENSE-REF300DR–300L.jpg" },
-      { brand: "Samsung", name: "RT31K3082S8", size: "253L", price: 103990, category: "fridges", img: "fridges/SAMSUNG-RT31K3082S8–253L.jpg" },
-      { brand: "LG", name: "GL-C322SLBB", size: "284L", price: 119995, category: "fridges", img: "fridges/LG-GL-C322SLBB–284L.jpg" },
-      { brand: "Hisense", name: "H590SS", size: "508L", price: 145000, category: "fridges", img: "fridges/Hisense-H590SS–508L.jpg" },
-      { brand: "Samsung", name: "RS54N3A13S8", size: "535L", price: 185000, category: "fridges", img: "fridges/Samsung-RS54N3A13S8–535L.jpg" },
-      // ❄️ AIR CONDITIONERS
-      { brand: "Hisense", name: "AS-12CR4S", capacity: "12,000 BTU", price: 63995, category: "air-conditioners", img: "air-conditioners/AS-12CR4S.jpg" },
-      { brand: "Samsung", name: "AR12TXFYAWK/AF", capacity: "12,000 BTU", price: 76995, category: "air-conditioners", img: "air-conditioners/AR12TXFYAWK-AF.jpg" },
-      { brand: "LG", name: "S3-Q12JA3AA", capacity: "12,000 BTU", price: 82995, category: "air-conditioners", img: "air-conditioners/S3-Q12JA3AA.jpg" },
-      { brand: "Hisense", name: "AS-18CR4S", capacity: "18,000 BTU", price: 92995, category: "air-conditioners", img: "air-conditioners/AS-18CR4S.jpg" },
-      { brand: "Samsung", name: "AR18TVFZAWK/AF", capacity: "18,000 BTU", price: 104995, category: "air-conditioners", img: "air-conditioners/AR18TVFZAWK-AF.jpg" },
-      { brand: "LG", name: "S3-Q18K233BA", capacity: "18,000 BTU", price: 119995, category: "air-conditioners", img: "air-conditioners/S3-Q18K233BA.jpg" },
-      // 🧼 DISHWASHERS
-      { brand: "Hisense", name: "H14DSS", capacity: "14-Place", price: 62995, category: "dishwashers", img: "dishwashers/H14DSS.jpg" },
-      { brand: "LG", name: "DFB512FP", capacity: "14-Place", price: 109995, category: "dishwashers", img: "dishwashers/DFB512FP.jpg" },
-      { brand: "Samsung", name: "DW60M5052", capacity: "14-Place", price: 89995, category: "dishwashers", img: "dishwashers/DW60M5052.jpg" },
-      { brand: "Ramtons", name: "RW/143", capacity: "12-Place", price: 66995, category: "dishwashers", img: "dishwashers/RW-143.jpg" },
-      // 🔥 COOKERS & OVENS
-      { brand: "Ramtons", name: "RF/407", size: "60 × 60", price: 60500, category: "cookers", img: "cookers/RF-407–3Gas +1Electric.jpg" },
-      { brand: "Hisense", name: "HFG60111X", size: "60 × 60", price: 54995, category: "cookers", img: "cookers/HFG60111X–4Gas.jpg" },
-      { brand: "Hotpoint", name: "CKR6640", size: "60 × 60", price: 56995, category: "cookers", img: "cookers/CKR6640–4Gas.jpg" },
-      { brand: "Von", name: "VAC9060", size: "60 × 90", price: 79995, category: "cookers", img: "cookers/VAC9060–5Gas(Premium).jpg" },
-      // 🧺 WASHING MACHINES
-      { brand: "Hisense", name: "WFQA8014EVJM", capacity: "8kg", price: 47995, category: "washing-machines", img: "washing-machines/Hisense-WFQA8014EVJM-8kg-Front-Load.jpg" },
-      { brand: "LG", name: "F4J3VYP2E", capacity: "9kg", price: 69995, category: "washing-machines", img: "washing-machines/LG-F4J3VYP2E-9kg-Front-Load.jpg" },
-      { brand: "Samsung", name: "WW80J5555FX", capacity: "8kg", price: 59995, category: "washing-machines", img: "washing-machines/Samsung-WW80J5555FX-8kg-EcoBubble.jpg" },
-      { brand: "Ramtons", name: "RW/147WD", capacity: "10/7kg", price: 73995, category: "washing-machines", img: "washing-machines/Ramtons-RW-147WD-10kg-7kg-Washer-Dryer.jpg" },
-      // 🧹 VACUUM CLEANERS
-      { brand: "Samsung", name: "Jet 70 Turbo", type: "Stick Vacuum", price: 36995, category: "vacuum-cleaners", img: "vacuum-cleaners/Samsung-Jet-70-Turbo-Stick-Vacuum.jpg" },
-      { brand: "LG", name: "A9 Lite", type: "Stick Vacuum", price: 54995, category: "vacuum-cleaners", img: "vacuum-cleaners/LG-A9-Lite-Stick-Vacuum.jpg" },
-      { brand: "Xiaomi", name: "Mi Robot Vacuum Mop 2", type: "Robot", price: 39995, category: "vacuum-cleaners", img: "vacuum-cleaners/Xiaomi-Mi-Robot-Vacuum-Mop-2-Robot-Vacuum.jpg" },
-      { brand: "Ramtons", name: "RM/368", type: "Bagless", price: 12995, category: "vacuum-cleaners", img: "vacuum-cleaners/Ramtons-RM-368-1800W-Bagless-Vacuum.jpg" }
+            // ❄️ FRIDGES
+            { name: "VON VART-13DHS", brand: "VON", model: "VART-13DHS – 138L", capacity: "138L", price: 37995, category: "fridges", img: "fridges/VON-VART-13DHS–138L.jpg" },
+            { name: "RAMTONS RF/173", brand: "RAMTONS", model: "RF/173 – 128L", capacity: "128L", price: 30995, category: "fridges", img: "fridges/RAMTONS-RF-173–128L.jpg" },
+            { name: "RAMTONS RF/263", brand: "RAMTONS", model: "RF/263 – 150L", capacity: "150L", price: 34999, category: "fridges", img: "fridges/RAMTONS-RF-263–150L.jpg" },
+            { name: "MIKA MRDCS140SBL", brand: "MIKA", model: "MRDCS140SBL – 140L", capacity: "140L", price: 36995, category: "fridges", img: "fridges/MIKA-MRDCS140SBL–140L.jpg" },
+            { name: "MIKA MRDC170X", brand: "MIKA", model: "MRDC170X – 170L", capacity: "170L", price: 42995, category: "fridges", img: "fridges/MIKA-MRDC170X–170L.jpg" },
+            { name: "HISENSE REF120DR", brand: "HISENSE", model: "REF120DR – 120L", capacity: "120L", price: 34999, category: "fridges", img: "fridges/HISENSE-REF120DR–120L.jpg" },
+            { name: "HISENSE REF176DR", brand: "HISENSE", model: "REF176DR – 176L", capacity: "176L", price: 47995, category: "fridges", img: "fridges/HISENSE-REF176DR–176L.jpg" },
+            { name: "SAMSUNG RR19T1444S8", brand: "SAMSUNG", model: "RR19T1444S8 – 192L", capacity: "192L", price: 63995, category: "fridges", img: "fridges/SAMSUNG-RR19T1444S8–192L.jpg" },
+            { name: "LG GL-B201ALLB", brand: "LG", model: "GL-B201ALLB – 190L", capacity: "190L", price: 67995, category: "fridges", img: "fridges/LG-GL-B201ALLB–190L.jpg" },
+            { name: "HISENSE REF251FL", brand: "HISENSE", model: "REF251FL – 251L", capacity: "251L", price: 79800, category: "fridges", img: "fridges/HISENSE-REF251FL–251L.jpg" },
+            { name: "HISENSE REF300DR", brand: "HISENSE", model: "REF300DR – 300L", capacity: "300L", price: 90000, category: "fridges", img: "fridges/HISENSE-REF300DR–300L.jpg" },
+            { name: "SAMSUNG RT31K3082S8", brand: "SAMSUNG", model: "RT31K3082S8 – 253L", capacity: "253L", price: 103990, category: "fridges", img: "fridges/SAMSUNG-RT31K3082S8–253L.jpg" },
+            { name: "SAMSUNG RT34 Series", brand: "SAMSUNG", model: "RT34 Series – 300L", capacity: "300L", price: 130000, category: "fridges", img: "fridges/SAMSUNG-RT34-Series–300L.jpg" },
+            { name: "LG GL-C322SLBB", brand: "LG", model: "GL-C322SLBB – 284L", capacity: "284L", price: 119995, category: "fridges", img: "fridges/LG-GL-C322SLBB–284L.jpg" },
+            { name: "LG GN-B302SQBB", brand: "LG", model: "GN-B302SQBB – 302L", capacity: "302L", price: 130995, category: "fridges", img: "fridges/LG-GN-B302SQBB–302L.jpg" },
+            { name: "VON VART-22DHS", brand: "VON", model: "VART-22DHS – ~220L", capacity: "~220L", price: 79995, category: "fridges", img: "fridges/VON-VART-22DHS–220L.jpg" },
+            { name: "VON VART-31DHS", brand: "VON", model: "VART-31DHS – ~310L", capacity: "~310L", price: 91995, category: "fridges", img: "fridges/VON-VART-31DHS–310L.jpg" },
+            { name: "RAMTONS RF/268", brand: "RAMTONS", model: "RF/268 – 260L", capacity: "260L", price: 66995, category: "fridges", img: "fridges/RAMTONS-RF-268–260L.jpg" },
+            { name: "RAMTONS RF/407 (296L)", brand: "RAMTONS", model: "RF/407 – 296L", capacity: "296L", price: 84995, category: "fridges", img: "fridges/RAMTONS-RF-407–296L.jpg" },
+            { name: "MIKA MRDCD260X", brand: "MIKA", model: "MRDCD260X – 260L", capacity: "260L", price: 69995, category: "fridges", img: "fridges/MIKA-MRDCD260X–260L.jpg" },
+            { name: "MIKA MRDCD300X", brand: "MIKA", model: "MRDCD300X – 300L", capacity: "300L", price: 78995, category: "fridges", img: "fridges/MIKA-MRDCD300X–300L.jpg" },
+            { name: "HISENSE REF320DR", brand: "HISENSE", model: "REF320DR – 320L", capacity: "320L", price: 90995, category: "fridges", img: "fridges/HISENSE-REF320DR–320L.jpg" },
+            { name: "HISENSE REF433DR", brand: "HISENSE", model: "REF433DR – 433L", capacity: "433L", price: 123995, category: "fridges", img: "fridges/HISENSE-REF433DR–433L.jpg" },
+            { name: "SAMSUNG RT34K5532S8", brand: "SAMSUNG", model: "RT34K5532S8 – 345L", capacity: "345L", price: 144995, category: "fridges", img: "fridges/SAMSUNG-RT34K5532S8–345L.jpg" },
+            { name: "SAMSUNG RT42K5532S8", brand: "SAMSUNG", model: "RT42K5532S8 – 420L", capacity: "420L", price: 178995, category: "fridges", img: "fridges/SAMSUNG-RT42K5532S8–420L.jpg" },
+            { name: "LG GL-C322SLBB (322L)", brand: "LG", model: "GL-C322SLBB – 322L", capacity: "322L", price: 124995, category: "fridges", img: "fridges/LG-GL-C322SLBB–322L.jpg" },
+            { name: "LG GN-B422SQCL", brand: "LG", model: "GN-B422SQCL – 419L", capacity: "419L", price: 168995, category: "fridges", img: "fridges/LG-GN-B422SQCL–419L.jpg" },
+            { name: "VON VART-42DHS", brand: "VON", model: "VART-42DHS – ~420L", capacity: "~420L", price: 128995, category: "fridges", img: "fridges/VON-VART-42DHS–420L.jpg" },
+            { name: "RAMTONS RF/492", brand: "RAMTONS", model: "RF/492 – 413L", capacity: "413L", price: 123995, category: "fridges", img: "fridges/RAMTONS-RF-492–413L.jpg" },
+            { name: "MIKA MRDCD430X", brand: "MIKA", model: "MRDCD430X – ~430L", capacity: "~430L", price: 128995, category: "fridges", img: "fridges/MIKA-MRDCD430X–430L.jpg" },
+            { name: "SAMSUNG RS54N3A13S8", brand: "SAMSUNG", model: "RS54N3A13S8 – 535L", capacity: "535L", price: 185000, category: "fridges", img: "fridges/Samsung-RS54N3A13S8–535L.jpg" },
+            { name: "SAMSUNG RS57DG400EM9EU", brand: "SAMSUNG", model: "RS57DG400EM9EU – 583L", capacity: "583L", price: 208990, category: "fridges", img: "fridges/Samsung-RS57DG400EM9EU–583L.jpg" },
+            { name: "SAMSUNG RS64T5F01B4", brand: "SAMSUNG", model: "RS64T5F01B4 – 617L", capacity: "617L", price: 272995, category: "fridges", img: "fridges/Samsung-RS64T5F01B4–617L.jpg" },
+            { name: "SAMSUNG RS72R5011M9", brand: "SAMSUNG", model: "RS72R5011M9 – 700L", capacity: "700L", price: 316995, category: "fridges", img: "fridges/Samsung-RS72R5011M9–700L.jpg" },
+            { name: "LG GC-B257SLQV", brand: "LG", model: "GC-B257SLQV – 635L", capacity: "635L", price: 225000, category: "fridges", img: "fridges/LG-GC-B257SLQV–635L.jpg" },
+            { name: "LG GC-B257SLLV", brand: "LG", model: "GC-B257SLLV – 655L", capacity: "655L", price: 254000, category: "fridges", img: "fridges/LG-GC-B257SLLV–655L.jpg" },
+            { name: "LG GC-X257CQES", brand: "LG", model: "GC-X257CQES – 657L", capacity: "657L", price: 353000, category: "fridges", img: "fridges/LG-GC-X257CQES–657L.jpg" },
+            { name: "LG GC-X31GNSL", brand: "LG", model: "GC-X31GNSL – 674L", capacity: "674L", price: 447000, category: "fridges", img: "fridges/LG-GC-X31GNSL–674L.jpg" },
+            { name: "HISENSE H590SS", brand: "HISENSE", model: "H590SS – 508L", capacity: "508L", price: 145000, category: "fridges", img: "fridges/Hisense-H590SS–508L.jpg" },
+            { name: "HISENSE H650SS", brand: "HISENSE", model: "H650SS – 636L", capacity: "636L", price: 178995, category: "fridges", img: "fridges/Hisense-H650SS–636L.jpg" },
+            { name: "HISENSE H700SS", brand: "HISENSE", model: "H700SS – 700L", capacity: "700L", price: 212995, category: "fridges", img: "fridges/Hisense-H700SS–700L.jpg" },
+            { name: "HISENSE H780FS", brand: "HISENSE", model: "H780FS – 768L", capacity: "768L", price: 262000, category: "fridges", img: "fridges/Hisense-H780FS–768L.jpg" },
+            { name: "VON VAUF17NHS", brand: "VON", model: "VAUF17NHS – 170L", capacity: "170L", price: 70995, category: "fridges", img: "fridges/VON-VAUF17NHS–170L.jpg" },
+            { name: "VON VAUF21NHS", brand: "VON", model: "VAUF21NHS – 210L", capacity: "210L", price: 83995, category: "fridges", img: "fridges/VON-VAUF21NHS–210L.jpg" },
+            { name: "VON VAUF26NHS", brand: "VON", model: "VAUF26NHS – 260L", capacity: "260L", price: 97995, category: "fridges", img: "fridges/VON-VAUF26NHS–260L.jpg" },
+            { name: "VON VAUF30NHS", brand: "VON", model: "VAUF30NHS – 300L", capacity: "300L", price: 116995, category: "fridges", img: "fridges/VON-VAUF30NHS–300L.jpg" },
+            { name: "RAMTONS CF/237", brand: "RAMTONS", model: "CF/237 – 180L", capacity: "180L", price: 64995, category: "fridges", img: "fridges/RAMTONS-CF-237–180L.jpg" },
+            { name: "RAMTONS RF/340", brand: "RAMTONS", model: "RF/340 – 213L", capacity: "213L", price: 78995, category: "fridges", img: "fridges/RAMTONS-RF-340–213L.jpg" },
+            { name: "RAMTONS RF/316", brand: "RAMTONS", model: "RF/316 – 257L", capacity: "257L", price: 91995, category: "fridges", img: "fridges/RAMTONS-RF-316–257L.jpg" },
+            { name: "RAMTONS RF/338", brand: "RAMTONS", model: "RF/338 – 315L", capacity: "315L", price: 111995, category: "fridges", img: "fridges/RAMTONS-RF-338–315.jpg" },
+            { name: "MIKA MAF320", brand: "MIKA", model: "MAF320 – 168L", capacity: "168L", price: 64995, category: "fridges", img: "fridges/MIKA-MAF320–168L.jpg" },
+            { name: "MIKA MAF370", brand: "MIKA", model: "MAF370 – 213L", capacity: "213L", price: 78995, category: "fridges", img: "fridges/MIKA-MAF370–213L.jpg" },
+            { name: "MIKA MAF450", brand: "MIKA", model: "MAF450 – 260L", capacity: "260L", price: 95995, category: "fridges", img: "fridges/MIKA-MAF450–260L.jpg" },
+            { name: "MIKA MAF510", brand: "MIKA", model: "MAF510 – 320L", capacity: "320L", price: 116995, category: "fridges", img: "fridges/MIKA-MAF510–320L.jpg" },
+
+              // ❄️ AIR CONDITIONERS
+            { name: "Hisense AS-12CR4S", brand: "Hisense", model: "AS-12CR4S", capacity: "12,000 BTU", price: 63995, category: "air-conditioners", img: "air-conditioners/AS-12CR4S.jpg" },
+            { name: "Hisense AS-18CR4S", brand: "Hisense", model: "AS-18CR4S", capacity: "18,000 BTU", price: 92995, category: "air-conditioners", img: "air-conditioners/AS-18CR4S.jpg" },
+            { name: "Hisense AS-24CR4S", brand: "Hisense", model: "AS-24CR4S", capacity: "24,000 BTU", price: 118995, category: "air-conditioners", img: "air-conditioners/AS-24CR4S.jpg" },
+            { name: "Samsung AR12TXFYAWK/AF", brand: "Samsung", model: "AR12TXFYAWK/AF", capacity: "12,000 BTU", price: 76995, category: "air-conditioners", img: "air-conditioners/AR12TXFYAWK-AF.jpg" },
+            { name: "Samsung AR18TVFZAWK/AF", brand: "Samsung", model: "AR18TVFZAWK/AF", capacity: "18,000 BTU", price: 104995, category: "air-conditioners", img: "air-conditioners/AR18TVFZAWK-AF.jpg" },
+            { name: "Samsung AR24TVFZAWK/AF", brand: "Samsung", model: "AR24TVFZAWK/AF", capacity: "24,000 BTU", price: 138995, category: "air-conditioners", img: "air-conditioners/AR24TVFZAWK-AF.jpg" },
+            { name: "LG S3-Q12JA3AA", brand: "LG", model: "S3-Q12JA3AA", capacity: "12,000 BTU", price: 82995, category: "air-conditioners", img: "air-conditioners/S3-Q12JA3AA.jpg" },
+            { name: "LG S3-Q18K233BA", brand: "LG", model: "S3-Q18K233BA", capacity: "18,000 BTU", price: 119995, category: "air-conditioners", img: "air-conditioners/S3-Q18K233BA.jpg" },
+            { name: "LG S3-Q24K233AA", brand: "LG", model: "S3-Q24K233AA", capacity: "24,000 BTU", price: 154995, category: "air-conditioners", img: "air-conditioners/S3-Q24K233AA.jpg" },
+            { name: "Haier HSU-12LEK", brand: "Haier", model: "HSU-12LEK", capacity: "12,000 BTU", price: 61995, category: "air-conditioners", img: "air-conditioners/HSU-12LEK.jpg" },
+            { name: "Haier HSU-18LEK", brand: "Haier", model: "HSU-18LEK", capacity: "18,000 BTU", price: 89995, category: "air-conditioners", img: "air-conditioners/HSU-18LEK.jpg" },
+            { name: "Haier HSU-24LEK", brand: "Haier", model: "HSU-24LEK", capacity: "24,000 BTU", price: 119995, category: "air-conditioners", img: "air-conditioners/HSU-24LEK.jpg" },
+            { name: "Mika MCF12CR", brand: "Mika", model: "MCF12CR", capacity: "12,000 BTU", price: 57995, category: "air-conditioners", img: "air-conditioners/MCF12CR.jpg" },
+            { name: "Mika MCF18CR", brand: "Mika", model: "MCF18CR", capacity: "18,000 BTU", price: 85995, category: "air-conditioners", img: "air-conditioners/MCF18CR.jpg" },
+            { name: "Mika MCF24CR", brand: "Mika", model: "MCF24CR", capacity: "24,000 BTU", price: 108995, category: "air-conditioners", img: "air-conditioners/MCF24CR.jpg" },
+
+            // 🧼 DISHWASHERS
+            { name: "Hisense H14DSS", brand: "Hisense", model: "H14DSS – Free-Standing", capacity: "14-Place Setting", price: 62995, category: "dishwashers", img: "dishwashers/H14DSS.jpg" },
+            { name: "Hisense H12DSS", brand: "Hisense", model: "H12DSS – Free-Standing", capacity: "12-Place Setting", price: 54995, category: "dishwashers", img: "dishwashers/H12DSS.jpg" },
+            { name: "LG DFB512FP", brand: "LG", model: "DFB512FP – QuadWash", capacity: "14-Place Setting", price: 109995, category: "dishwashers", img: "dishwashers/DFB512FP.jpg" },
+            { name: "LG DFC532FP", brand: "LG", model: "DFC532FP – Smart Inverter", capacity: "14-Place Setting", price: 114995, category: "dishwashers", img: "dishwashers/DFC532FP.jpg" },
+            { name: "Samsung DW60M5052", brand: "Samsung", model: "DW60M5052 – Freestanding", capacity: "14-Place Setting", price: 89995, category: "dishwashers", img: "dishwashers/DW60M5052.jpg" },
+            { name: "Samsung DW60M5072", brand: "Samsung", model: "DW60M5072 – Premium Inverter", capacity: "14-Place Setting", price: 99995, category: "dishwashers", img: "dishwashers/DW60M5072.jpg" },
+            { name: "Ramtons RW/143", brand: "Ramtons", model: "RW/143 – Dishwasher", capacity: "12-Place Setting", price: 66995, category: "dishwashers", img: "dishwashers/RW-143.jpg" },
+            { name: "Mika MIDW14X", brand: "Mika", model: "MIDW14X – Dishwasher", capacity: "14-Place Setting", price: 74995, category: "dishwashers", img: "dishwashers/MIDW14X.jpg" },
+
+            // 🔥 COOKERS & OVENS
+            { name: "Ramtons RF/407", brand: "Ramtons", model: "RF/407 – 3 Gas + 1 Electric", size: "60 × 60", price: 60500, category: "cookers", img: "cookers/RF-407–3Gas +1Electric.jpg" },
+            { name: "Ramtons RF/401", brand: "Ramtons", model: "RF/401 – 3 Gas + 1 Electric", size: "50 × 60", price: 48000, category: "cookers", img: "cookers/RF-401–3Gas+1Electric.jpg" },
+            { name: "Ramtons RF/406", brand: "Ramtons", model: "RF/406 – 4 Gas", size: "50 × 60", price: 45500, category: "cookers", img: "cookers/RF-406–4Gas.jpg" },
+            { name: "Ramtons RF/494", brand: "Ramtons", model: "RF/494 – 4 Gas", size: "60 × 60", price: 55500, category: "cookers", img: "cookers/RF-494–4Gas.jpg" },
+            { name: "Hisense HFG50111X", brand: "Hisense", model: "HFG50111X – 4 Gas", size: "50 × 50", price: 33500, category: "cookers", img: "cookers/HFG50111X–4Gas.jpg" },
+            { name: "Hisense HFG50112X", brand: "Hisense", model: "HFG50112X – 4 Gas", size: "50 × 50", price: 34995, category: "cookers", img: "cookers/HFG50112X–4Gas.jpg" },
+            { name: "Hisense HFG60111X", brand: "Hisense", model: "HFG60111X – 4 Gas", size: "60 × 60", price: 54995, category: "cookers", img: "cookers/HFG60111X–4Gas.jpg" },
+            { name: "Hisense HF631GEES", brand: "Hisense", model: "HF631GEES – 3 Gas + 1 Electric", size: "60 × 60", price: 52000, category: "cookers", img: "cookers/HF631GEES–3Gas+1Electric.jpg" },
+            { name: "Mika MST55PU", brand: "Mika", model: "MST55PU – 4 Gas", size: "50 × 50", price: 32500, category: "cookers", img: "cookers/MST55PU–4Gas.jpg" },
+            { name: "Mika MST55PI", brand: "Mika", model: "MST55PI – 3+1 Combo", size: "50 × 50", price: 30995, category: "cookers", img: "cookers/MST55PI–3+1Combo.jpg" },
+            { name: "Mika MST60PU", brand: "Mika", model: "MST60PU – Dual Fuel", size: "60 × 60", price: 53500, category: "cookers", img: "cookers/MST60PU–DualFuel.jpg" },
+            { name: "Mika MST60PE", brand: "Mika", model: "MST60PE – 3 Gas + 1 Electric", size: "60 × 60", price: 51500, category: "cookers", img: "cookers/MST60PE–3Gas+1Electric.jpg" },
+            { name: "Bruhm BGC-5531", brand: "Bruhm", model: "BGC-5531 – 4 Gas", size: "50 × 50", price: 33995, category: "cookers", img: "cookers/BGC-5531–4Gas.jpg" },
+            { name: "Bruhm BGC-5040", brand: "Bruhm", model: "BGC-5040 – 4 Gas", size: "50 × 60", price: 33995, category: "cookers", img: "cookers/BGC-5040–4Gas.jpg" },
+            { name: "Bruhm BGC-6631", brand: "Bruhm", model: "BGC-6631 – Full Gas", size: "60 × 60", price: 39500, category: "cookers", img: "cookers/BGC-6631–FullGas.jpg" },
+            { name: "Bruhm BGC-6640", brand: "Bruhm", model: "BGC-6640 – 4 Gas", size: "60 × 60", price: 41500, category: "cookers", img: "cookers/BGC-6640–4Gas.jpg" },
+            { name: "Bruhm BGC-9060", brand: "Bruhm", model: "BGC-9060 – 6 Gas (Premium)", size: "60 × 90", price: 90995, category: "cookers", img: "cookers/BGC-9060–6Gas(Premium}.jpg" },
+            { name: "Hotpoint CKR6040", brand: "Hotpoint", model: "CKR6040 – 4 Gas", size: "50 × 60", price: 42995, category: "cookers", img: "cookers/CKR6040–4Gas.jpg" },
+            { name: "Hotpoint CKR6031", brand: "Hotpoint", model: "CKR6031 – 3+1 Combo", size: "50 × 60", price: 44995, category: "cookers", img: "cookers/CKR6031–3+1Combo.jpg" },
+            { name: "Hotpoint CKR6640", brand: "Hotpoint", model: "CKR6640 – 4 Gas", size: "60 × 60", price: 56995, category: "cookers", img: "cookers/CKR6640–4Gas.jpg" },
+            { name: "Hotpoint CKR6631", brand: "Hotpoint", model: "CKR6631 – 3+1 Combo", size: "60 × 60", price: 57995, category: "cookers", img: "cookers/CKR6631–3+1Combo.jpg" },
+            { name: "Hotpoint CKR9060", brand: "Hotpoint", model: "CKR9060 – 5 Gas (Premium)", size: "60 × 90", price: 107995, category: "cookers", img: "cookers/CKR9060–5Gas(Premium).jpg" },
+            { name: "Von VAC5FSS", brand: "Von", model: "VAC5FSS – 4 Gas", size: "50 × 50", price: 27995, category: "cookers", img: "cookers/VAC5FSS–4Gas.jpg" },
+            { name: "Von VAC6FSS", brand: "Von", model: "VAC6FSS – 4 Gas", size: "50 × 60", price: 35995, category: "cookers", img: "cookers/VAC6FSS–4Gas.jpg" },
+            { name: "Von VAC6FE", brand: "Von", model: "VAC6FE – 3+1 Combo", size: "50 × 60", price: 37995, category: "cookers", img: "cookers/VAC6FE–3+1Combo.jpg" },
+            { name: "Von VAC60G", brand: "Von", model: "VAC60G – Full Gas", size: "60 × 60", price: 47995, category: "cookers", img: "cookers/VAC60G–FullGas.jpg" },
+            { name: "Von VAC60GE", brand: "Von", model: "VAC60GE – Gas + Electric", size: "60 × 60", price: 50995, category: "cookers", img: "cookers/VAC60GE–Gas+Electric.jpg" },
+            { name: "Von VAC9060", brand: "Von", model: "VAC9060 – 5 Gas (Premium)", size: "60 × 90", price: 79995, category: "cookers", img: "cookers/VAC9060–5Gas(Premium).jpg" },
+            // Ovens
+            { name: "Mika MEO360BL", brand: "Mika", model: "MEO360BL – Electric Oven", size: "Built-in 60cm", price: 38995, category: "cookers", img: "ovens/Mika-MEO360BL–Electric-Oven(Built-in 60cm).jpg" },
+            { name: "Mika MEO361GR", brand: "Mika", model: "MEO361GR – Electric Oven", size: "Built-in 60cm", price: 42995, category: "cookers", img: "ovens/Mika-MEO361GR–Electric-Oven(Built-in 60cm).jpg" },
+            { name: "Mika MEO762BL", brand: "Mika", model: "MEO762BL – Pyrolytic Oven", size: "Premium 60cm", price: 68995, category: "cookers", img: "ovens/Mika-MEO762BL–Pyrolytic-Oven(Premium 60cm).jpg" },
+            { name: "Hisense BI6011PG", brand: "Hisense", model: "BI6011PG – Built-In Oven", size: "Built-in 60cm", price: 35995, category: "cookers", img: "ovens/Hisense-BI6011PG–Built-In-Oven(60cm).jpg" },
+            { name: "Hisense BI5223ABUK", brand: "Hisense", model: "BI5223ABUK – Convection Oven", size: "Built-in 60cm", price: 41995, category: "cookers", img: "ovens/Hisense-BI5223ABUK–Convection-Oven(60cm).jpg" },
+            { name: "Hotpoint 600MM Oven Series", brand: "Hotpoint", model: "HOTPOINT 600MM Oven Series", size: "Built-in 60cm", price: 43995, category: "cookers", img: "ovens/Hotpoint-600MM-Oven-Series–Built-In-60cm.jpg" },
+            { name: "Ramtons RM/250", brand: "Ramtons", model: "RM/250 – Electric Oven", size: "Table-Top", price: 10995, category: "cookers", img: "ovens/Ramtons-RM-250–Table-Top-Electric-Oven.jpg" },
+            { name: "Ramtons RM/311", brand: "Ramtons", model: "RM/311 – Large Table-Top Electric Oven", size: "Table-Top", price: 13995, category: "cookers", img: "ovens/Ramtons-RM-311–Large-Table-Top-Electric-Oven.jpg" },
+            { name: "Von VOE-H60", brand: "Von", model: "VON VOE-H60 – Electric Oven", size: "Built-in 60cm", price: 36995, category: "cookers", img: "ovens/Von-VOE-H60–Electric-Oven-(Built-in 60cm).jpg" },
+            { name: "Bruhm BEO-55", brand: "Bruhm", model: "BEO-55 – 55L Electric Oven", size: "Table-Top", price: 11995, category: "cookers", img: "ovens/Bruhm-BEO-55–55L-Table-Top-Oven.jpg" },
+            // 🧺 WASHING MACHINES
+            { brand: "Hisense", model: "WFQA8014EVJM – Front Load", capacity: "8kg", price: 47995, category: "washing-machines", img: "washing-machines/Hisense-WFQA8014EVJM-8kg-Front-Load.jpg" },
+            { brand: "Hisense", model: "WFQA9014EVJM – Front Load", capacity: "9kg", price: 55995, category: "washing-machines", img: "washing-machines/Hisense-WFQA9014EVJM-9kg-Front-Load.jpg" },
+            { brand: "Hisense", model: "WFPV1014EMT – Front Load", capacity: "10kg", price: 63995, category: "washing-machines", img: "washing-machines/Hisense-WFPV1014EMT-10kg-Front-Load.jpg" },
+            { brand: "Hisense", model: "WDQ1214EVJM – Washer Dryer", capacity: "12kg/8kg", price: 94995, category: "washing-machines", img: "washing-machines/Hisense-WDQ1214EVJM-12kg-8kg-Washer-Dryer.jpg" },
+            { brand: "LG", model: "F2J3WDNP0 – Front Load", capacity: "7kg", price: 54995, category: "washing-machines", img: "washing-machines/LG-F2J3WDNP0-7kg-Front-Load.jpg" },
+            { brand: "LG", model: "F4J3VYP2E – Front Load", capacity: "9kg", price: 69995, category: "washing-machines", img: "washing-machines/LG-F4J3VYP2E-9kg-Front-Load.jpg" },
+            { brand: "LG", model: "F4V5VYP2T – AI Direct Drive", capacity: "10.5kg", price: 84995, category: "washing-machines", img: "washing-machines/LG-F4V5VYP2T-10.5kg-AI-Direct-Drive.jpg" },
+            { brand: "LG", model: "F4V5RYP2T – Washer Dryer", capacity: "10.5/7kg", price: 119995, category: "washing-machines", img: "washing-machines/LG-F4V5RYP2T-10.5kg-7kg-Washer-Dryer.jpg" },
+            { brand: "Samsung", model: "WW80J5555FX – EcoBubble Front", capacity: "8kg", price: 59995, category: "washing-machines", img: "washing-machines/Samsung-WW80J5555FX-8kg-EcoBubble.jpg" },
+            { brand: "Samsung", model: "WW90T4040CE – Front Load", capacity: "9kg", price: 69995, category: "washing-machines", img: "washing-machines/Samsung-WW90T4040CE-9kg-Front-Load.jpg" },
+            { brand: "Samsung", model: "WW11BBA046AB – Smart", capacity: "11kg", price: 93995, category: "washing-machines", img: "washing-machines/Samsung-WW11BBA046AB-11kg-Smart.jpg" },
+            { brand: "Samsung", model: "WD12T504DBN – Washer Dryer", capacity: "12/7kg", price: 124995, category: "washing-machines", img: "washing-machines/Samsung-WD12T504DBN-12kg-7kg-Washer-Dryer.jpg" },
+            { brand: "Ramtons", model: "RW/116 – Top Load", capacity: "8kg", price: 32995, category: "washing-machines", img: "washing-machines/Ramtons-RW-116-8kg-Top-Load.jpg" },
+            { brand: "Ramtons", model: "RW/147 – Top Load", capacity: "10kg", price: 43995, category: "washing-machines", img: "washing-machines/Ramtons-RW-147-10kg-Top-Load.jpg" },
+            { brand: "Ramtons", model: "RW/147WD – Washer Dryer", capacity: "10/7kg", price: 73995, category: "washing-machines", img: "washing-machines/Ramtons-RW-147WD-10kg-7kg-Washer-Dryer.jpg" },
+            { brand: "Mika", model: "MWAF816XX – Front Load", capacity: "8kg", price: 46995, category: "washing-machines", img: "washing-machines/Mika-MWAF816XX-8kg-Front-Load.jpg" },
+            { brand: "Mika", model: "MWAF1018 – Front Load", capacity: "10kg", price: 59995, category: "washing-machines", img: "washing-machines/Mika-MWAF1018-10kg-Front-Load.jpg" },
+            { brand: "Bruhm", model: "BWT-080H – Top Load", capacity: "8kg", price: 29995, category: "washing-machines", img: "washing-machines/Bruhm-BWT-080H-8kg-Top-Load.jpg" },
+            { brand: "Bruhm", model: "BWF-100H – Front Load", capacity: "10kg", price: 48995, category: "washing-machines", img: "washing-machines/Bruhm-BWF-100H-10kg-Front-Load.jpg" },
+
+            // 🧹 VACUUM CLEANERS
+            { brand: "Samsung", model: "Jet 70 Turbo", type: "Stick Vacuum", price: 36995, category: "vacuum-cleaners", img: "vacuum-cleaners/Samsung-Jet-70-Turbo-Stick-Vacuum.jpg" },
+            { brand: "Samsung", model: "Jet 90 Complete", type: "Premium Stick", price: 59995, category: "vacuum-cleaners", img: "vacuum-cleaners/Samsung-Jet-90-Complete-Premium-Stick-Vacuum.jpg" },
+            { brand: "Samsung", model: "VC2100 (Bagless)", type: "Canister", price: 16995, category: "vacuum-cleaners", img: "vacuum-cleaners/Samsung-VC2100-Bagless-Canister-Vacuum.jpg" },
+            { brand: "LG", model: "A9 Lite", type: "Stick Vacuum", price: 54995, category: "vacuum-cleaners", img: "vacuum-cleaners/LG-A9-Lite-Stick-Vacuum.jpg" },
+            { brand: "LG", model: "VK5320NNT", type: "Bagless Canister", price: 19995, category: "vacuum-cleaners", img: "vacuum-cleaners/LG-VK5320NNT-Bagless-Canister-Vacuum.jpg" },
+            { brand: "Xiaomi", model: "Mi Vacuum Cleaner G9", type: "Stick Vacuum", price: 24995, category: "vacuum-cleaners", img: "vacuum-cleaners/Xiaomi-Mi-Vacuum-Cleaner-G9-Stick-Vacuum.jpg" },
+            { brand: "Xiaomi", model: "Mi Robot Vacuum Mop 2", type: "Robot Vacuum", price: 39995, category: "vacuum-cleaners", img: "vacuum-cleaners/Xiaomi-Mi-Robot-Vacuum-Mop-2-Robot-Vacuum.jpg" },
+            { brand: "Xiaomi", model: "Roborock S7", type: "Premium Robot", price: 74995, category: "vacuum-cleaners", img: "vacuum-cleaners/Xiaomi-Roborock-S7-Premium-Robot-Vacuum.jpg" },
+            { brand: "Ramtons", model: "RM/368 – Bagless Vacuum", type: "1800W", price: 12995, category: "vacuum-cleaners", img: "vacuum-cleaners/Ramtons-RM-368-1800W-Bagless-Vacuum.jpg" },
+            { brand: "Ramtons", model: "RM/362 – Cyclone Vacuum", type: "1600W", price: 14995, category: "vacuum-cleaners", img: "vacuum-cleaners/Ramtons-RM-362-1600W-Cyclone-Vacuum.jpg" }
+
     ];
 
     // Group by brand
@@ -307,8 +427,9 @@
                 }</li>
                 <li>• ${[...new Set(items.map(i => i.condition || 'NEW'))].join(' / ')}</li>
               </ul>
+              <!-- ✅ FIXED: Pass active type filter to modal -->
               <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
-                      onclick="showFullDetails('${brand}')">
+                      onclick="showFullDetails('${brand}', document.getElementById('typeFilter').value)">
                 View All Models
               </button>
             </div>
@@ -318,10 +439,25 @@
       brandGrid.innerHTML = html;
     }
 
-    // Show modal
-    function showFullDetails(brand) {
-      const items = brands[brand];
-      let content = `<h3 class="text-xl font-semibold mb-4">All ${brand} Appliances</h3><div class="space-y-4">`;
+    // ✅ FIXED: Now respects category filter
+    function showFullDetails(brand, categoryFilter) {
+      let items = brands[brand];
+
+      // 🔑 Filter by category if active
+      if (categoryFilter) {
+        items = items.filter(item => item.category === categoryFilter);
+      }
+
+      if (items.length === 0) {
+        alert("No products found for this selection.");
+        return;
+      }
+
+      let content = `<h3 class="text-xl font-semibold mb-4">All ${brand} ${
+        categoryFilter 
+          ? categoryFilter.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) 
+          : 'Appliances'
+      }</h3><div class="space-y-4">`;
       
       items.sort((a, b) => {
         if (a.condition === "NEW" && b.condition !== "NEW") return -1;
@@ -357,7 +493,7 @@
       });
       content += `</div>`;
 
-      modalTitle.textContent = brand + " – Appliances";
+      modalTitle.textContent = brand + (categoryFilter ? ` – ${categoryFilter.replace(/-/g,' ').replace(/\b\w/g,l=>l.toUpperCase())}` : ' Appliances');
       modalContent.innerHTML = content;
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';

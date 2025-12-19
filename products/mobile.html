@@ -293,8 +293,9 @@
                 }</li>
                 <li>• ${[...new Set(items.map(i => i.condition || 'NEW'))].join(' / ')}</li>
               </ul>
+              <!-- ✅ FIXED: Pass active type filter to modal -->
               <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
-                      onclick="showFullDetails('${brand}')">
+                      onclick="showFullDetails('${brand}', document.getElementById('typeFilter').value)">
                 View All Models
               </button>
             </div>
@@ -304,10 +305,25 @@
       brandGrid.innerHTML = html;
     }
 
-    // Show modal
-    function showFullDetails(brand) {
-      const items = brands[brand];
-      let content = `<h3 class="text-xl font-semibold mb-4">All ${brand} Mobile & Smart Tech</h3><div class="space-y-4">`;
+    // ✅ FIXED: Respect category filter in modal
+    function showFullDetails(brand, categoryFilter) {
+      let items = brands[brand];
+
+      // 🔑 Filter by category if active
+      if (categoryFilter) {
+        items = items.filter(item => item.category === categoryFilter);
+      }
+
+      if (items.length === 0) {
+        alert("No products found for this selection.");
+        return;
+      }
+
+      let content = `<h3 class="text-xl font-semibold mb-4">All ${brand} ${
+        categoryFilter 
+          ? (categoryFilter === 'phones' ? 'Smartphones' : 'Smart Devices')
+          : 'Mobile & Smart Tech'
+      }</h3><div class="space-y-4">`;
       
       items.sort((a, b) => {
         if (a.condition === "NEW" && b.condition !== "NEW") return -1;
@@ -335,7 +351,7 @@
       });
       content += `</div>`;
 
-      modalTitle.textContent = brand + " – Mobile";
+      modalTitle.textContent = brand + (categoryFilter ? ` – ${categoryFilter === 'phones' ? 'Smartphones' : 'Smart Devices'}` : ' Mobile');
       modalContent.innerHTML = content;
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
