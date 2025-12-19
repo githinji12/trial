@@ -113,6 +113,15 @@
       outline: 2px solid var(--accent-gold);
       outline-offset: 3px;
     }
+
+    /* ✅ ENLARGED PRODUCT IMAGE IN MODAL */
+    .product-image-large {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 <body class="text-slate-800">
@@ -199,74 +208,75 @@
   <script>
     // ===== NETWORKING PRODUCTS =====
     const networkingProducts = [
-            // STARLINK PRODUCTS
-            { brand: "Starlink", model: "Gen 3 Kit", price: 55000, category: "networking", img: "networking/Starlink-Gen-3-Kit.jpg" },
-            { brand: "Starlink", model: "Router Gen 3", price: 33500, category: "networking", img: "networking/Starlink-Router-Gen-3.jpg" },
-            { brand: "Starlink", model: "Router Gen 2", price: 31500, category: "networking", img: "networking/Starlink-Router-Gen-2.jpg" },
-            { brand: "Starlink", model: "Mesh Node", price: 34500, category: "networking", img: "networking/Starlink-Mesh-Node.jpg" },
-            { brand: "Starlink", model: "Gen 3 Cable – 23m", price: 21499, category: "networking", img: "networking/Starlink-Gen-3-Cable-23m.jpg" },
-            { brand: "Starlink", model: "Gen 3 Cable –75ft Variant", price: 27500, category: "networking", img: "networking/Starlink-Gen-3-Cable-75ft-Variant.jpg" },
-            { brand: "Starlink", model: "Gen 3 Cable –150ft / 46m", price: 37500, category: "networking", img: "networking/Starlink-Gen-3-Cable-150ft-46m.jpg" },
-            { brand: "Starlink", model: "Ethernet Adapter", price: 16000, category: "networking", img: "networking/Starlink-Ethernet-Adapter.jpg" },
-            { brand: "Starlink", model: "Pivot Mount", price: 14000, category: "networking", img: "networking/Starlink-Pivot-Mount.jpg" },
-            { brand: "Starlink", model: "Pipe Adapter", price: 11500, category: "networking", img: "networking/Starlink-Pipe-Adapter.jpg" },
-            { brand: "Starlink", model: "Pole / J-Mount", price: 19500, category: "networking", img: "networking/Starlink-Pole-J-Mount.jpg" },
-            { brand: "Starlink", model: "Power Supply Gen 2", price: 22500, category: "networking", img: "networking/Starlink-Power-Supply-Gen-2.jpg" },
-            { brand: "Starlink", model: "Power Supply Gen 3", price: 26500, category: "networking", img: "networking/Starlink-Power-Supply-Gen-3.jpg" },
+      // STARLINK PRODUCTS
+      { brand: "Starlink", model: "Gen 3 Kit", price: 55000, category: "starlink", img: "networking/Starlink-Gen-3-Kit.jpg" },
+      { brand: "Starlink", model: "Router Gen 3", price: 33500, category: "starlink", img: "networking/Starlink-Router-Gen-3.jpg" },
+      { brand: "Starlink", model: "Router Gen 2", price: 31500, category: "starlink", img: "networking/Starlink-Router-Gen-2.jpg" },
+      { brand: "Starlink", model: "Mesh Node", price: 34500, category: "starlink", img: "networking/Starlink-Mesh-Node.jpg" },
+      { brand: "Starlink", model: "Gen 3 Cable – 23m", price: 21499, category: "starlink", img: "networking/Starlink-Gen-3-Cable-23m.jpg" },
+      { brand: "Starlink", model: "Gen 3 Cable –75ft Variant", price: 27500, category: "starlink", img: "networking/Starlink-Gen-3-Cable-75ft-Variant.jpg" },
+      { brand: "Starlink", model: "Gen 3 Cable –150ft / 46m", price: 37500, category: "starlink", img: "networking/Starlink-Gen-3-Cable-150ft-46m.jpg" },
+      { brand: "Starlink", model: "Ethernet Adapter", price: 16000, category: "starlink", img: "networking/Starlink-Ethernet-Adapter.jpg" },
+      { brand: "Starlink", model: "Pivot Mount", price: 14000, category: "starlink", img: "networking/Starlink-Pivot-Mount.jpg" },
+      { brand: "Starlink", model: "Pipe Adapter", price: 11500, category: "starlink", img: "networking/Starlink-Pipe-Adapter.jpg" },
+      { brand: "Starlink", model: "Pole / J-Mount", price: 19500, category: "starlink", img: "networking/Starlink-Pole-J-Mount.jpg" },
+      { brand: "Starlink", model: "Power Supply Gen 2", price: 22500, category: "starlink", img: "networking/Starlink-Power-Supply-Gen-2.jpg" },
+      { brand: "Starlink", model: "Power Supply Gen 3", price: 26500, category: "starlink", img: "networking/Starlink-Power-Supply-Gen-3.jpg" },
 
-              // UBIQUITI UNIFI APs
-            { brand: "Ubiquiti", model: "UniFi U6 Lite", price: 25000, category: "networking", img: "networking/UniFi-U6-Lite.jpg" },
-            { brand: "Ubiquiti", model: "UniFi U6 Plus", price: 26500, category: "networking", img: "networking/UniFi-U6-Plus.jpg" },
-            { brand: "Ubiquiti", model: "UniFi U6 LR", price: 37500, category: "networking", img: "networking/UniFi-U6-LR.jpg" },
-            { brand: "Ubiquiti", model: "UniFi U6 Pro", price: 39500, category: "networking", img: "networking/UniFi-U6-Pro.jpg" },
-            { brand: "Ubiquiti", model: "UniFi AC Lite", price: 18500, category: "networking", img: "networking/UniFi-AC-Lite.jpg" },
-            { brand: "Ubiquiti", model: "UniFi AC LR", price: 22500, category: "networking", img: "networking/UniFi-AC-LR.jpg" },
-            { brand: "Ubiquiti", model: "UniFi AC Pro", price: 28500, category: "networking", img: "networking/UniFi-AC-Pro.jpg" },
-            { brand: "Ubiquiti", model: "UniFi Dream Router (UDR)", price: 43500, category: "networking", img: "networking/UniFi-Dream-Router(UDR).jpg" },
-            { brand: "Ubiquiti", model: "UniFi Cloud Key Gen2 Plus", price: 33500, category: "networking", img: "networking/UniFi-Cloud-Key-Gen2-Plus.jpg" },
+      // UBIQUITI UNIFI APs
+      { brand: "Ubiquiti", model: "UniFi U6 Lite", price: 25000, category: "access-points", img: "networking/UniFi-U6-Lite.jpg" },
+      { brand: "Ubiquiti", model: "UniFi U6 Plus", price: 26500, category: "access-points", img: "networking/UniFi-U6-Plus.jpg" },
+      { brand: "Ubiquiti", model: "UniFi U6 LR", price: 37500, category: "access-points", img: "networking/UniFi-U6-LR.jpg" },
+      { brand: "Ubiquiti", model: "UniFi U6 Pro", price: 39500, category: "access-points", img: "networking/UniFi-U6-Pro.jpg" },
+      { brand: "Ubiquiti", model: "UniFi AC Lite", price: 18500, category: "access-points", img: "networking/UniFi-AC-Lite.jpg" },
+      { brand: "Ubiquiti", model: "UniFi AC LR", price: 22500, category: "access-points", img: "networking/UniFi-AC-LR.jpg" },
+      { brand: "Ubiquiti", model: "UniFi AC Pro", price: 28500, category: "access-points", img: "networking/UniFi-AC-Pro.jpg" },
+      { brand: "Ubiquiti", model: "UniFi Dream Router (UDR)", price: 43500, category: "routers", img: "networking/UniFi-Dream-Router(UDR).jpg" },
+      { brand: "Ubiquiti", model: "UniFi Cloud Key Gen2 Plus", price: 33500, category: "access-points", img: "networking/UniFi-Cloud-Key-Gen2-Plus.jpg" },
 
-              // TP-LINK OMADA & ENTERPRISE APs
-            { brand: "TP-Link", model: "EAP110", price: 7500, category: "networking", img: "networking/TP-Link-EAP110.jpg" },
-            { brand: "TP-Link", model: "EAP115", price: 8000, category: "networking", img: "networking/TP-Link-EAP115.jpg" },
-            { brand: "TP-Link", model: "EAP245", price: 16000, category: "networking", img: "networking/TP-Link-EAP245.jpg" },
-            { brand: "TP-Link", model: "EAP610", price: 20500, category: "networking", img: "networking/TP-Link-EAP610.jpg" },
-            { brand: "TP-Link", model: "EAP225-Wall", price: 10500, category: "networking", img: "networking/TP-Link-EAP225-Wall.jpg" },
-            { brand: "TP-Link", model: "EAP235-Wall", price: 14500, category: "networking", img: "networking/TP-Link-EAP235-Wall.jpg" },
-            { brand: "TP-Link", model: "EAP110-Outdoor", price: 7500, category: "networking", img: "networking/TP-Link-EAP110-Outdoor.jpg" },
-            { brand: "TP-Link", model: "EAP225-Outdoor", price: 11500, category: "networking", img: "networking/TP-Link-EAP225-Outdoor.jpg" },
-            { brand: "TP-Link", model: "EAP610-Outdoor", price: 22500, category: "networking", img: "networking/EAP610-Outdoor.jpg" },
-            { brand: "TP-Link", model: "EAP225 (Mesh mode)", price: 12000, category: "networking", img: "networking/EAP225-Mesh.jpg" },
-            { brand: "TP-Link", model: "EAP610 Mesh", price: 20500, category: "networking", img: "networking/EAP610-Mesh.jpg" },
-            { brand: "TP-Link", model: "OC200 Omada Controller", price: 18500, category: "networking", img: "networking/OC200-Omada-Controller.jpg" },
-            { brand: "TP-Link", model: "OC300 Omada Controller", price: 39500, category: "networking", img: "networking/OC300-Omada-Controller.jpg" },
+      // TP-LINK OMADA & ENTERPRISE APs
+      { brand: "TP-Link", model: "EAP110", price: 7500, category: "access-points", img: "networking/TP-Link-EAP110.jpg" },
+      { brand: "TP-Link", model: "EAP115", price: 8000, category: "access-points", img: "networking/TP-Link-EAP115.jpg" },
+      { brand: "TP-Link", model: "EAP245", price: 16000, category: "access-points", img: "networking/TP-Link-EAP245.jpg" },
+      { brand: "TP-Link", model: "EAP610", price: 20500, category: "access-points", img: "networking/TP-Link-EAP610.jpg" },
+      { brand: "TP-Link", model: "EAP225-Wall", price: 10500, category: "access-points", img: "networking/TP-Link-EAP225-Wall.jpg" },
+      { brand: "TP-Link", model: "EAP235-Wall", price: 14500, category: "access-points", img: "networking/TP-Link-EAP235-Wall.jpg" },
+      { brand: "TP-Link", model: "EAP110-Outdoor", price: 7500, category: "access-points", img: "networking/TP-Link-EAP110-Outdoor.jpg" },
+      { brand: "TP-Link", model: "EAP225-Outdoor", price: 11500, category: "access-points", img: "networking/TP-Link-EAP225-Outdoor.jpg" },
+      { brand: "TP-Link", model: "EAP610-Outdoor", price: 22500, category: "access-points", img: "networking/EAP610-Outdoor.jpg" },
+      { brand: "TP-Link", model: "EAP225 (Mesh mode)", price: 12000, category: "mesh", img: "networking/EAP225-Mesh.jpg" },
+      { brand: "TP-Link", model: "EAP610 Mesh", price: 20500, category: "mesh", img: "networking/EAP610-Mesh.jpg" },
+      { brand: "TP-Link", model: "OC200 Omada Controller", price: 18500, category: "access-points", img: "networking/OC200-Omada-Controller.jpg" },
+      { brand: "TP-Link", model: "OC300 Omada Controller", price: 39500, category: "access-points", img: "networking/OC300-Omada-Controller.jpg" },
 
-            // TP-LINK CPE BRIDGES
-            { brand: "TP-Link", model: "CPE210", price: 8000, category: "networking", img: "networking/CPE210.jpg" },
-            { brand: "TP-Link", model: "CPE510", price: 10500, category: "networking", img: "networking/CPE510.jpg" },
-            { brand: "TP-Link", model: "CPE610", price: 14500, category: "networking", img: "networking/CPE610.jpg" },
-            { brand: "TP-Link", model: "CPE710", price: 21500, category: "networking", img: "networking/CPE710.jpg" },
-            { brand: "TP-Link", model: "CPE720", price: 29500, category: "networking", img: "networking/CPE720.jpg" },
-            // TP-LINK DECO MESH
-            { brand: "TP-Link", model: "Deco M4 (2-Pack)", price: 14500, category: "networking", img: "networking/Deco-M4(2-Pack).jpg" },
-            { brand: "TP-Link", model: "Deco M4 (3-Pack)", price: 19500, category: "networking", img: "networking/Deco-M4(3-Pack).jpg" },
-            { brand: "TP-Link", model: "Deco X20 (2-Pack)", price: 26500, category: "networking", img: "networking/Deco-X20(2-Pack).jpg" },
-            { brand: "TP-Link", model: "Deco X20 (3-Pack)", price: 34500, category: "networking", img: "networking/Deco-X20(3-Pack).jpg" },
-            { brand: "TP-Link", model: "Deco X50 (3-Pack)", price: 41500, category: "networking", img: "networking/Deco-X50(3-Pack).jpg" },
+      // TP-LINK CPE BRIDGES
+      { brand: "TP-Link", model: "CPE210", price: 8000, category: "switches", img: "networking/CPE210.jpg" },
+      { brand: "TP-Link", model: "CPE510", price: 10500, category: "switches", img: "networking/CPE510.jpg" },
+      { brand: "TP-Link", model: "CPE610", price: 14500, category: "switches", img: "networking/CPE610.jpg" },
+      { brand: "TP-Link", model: "CPE710", price: 21500, category: "switches", img: "networking/CPE710.jpg" },
+      { brand: "TP-Link", model: "CPE720", price: 29500, category: "switches", img: "networking/CPE720.jpg" },
 
-             // EXTENDERS
-            { brand: "TP-Link", model: "RE305", price: 5000, category: "networking", img: "networking/TP-Link-RE305.jpg" },
-            { brand: "TP-Link", model: "RE450", price: 9500, category: "networking", img: "networking/TP-Link-RE450.jpg" },
-            { brand: "Tenda", model: "A18", price: 4500, category: "networking", img: "networking/Tenda-A18.jpg" },
-            { brand: "Tenda", model: "A33 (WiFi6)", price: 8500, category: "networking", img: "networking/Tenda-A33(WiFi6).jpg" },
-            // ROUTERS
-            { brand: "TP-Link", model: "Archer C20", price: 3800, category: "networking", img: "networking/Archer-C20.jpg" },
-            { brand: "TP-Link", model: "Archer C6", price: 6500, category: "networking", img: "networking/Archer-C6.jpg" },
-            { brand: "TP-Link", model: "Archer AX10 (WiFi6)", price: 11000, category: "networking", img: "networking/Archer-AX10(WiFi6).jpg" },
-            { brand: "TP-Link", model: "Archer AX20 (WiFi6)", price: 15500, category: "networking", img: "networking/Archer-AX20(WiFi6).jpg" },
-            { brand: "Tenda", model: "AC10U", price: 4500, category: "networking", img: "networking/Tenda-AC10U.jpg" },
-            { brand: "Tenda", model: "AC23", price: 6500, category: "networking", img: "networking/Tenda-AC23.jpg" },
-            { brand: "Asus", model: "RT-AX55", price: 18500, category: "networking", img: "networking/Asus-RT-AX55.jpg" }
+      // TP-LINK DECO MESH
+      { brand: "TP-Link", model: "Deco M4 (2-Pack)", price: 14500, category: "mesh", img: "networking/Deco-M4(2-Pack).jpg" },
+      { brand: "TP-Link", model: "Deco M4 (3-Pack)", price: 19500, category: "mesh", img: "networking/Deco-M4(3-Pack).jpg" },
+      { brand: "TP-Link", model: "Deco X20 (2-Pack)", price: 26500, category: "mesh", img: "networking/Deco-X20(2-Pack).jpg" },
+      { brand: "TP-Link", model: "Deco X20 (3-Pack)", price: 34500, category: "mesh", img: "networking/Deco-X20(3-Pack).jpg" },
+      { brand: "TP-Link", model: "Deco X50 (3-Pack)", price: 41500, category: "mesh", img: "networking/Deco-X50(3-Pack).jpg" },
 
+      // EXTENDERS
+      { brand: "TP-Link", model: "RE305", price: 5000, category: "extenders", img: "networking/TP-Link-RE305.jpg" },
+      { brand: "TP-Link", model: "RE450", price: 9500, category: "extenders", img: "networking/TP-Link-RE450.jpg" },
+      { brand: "Tenda", model: "A18", price: 4500, category: "extenders", img: "networking/Tenda-A18.jpg" },
+      { brand: "Tenda", model: "A33 (WiFi6)", price: 8500, category: "extenders", img: "networking/Tenda-A33(WiFi6).jpg" },
+
+      // ROUTERS
+      { brand: "TP-Link", model: "Archer C20", price: 3800, category: "routers", img: "networking/Archer-C20.jpg" },
+      { brand: "TP-Link", model: "Archer C6", price: 6500, category: "routers", img: "networking/Archer-C6.jpg" },
+      { brand: "TP-Link", model: "Archer AX10 (WiFi6)", price: 11000, category: "routers", img: "networking/Archer-AX10(WiFi6).jpg" },
+      { brand: "TP-Link", model: "Archer AX20 (WiFi6)", price: 15500, category: "routers", img: "networking/Archer-AX20(WiFi6).jpg" },
+      { brand: "Tenda", model: "AC10U", price: 4500, category: "routers", img: "networking/Tenda-AC10U.jpg" },
+      { brand: "Tenda", model: "AC23", price: 6500, category: "routers", img: "networking/Tenda-AC23.jpg" },
+      { brand: "Asus", model: "RT-AX55", price: 18500, category: "routers", img: "networking/Asus-RT-AX55.jpg" }
     ];
 
     // Group by brand
@@ -332,7 +342,6 @@
                   Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 999999)).toLocaleString()
                 }</li>
               </ul>
-              <!-- ✅ FIXED: Pass active type filter to modal -->
               <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
                       onclick="showFullDetails('${brand}', document.getElementById('typeFilter').value)">
                 View All Models
@@ -344,11 +353,10 @@
       brandGrid.innerHTML = html;
     }
 
-    // ✅ FIXED: Respect category filter in modal
+    // ✅ FIXED: Respect category filter + enlarged image
     function showFullDetails(brand, categoryFilter) {
       let items = brands[brand];
 
-      // 🔑 Filter by category if active
       if (categoryFilter) {
         items = items.filter(item => item.category === categoryFilter);
       }
@@ -360,37 +368,30 @@
 
       let content = `<h3 class="text-xl font-semibold mb-4">All ${brand} ${
         categoryFilter 
-          ? categoryFilter
-              .replace('starlink', 'Starlink')
-              .replace('access-points', 'Access Points')
-              .replace('routers', 'Routers')
-              .replace('mesh', 'Mesh Systems')
-              .replace('switches', 'Switches & CPE')
-              .replace('extenders', 'Extenders')
+          ? categoryFilter.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
           : 'Networking Products'
       }</h3><div class="space-y-4">`;
 
       items.sort((a, b) => (typeof a.price === 'number' ? a.price : 999999) - (typeof b.price === 'number' ? b.price : 999999));
 
       items.forEach(item => {
-        let meta = '';
-        if (item.category === 'starlink') meta = 'Starlink';
-        else if (item.category === 'access-points') meta = 'Access Point';
-        else if (item.category === 'routers') meta = 'Router';
-        else if (item.category === 'mesh') meta = 'Mesh System';
-        else if (item.category === 'switches') meta = 'Switch / CPE';
-        else if (item.category === 'extenders') meta = 'Extender';
-        else meta = item.type || '';
+        let metaMap = {
+          'starlink': 'Starlink',
+          'access-points': 'Access Point',
+          'routers': 'Router',
+          'mesh': 'Mesh System',
+          'switches': 'Switch / CPE',
+          'extenders': 'Extender'
+        };
+        let meta = metaMap[item.category] || item.category;
 
         content += `
           <div class="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition">
-            <div class="flex gap-4">
-              <img src="../assets/images/${item.img}" alt="${item.model}" class="w-24 h-24 object-cover rounded">
-              <div>
-                <h4 class="font-bold">${item.model}</h4>
-                <p class="text-slate-600 text-sm">${meta}</p>
-                <p class="font-bold text-lg text-yellow-600 mt-2">KES ${typeof item.price === 'number' ? item.price.toLocaleString() : item.price}</p>
-              </div>
+            <img src="../assets/images/${item.img}" alt="${item.model}" class="product-image-large">
+            <div>
+              <h4 class="font-bold">${item.model}</h4>
+              <p class="text-slate-600 text-sm">${meta}</p>
+              <p class="font-bold text-lg text-yellow-600 mt-2">KES ${typeof item.price === 'number' ? item.price.toLocaleString() : item.price}</p>
             </div>
           </div>
         `;
