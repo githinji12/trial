@@ -142,7 +142,7 @@
                 <option value="">All Brands</option>
                 <option value="Hikvision">Hikvision</option>
                 <option value="Dahua">Dahua</option>
-                <option value="D-LINK">D-Link</option>
+                <option value="D-Link">D-Link</option>
                 <option value="Mikrotik">Mikrotik</option>
                 <option value="WD">WD Purple</option>
                 <option value="Eufy">Eufy</option>
@@ -150,6 +150,9 @@
                 <option value="Google">Google Nest</option>
                 <option value="TP-Link">TP-Link</option>
                 <option value="ZKTeco">ZKTeco</option>
+                <option value="Morel Techs">Morel Techs</option>
+                <option value="Generic">Generic</option>
+                <option value="Ezviz">Ezviz</option>
               </select>
             </div>
             <div>
@@ -201,96 +204,97 @@
   <script>
     // ===== SECURITY PRODUCTS =====
     const securityProducts = [
-            // ✅ NEW SURVEILLANCE EQUIPMENT CATEGORY — FULL LIST
-            { brand: "D-LINK", model: "DES-1005P (4-Port PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1005P(4-Port PoE).jpg", price: 8500 },
-            { brand: "D-LINK", model: "DES-1008P (8-Port PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1008P(8-Port PoE).jpg", price: 12500 },
-            { brand: "D-LINK", model: "DES-1210-10P (8-Port Smart PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1210-10P(8-Port Smart PoE).jpg", price: 16000 },
-            { brand: "D-LINK", model: "DES-1210-28P (24-Port PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1210-28P(24-Port PoE).jpg", price: 24000 },
-            { brand: "D-LINK", model: "16-Port Smart PoE Switch", category: "surveillance", img: "surveillance/D-LINK-16-Port(Smart PoE).jpg", price: 22000 },
-            { brand: "DAHUA", model: "HAC-B1A21 (2MP Bullet)", category: "surveillance", img: "surveillance/DAHUA-HAC-B1A21(2MP Bullet).jpg", price: 7500 },
-            { brand: "DAHUA", model: "HAC-HDW1400EMP", category: "surveillance", img: "surveillance/DAHUA-HAC-HDW1400EMP.jpg", price: 11000 },
-            { brand: "DAHUA", model: "HAC-HFW1400TLP", category: "surveillance", img: "surveillance/DAHUA-HAC-HFW1400TLP.jpg", price: 12500 },
-            { brand: "DAHUA", model: "HAC-HFW1409TP-A-LED (Full Color)", category: "surveillance", img: "surveillance/DAHUA-HAC-HFW1409TP-A-LED(Full Color).jpg", price: 18000 },
-            { brand: "DAHUA", model: "HAC-T1A21 (2MP Dome)", category: "surveillance", img: "surveillance/DAHUA-HAC-T1A21(2MP Dome).jpg", price: 7200 },
-            { brand: "DAHUA", model: "IPC-HDW1230T1-S4", category: "surveillance", img: "surveillance/DAHUA-IPC-HDW1230T1-S4.jpg", price: 13000 },
-            { brand: "DAHUA", model: "IPC-HDW1431S", category: "surveillance", img: "surveillance/DAHUA-IPC-HDW1431S.jpg", price: 16000 },
-            { brand: "DAHUA", model: "IPC-HDW5442TM-AS (4MP Full Color)", category: "surveillance", img: "surveillance/DAHUA-IPC-HDW5442TM-AS(4MP Full Color).jpg", price: 29000 },
-            { brand: "DAHUA", model: "IPC-HFW1230S", category: "surveillance", img: "surveillance/DAHUA-IPC-HFW1230S.jpg", price: 12500 },
-            { brand: "DAHUA", model: "IPC-HFW1431S", category: "surveillance", img: "surveillance/DAHUA-IPC-HFW1431S.jpg", price: 15500 },
-            { brand: "DAHUA", model: "IPC-HFW2231TP-AS (Full Color)", category: "surveillance", img: "surveillance/DAHUA-IPC-HFW2231TP-AS(Full Color).jpg", price: 22000 },
-            { brand: "DAHUA", model: "IPC-HFW2431T-AS (Starlight)", category: "surveillance", img: "surveillance/DAHUA-IPC-HFW2431T-AS(Starlight).jpg", price: 26000 },
-            { brand: "DAHUA", model: "NVR4104HS-P-4KS2 (4ch PoE)", category: "surveillance", img: "surveillance/DAHUA-NVR4104HS-P-4KS2(4ch PoE).jpg", price: 28000 },
-            { brand: "DAHUA", model: "NVR4108HS-8P (8ch PoE)", category: "surveillance", img: "surveillance/DAHUA-NVR4108HS-8P(8ch PoE).jpg", price: 36000 },
-            { brand: "DAHUA", model: "NVR4216-4KS2 (16ch NVR)", category: "surveillance", img: "surveillance/DAHUA-NVR4216-4KS2(16ch NVR).jpg", price: 52000 },
-            { brand: "DAHUA", model: "SD6CE445XA-HNR (45× PTZ)", category: "surveillance", img: "surveillance/DAHUA-SD6CE445XA-HNR(45× PTZ).jpg", price: 145000 },
-            { brand: "DAHUA", model: "SD22204UE-GN (2MP Mini PTZ)", category: "surveillance", img: "surveillance/DAHUA-SD22204UE-GN(2MP Mini PTZ).jpg", price: 38000 },
-            { brand: "DAHUA", model: "SD49225XA-HNR (25× PTZ)", category: "surveillance", img: "surveillance/DAHUA-SD49225XA-HNR(25× PTZ).jpg", price: 95000 },
-            { brand: "DAHUA", model: "XVR1B04H (4ch XVR)", category: "surveillance", img: "surveillance/DAHUA-XVR1B04H(4ch XVR).jpg", price: 14000 },
-            { brand: "DAHUA", model: "XVR1B08H (8ch XVR)", category: "surveillance", img: "surveillance/DAHUA-XVR1B08H(8ch XVR).jpg", price: 19000 },
-            { brand: "DAHUA", model: "XVR1B16H (16ch XVR)", category: "surveillance", img: "surveillance/DAHUA-XVR1B16H(16ch XVR).jpg", price: 28000 },
-            { brand: "HIKVISION", model: "DS-2CD1T23G0-I (2MP Bullet IR 30m)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1T23G0-I(2MP Bullet IR 30m).jpg", price: 8200 },
-            { brand: "HIKVISION", model: "DS-2CD2T43G0-I5 (4MP Bullet IR 50m)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD2T43G0-I5(4MP Bullet IR 50m).jpg", price: 16500 },
-            { brand: "HIKVISION", model: "DS-2CD1023G0E-I (2MP IP Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1023G0E-I(2MP IP Bullet).jpg", price: 9500 },
-            { brand: "HIKVISION", model: "DS-2CD1043G0-I (4MP Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1043G0-I(4MP Bullet).jpg", price: 15000 },
-            { brand: "HIKVISION", model: "DS-2CD1123G0E-I (2MP IP Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1123G0E-I(2MP IP Dome).jpg", price: 9800 },
-            { brand: "HIKVISION", model: "DS-2CD1143G0-IUF (4MP Audio Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1143G0-IUF(4MP Audio Dome).jpg", price: 18000 },
-            { brand: "HIKVISION", model: "DS-2CD1323G0-IUF (2MP Audio Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1323G0-IUF(2MP Audio Dome).jpg", price: 13500 },
-            { brand: "HIKVISION", model: "DS-2CD1343G0-I (4MP Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1343G0-I(4MP Dome).jpg", price: 14500 },
-            { brand: "HIKVISION", model: "DS-2CE10DFT-F (Full Color Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE10DFT-F(Full Color Bullet).jpg", price: 12000 },
-            { brand: "HIKVISION", model: "DS-2CE16D0T-IRF (2MP Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE16D0T-IRF(2MP Bullet).jpg", price: 7200 },
-            { brand: "HIKVISION", model: "DS-2CE16H0T-ITF (4MP Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE16H0T-ITF(4MP Bullet).jpg", price: 11000 },
-            { brand: "HIKVISION", model: "DS-2CE56D0T-IRF (2MP Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE56D0T-IRF(2MP Dome).jpg", price: 7000 },
-            { brand: "HIKVISION", model: "DS-2CE56H0T-ITPF (4MP Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE56H0T-ITPF(4MP Dome).jpg", price: 10500 },
-            { brand: "HIKVISION", model: "DS-2CE76D0T-EXIPF (Full Color Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE76D0T-EXIPF(Full Color Dome).jpg", price: 14000 },
-            { brand: "HIKVISION", model: "DS-2DE7A425IW-AEB (DarkFighter PTZ)", category: "surveillance", img: "surveillance/HIKVISION-DS-2DE7A425IW-AEB(DarkFighter PTZ).jpg", price: 198000 },
-            { brand: "HIKVISION", model: "DS-2DE2204IW-DE3 (4MP Mini PTZ 4×)", category: "surveillance", img: "surveillance/HIKVISION-DS-2DE2204IW-DE3(4MP Mini PTZ 4×).jpg", price: 42000 },
-            { brand: "HIKVISION", model: "DS-2DE5425IW-AE (4MP PTZ 25×)", category: "surveillance", img: "surveillance/HIKVISION-DS-2DE5425IW-AE(4MP PTZ 25×).jpg", price: 120000 },
-            { brand: "HIKVISION", model: "DS-3E0105P-E (4-Port PoE)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0105P-E(4-Port PoE).jpg", price: 9000 },
-            { brand: "HIKVISION", model: "DS-3E0109P-E (8-Port PoE)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0109P-E(8-Port PoE).jpg", price: 13000 },
-            { brand: "HIKVISION", model: "DS-3E0310P-E-M (8-Port Uplink)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0310P-E-M(8-Port-Uplink).jpg", price: 15000 },
-            { brand: "HIKVISION", model: "DS-3E0318P-E-M (16-Port PoE)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0318P-E-M(16-Port PoE).jpg", price: 21000 },
-            { brand: "HIKVISION", model: "DS-3E0526P-SI (24-Port PoE)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0526P-SI(24-Port PoE).jpg", price: 32000 },
-            { brand: "HIKVISION", model: "DS-7104HGHI-K1 (4ch DVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7104HGHI-K1(4ch DVR).jpg", price: 16000 },
-            { brand: "HIKVISION", model: "DS-7104NI-Q1-M (4ch NVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7104NI-Q1-M(4ch NVR).jpg", price: 18000 },
-            { brand: "HIKVISION", model: "DS-7108HGHI-K1 (8ch DVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7108HGHI-K1(8ch DVR).jpg", price: 19000 },
-            { brand: "HIKVISION", model: "DS-7108NI-Q1-M (8ch NVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7108NI-Q1-M(8ch NVR).jpg", price: 22000 },
-            { brand: "HIKVISION", model: "DS-7116HGHI-K1 (16ch DVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7116HGHI-K1(16ch DVR).jpg", price: 26000 },
-            { brand: "HIKVISION", model: "DS-7208HQHI-K1 (8ch HQ Pro DVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7208HQHI-K1(8ch HQ Pro DVR).jpg", price: 30000 },
-            { brand: "HIKVISION", model: "DS-7616NI-K2 (16ch NVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7616NI-K2(16ch NVR).jpg", price: 38000 },
-            { brand: "HIKVISION", model: "DS-7732NI-K4 (32ch NVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7732NI-K4(32ch NVR).jpg", price: 62000 },
-            { brand: "Mikrotik", model: "4-Port PoE", category: "surveillance", img: "surveillance/Mikrotik-4-Port-PoE.jpg", price: 10500 },
-            { brand: "Mikrotik", model: "8-Port PoE", category: "surveillance", img: "surveillance/Mikrotik-8-Port-PoE.jpg", price: 14000 },
-            { brand: "Mikrotik", model: "16-Port PoE", category: "surveillance", img: "surveillance/Mikrotik-16-Port-PoE.jpg", price: 24000 },
-            { brand: "Mikrotik", model: "24-Port PoE Rackmount", category: "surveillance", img: "surveillance/Mikrotik-24-Port-PoE-Rackmount.jpg", price: 38000 },
-            { brand: "WD", model: "Purple 1TB Surveillance HDD", category: "surveillance", img: "surveillance/WD-Purple-1TB.jpg", price: 7500 },
-            { brand: "WD", model: "Purple 2TB Surveillance HDD", category: "surveillance", img: "surveillance/WD-Purple-2TB.jpg", price: 11000 },
-            { brand: "WD", model: "Purple 3TB Surveillance HDD", category: "surveillance", img: "surveillance/WD-Purple-3TB.jpg", price: 15000 },
-            { brand: "WD", model: "Purple 4TB Surveillance HDD", category: "surveillance", img: "surveillance/WD-Purple-4TB.jpg", price: 19000 },
-// ========== SMART CAMERAS ==========
-{ brand: "Imou", name: "Cell Go Solar Camera", category: "smart-cameras", price: 15500, img: "smart-cameras/Imou-Cell-Go-Solar-Camera.jpg" },
-{ brand: "Imou", name: "Cruiser 4G Solar Kit", category: "smart-cameras", price: 18500, img: "smart-cameras/Imou-Cruiser-4G-Solar-Kit.jpg" },
-{ brand: "Hikvision", name: "Solar 4G Camera DS-2XS6A25G0", category: "smart-cameras", price: 32500, img: "smart-cameras/Hikvision-Solar-4G-Camera-DS-2XS6A25G0.jpg" },
-{ brand: "Generic", name: "Generic 4G Solar PTZ Camera", category: "smart-cameras", price: 8500, img: "smart-cameras/Generic-4G-Solar-PTZ-Camera.jpg" },
-{ brand: "Generic", name: "WiFi Solar Camera", category: "smart-cameras", price: 6500, img: "smart-cameras/Generic-WiFi-Solar-Camera.jpg" },
-{ brand: "Eufy", name: "SoloCam S220 Solar", category: "smart-cameras", price: 21500, img: "smart-cameras/Eufy-SoloCam-S220-Solar.jpg" },
-{ brand: "Eufy", name: "SoloCam S230 Solar Spotlight", category: "smart-cameras", price: 26500, img: "smart-cameras/Eufy-SoloCam-S230-Solar-Spotlight.jpg" },
-{ brand: "Eufy", name: "Cam 2C Kit (2 Cam + HomeBase 2)", category: "smart-cameras", price: 45500, img: "smart-cameras/Eufy-Cam-2C-Kit(2Cameras-HomeBase 2).jpg" },
-{ brand: "Eufy", name: "Cam 3 Kit (2 Cam + HomeBase 3)", category: "smart-cameras", price: 82500, img: "smart-cameras/Eufy-Cam-3-Kit(2Cameras-HomeBase 3).jpg" },
-{ brand: "Eufy", name: "Video Doorbell 2K Battery", category: "smart-cameras", price: 22500, img: "smart-cameras/Eufy-Video-Doorbell-2K-Battery.jpg" },
-{ brand: "Eufy", name: "Video Doorbell S330", category: "smart-cameras", price: 35500, img: "smart-cameras/Eufy-Video-Doorbell-S330.jpg" },
-{ brand: "Google", name: "Nest Cam Battery", category: "smart-cameras", price: 29500, img: "smart-cameras/Google-Nest-Cam-Battery.jpg" },
-{ brand: "Google", name: "Nest Cam Wired Indoor", category: "smart-cameras", price: 17500, img: "smart-cameras/Google-Nest-Cam-Wired-Indoor.jpg" },
-{ brand: "Google", name: "Nest Doorbell Battery", category: "smart-cameras", price: 28500, img: "smart-cameras/Google-NestDoorbell-Battery.jpg" },
-{ brand: "Google", name: "Nest Doorbell Wired", category: "smart-cameras", price: 26500, img: "smart-cameras/Google-NestDoorbell-Wired.jpg" },
-{ brand: "TP-Link", name: "Tapo C200", category: "smart-cameras", price: 9000, img: "smart-cameras/TP-Link-Tapo-C200.jpg" },
-{ brand: "TP-Link", name: "Tapo C210", category: "smart-cameras", price: 8500, img: "smart-cameras/TP-Link-Tapo-C210.jpg" },
-{ brand: "TP-Link", name: "Tapo C225", category: "smart-cameras", price: 11500, img: "smart-cameras/TP-Link-Tapo-C225.jpg" },
-{ brand: "Imou", name: "Ranger 2C", category: "smart-cameras", price: 8500, img: "smart-cameras/Imou-Ranger-2C.jpg" },
-{ brand: "Imou", name: "Ranger 2", category: "smart-cameras", price: 9500, img: "smart-cameras/Imou-Ranger-2.jpg" },
-{ brand: "Ezviz", name: "C6N", category: "smart-cameras", price: 7500, img: "smart-cameras/Ezviz-C6N.jpg" },
-{ brand: "Ezviz", name: "C6", category: "smart-cameras", price: 12500, img: "smart-cameras/Ezviz-C6.jpg" },
-{ brand: "Generic", name: "1080p WiFi Nanny Cam", category: "smart-cameras", price: 4500, img: "smart-cameras/Generic-1080p-WiFi-Nanny-Cam.jpg" },
-{ brand: "Generic", name: "360° Lightbulb Camera", category: "smart-cameras", price: 3800, img: "smart-cameras/360°Lightbulb-Camera.jpg" },
+      // ✅ SURVEILLANCE (CCTV)
+      { brand: "D-Link", model: "DES-1005P (4-Port PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1005P(4-Port PoE).jpg", price: 8500 },
+      { brand: "D-Link", model: "DES-1008P (8-Port PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1008P(8-Port PoE).jpg", price: 12500 },
+      { brand: "D-Link", model: "DES-1210-10P (8-Port Smart PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1210-10P(8-Port Smart PoE).jpg", price: 16000 },
+      { brand: "D-Link", model: "DES-1210-28P (24-Port PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1210-28P(24-Port PoE).jpg", price: 24000 },
+      { brand: "D-Link", model: "16-Port Smart PoE Switch", category: "surveillance", img: "surveillance/D-LINK-16-Port(Smart PoE).jpg", price: 22000 },
+      { brand: "Dahua", model: "HAC-B1A21 (2MP Bullet)", category: "surveillance", img: "surveillance/DAHUA-HAC-B1A21(2MP Bullet).jpg", price: 7500 },
+      { brand: "Dahua", model: "HAC-HDW1400EMP", category: "surveillance", img: "surveillance/DAHUA-HAC-HDW1400EMP.jpg", price: 11000 },
+      { brand: "Dahua", model: "HAC-HFW1400TLP", category: "surveillance", img: "surveillance/DAHUA-HAC-HFW1400TLP.jpg", price: 12500 },
+      { brand: "Dahua", model: "HAC-HFW1409TP-A-LED (Full Color)", category: "surveillance", img: "surveillance/DAHUA-HAC-HFW1409TP-A-LED(Full Color).jpg", price: 18000 },
+      { brand: "Dahua", model: "HAC-T1A21 (2MP Dome)", category: "surveillance", img: "surveillance/DAHUA-HAC-T1A21(2MP Dome).jpg", price: 7200 },
+      { brand: "Dahua", model: "IPC-HDW1230T1-S4", category: "surveillance", img: "surveillance/DAHUA-IPC-HDW1230T1-S4.jpg", price: 13000 },
+      { brand: "Dahua", model: "IPC-HDW1431S", category: "surveillance", img: "surveillance/DAHUA-IPC-HDW1431S.jpg", price: 16000 },
+      { brand: "Dahua", model: "IPC-HDW5442TM-AS (4MP Full Color)", category: "surveillance", img: "surveillance/DAHUA-IPC-HDW5442TM-AS(4MP Full Color).jpg", price: 29000 },
+      { brand: "Dahua", model: "IPC-HFW1230S", category: "surveillance", img: "surveillance/DAHUA-IPC-HFW1230S.jpg", price: 12500 },
+      { brand: "Dahua", model: "IPC-HFW1431S", category: "surveillance", img: "surveillance/DAHUA-IPC-HFW1431S.jpg", price: 15500 },
+      { brand: "Dahua", model: "IPC-HFW2231TP-AS (Full Color)", category: "surveillance", img: "surveillance/DAHUA-IPC-HFW2231TP-AS(Full Color).jpg", price: 22000 },
+      { brand: "Dahua", model: "IPC-HFW2431T-AS (Starlight)", category: "surveillance", img: "surveillance/DAHUA-IPC-HFW2431T-AS(Starlight).jpg", price: 26000 },
+      { brand: "Dahua", model: "NVR4104HS-P-4KS2 (4ch PoE)", category: "surveillance", img: "surveillance/DAHUA-NVR4104HS-P-4KS2(4ch PoE).jpg", price: 28000 },
+      { brand: "Dahua", model: "NVR4108HS-8P (8ch PoE)", category: "surveillance", img: "surveillance/DAHUA-NVR4108HS-8P(8ch PoE).jpg", price: 36000 },
+      { brand: "Dahua", model: "NVR4216-4KS2 (16ch NVR)", category: "surveillance", img: "surveillance/DAHUA-NVR4216-4KS2(16ch NVR).jpg", price: 52000 },
+      { brand: "Dahua", model: "SD6CE445XA-HNR (45× PTZ)", category: "surveillance", img: "surveillance/DAHUA-SD6CE445XA-HNR(45× PTZ).jpg", price: 145000 },
+      { brand: "Dahua", model: "SD22204UE-GN (2MP Mini PTZ)", category: "surveillance", img: "surveillance/DAHUA-SD22204UE-GN(2MP Mini PTZ).jpg", price: 38000 },
+      { brand: "Dahua", model: "SD49225XA-HNR (25× PTZ)", category: "surveillance", img: "surveillance/DAHUA-SD49225XA-HNR(25× PTZ).jpg", price: 95000 },
+      { brand: "Dahua", model: "XVR1B04H (4ch XVR)", category: "surveillance", img: "surveillance/DAHUA-XVR1B04H(4ch XVR).jpg", price: 14000 },
+      { brand: "Dahua", model: "XVR1B08H (8ch XVR)", category: "surveillance", img: "surveillance/DAHUA-XVR1B08H(8ch XVR).jpg", price: 19000 },
+      { brand: "Dahua", model: "XVR1B16H (16ch XVR)", category: "surveillance", img: "surveillance/DAHUA-XVR1B16H(16ch XVR).jpg", price: 28000 },
+      { brand: "Hikvision", model: "DS-2CD1T23G0-I (2MP Bullet IR 30m)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1T23G0-I(2MP Bullet IR 30m).jpg", price: 8200 },
+      { brand: "Hikvision", model: "DS-2CD2T43G0-I5 (4MP Bullet IR 50m)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD2T43G0-I5(4MP Bullet IR 50m).jpg", price: 16500 },
+      { brand: "Hikvision", model: "DS-2CD1023G0E-I (2MP IP Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1023G0E-I(2MP IP Bullet).jpg", price: 9500 },
+      { brand: "Hikvision", model: "DS-2CD1043G0-I (4MP Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1043G0-I(4MP Bullet).jpg", price: 15000 },
+      { brand: "Hikvision", model: "DS-2CD1123G0E-I (2MP IP Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1123G0E-I(2MP IP Dome).jpg", price: 9800 },
+      { brand: "Hikvision", model: "DS-2CD1143G0-IUF (4MP Audio Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1143G0-IUF(4MP Audio Dome).jpg", price: 18000 },
+      { brand: "Hikvision", model: "DS-2CD1323G0-IUF (2MP Audio Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1323G0-IUF(2MP Audio Dome).jpg", price: 13500 },
+      { brand: "Hikvision", model: "DS-2CD1343G0-I (4MP Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1343G0-I(4MP Dome).jpg", price: 14500 },
+      { brand: "Hikvision", model: "DS-2CE10DFT-F (Full Color Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE10DFT-F(Full Color Bullet).jpg", price: 12000 },
+      { brand: "Hikvision", model: "DS-2CE16D0T-IRF (2MP Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE16D0T-IRF(2MP Bullet).jpg", price: 7200 },
+      { brand: "Hikvision", model: "DS-2CE16H0T-ITF (4MP Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE16H0T-ITF(4MP Bullet).jpg", price: 11000 },
+      { brand: "Hikvision", model: "DS-2CE56D0T-IRF (2MP Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE56D0T-IRF(2MP Dome).jpg", price: 7000 },
+      { brand: "Hikvision", model: "DS-2CE56H0T-ITPF (4MP Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE56H0T-ITPF(4MP Dome).jpg", price: 10500 },
+      { brand: "Hikvision", model: "DS-2CE76D0T-EXIPF (Full Color Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE76D0T-EXIPF(Full Color Dome).jpg", price: 14000 },
+      { brand: "Hikvision", model: "DS-2DE7A425IW-AEB (DarkFighter PTZ)", category: "surveillance", img: "surveillance/HIKVISION-DS-2DE7A425IW-AEB(DarkFighter PTZ).jpg", price: 198000 },
+      { brand: "Hikvision", model: "DS-2DE2204IW-DE3 (4MP Mini PTZ 4×)", category: "surveillance", img: "surveillance/HIKVISION-DS-2DE2204IW-DE3(4MP Mini PTZ 4×).jpg", price: 42000 },
+      { brand: "Hikvision", model: "DS-2DE5425IW-AE (4MP PTZ 25×)", category: "surveillance", img: "surveillance/HIKVISION-DS-2DE5425IW-AE(4MP PTZ 25×).jpg", price: 120000 },
+      { brand: "Hikvision", model: "DS-3E0105P-E (4-Port PoE)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0105P-E(4-Port PoE).jpg", price: 9000 },
+      { brand: "Hikvision", model: "DS-3E0109P-E (8-Port PoE)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0109P-E(8-Port PoE).jpg", price: 13000 },
+      { brand: "Hikvision", model: "DS-3E0310P-E-M (8-Port Uplink)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0310P-E-M(8-Port-Uplink).jpg", price: 15000 },
+      { brand: "Hikvision", model: "DS-3E0318P-E-M (16-Port PoE)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0318P-E-M(16-Port PoE).jpg", price: 21000 },
+      { brand: "Hikvision", model: "DS-3E0526P-SI (24-Port PoE)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0526P-SI(24-Port PoE).jpg", price: 32000 },
+      { brand: "Hikvision", model: "DS-7104HGHI-K1 (4ch DVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7104HGHI-K1(4ch DVR).jpg", price: 16000 },
+      { brand: "Hikvision", model: "DS-7104NI-Q1-M (4ch NVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7104NI-Q1-M(4ch NVR).jpg", price: 18000 },
+      { brand: "Hikvision", model: "DS-7108HGHI-K1 (8ch DVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7108HGHI-K1(8ch DVR).jpg", price: 19000 },
+      { brand: "Hikvision", model: "DS-7108NI-Q1-M (8ch NVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7108NI-Q1-M(8ch NVR).jpg", price: 22000 },
+      { brand: "Hikvision", model: "DS-7116HGHI-K1 (16ch DVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7116HGHI-K1(16ch DVR).jpg", price: 26000 },
+      { brand: "Hikvision", model: "DS-7208HQHI-K1 (8ch HQ Pro DVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7208HQHI-K1(8ch HQ Pro DVR).jpg", price: 30000 },
+      { brand: "Hikvision", model: "DS-7616NI-K2 (16ch NVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7616NI-K2(16ch NVR).jpg", price: 38000 },
+      { brand: "Hikvision", model: "DS-7732NI-K4 (32ch NVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7732NI-K4(32ch NVR).jpg", price: 62000 },
+      { brand: "Mikrotik", model: "4-Port PoE", category: "surveillance", img: "surveillance/Mikrotik-4-Port-PoE.jpg", price: 10500 },
+      { brand: "Mikrotik", model: "8-Port PoE", category: "surveillance", img: "surveillance/Mikrotik-8-Port-PoE.jpg", price: 14000 },
+      { brand: "Mikrotik", model: "16-Port PoE", category: "surveillance", img: "surveillance/Mikrotik-16-Port-PoE.jpg", price: 24000 },
+      { brand: "Mikrotik", model: "24-Port PoE Rackmount", category: "surveillance", img: "surveillance/Mikrotik-24-Port-PoE-Rackmount.jpg", price: 38000 },
+      { brand: "WD", model: "Purple 1TB Surveillance HDD", category: "surveillance", img: "surveillance/WD-Purple-1TB.jpg", price: 7500 },
+      { brand: "WD", model: "Purple 2TB Surveillance HDD", category: "surveillance", img: "surveillance/WD-Purple-2TB.jpg", price: 11000 },
+      { brand: "WD", model: "Purple 3TB Surveillance HDD", category: "surveillance", img: "surveillance/WD-Purple-3TB.jpg", price: 15000 },
+      { brand: "WD", model: "Purple 4TB Surveillance HDD", category: "surveillance", img: "surveillance/WD-Purple-4TB.jpg", price: 19000 },
+
+      // ✅ SMART CAMERAS
+      { brand: "Imou", name: "Cell Go Solar Camera", category: "smart-cameras", price: 15500, img: "smart-cameras/Imou-Cell-Go-Solar-Camera.jpg" },
+      { brand: "Imou", name: "Cruiser 4G Solar Kit", category: "smart-cameras", price: 18500, img: "smart-cameras/Imou-Cruiser-4G-Solar-Kit.jpg" },
+      { brand: "Hikvision", name: "Solar 4G Camera DS-2XS6A25G0", category: "smart-cameras", price: 32500, img: "smart-cameras/Hikvision-Solar-4G-Camera-DS-2XS6A25G0.jpg" },
+      { brand: "Generic", name: "Generic 4G Solar PTZ Camera", category: "smart-cameras", price: 8500, img: "smart-cameras/Generic-4G-Solar-PTZ-Camera.jpg" },
+      { brand: "Generic", name: "WiFi Solar Camera", category: "smart-cameras", price: 6500, img: "smart-cameras/Generic-WiFi-Solar-Camera.jpg" },
+      { brand: "Eufy", name: "SoloCam S220 Solar", category: "smart-cameras", price: 21500, img: "smart-cameras/Eufy-SoloCam-S220-Solar.jpg" },
+      { brand: "Eufy", name: "SoloCam S230 Solar Spotlight", category: "smart-cameras", price: 26500, img: "smart-cameras/Eufy-SoloCam-S230-Solar-Spotlight.jpg" },
+      { brand: "Eufy", name: "Cam 2C Kit (2 Cam + HomeBase 2)", category: "smart-cameras", price: 45500, img: "smart-cameras/Eufy-Cam-2C-Kit(2Cameras-HomeBase 2).jpg" },
+      { brand: "Eufy", name: "Cam 3 Kit (2 Cam + HomeBase 3)", category: "smart-cameras", price: 82500, img: "smart-cameras/Eufy-Cam-3-Kit(2Cameras-HomeBase 3).jpg" },
+      { brand: "Eufy", name: "Video Doorbell 2K Battery", category: "smart-cameras", price: 22500, img: "smart-cameras/Eufy-Video-Doorbell-2K-Battery.jpg" },
+      { brand: "Eufy", name: "Video Doorbell S330", category: "smart-cameras", price: 35500, img: "smart-cameras/Eufy-Video-Doorbell-S330.jpg" },
+      { brand: "Google", name: "Nest Cam Battery", category: "smart-cameras", price: 29500, img: "smart-cameras/Google-Nest-Cam-Battery.jpg" },
+      { brand: "Google", name: "Nest Cam Wired Indoor", category: "smart-cameras", price: 17500, img: "smart-cameras/Google-Nest-Cam-Wired-Indoor.jpg" },
+      { brand: "Google", name: "Nest Doorbell Battery", category: "smart-cameras", price: 28500, img: "smart-cameras/Google-NestDoorbell-Battery.jpg" },
+      { brand: "Google", name: "Nest Doorbell Wired", category: "smart-cameras", price: 26500, img: "smart-cameras/Google-NestDoorbell-Wired.jpg" },
+      { brand: "TP-Link", name: "Tapo C200", category: "smart-cameras", price: 9000, img: "smart-cameras/TP-Link-Tapo-C200.jpg" },
+      { brand: "TP-Link", name: "Tapo C210", category: "smart-cameras", price: 8500, img: "smart-cameras/TP-Link-Tapo-C210.jpg" },
+      { brand: "TP-Link", name: "Tapo C225", category: "smart-cameras", price: 11500, img: "smart-cameras/TP-Link-Tapo-C225.jpg" },
+      { brand: "Imou", name: "Ranger 2C", category: "smart-cameras", price: 8500, img: "smart-cameras/Imou-Ranger-2C.jpg" },
+      { brand: "Imou", name: "Ranger 2", category: "smart-cameras", price: 9500, img: "smart-cameras/Imou-Ranger-2.jpg" },
+      { brand: "Ezviz", name: "C6N", category: "smart-cameras", price: 7500, img: "smart-cameras/Ezviz-C6N.jpg" },
+      { brand: "Ezviz", name: "C6", category: "smart-cameras", price: 12500, img: "smart-cameras/Ezviz-C6.jpg" },
+      { brand: "Generic", name: "1080p WiFi Nanny Cam", category: "smart-cameras", price: 4500, img: "smart-cameras/Generic-1080p-WiFi-Nanny-Cam.jpg" },
+      { brand: "Generic", name: "360° Lightbulb Camera", category: "smart-cameras", price: 3800, img: "smart-cameras/360°Lightbulb-Camera.jpg" },
 
       // ✅ ACCESS CONTROLS
       { brand: "Hikvision", model: "DS-KV8113-WME1", type: "Premium Outdoor Station", price: 22500, category: "access-controls", img: "access-controls/DS-KV8113-WME1(Premium WiFi + PoE Outdoor Station).jpg" },
@@ -298,33 +302,32 @@
       { brand: "Dahua", model: "DHI-KTP02", type: "WiFi Intercom Kit", price: 27000, category: "access-controls", img: "access-controls/DHI-KTP02-Dahua-WiFi-Intercom-Kit.jpg" },
       { brand: "ZKTeco", model: "MB160", type: "Face + Fingerprint", price: 29500, category: "access-controls", img: "access-controls/ZKTeco-MB160(Face + Fingerprint).jpg" },
       { brand: "Generic", model: "180kg Magnetic Lock", type: "Magnetic Lock", price: 4500, category: "access-controls", img: "access-controls/180kg-Magnetic-Lock.jpg" },
-      // ✅ GENERIC SECURITY SYSTEMS
-   {
-  brand: "Morel Techs",
-  name: "IP Camera Bundle",
-  type: "Complete CCTV Kit",
-  price: "From KES 45,000",
-  category: "security",
-  img: "surveillance/HIKVISION-DS-2CD2T43G0-I5(4MP Bullet IR 50m).jpg" // Real image
-},
-{
-  brand: "Morel Techs",
-  name: "NVR + 4 Camera",
-  type: "Professional Kit",
-  price: 78000,
-  category: "security",
-  img: "surveillance/HIKVISION-DS-7108NI-Q1-M(8ch NVR).jpg" // Real NVR image
-},
-{
-  brand: "Morel Techs",
-  name: "Smart Alarm Panel",
-  type: "Intrusion Detection",
-  price: 35000,
-  category: "security",
-  img: "access-controls/ZKTeco-F22(Fingerprint + WiFi + RFID).jpg" // Use smart lock panel as proxy
-},
-  
 
+      // ✅ GENERIC SECURITY SYSTEMS
+      {
+        brand: "Morel Techs",
+        name: "IP Camera Bundle",
+        type: "Complete CCTV Kit",
+        price: "From KES 45,000",
+        category: "security",
+        img: "surveillance/HIKVISION-DS-2CD2T43G0-I5(4MP Bullet IR 50m).jpg"
+      },
+      {
+        brand: "Morel Techs",
+        name: "NVR + 4 Camera",
+        type: "Professional Kit",
+        price: 78000,
+        category: "security",
+        img: "surveillance/HIKVISION-DS-7108NI-Q1-M(8ch NVR).jpg"
+      },
+      {
+        brand: "Morel Techs",
+        name: "Smart Alarm Panel",
+        type: "Intrusion Detection",
+        price: 35000,
+        category: "security",
+        img: "access-controls/ZKTeco-F22(Fingerprint + WiFi + RFID).jpg"
+      }
     ];
 
     // Group by brand
@@ -334,6 +337,7 @@
       brands[item.brand].push(item);
     });
 
+    // DOM
     const brandGrid = document.getElementById('brandGrid');
     const modelSearch = document.getElementById('modelSearch');
     const brandFilter = document.getElementById('brandFilter');
@@ -385,14 +389,11 @@
               <ul class="specs-list mt-3 space-y-1">
                 <li>• ${sample.model || sample.name || ''}</li>
                 <li>• From KES ${
-                  Math.min(...items.map(i => 
-                    (typeof i.price === 'number') ? i.price : 
-                    (i.price && !isNaN(i.price.replace(/,/g, ''))) ? parseInt(i.price.replace(/,/g, '')) : 999999
-                  )).toLocaleString()
+                  Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 999999)).toLocaleString()
                 }</li>
               </ul>
               <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
-                      onclick="showFullDetails('${brand}')">
+                      onclick="showFullDetails('${brand}', document.getElementById('typeFilter').value)">
                 View All Models
               </button>
             </div>
@@ -403,9 +404,29 @@
     }
 
     // Show modal
-    function showFullDetails(brand) {
-      const items = brands[brand];
-      let content = `<h3 class="text-xl font-semibold mb-4">All ${brand} Security Products</h3><div class="space-y-4">`;
+    function showFullDetails(brand, categoryFilter) {
+      let items = brands[brand];
+
+      // 🔑 FILTER BY CATEGORY IF ACTIVE
+      if (categoryFilter) {
+        items = items.filter(item => item.category === categoryFilter);
+      }
+
+      if (items.length === 0) {
+        alert("No products found for this selection.");
+        return;
+      }
+
+      let content = `<h3 class="text-xl font-semibold mb-4">All ${brand} ${
+        categoryFilter 
+          ? categoryFilter
+              .replace('surveillance', 'Surveillance')
+              .replace('smart-cameras', 'Smart Cameras')
+              .replace('access-controls', 'Access Control')
+              .replace('security', 'Security Systems')
+          : 'Security Products'
+      }</h3><div class="space-y-4">`;
+
       items.forEach(item => {
         let meta = '';
         if (item.category === 'surveillance') meta = item.type || 'CCTV System';
@@ -428,7 +449,7 @@
       });
       content += `</div>`;
 
-      modalTitle.textContent = brand + " Security";
+      modalTitle.textContent = brand + (categoryFilter ? ` – ${categoryFilter.replace(/-/g,' ').replace(/\b\w/g,l=>l.toUpperCase())}` : ' Security');
       modalContent.innerHTML = content;
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
@@ -470,7 +491,7 @@
       el.addEventListener('input', applyFilters);
     });
 
-    // Mobile filter toggle
+    // Mobile filters
     openFilters.addEventListener('click', () => {
       document.getElementById('filterSidebar').classList.add('active');
       filterOverlay.classList.add('active');
