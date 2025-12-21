@@ -7,7 +7,7 @@
   <meta name="description" content="Home theater receivers, soundbars, speakers, subwoofers & wireless audio from Denon, Yamaha, Sony, JBL, Bose & more."/>
   <link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href=" https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-page: #f8fafc;
@@ -118,7 +118,7 @@
 <body class="text-slate-800">
   <nav class="bg-slate-900 text-white fixed w-full top-0 z-50 shadow-md">
     <div class="container mx-auto px-4 py-3">
-      <a href="../index.html" class="text-lg font-semibold">← Back to Catalog</a>
+      <a href="../#products" class="text-lg font-semibold">← Back to Catalog</a>
     </div>
   </nav>
 
@@ -205,132 +205,134 @@
   <script>
     // ===== AUDIO PRODUCTS =====
     const audioProducts = [
-             // 🎧 AV RECEIVERS
-            { name: "Sony STR-DH190", brand: "Sony", model: "STR-DH190", channels: "Stereo", price: 66995, category: "av-receivers", img: "AV.Receivers/Sony-STR-DH190(Stereo).jpg" },
-            { name: "Sony STR-DH590", brand: "Sony", model: "STR-DH590", channels: "5.2ch", price: 90995, category: "av-receivers", img: "AV.Receivers/Sony-STR-DH590(5.2ch).jpg" },
-            { name: "Denon AVR-S540BT", brand: "Denon", model: "AVR-S540BT", channels: "5.2ch", price: 80995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S540BT(5.2ch).jpg" },
-            { name: "Denon AVR-S570BT", brand: "Denon", model: "AVR-S570BT", channels: "5.2ch", price: 89995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S570BT(5.2ch).jpg" },
-            { name: "Onkyo TX-SR393", brand: "Onkyo", model: "TX-SR393", channels: "5.2ch", price: 86995, category: "av-receivers", img: "AV.Receivers/Onkyo-TX-SR393(5.2ch).jpg" },
-           {
-  name: "Onkyo TX-SR494",
-  brand: "Onkyo",
-  model: "TX-SR494",
-  category: "av-receivers",
-  channels: "5.2ch",
-  price: 94995,
-  img: "AV.Receivers/Onkyo-TX-SR494(5.2ch).jpg",
-  desc: "A premium 5.2-channel home theater receiver with full 4K/120Hz HDMI 2.1 support, Dolby Atmos & DTS:X decoding, and 80W per channel of clean, dynamic power. Features Wi-Fi, Bluetooth, Chromecast built-in, and voice control (Google Assistant, Alexa). Perfect for immersive movie nights, gaming (ALLM, VRR), and multi-room audio. Includes dual subwoofer outputs for deeper, balanced bass."
-},
-            {
-  name: "Pioneer VSX-330",
-  brand: "Pioneer",
-  model: "VSX-330",
-  category: "av-receivers",
-  channels: "5.1ch",
-  price: 68995,
-  img: "AV.Receivers/Pioneer-VSX-330(5.1ch).jpg",
-  desc: "An affordable yet powerful 5.1-channel AV receiver with full 4K HDR passthrough, Bluetooth streaming, and Pioneer’s MCACC auto room calibration for optimized sound. Delivers 130W per channel for punchy, clear audio. Great for compact living rooms or first-time home theater setups. Easy setup with HDMI ARC and smartphone app control."
-},
-            { name: "Pioneer VSX-534", brand: "Pioneer", model: "VSX-534", channels: "5.2ch", price: 94995, category: "av-receivers", img: "AV.Receivers/PioneerVSX-534(5.2ch).jpg" },
-            { name: "Denon AVR-S660H", brand: "Denon", model: "AVR-S660H", channels: "5.2ch", price: 107995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S660H(5.2ch).jpg" },
-            { name: "Denon AVR-S760H", brand: "Denon", model: "AVR-S760H", channels: "7.2ch", price: 124995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S760H(7.2ch).jpg" },
-            { name: "Denon AVR-S960H", brand: "Denon", model: "AVR-S960H", channels: "7.2ch", price: 139995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S960H(7.2ch).jpg" },
-            { name: "Onkyo TX-NR5100", brand: "Onkyo", model: "TX-NR5100", channels: "7.2ch", price: 142995, category: "av-receivers", img: "AV.Receivers/Onkyo-TX-NR5100(7.2ch).jpg" },
-            { name: "Onkyo TX-NR6100", brand: "Onkyo", model: "TX-NR6100", channels: "7.2ch", price: 163995, category: "av-receivers", img: "AV.Receivers/Onkyo-TX-NR6100(7.2ch).jpg" },
-            { name: "Pioneer VSX-834", brand: "Pioneer", model: "VSX-834", channels: "7.2ch", price: 133995, category: "av-receivers", img: "AV.Receivers/Pioneer-VSX-834(7.2ch).jpg" },
-            { name: "Pioneer VSX-LX103", brand: "Pioneer", model: "VSX-LX103", channels: "7.2ch", price: 154995, category: "av-receivers", img: "AV.Receivers/Pioneer-VSX-LX103(7.2ch).jpg" },
-            { name: "Yamaha RX-V4A", brand: "Yamaha", model: "RX-V4A", channels: "5.2ch", price: 127995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-V4A(5.2ch).jpg" },
-            { name: "Yamaha RX-V6A", brand: "Yamaha", model: "RX-V6A", channels: "7.2ch", price: 159995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-V6A(7.2ch).jpg" },
-            { name: "Denon AVR-X1600H", brand: "Denon", model: "AVR-X1600H", channels: "7.2ch", price: 147995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X1600H(7.2ch).jpg" },
-            { name: "Denon AVR-X1700H", brand: "Denon", model: "AVR-X1700H", channels: "7.2ch", price: 157995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X1700H(7.2ch).jpg" },
-            { name: "Denon AVR-X2700H", brand: "Denon", model: "AVR-X2700H", channels: "7.2ch", price: 182995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X2700H(7.2ch).jpg" },
-            { name: "Denon AVR-X2800H", brand: "Denon", model: "AVR-X2800H", channels: "7.2ch", price: 198995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X2800H(7.2ch).jpg" },
-            { name: "Denon AVR-X3700H", brand: "Denon", model: "AVR-X3700H", channels: "9.2ch", price: 232995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X3700H(9.2ch).jpg" },
-            { name: "Denon AVR-X3800H", brand: "Denon", model: "AVR-X3800H", channels: "9.4ch", price: 264995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X3800H(9.4ch).jpg" },
-            { name: "Denon AVR-X4700H", brand: "Denon", model: "AVR-X4700H", channels: "9.2ch", price: 282995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X4700H(9.2ch).jpg" },
-            { name: "Denon AVR-X4800H", brand: "Denon", model: "AVR-X4800H", channels: "9.4ch", price: 328995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X4800H(9.4ch).jpg" },
-            { name: "Denon AVR-X6700H", brand: "Denon", model: "AVR-X6700H", channels: "11.2ch", price: 444995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X6700H(11.2ch).jpg" },
-            { name: "Denon AVR-X6800H", brand: "Denon", model: "AVR-X6800H", channels: "11.4ch", price: 498995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X6800H(11.4ch).jpg" },
-            { name: "Marantz NR1510", brand: "Marantz", model: "NR1510", channels: "5.2ch", price: 142995, category: "av-receivers", img: "AV.Receivers/Marantz-NR1510(5.2ch).jpg" },
-            { name: "Marantz SR5015", brand: "Marantz", model: "SR5015", channels: "7.2ch", price: 237995, category: "av-receivers", img: "AV.Receivers/Marantz-SR5015(7.2ch).jpg" },
-            { name: "Marantz SR6015", brand: "Marantz", model: "SR6015", channels: "9.2ch", price: 326995, category: "av-receivers", img: "AV.Receivers/Marantz-SR6015(9.2ch).jpg" },
-            { name: "Marantz SR7015", brand: "Marantz", model: "SR7015", channels: "9.2ch", price: 394995, category: "av-receivers", img: "AV.Receivers/Marantz-SR7015(9.2ch).jpg" },
-            { name: "Pioneer VSX-LX304", brand: "Pioneer", model: "VSX-LX304", channels: "9.2ch", price: 202995, category: "av-receivers", img: "AV.Receivers/Pioneer-VSX-LX304(9.2ch).jpg" },
-            { name: "Pioneer VSX-LX505", brand: "Pioneer", model: "VSX-LX505", channels: "9.2ch", price: 258995, category: "av-receivers", img: "AV.Receivers/Pioneer-VSX-LX505(9.2ch).jpg" },
-            { name: "Yamaha RX-A2A Aventage", brand: "Yamaha", model: "RX-A2A Aventage", channels: "7.2ch", price: 207995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-A2A-Aventage(7.2ch).jpg" },
-            { name: "Yamaha RX-A4A Aventage", brand: "Yamaha", model: "RX-A4A Aventage", channels: "9.2ch", price: 277995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-A4A-Aventage(9.2ch).jpg" },
-            { name: "Yamaha RX-A6A Aventage", brand: "Yamaha", model: "RX-A6A Aventage", channels: "9.2ch", price: 356995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-A6A-Aventage(9.2ch).jpg" },
-            { name: "Yamaha RX-A8A Aventage", brand: "Yamaha", model: "RX-A8A Aventage", channels: "11.2ch", price: 469995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-A8A-Aventage(11.2ch).jpg" },
+      // 🎧 AV RECEIVERS
+      { name: "Sony STR-DH190", brand: "Sony", model: "STR-DH190", channels: "Stereo", price: 66995, category: "av-receivers", img: "AV.Receivers/Sony-STR-DH190(Stereo).jpg" },
+      { name: "Sony STR-DH590", brand: "Sony", model: "STR-DH590", channels: "5.2ch", price: 90995, category: "av-receivers", img: "AV.Receivers/Sony-STR-DH590(5.2ch).jpg" },
+      { name: "Denon AVR-S540BT", brand: "Denon", model: "AVR-S540BT", channels: "5.2ch", price: 80995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S540BT(5.2ch).jpg" },
+      { name: "Denon AVR-S570BT", brand: "Denon", model: "AVR-S570BT", channels: "5.2ch", price: 89995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S570BT(5.2ch).jpg" },
+      { name: "Onkyo TX-SR393", brand: "Onkyo", model: "TX-SR393", channels: "5.2ch", price: 86995, category: "av-receivers", img: "AV.Receivers/Onkyo-TX-SR393(5.2ch).jpg" },
+      {
+        name: "Onkyo TX-SR494",
+        brand: "Onkyo",
+        model: "TX-SR494",
+        category: "av-receivers",
+        channels: "5.2ch",
+        price: 94995,
+        img: "AV.Receivers/Onkyo-TX-SR494(5.2ch).jpg",
+        desc: "A premium 5.2-channel home theater receiver with full 4K/120Hz HDMI 2.1 support, Dolby Atmos & DTS:X decoding, and 80W per channel of clean, dynamic power. Features Wi-Fi, Bluetooth, Chromecast built-in, and voice control (Google Assistant, Alexa). Perfect for immersive movie nights, gaming (ALLM, VRR), and multi-room audio. Includes dual subwoofer outputs for deeper, balanced bass."
+      },
+      {
+        name: "Pioneer VSX-330",
+        brand: "Pioneer",
+        model: "VSX-330",
+        category: "av-receivers",
+        channels: "5.1ch",
+        price: 68995,
+        img: "AV.Receivers/Pioneer-VSX-330(5.1ch).jpg",
+        desc: "An affordable yet powerful 5.1-channel AV receiver with full 4K HDR passthrough, Bluetooth streaming, and Pioneer’s MCACC auto room calibration for optimized sound. Delivers 130W per channel for punchy, clear audio. Great for compact living rooms or first-time home theater setups. Easy setup with HDMI ARC and smartphone app control."
+      },
+      { name: "Pioneer VSX-534", brand: "Pioneer", model: "VSX-534", channels: "5.2ch", price: 94995, category: "av-receivers", img: "AV.Receivers/PioneerVSX-534(5.2ch).jpg" },
+      { name: "Denon AVR-S660H", brand: "Denon", model: "AVR-S660H", channels: "5.2ch", price: 107995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S660H(5.2ch).jpg" },
+      { name: "Denon AVR-S760H", brand: "Denon", model: "AVR-S760H", channels: "7.2ch", price: 124995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S760H(7.2ch).jpg" },
+      { name: "Denon AVR-S960H", brand: "Denon", model: "AVR-S960H", channels: "7.2ch", price: 139995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S960H(7.2ch).jpg" },
+      { name: "Onkyo TX-NR5100", brand: "Onkyo", model: "TX-NR5100", channels: "7.2ch", price: 142995, category: "av-receivers", img: "AV.Receivers/Onkyo-TX-NR5100(7.2ch).jpg" },
+      { name: "Onkyo TX-NR6100", brand: "Onkyo", model: "TX-NR6100", channels: "7.2ch", price: 163995, category: "av-receivers", img: "AV.Receivers/Onkyo-TX-NR6100(7.2ch).jpg" },
+      { name: "Pioneer VSX-834", brand: "Pioneer", model: "VSX-834", channels: "7.2ch", price: 133995, category: "av-receivers", img: "AV.Receivers/Pioneer-VSX-834(7.2ch).jpg" },
+      { name: "Pioneer VSX-LX103", brand: "Pioneer", model: "VSX-LX103", channels: "7.2ch", price: 154995, category: "av-receivers", img: "AV.Receivers/Pioneer-VSX-LX103(7.2ch).jpg" },
+      { name: "Yamaha RX-V4A", brand: "Yamaha", model: "RX-V4A", channels: "5.2ch", price: 127995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-V4A(5.2ch).jpg" },
+      { name: "Yamaha RX-V6A", brand: "Yamaha", model: "RX-V6A", channels: "7.2ch", price: 159995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-V6A(7.2ch).jpg" },
+      { name: "Denon AVR-X1600H", brand: "Denon", model: "AVR-X1600H", channels: "7.2ch", price: 147995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X1600H(7.2ch).jpg" },
+      { name: "Denon AVR-X1700H", brand: "Denon", model: "AVR-X1700H", channels: "7.2ch", price: 157995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X1700H(7.2ch).jpg" },
+      { name: "Denon AVR-X2700H", brand: "Denon", model: "AVR-X2700H", channels: "7.2ch", price: 182995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X2700H(7.2ch).jpg" },
+      { name: "Denon AVR-X2800H", brand: "Denon", model: "AVR-X2800H", channels: "7.2ch", price: 198995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X2800H(7.2ch).jpg" },
+      { name: "Denon AVR-X3700H", brand: "Denon", model: "AVR-X3700H", channels: "9.2ch", price: 232995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X3700H(9.2ch).jpg" },
+      { name: "Denon AVR-X3800H", brand: "Denon", model: "AVR-X3800H", channels: "9.4ch", price: 264995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X3800H(9.4ch).jpg" },
+      { name: "Denon AVR-X4700H", brand: "Denon", model: "AVR-X4700H", channels: "9.2ch", price: 282995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X4700H(9.2ch).jpg" },
+      { name: "Denon AVR-X4800H", brand: "Denon", model: "AVR-X4800H", channels: "9.4ch", price: 328995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X4800H(9.4ch).jpg" },
+      { name: "Denon AVR-X6700H", brand: "Denon", model: "AVR-X6700H", channels: "11.2ch", price: 444995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X6700H(11.2ch).jpg" },
+      { name: "Denon AVR-X6800H", brand: "Denon", model: "AVR-X6800H", channels: "11.4ch", price: 498995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X6800H(11.4ch).jpg" },
+      { name: "Marantz NR1510", brand: "Marantz", model: "NR1510", channels: "5.2ch", price: 142995, category: "av-receivers", img: "AV.Receivers/Marantz-NR1510(5.2ch).jpg" },
+      { name: "Marantz SR5015", brand: "Marantz", model: "SR5015", channels: "7.2ch", price: 237995, category: "av-receivers", img: "AV.Receivers/Marantz-SR5015(7.2ch).jpg" },
+      { name: "Marantz SR6015", brand: "Marantz", model: "SR6015", channels: "9.2ch", price: 326995, category: "av-receivers", img: "AV.Receivers/Marantz-SR6015(9.2ch).jpg" },
+      { name: "Marantz SR7015", brand: "Marantz", model: "SR7015", channels: "9.2ch", price: 394995, category: "av-receivers", img: "AV.Receivers/Marantz-SR7015(9.2ch).jpg" },
+      { name: "Pioneer VSX-LX304", brand: "Pioneer", model: "VSX-LX304", channels: "9.2ch", price: 202995, category: "av-receivers", img: "AV.Receivers/Pioneer-VSX-LX304(9.2ch).jpg" },
+      { name: "Pioneer VSX-LX505", brand: "Pioneer", model: "VSX-LX505", channels: "9.2ch", price: 258995, category: "av-receivers", img: "AV.Receivers/Pioneer-VSX-LX505(9.2ch).jpg" },
+      { name: "Yamaha RX-A2A Aventage", brand: "Yamaha", model: "RX-A2A Aventage", channels: "7.2ch", price: 207995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-A2A-Aventage(7.2ch).jpg" },
+      { name: "Yamaha RX-A4A Aventage", brand: "Yamaha", model: "RX-A4A Aventage", channels: "9.2ch", price: 277995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-A4A-Aventage(9.2ch).jpg" },
+      { name: "Yamaha RX-A6A Aventage", brand: "Yamaha", model: "RX-A6A Aventage", channels: "9.2ch", price: 356995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-A6A-Aventage(9.2ch).jpg" },
+      { name: "Yamaha RX-A8A Aventage", brand: "Yamaha", model: "RX-A8A Aventage", channels: "11.2ch", price: 469995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-A8A-Aventage(11.2ch).jpg" },
 
       // SOUNDBARS
       { brand: "JBL", name: "Bar 1000", type: "7.1.4", price: 98000, category: "soundbars", img: "soundbars/JBL-Bar-1000(7.1.4).jpg" },
       { brand: "Bose", name: "Smart Soundbar 900", type: "Dolby Atmos", price: 196000, category: "soundbars", img: "soundbars/Bose-Smart-Soundbar-900.jpg" },
       { brand: "Sony", name: "HT-A5000", type: "5.1.2", price: 167000, category: "soundbars", img: "soundbars/Sony-HT-A5000.jpg" },
       { brand: "Samsung", name: "HW-Q800B", type: "3.1.2", price: 100000, category: "soundbars", img: "soundbars/Samsung-HW-Q800B.jpg" },
-            // ✅ SUBWOOFERS & BASS SPEAKERS
-            { brand: "Harman Kardon", model: "Onyx Studio 6", type: "Wireless Speaker", price: 40000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Onyx-Studio.jpg", status: "Public Listing" },
-            { brand: "Harman Kardon", model: "Onyx Studio 7", type: "Wireless Speaker", price: 48000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Onyx-Studio-7.jpg", status: "Public Listing" },
-            { brand: "Harman Kardon", model: "Onyx Studio 8", type: "Wireless Speaker", price: 59000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Onyx-Studio-8.jpg", status: "Public Listing" },
-            { brand: "Harman Kardon", model: "Aura Studio 3", type: "Wireless Speaker", price: 52000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Aura-Studio-3.jpg", status: "Public Listing" },
-            { brand: "Harman Kardon", model: "Aura Studio 4", type: "Wireless Speaker", price: 62000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Aura-Studio-4.jpg", status: "Public Listing" },
-            { brand: "Harman Kardon", model: "Go + Play (2023)", type: "Wireless Speaker", price: 82000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Go-Play(2023).jpg", status: "Public Listing" },
-            { brand: "Harman Kardon", model: "SoundSticks 4", type: "Wireless Speaker", price: 59000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-SoundSticks-4.jpg", status: "Public Listing" },
-            { brand: "Harman Kardon", model: "Citation Sub S", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Citation-Sub-S.jpg", status: "Special Order", condition: "Special Order" },
-            { brand: "Polk Audio", model: "PSW10", type: "Subwoofer", price: 37000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-PSW10.jpg", status: "Public Listing" },
-            { brand: "Polk Audio", model: "PSW111", type: "Subwoofer", price: 46000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-PSW111.jpg", status: "Public Listing" },
-            { brand: "Polk Audio", model: "HTS10", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-HTS-10.jpg", status: "Special Order", condition: "Special Order" },
-            { brand: "Polk Audio", model: "HTS12", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-HTS-12.jpg", status: "Special Order", condition: "Special Order" },
-            { brand: "Polk Audio", model: "Monitor XT10", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-Monitor-XT10.jpg", status: "Special Order", condition: "Special Order" },
-            { brand: "Polk Audio", model: "Monitor XT12", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-Monitor-XT12.jpg", status: "Special Order", condition: "Special Order" },
-            { brand: "Klipsch", model: "R-100SW", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Klipsch-R-100SW.jpg", status: "Special Order", condition: "Special Order" },
-            { brand: "Klipsch", model: "R-120SW", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Klipsch-R-120SW.jpg", status: "Special Order", condition: "Special Order" },
-            { brand: "Klipsch", model: "SPL-100", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Klipsch-SPL-100.jpg", status: "Special Order", condition: "Special Order" },
-            { brand: "Klipsch", model: "SPL-120", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Klipsch-SPL-120.jpg", status: "Special Order", condition: "Special Order" },
-            { brand: "Klipsch", model: "R-41M", type: "Bookshelf Speaker", price: "Contact for Price", category: "bookshelf-speakers", img: "unified-subwoofer-and-bass-speakers/Klipsch-R-41M.jpg", status: "Special Order", condition: "Special Order" },
-            { brand: "Klipsch", model: "R-51M", type: "Bookshelf Speaker", price: "Contact for Price", category: "bookshelf-speakers", img: "unified-subwoofer-and-bass-speakers/Klipsch-R-51M.jpg", status: "Special Order", condition: "Special Order" },
-            { brand: "Klipsch", model: "RP-600M II", type: "Bookshelf Speaker", price: "Contact for Price", category: "bookshelf-speakers", img: "unified-subwoofer-and-bass-speakers/Klipsch-RP-600M-II.jpg", status: "Special Order", condition: "Special Order" },
+
+      // SUBWOOFERS & BASS SPEAKERS
+      { brand: "Harman Kardon", model: "Onyx Studio 6", type: "Wireless Speaker", price: 40000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Onyx-Studio.jpg", status: "Public Listing" },
+      { brand: "Harman Kardon", model: "Onyx Studio 7", type: "Wireless Speaker", price: 48000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Onyx-Studio-7.jpg", status: "Public Listing" },
+      { brand: "Harman Kardon", model: "Onyx Studio 8", type: "Wireless Speaker", price: 59000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Onyx-Studio-8.jpg", status: "Public Listing" },
+      { brand: "Harman Kardon", model: "Aura Studio 3", type: "Wireless Speaker", price: 52000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Aura-Studio-3.jpg", status: "Public Listing" },
+      { brand: "Harman Kardon", model: "Aura Studio 4", type: "Wireless Speaker", price: 62000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Aura-Studio-4.jpg", status: "Public Listing" },
+      { brand: "Harman Kardon", model: "Go + Play (2023)", type: "Wireless Speaker", price: 82000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Go-Play(2023).jpg", status: "Public Listing" },
+      { brand: "Harman Kardon", model: "SoundSticks 4", type: "Wireless Speaker", price: 59000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-SoundSticks-4.jpg", status: "Public Listing" },
+      { brand: "Harman Kardon", model: "Citation Sub S", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Citation-Sub-S.jpg", status: "Special Order", condition: "Special Order" },
+      { brand: "Polk Audio", model: "PSW10", type: "Subwoofer", price: 37000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-PSW10.jpg", status: "Public Listing" },
+      { brand: "Polk Audio", model: "PSW111", type: "Subwoofer", price: 46000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-PSW111.jpg", status: "Public Listing" },
+      { brand: "Polk Audio", model: "HTS10", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-HTS-10.jpg", status: "Special Order", condition: "Special Order" },
+      { brand: "Polk Audio", model: "HTS12", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-HTS-12.jpg", status: "Special Order", condition: "Special Order" },
+      { brand: "Polk Audio", model: "Monitor XT10", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-Monitor-XT10.jpg", status: "Special Order", condition: "Special Order" },
+      { brand: "Polk Audio", model: "Monitor XT12", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-Monitor-XT12.jpg", status: "Special Order", condition: "Special Order" },
+      { brand: "Klipsch", model: "R-100SW", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Klipsch-R-100SW.jpg", status: "Special Order", condition: "Special Order" },
+      { brand: "Klipsch", model: "R-120SW", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Klipsch-R-120SW.jpg", status: "Special Order", condition: "Special Order" },
+      { brand: "Klipsch", model: "SPL-100", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Klipsch-SPL-100.jpg", status: "Special Order", condition: "Special Order" },
+      { brand: "Klipsch", model: "SPL-120", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Klipsch-SPL-120.jpg", status: "Special Order", condition: "Special Order" },
+      { brand: "Klipsch", model: "R-41M", type: "Bookshelf Speaker", price: "Contact for Price", category: "bookshelf-speakers", img: "unified-subwoofer-and-bass-speakers/Klipsch-R-41M.jpg", status: "Special Order", condition: "Special Order" },
+      { brand: "Klipsch", model: "R-51M", type: "Bookshelf Speaker", price: "Contact for Price", category: "bookshelf-speakers", img: "unified-subwoofer-and-bass-speakers/Klipsch-R-51M.jpg", status: "Special Order", condition: "Special Order" },
+      { brand: "Klipsch", model: "RP-600M II", type: "Bookshelf Speaker", price: "Contact for Price", category: "bookshelf-speakers", img: "unified-subwoofer-and-bass-speakers/Klipsch-RP-600M-II.jpg", status: "Special Order", condition: "Special Order" },
 
       // BOOKSHELF SPEAKERS (Special Order)
       { brand: "Klipsch", name: "RP-600M II", type: "Bookshelf Speaker", price: "Contact for Price", category: "bookshelf-speakers", img: "unified-subwoofer-and-bass-speakers/Klipsch-RP-600M-II.jpg", condition: "Special Order" },
-                  // 🎧 WIRELESS AUDIO
-            { brand: "Harman Kardon", model: "Onyx Studio 6", type: "Wireless Speaker", price: 40000, category: "wireless-audio", img: "master-wireless-audio/Onyx-Studio-6.jpg" },
-            { brand: "Harman Kardon", model: "Onyx Studio 7", type: "Wireless Speaker", price: 47000, category: "wireless-audio", img: "master-wireless-audio/Onyx-Studio-7.jpg" },
-            { brand: "Harman Kardon", model: "Onyx Studio 8", type: "Wireless Speaker", price: 56000, category: "wireless-audio", img: "master-wireless-audio/Onyx-Studio-8.jpg" },
-            { brand: "Harman Kardon", model: "Aura Studio 3", type: "Wireless Speaker", price: 52000, category: "wireless-audio", img: "master-wireless-audio/Aura-Studio-3.jpg" },
-            { brand: "Harman Kardon", model: "Aura Studio 4", type: "Wireless Speaker", price: 66000, category: "wireless-audio", img: "master-wireless-audio/Aura-Studio-4.jpg" },
-            { brand: "Harman Kardon", model: "Go + Play (2023)", type: "Wireless Speaker", price: 79000, category: "wireless-audio", img: "master-wireless-audio/Go-Play(2023).jpg" },
-            { brand: "Harman Kardon", model: "SoundSticks 4", type: "Wireless Speaker", price: 62000, category: "wireless-audio", img: "master-wireless-audio/SoundSticks-4.jpg" },
-            { brand: "JBL", model: "Go 3", type: "Portable Speaker", price: 11000, category: "wireless-audio", img: "master-wireless-audio/Go-3.jpg" },
-            { brand: "JBL", model: "Clip 4", type: "Portable Speaker", price: 13000, category: "wireless-audio", img: "master-wireless-audio/Clip-4.jpg" },
-            { brand: "JBL", model: "Flip 6", type: "Portable Speaker", price: 25000, category: "wireless-audio", img: "master-wireless-audio/Flip-6.jpg" },
-            { brand: "JBL", model: "Charge 5", type: "Portable Speaker", price: 30000, category: "wireless-audio", img: "master-wireless-audio/Charge-5.jpg" },
-            { brand: "JBL", model: "Xtreme 3", type: "Portable Speaker", price: 50000, category: "wireless-audio", img: "master-wireless-audio/Xtreme-3.jpg" },
-            { brand: "JBL", model: "Boombox 3", type: "Portable Speaker", price: 79000, category: "wireless-audio", img: "master-wireless-audio/Boombox-3.jpg" },
-            { brand: "JBL", model: "PartyBox 110", type: "Party Speaker", price: 62000, category: "wireless-audio", img: "master-wireless-audio/PartyBox-110.jpg" },
-            { brand: "JBL", model: "PartyBox 310", type: "Party Speaker", price: 92000, category: "wireless-audio", img: "master-wireless-audio/PartyBox-310.jpg" },
-            { brand: "JBL", model: "PartyBox 710", type: "Party Speaker", price: 132000, category: "wireless-audio", img: "master-wireless-audio/PartyBox-710.jpg" },
-            { brand: "JBL", model: "PartyBox 1000", type: "Party Speaker", price: 202000, category: "wireless-audio", img: "master-wireless-audio/PartyBox-1000.jpg" },
-            { brand: "Apple", model: "AirPods Max", type: "Headphones", price: 122000, category: "wireless-audio", img: "master-wireless-audio/Apple-AirPods-Max.jpg" },
-            { brand: "Sony", model: "WH-1000XM4", type: "Headphones", price: 46000, category: "wireless-audio", img: "master-wireless-audio/Sony-WH-1000XM4.jpg" },
-            { brand: "Sony", model: "WH-1000XM5", type: "Headphones", price: 59000, category: "wireless-audio", img: "master-wireless-audio/Sony-WH-1000XM5.jpg" },
-            { brand: "Bose", model: "QuietComfort 45", type: "Headphones", price: 57000, category: "wireless-audio", img: "master-wireless-audio/Bose-QuietComfort-45.jpg" },
-            { brand: "Bose", model: "QuietComfort Ultra", type: "Headphones", price: 75000, category: "wireless-audio", img: "master-wireless-audio/Bose-QuietComfort-Ultra.jpg" },
-            { brand: "JBL", model: "Live 660NC", type: "Headphones", price: 24000, category: "wireless-audio", img: "master-wireless-audio/JBL-Live-660NC.jpg" },
-            { brand: "JBL", model: "Tour One M2", type: "Headphones", price: 44000, category: "wireless-audio", img: "master-wireless-audio/JBL-Tour-One-M2.jpg" },
-            { brand: "Apple", model: "AirPods 2", type: "Earbuds", price: 28000, category: "wireless-audio", img: "master-wireless-audio/Apple-AirPods-2.jpg" },
-            { brand: "Apple", model: "AirPods 3", type: "Earbuds", price: 36000, category: "wireless-audio", img: "master-wireless-audio/AirPods-3.jpg" },
-            { brand: "Apple", model: "AirPods Pro 2", type: "Earbuds", price: 53000, category: "wireless-audio", img: "master-wireless-audio/AirPods-Pro-2.jpg" },
-            { brand: "Samsung", model: "Galaxy Buds FE", type: "Earbuds", price: 15000, category: "wireless-audio", img: "master-wireless-audio/Samsung-Galaxy-Buds-FE.jpg" },
-            { brand: "Samsung", model: "Galaxy Buds 2 Pro", type: "Earbuds", price: 28000, category: "wireless-audio", img: "master-wireless-audio/Galaxy-Buds-2-Pro.jpg" },
-            { brand: "JBL", model: "Tune 130NC", type: "Earbuds", price: 15000, category: "wireless-audio", img: "master-wireless-audio/JBL-Tune-130NC.jpg" },
-            { brand: "JBL", model: "Live Pro 2", type: "Earbuds", price: 25000, category: "wireless-audio", img: "master-wireless-audio/JBL-Live-Pro-2.jpg" },
-            { brand: "Sony", model: "WF-C500", type: "Earbuds", price: 16000, category: "wireless-audio", img: "master-wireless-audio/Sony-WF-C500.jpg" },
-            { brand: "Sony", model: "WF-1000XM4", type: "Earbuds", price: 42000, category: "wireless-audio", img: "master-wireless-audio/Sony-WF-1000XM4.jpg" },
-            { brand: "Sony", model: "WF-1000XM5", type: "Earbuds", price: 52000, category: "wireless-audio", img: "master-wireless-audio/Sony-WF-1000XM5.jpg" },
-            { brand: "Sonos", model: "Roam", type: "Premium Speaker", price: 52000, category: "wireless-audio", img: "master-wireless-audio/Sonos-Roam.jpg" },
-            { brand: "Sonos", model: "Move 2", type: "Premium Speaker", price: 99000, category: "wireless-audio", img: "master-wireless-audio/Sonos-Move-2.jpg" },
-            { brand: "Sonos", model: "Era 100", type: "Premium Speaker", price: 59000, category: "wireless-audio", img: "master-wireless-audio/Sonos-Era-100.jpg" },
-            { brand: "Sonos", model: "Era 300", type: "Premium Speaker", price: 96000, category: "wireless-audio", img: "master-wireless-audio/Sonos-Era-300.jpg" },
+
+      // 🎧 WIRELESS AUDIO
+      { brand: "Harman Kardon", model: "Onyx Studio 6", type: "Wireless Speaker", price: 40000, category: "wireless-audio", img: "master-wireless-audio/Onyx-Studio-6.jpg" },
+      { brand: "Harman Kardon", model: "Onyx Studio 7", type: "Wireless Speaker", price: 47000, category: "wireless-audio", img: "master-wireless-audio/Onyx-Studio-7.jpg" },
+      { brand: "Harman Kardon", model: "Onyx Studio 8", type: "Wireless Speaker", price: 56000, category: "wireless-audio", img: "master-wireless-audio/Onyx-Studio-8.jpg" },
+      { brand: "Harman Kardon", model: "Aura Studio 3", type: "Wireless Speaker", price: 52000, category: "wireless-audio", img: "master-wireless-audio/Aura-Studio-3.jpg" },
+      { brand: "Harman Kardon", model: "Aura Studio 4", type: "Wireless Speaker", price: 66000, category: "wireless-audio", img: "master-wireless-audio/Aura-Studio-4.jpg" },
+      { brand: "Harman Kardon", model: "Go + Play (2023)", type: "Wireless Speaker", price: 79000, category: "wireless-audio", img: "master-wireless-audio/Go-Play(2023).jpg" },
+      { brand: "Harman Kardon", model: "SoundSticks 4", type: "Wireless Speaker", price: 62000, category: "wireless-audio", img: "master-wireless-audio/SoundSticks-4.jpg" },
+      { brand: "JBL", model: "Go 3", type: "Portable Speaker", price: 11000, category: "wireless-audio", img: "master-wireless-audio/Go-3.jpg" },
+      { brand: "JBL", model: "Clip 4", type: "Portable Speaker", price: 13000, category: "wireless-audio", img: "master-wireless-audio/Clip-4.jpg" },
+      { brand: "JBL", model: "Flip 6", type: "Portable Speaker", price: 25000, category: "wireless-audio", img: "master-wireless-audio/Flip-6.jpg" },
+      { brand: "JBL", model: "Charge 5", type: "Portable Speaker", price: 30000, category: "wireless-audio", img: "master-wireless-audio/Charge-5.jpg" },
+      { brand: "JBL", model: "Xtreme 3", type: "Portable Speaker", price: 50000, category: "wireless-audio", img: "master-wireless-audio/Xtreme-3.jpg" },
+      { brand: "JBL", model: "Boombox 3", type: "Portable Speaker", price: 79000, category: "wireless-audio", img: "master-wireless-audio/Boombox-3.jpg" },
+      { brand: "JBL", model: "PartyBox 110", type: "Party Speaker", price: 62000, category: "wireless-audio", img: "master-wireless-audio/PartyBox-110.jpg" },
+      { brand: "JBL", model: "PartyBox 310", type: "Party Speaker", price: 92000, category: "wireless-audio", img: "master-wireless-audio/PartyBox-310.jpg" },
+      { brand: "JBL", model: "PartyBox 710", type: "Party Speaker", price: 132000, category: "wireless-audio", img: "master-wireless-audio/PartyBox-710.jpg" },
+      { brand: "JBL", model: "PartyBox 1000", type: "Party Speaker", price: 202000, category: "wireless-audio", img: "master-wireless-audio/PartyBox-1000.jpg" },
+      { brand: "Apple", model: "AirPods Max", type: "Headphones", price: 122000, category: "wireless-audio", img: "master-wireless-audio/Apple-AirPods-Max.jpg" },
+      { brand: "Sony", model: "WH-1000XM4", type: "Headphones", price: 46000, category: "wireless-audio", img: "master-wireless-audio/Sony-WH-1000XM4.jpg" },
+      { brand: "Sony", model: "WH-1000XM5", type: "Headphones", price: 59000, category: "wireless-audio", img: "master-wireless-audio/Sony-WH-1000XM5.jpg" },
+      { brand: "Bose", model: "QuietComfort 45", type: "Headphones", price: 57000, category: "wireless-audio", img: "master-wireless-audio/Bose-QuietComfort-45.jpg" },
+      { brand: "Bose", model: "QuietComfort Ultra", type: "Headphones", price: 75000, category: "wireless-audio", img: "master-wireless-audio/Bose-QuietComfort-Ultra.jpg" },
+      { brand: "JBL", model: "Live 660NC", type: "Headphones", price: 24000, category: "wireless-audio", img: "master-wireless-audio/JBL-Live-660NC.jpg" },
+      { brand: "JBL", model: "Tour One M2", type: "Headphones", price: 44000, category: "wireless-audio", img: "master-wireless-audio/JBL-Tour-One-M2.jpg" },
+      { brand: "Apple", model: "AirPods 2", type: "Earbuds", price: 28000, category: "wireless-audio", img: "master-wireless-audio/Apple-AirPods-2.jpg" },
+      { brand: "Apple", model: "AirPods 3", type: "Earbuds", price: 36000, category: "wireless-audio", img: "master-wireless-audio/AirPods-3.jpg" },
+      { brand: "Apple", model: "AirPods Pro 2", type: "Earbuds", price: 53000, category: "wireless-audio", img: "master-wireless-audio/AirPods-Pro-2.jpg" },
+      { brand: "Samsung", model: "Galaxy Buds FE", type: "Earbuds", price: 15000, category: "wireless-audio", img: "master-wireless-audio/Samsung-Galaxy-Buds-FE.jpg" },
+      { brand: "Samsung", model: "Galaxy Buds 2 Pro", type: "Earbuds", price: 28000, category: "wireless-audio", img: "master-wireless-audio/Galaxy-Buds-2-Pro.jpg" },
+      { brand: "JBL", model: "Tune 130NC", type: "Earbuds", price: 15000, category: "wireless-audio", img: "master-wireless-audio/JBL-Tune-130NC.jpg" },
+      { brand: "JBL", model: "Live Pro 2", type: "Earbuds", price: 25000, category: "wireless-audio", img: "master-wireless-audio/JBL-Live-Pro-2.jpg" },
+      { brand: "Sony", model: "WF-C500", type: "Earbuds", price: 16000, category: "wireless-audio", img: "master-wireless-audio/Sony-WF-C500.jpg" },
+      { brand: "Sony", model: "WF-1000XM4", type: "Earbuds", price: 42000, category: "wireless-audio", img: "master-wireless-audio/Sony-WF-1000XM4.jpg" },
+      { brand: "Sony", model: "WF-1000XM5", type: "Earbuds", price: 52000, category: "wireless-audio", img: "master-wireless-audio/Sony-WF-1000XM5.jpg" },
+      { brand: "Sonos", model: "Roam", type: "Premium Speaker", price: 52000, category: "wireless-audio", img: "master-wireless-audio/Sonos-Roam.jpg" },
+      { brand: "Sonos", model: "Move 2", type: "Premium Speaker", price: 99000, category: "wireless-audio", img: "master-wireless-audio/Sonos-Move-2.jpg" },
+      { brand: "Sonos", model: "Era 100", type: "Premium Speaker", price: 59000, category: "wireless-audio", img: "master-wireless-audio/Sonos-Era-100.jpg" },
+      { brand: "Sonos", model: "Era 300", type: "Premium Speaker", price: 96000, category: "wireless-audio", img: "master-wireless-audio/Sonos-Era-300.jpg" },
 
       // IN-CEILING
       { brand: "Klipsch", name: "CDT-5650-C II", type: "In-Ceiling", size: "6.5\" Pivot", price: 38000, category: "speakers", img: "speakers/Klipsch-CDT-5650-C-II(6.5Pivot).jpg" },
@@ -356,6 +358,15 @@
     const modalTitle = document.getElementById('modalTitle');
     const modalContent = document.getElementById('modalContent');
     const closeModalBtn = document.getElementById('closeModalBtn');
+
+    // 🆕 Helper: Create consistent display name
+    function getDisplayName(item) {
+      if (item.name) return item.name;
+      if (item.model) return `${item.brand} ${item.model}`;
+      if (item.type) return item.type;
+      if (item.channels) return item.channels;
+      return 'Audio Product';
+    }
 
     // Render brand cards
     function renderBrandCards(filteredData = audioProducts) {
@@ -389,7 +400,7 @@
                 `).join('')}
               </div>
               <ul class="specs-list mt-3 space-y-1">
-                <li>• ${sample.name || sample.type || sample.channels || ''}</li>
+                <li>• ${getDisplayName(sample)}</li>
                 <li>• From KES ${
                   Math.min(...items.map(i => 
                     (typeof i.price === 'number') ? i.price : 
@@ -397,7 +408,6 @@
                   )).toLocaleString()
                 }</li>
               </ul>
-              <!-- ✅ FIXED: Pass active type filter to modal -->
               <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
                       onclick="showFullDetails('${brand}', document.getElementById('typeFilter').value)">
                 View All Models
@@ -413,7 +423,6 @@
     function showFullDetails(brand, categoryFilter) {
       let items = brands[brand];
 
-      // 🔑 Filter by category if active
       if (categoryFilter) {
         items = items.filter(item => item.category === categoryFilter);
       }
@@ -446,9 +455,9 @@
         content += `
           <div class="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition">
             <div class="flex gap-4">
-              <img src="../assets/images/${item.img}" alt="${item.name}" class="w-24 h-24 object-cover rounded">
+              <img src="../assets/images/${item.img}" alt="${getDisplayName(item)}" class="w-24 h-24 object-cover rounded">
               <div>
-                <h4 class="font-bold">${item.name}</h4>
+                <h4 class="font-bold">${getDisplayName(item)}</h4>
                 <p class="text-slate-600 text-sm">${typeLabel}${item.type ? ` • ${item.type}` : ''}</p>
                 ${item.condition === 'Special Order' ? 
                   `<p class="mt-2"><span class="inline-block px-2 py-1 rounded text-xs bg-purple-100 text-purple-800">Special Order</span></p>` : ''}
@@ -490,7 +499,7 @@
         if (brandSel && item.brand !== brandSel) return false;
         if (typeSel && item.category !== typeSel) return false;
         if (searchTerm) {
-          const text = [item.name, item.brand, item.type, item.channels].filter(Boolean).join(' ').toLowerCase();
+          const text = [item.name, item.brand, item.model, item.type, item.channels].filter(Boolean).join(' ').toLowerCase();
           if (!text.includes(searchTerm)) return false;
         }
         return true;
