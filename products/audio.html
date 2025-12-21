@@ -3,11 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Audio – Morel Tech Solution</title>
-  <meta name="description" content="Home theater receivers, soundbars, speakers, subwoofers & wireless audio from Denon, Yamaha, Sony, JBL, Bose & more."/>
+  <!-- ✅ SEO-optimized title with location -->
+  <title>Buy Audio Equipment in Kenya – Denon, Yamaha, Bose & More | Morel Tech</title>
+  <!-- ✅ Rich meta description with keywords and location -->
+  <meta name="description" content="Shop Denon AV receivers, Bose soundbars, JBL speakers & Sony headphones in Kenya. Best prices in Nairobi, Nyeri & nationwide. Fast delivery & expert support."/>
   <link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
+  <!-- ✅ FIXED: Removed trailing spaces in CDN URLs -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href=" https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- ✅ STRUCTURED DATA FOR AUDIO CATEGORY -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Store",
+    "name": "Morel Tech Solution",
+    "image": "/assets/images/logo.jpg",
+    "url": "https://moreltech.co.ke",
+    "telephone": "+254700000000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nyeri Town",
+      "addressLocality": "Nyeri",
+      "addressCountry": "KE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -0.4247,
+      "longitude": 36.9455
+    },
+    "productSupported": ["AV Receivers", "Soundbars", "Subwoofers", "Wireless Speakers", "Headphones"]
+  }
+  </script>
+
   <style>
     :root {
       --bg-page: #f8fafc;
@@ -124,6 +152,12 @@
 
   <main class="pt-20 pb-16">
     <div class="container mx-auto px-4">
+      <!-- ✅ Static SEO content for crawlers -->
+      <div class="sr-only">
+        <h1>Buy Audio & Home Entertainment Systems in Kenya</h1>
+        <p>Purchase Denon AVR-X2800H, Bose Soundbar 900, JBL PartyBox and more from Morel Tech Solution. Authorized dealer in Nyeri with nationwide delivery across Kenya including Nairobi, Mombasa & Kisumu.</p>
+      </div>
+
       <div class="flex flex-col lg:flex-row gap-8">
         <!-- FILTER SIDEBAR -->
         <aside class="filter-sidebar" id="filterSidebar">
@@ -204,7 +238,7 @@
 
   <script>
     // ===== AUDIO PRODUCTS =====
-    const audioProducts = [
+ const audioProducts = [
       // 🎧 AV RECEIVERS
       { name: "Sony STR-DH190", brand: "Sony", model: "STR-DH190", channels: "Stereo", price: 66995, category: "av-receivers", img: "AV.Receivers/Sony-STR-DH190(Stereo).jpg" },
       { name: "Sony STR-DH590", brand: "Sony", model: "STR-DH590", channels: "5.2ch", price: 90995, category: "av-receivers", img: "AV.Receivers/Sony-STR-DH590(5.2ch).jpg" },
@@ -339,6 +373,15 @@
       { brand: "Klipsch", name: "CDT-5800-C II", type: "In-Ceiling", size: "8\" Premium", price: 52000, category: "speakers", img: "speakers/Klipsch-CDT-5800-C-II(8Premium).jpg" }
     ];
 
+
+
+    // Ensure every product has a condition (default: "Public Listing")
+    audioProducts.forEach(item => {
+      if (!item.condition) {
+        item.condition = item.price === "Contact for Price" ? "Special Order" : "Public Listing";
+      }
+    });
+
     // Group by brand
     const brands = {};
     audioProducts.forEach(item => {
@@ -346,7 +389,7 @@
       brands[item.brand].push(item);
     });
 
-    // DOM
+    // DOM elements
     const brandGrid = document.getElementById('brandGrid');
     const modelSearch = document.getElementById('modelSearch');
     const brandFilter = document.getElementById('brandFilter');
@@ -359,7 +402,7 @@
     const modalContent = document.getElementById('modalContent');
     const closeModalBtn = document.getElementById('closeModalBtn');
 
-    // 🆕 Helper: Create consistent display name
+    // Helper: Create consistent display name
     function getDisplayName(item) {
       if (item.name) return item.name;
       if (item.model) return `${item.brand} ${item.model}`;
@@ -368,7 +411,6 @@
       return 'Audio Product';
     }
 
-    // Render brand cards
     function renderBrandCards(filteredData = audioProducts) {
       const tempBrands = {};
       filteredData.forEach(item => {
@@ -396,17 +438,17 @@
                   <img src="../assets/images/${img}"
                        class="product-image"
                        loading="lazy"
-                       alt="${brand} Audio">
+                       alt="${brand} ${getDisplayName(sample)}">
                 `).join('')}
               </div>
               <ul class="specs-list mt-3 space-y-1">
                 <li>• ${getDisplayName(sample)}</li>
                 <li>• From KES ${
                   Math.min(...items.map(i => 
-                    (typeof i.price === 'number') ? i.price : 
-                    (i.price === 'Contact for Price' || i.condition === 'Special Order') ? 999999 : 0
+                    (typeof i.price === 'number') ? i.price : 999999
                   )).toLocaleString()
                 }</li>
+                <li>• ${[...new Set(items.map(i => i.condition))].join(' / ')}</li>
               </ul>
               <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
                       onclick="showFullDetails('${brand}', document.getElementById('typeFilter').value)">
@@ -419,18 +461,10 @@
       brandGrid.innerHTML = html;
     }
 
-    // ✅ FIXED: Respect category filter in modal
     function showFullDetails(brand, categoryFilter) {
       let items = brands[brand];
-
-      if (categoryFilter) {
-        items = items.filter(item => item.category === categoryFilter);
-      }
-
-      if (items.length === 0) {
-        alert("No products found for this selection.");
-        return;
-      }
+      if (categoryFilter) items = items.filter(item => item.category === categoryFilter);
+      if (items.length === 0) { alert("No products found."); return; }
 
       let content = `<h3 class="text-xl font-semibold mb-4">All ${brand} ${
         categoryFilter 
@@ -475,21 +509,15 @@
       document.body.style.overflow = 'hidden';
     }
 
-    // Close modal
     function closeModal() {
       modal.classList.remove('active');
       document.body.style.overflow = '';
     }
 
     closeModalBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
-    });
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
 
-    // Apply filters
     function applyFilters() {
       const searchTerm = modelSearch.value.toLowerCase().trim();
       const brandSel = brandFilter.value;
@@ -500,7 +528,7 @@
         if (typeSel && item.category !== typeSel) return false;
         if (searchTerm) {
           const text = [item.name, item.brand, item.model, item.type, item.channels].filter(Boolean).join(' ').toLowerCase();
-          if (!text.includes(searchTerm)) return false;
+          return text.includes(searchTerm);
         }
         return true;
       });
@@ -511,7 +539,6 @@
       el.addEventListener('input', applyFilters);
     });
 
-    // Mobile filters
     openFilters.addEventListener('click', () => {
       document.getElementById('filterSidebar').classList.add('active');
       filterOverlay.classList.add('active');
@@ -523,7 +550,6 @@
       filterOverlay.classList.remove('active');
     }
 
-    // Initial render
     renderBrandCards();
   </script>
 </body>

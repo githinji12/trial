@@ -3,16 +3,55 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Morel Tech Solution | Smart Homes, CCTV, Starlink & Security in Kenya</title>
-    <meta name="description" content="Premium smart home automation, CCTV, piped music, Starlink & security installations in Nairobi, Karen, Runda, Tatu City and across Kenya."/>
+    <!-- ✅ Optimized SEO title -->
+    <title>Smart Home Automation, CCTV & Starlink Installer in Nairobi – Morel Tech</title>
+    <!-- ✅ Rich, location-focused meta description -->
+    <meta name="description" content="Top-rated smart home installer in Nairobi & Kenya. CCTV, Starlink, audio systems, automation & security. Free site survey. Call +254 791 864 441.">
     <link rel="icon" type="image/png" href="assets/images/favicon.ico"/>
+    
+    <!-- ✅ Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+      <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Morel Tech Solution",
+      "image": "https://moreltech.co.ke/assets/images/logo.png",
+      "url": "https://moreltech.co.ke",
+      "telephone": "+254791864441",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Nyeri Town",
+        "addressLocality": "Nyeri",
+        "addressCountry": "KE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -0.4247,
+        "longitude": 36.9455
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      "serviceArea": {
+        "@type": "Place",
+        "name": "Kenya"
+      },
+      "knowsAbout": ["Smart Home Automation", "CCTV Installation", "Starlink Setup", "Home Audio Systems"]
+    }
+    </script>
   <style>
 /* =====================
    DESIGN TOKENS
-   (Apple / Stripe / Shopify)
 ===================== */
 :root {
     --bg-page: #0b112a;
@@ -45,7 +84,6 @@
     align-items: center;
     justify-content: space-between;
 }
-/* Brand */
 .brand {
     display: flex;
     align-items: center;
@@ -57,9 +95,9 @@
     opacity: 0.9;
 }
 .navy-button {
-  background-color: #0f172a; /* Slate-900 */
+  background-color: #0f172a;
   color: white;
-  border: 2px solid #d4af37; /* Gold accent */
+  border: 2px solid #d4af37;
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
   font-weight: 600;
@@ -74,17 +112,17 @@
     position: relative;
     font-size: 0.9rem;
     font-weight: 500;
-    color: rgba(30, 111, 136, 0.247);
+    /* ✅ Fixed low-contrast color */
+    color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
     padding: 0.25rem 0;
     transition: color 0.2s ease;
 }
 .nav-link:hover {
-    color: #0b112a;
+    color: #d4af37;
 }
-/* Active state */
 .nav-link.active {
-    color: #0b112a;
+    color: #d4af37;
     font-weight: 600;
 }
 .nav-link.active::after {
@@ -104,8 +142,7 @@ html {
     -webkit-text-size-adjust: 100%;
 }
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Inter',
-        'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--bg-page);
     color: var(--ink-700);
     line-height: 1.6;
@@ -128,7 +165,7 @@ body {
     white-space: nowrap;
 }
 /* =====================
-   MODAL (MOBILE FRIENDLY)
+   MODAL
 ===================== */
 .modal {
     display: none;
@@ -144,7 +181,6 @@ body {
     display: flex;
 }
 .modal-content {
-    /* Make it responsive */
     width: 90vw;
     height: 90vh;
     max-width: 1200px;
@@ -182,19 +218,12 @@ body {
   animation: marquee 30s linear infinite;
   width: max-content;
 }
-
 @keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
-
 /* =====================
    PRODUCT GRID
-   (MOBILE FIRST)
 ===================== */
 #productGrid {
     display: grid;
@@ -202,18 +231,11 @@ body {
     gap: 1.25rem;
     margin-top: 1.5rem;
 }
-/* Tablet */
 @media (min-width: 640px) {
-    #productGrid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    #productGrid { grid-template-columns: repeat(2, 1fr); }
 }
-/* Desktop */
 @media (min-width: 1024px) {
-    #productGrid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.75rem;
-    }
+    #productGrid { grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
 }
 /* =====================
    PRODUCT CARD
@@ -223,8 +245,7 @@ body {
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     overflow: hidden;
-    transition: box-shadow 0.3s var(--ease-ui),
-        transform 0.3s var(--ease-ui);
+    transition: box-shadow 0.3s var(--ease-ui), transform 0.3s var(--ease-ui);
 }
 @media (hover: hover) {
     .product-card:hover {
@@ -239,16 +260,14 @@ body {
     border-radius: 9999px;
     background-color: #f1f5f9;
 }
-/* Slightly taller image on desktop */
 @media (min-width: 1024px) {
-/* Enlarge product image in brand model cards */
-.product-image-large {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: var(--radius-sm);
-  margin-bottom: 1rem;
-}
+    .product-image-large {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      margin-bottom: 1rem;
+    }
 }
 .product-content {
     padding: 0.75rem 1rem 1rem;
@@ -295,9 +314,7 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s var(--ease-ui),
-        border-color 0.2s var(--ease-ui),
-        color 0.2s var(--ease-ui);
+    transition: background 0.2s var(--ease-ui), border-color 0.2s var(--ease-ui), color 0.2s var(--ease-ui);
 }
 .pagination-number.active,
 .pagination-number:hover,
@@ -310,10 +327,9 @@ body {
     opacity: 0.4;
 }
 /* =====================
-   SUBCATEGORY (SHOPIFY STYLE)
+   SUBCATEGORY
 ===================== */
 .subcategory-link {
-    @apply px-3 py-1.5 text-sm font-medium rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 transition;
     padding: 0.5rem 0.75rem;
     font-size: 0.875rem;
     color: var(--ink-500);
@@ -330,7 +346,7 @@ body {
     font-weight: 600;
 }
 /* =====================
-   CATEGORY CARDS IN SERVICES SECTION
+   CATEGORY CARDS
 ===================== */
 .category-card {
     background: white;
@@ -375,9 +391,14 @@ body {
    MOTION REDUCTION
 ===================== */
 @media (prefers-reduced-motion: reduce) {
-    * {
-        transition: none !important;
-    }
+    * { transition: none !important; }
+}
+/* =====================
+   HERO SECTION
+===================== */
+.hero-section {
+  background: linear-gradient(rgba(11,17,42,0.94), rgba(11,17,42,0.85)), 
+              url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
 }
 </style>
 </head>
@@ -414,16 +435,30 @@ body {
 </nav>
     <main id="main" class="pt-20">
         <!-- ========== HOME ========== -->
-        <section id="home" data-observer-id="home" class="min-h-screen flex items-center justify-center text-center text-white pt-20"
-            style="background: linear-gradient(rgba(11,17,42,0.94), rgba(11,17,42,0.85)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;">
+        <section id="home" data-observer-id="home" class="min-h-screen flex items-center justify-center text-center text-white pt-20 hero-section">
             <div class="container mx-auto px-1">
                 <h1 class="text-4xl md:text-6xl font-black text-gold mb-6">Morel Tech Solution</h1>
                 <p class="text-xl md:text-3xl font-light mb-6">Smarter Spaces, Better Living.</p>
+                
+                <!-- ✅ Value prop badge -->
+                <div class="bg-yellow-100 text-slate-900 inline-block px-4 py-1 rounded-full font-medium mb-4">
+                  🇰🇪 100% Kenyan-Owned | Free On-Site Consultation
+                </div>
+                
                 <p class="text-lg md:text-xl max-w-4xl mx-auto mb-10">
                     Premium smart home automation • CCTV • Starlink • Piped music • Security systems<br>
-                    Clean installations across <strong>Nairobi, Karen, Runda, Kiambu, Tatu City & Kenya-wide</strong>
+                    Clean installations across <strong>Nairobi, Karen, Runda, Kiambu, Tatu City & Nationwide</strong>
                 </p>
-                <div class="space-x-4 flex flex-col sm:flex-row justify-center gap-4">
+                
+                <!-- ✅ Trust badges -->
+                <div class="mt-8 flex flex-wrap justify-center gap-6 text-sm text-gray-300">
+                  <span>✅ Licensed & Insured</span>
+                  <span>✅ 2-Year Warranty</span>
+                  <span>✅ Free Site Survey</span>
+                  <span>✅ 500+ Installations in Kenya</span>
+                </div>
+                
+                <div class="space-x-4 flex flex-col sm:flex-row justify-center gap-4 mt-8">
                     <a href="#contact" class="bg-yellow-600 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-10 rounded-full text-lg shadow-xl transform hover:scale-105 transition focus-ring">Get a Quote</a>
                     <a href="#projects" class="border-2 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-slate-900 font-bold py-4 px-10 rounded-full text-lg transition focus-ring">View Projects</a>
                 </div>

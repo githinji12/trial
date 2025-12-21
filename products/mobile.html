@@ -3,11 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mobile Devices – Morel Tech Solution</title>
-  <meta name="description" content="New & refurbished smartphones from Apple, Samsung, Google Pixel. Also premium smartwatches and accessories."/>
+  <!-- ✅ SEO title with location and keywords -->
+  <title>Buy iPhone, Samsung & Pixel Phones in Kenya – Morel Tech</title>
+  <!-- ✅ Rich meta description -->
+  <meta name="description" content="Shop new & refurbished iPhone 15, Samsung Galaxy S24, Google Pixel 8 in Kenya. Best prices in Nairobi, Nyeri & nationwide. Fast delivery & warranty."/>
   <link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
+  <!-- ✅ FIXED: Removed trailing spaces -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- ✅ STRUCTURED DATA -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Morel Tech Solution",
+    "image": "/assets/images/logo.jpg",
+    "url": "https://moreltech.co.ke",
+    "telephone": "+254700000000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nyeri Town",
+      "addressLocality": "Nyeri",
+      "addressCountry": "KE"
+    },
+    "productSupported": ["Smartphones", "Smartwatches", "Tablets"],
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -0.4247,
+      "longitude": 36.9455
+    }
+  }
+  </script>
+
   <style>
     :root {
       --bg-page: #f8fafc;
@@ -124,6 +152,12 @@
 
   <main class="pt-20 pb-16">
     <div class="container mx-auto px-4">
+      <!-- ✅ Hidden SEO content for crawlers -->
+      <div class="sr-only">
+        <h1>Buy New & Refurbished Smartphones in Kenya</h1>
+        <p>Morel Tech offers iPhone 15, Samsung Galaxy S24, Google Pixel 8 and smartwatches at best prices in Nairobi, Nyeri, Mombasa and across Kenya. All devices come with warranty.</p>
+      </div>
+
       <div class="flex flex-col lg:flex-row gap-8">
         <!-- FILTER SIDEBAR -->
         <aside class="filter-sidebar" id="filterSidebar">
@@ -200,7 +234,7 @@
   <div class="overlay" id="filterOverlay"></div>
 
   <script>
-    // ===== MOBILE & SMART TECH PRODUCTS =====
+      // ===== MOBILE & SMART TECH PRODUCTS =====
     const mobileProducts = [
             // 📱 PHONES
             { brand: "Apple", model: "iPhone 8", condition: "REFURBISHED", price: 24000, category: "phones", img: "phones/Apple-iPhone-8.jpg" },
@@ -268,10 +302,10 @@
     ];
 
     // Group by brand
-    const brands = {};
+    const brand = {};
     mobileProducts.forEach(item => {
-      if (!brands[item.brand]) brands[item.brand] = [];
-      brands[item.brand].push(item);
+      if (!brand[item.brand]) brand[item.brand] = [];
+      brand[item.brand].push(item);
     });
 
     // DOM
@@ -287,6 +321,18 @@
     const modalTitle = document.getElementById('modalTitle');
     const modalContent = document.getElementById('modalContent');
     const closeModalBtn = document.getElementById('closeModalBtn');
+
+    // Group by brand
+    const brands = {};
+    mobileProducts.forEach(item => {
+      if (!brands[item.brand]) brands[item.brand] = [];
+      brands[item.brand].push(item);
+    });
+
+    // ✅ HELPER: Safe display name
+    function getDisplayName(item) {
+      return item.model || item.name || `${item.brand} Device`;
+    }
 
     // Render brand cards
     function renderBrandCards(filteredData = mobileProducts) {
@@ -314,17 +360,16 @@
                   <img src="../assets/images/${img}"
                        class="product-image"
                        loading="lazy"
-                       alt="${brand} mobile">
+                       alt="${brand} ${getDisplayName(sample)}">
                 `).join('')}
               </div>
               <ul class="specs-list mt-3 space-y-1">
-                <li>• ${sample.model || sample.name || ''}</li>
+                <li>• ${getDisplayName(sample)}</li>
                 <li>• From KES ${
                   Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 999999)).toLocaleString()
                 }</li>
                 <li>• ${[...new Set(items.map(i => i.condition || 'NEW'))].join(' / ')}</li>
               </ul>
-              <!-- ✅ FIXED: Pass active type filter to modal -->
               <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
                       onclick="showFullDetails('${brand}', document.getElementById('typeFilter').value)">
                 View All Models
@@ -336,15 +381,12 @@
       brandGrid.innerHTML = html;
     }
 
-    // ✅ FIXED: Respect category filter in modal
+    // Show modal with category support
     function showFullDetails(brand, categoryFilter) {
       let items = brands[brand];
-
-      // 🔑 Filter by category if active
       if (categoryFilter) {
         items = items.filter(item => item.category === categoryFilter);
       }
-
       if (items.length === 0) {
         alert("No products found for this selection.");
         return;
@@ -355,7 +397,7 @@
           ? (categoryFilter === 'phones' ? 'Smartphones' : 'Smart Devices')
           : 'Mobile & Smart Tech'
       }</h3><div class="space-y-4">`;
-      
+
       items.sort((a, b) => {
         if (a.condition === "NEW" && b.condition !== "NEW") return -1;
         if (b.condition === "NEW" && a.condition !== "NEW") return 1;
@@ -364,12 +406,13 @@
 
       items.forEach(item => {
         const typeLabel = item.category === 'phones' ? 'Smartphone' : 'Smart Device';
+        const displayName = getDisplayName(item);
         content += `
           <div class="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition">
             <div class="flex gap-4">
-              <img src="../assets/images/${item.img}" alt="${item.model || item.name}" class="w-24 h-24 object-cover rounded">
+              <img src="../assets/images/${item.img}" alt="${displayName}" class="w-24 h-24 object-cover rounded">
               <div>
-                <h4 class="font-bold">${item.model || item.name}</h4>
+                <h4 class="font-bold">${displayName}</h4>
                 <p class="text-slate-600 text-sm">${typeLabel}</p>
                 <p class="mt-2"><span class="inline-block px-2 py-1 rounded text-xs ${
                   item.condition === 'NEW' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'
@@ -395,12 +438,8 @@
     }
 
     closeModalBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
-    });
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
 
     // Apply filters
     function applyFilters() {
@@ -415,7 +454,7 @@
         if (conditionSel && item.condition !== conditionSel) return false;
         if (searchTerm) {
           const text = [item.name, item.brand, item.model].filter(Boolean).join(' ').toLowerCase();
-          if (!text.includes(searchTerm)) return false;
+          return text.includes(searchTerm);
         }
         return true;
       });
@@ -431,14 +470,12 @@
       document.getElementById('filterSidebar').classList.add('active');
       filterOverlay.classList.add('active');
     });
-    closeFilters.addEventListener('click', () => {
+    closeFilters.addEventListener('click', closeFiltersHandler);
+    filterOverlay.addEventListener('click', closeFiltersHandler);
+    function closeFiltersHandler() {
       document.getElementById('filterSidebar').classList.remove('active');
       filterOverlay.classList.remove('active');
-    });
-    filterOverlay.addEventListener('click', () => {
-      document.getElementById('filterSidebar').classList.remove('active');
-      filterOverlay.classList.remove('active');
-    });
+    };
 
     // Initial render
     renderBrandCards();
