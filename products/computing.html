@@ -13,7 +13,7 @@
   <!-- ✅ FIXED: Clean JSON-LD -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
+    "@context": "https://schema.org/",
     "@type": "Store",
     "name": "Morel Tech Solution",
     "image": "/assets/images/logo.jpg",
@@ -71,6 +71,7 @@
       height: 200px;
       object-fit: cover;
       border-radius: var(--radius-sm);
+      cursor: zoom-in;
     }
     .specs-list {
       font-size: 0.875rem;
@@ -231,12 +232,32 @@
     </div>
   </div>
 
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="hidden fixed inset-0 bg-black bg-opacity-90 z-[1000] flex items-center justify-center p-4">
+    <img id="lightbox-img" class="max-w-full max-h-[90vh] rounded object-contain" />
+  </div>
+
+  <!-- FLOATING WHATSAPP QUOTE BUTTON -->
+  <div class="fixed bottom-4 right-4 z-[999]">
+    <button 
+      id="checkout-btn"
+      onclick="checkoutViaWhatsApp()"
+      class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg flex items-center"
+    >
+      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.247-.595-.497-.52-.67.075-.173.595-.669 2.082-.817 2.379-.149.297-.298.333-.595.184-.297-.149-1.184-.434-1.654-.595-.47-.162-.817-.248-.817-.497 0-.248.247-.472.52-.745.274-.273.596-.708.893-1.055.297-.347.397-.62.546-.917.149-.297.074-.546-.025-.745-.099-.198-.893-2.124-.917-2.372-.025-.248-.174-.372-.174-.372s-.149.074-.446.371c-.297.298-1.016 1.016-1.016 2.372 0 1.356 1.016 2.663 1.14 2.836.124.174 1.768 2.662 4.25 3.955 1.356.708 2.418 1.016 3.013 1.19 1.118.322 2.134.273 2.903.174.769-.1 2.207-.72 2.48-1.512.273-.792.273-1.461.198-1.585-.074-.124-.272-.199-.595-.347z"/>
+      </svg>
+      <span class="ml-2 font-bold hidden sm:inline">Get Quote</span>
+      <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+    </button>
+  </div>
+
   <!-- OVERLAY FOR MOBILE FILTERS -->
   <div class="overlay" id="filterOverlay"></div>
 
   <script>
     // ===== COMPUTING PRODUCTS DATA =====
-     const computingProducts = [
+    const computingProducts = [
       // 💻 DESKTOPS & AIO
       { name: "HP ProDesk 400 G7", brand: "HP", model: "ProDesk 400 G7 (i3)", condition: "NEW", price: 58000, category: "desktops", img: "desktops/HP-ProDesk400G7 (i3).jpg" },
       { name: "HP ProDesk 400 G8", brand: "HP", model: "ProDesk 400 G8 (i5)", condition: "NEW", price: 81000, category: "desktops", img: "desktops/HP-ProDesk400G8 (i5).jpg" },
@@ -303,7 +324,6 @@
       { name: "Samsung Odyssey G7", brand: "Samsung", model: "Odyssey G732", spec: "32″ QHD / 240 Hz / VA / QLED", price: 79995, category: "monitors", img: "monitors/Samsung-Odyssey-G732.jpg" }
     ];
 
-
     // DOM
     const brandGrid = document.getElementById('brandGrid');
     const modelSearch = document.getElementById('modelSearch');
@@ -325,19 +345,75 @@
       brands[item.brand].push(item);
     });
 
-    // ✅ HELPER: Safe display name
+    // Helpers
     function getDisplayName(item) {
-      if (item.model) return item.model;
-      if (item.name) return item.name;
-      return 'Computing Device';
+      return item.model || item.name || 'Computing Device';
     }
-
-    // ✅ HELPER: Safe spec
     function getSpec(item) {
       if (item.spec) return item.spec;
       if (item.category === 'monitors') return 'Display';
-      if (item.category === 'desktops' || item.category === 'laptops') return item.model ? item.model.replace(/.*\((.*)\).*/, '$1') : 'Specs';
+      if (item.category === 'desktops' || item.category === 'laptops') return item.model?.replace(/.*\((.*)\).*/, '$1') || 'Specs';
       return '';
+    }
+
+    // LIGHTBOX
+    function openLightbox(src) {
+      const img = document.getElementById('lightbox-img');
+      const modal = document.getElementById('lightbox');
+      if (img && modal) {
+        img.src = src;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox') closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // CART
+    let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
+    function saveCart() {
+      localStorage.setItem('morelCart', JSON.stringify(cart));
+      updateCartBadge();
+    }
+    function addToCart(id, name, price) {
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ id, name, price: parseFloat(price) || 0, quantity: 1 });
+      }
+      saveCart();
+      alert(`✅ "${name}" added to your quote!`);
+    }
+    function updateCartBadge() {
+      const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const badge = document.getElementById('cart-count');
+      if (badge) {
+        badge.textContent = total;
+        badge.classList.toggle('hidden', total === 0);
+      }
+    }
+    function checkoutViaWhatsApp() {
+      if (cart.length === 0) {
+        alert('📭 Your quote is empty!');
+        return;
+      }
+      const businessNumber = '254791864441';
+      let message = 'Hi Morel Tech! I\'d like a quote for:\n\n';
+      cart.forEach(item => {
+        message += `• ${item.name} (KES ${item.price.toLocaleString()}) ×${item.quantity}\n`;
+      });
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      message += `\nEstimated Total: KES ${total.toLocaleString()}\n\nSent from your website.`;
+      window.open(`https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`, '_blank');
     }
 
     // Render brand cards
@@ -347,7 +423,6 @@
         if (!tempBrands[item.brand]) tempBrands[item.brand] = [];
         tempBrands[item.brand].push(item);
       });
-
       let html = '';
       Object.entries(tempBrands).forEach(([brand, items]) => {
         const images = [...new Set(items.map(i => i.img))].slice(0, 3);
@@ -355,7 +430,6 @@
         const types = [...new Set(items.map(i => i.category))]
           .map(t => t.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()))
           .join(', ');
-
         html += `
           <div class="brand-card">
             <div class="p-5">
@@ -368,7 +442,8 @@
                   <img src="../assets/images/${img}"
                        class="product-image"
                        loading="lazy"
-                       alt="${brand} ${getDisplayName(sample)}">
+                       alt="${brand} ${getDisplayName(sample)}"
+                       onclick="openLightbox('../assets/images/${img}')">
                 `).join('')}
               </div>
               <ul class="specs-list mt-3 space-y-1">
@@ -401,17 +476,32 @@
         const typeLabel = { desktops: 'Desktop', laptops: 'Laptop', monitors: 'Monitor' }[item.category] || 'Device';
         const displayName = getDisplayName(item);
         const spec = getSpec(item);
+        const priceDisplay = typeof item.price === 'number' ? item.price.toLocaleString() : item.price;
         content += `
           <div class="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition">
             <div class="flex gap-4">
-              <img src="../assets/images/${item.img}" alt="${displayName}" class="w-24 h-24 object-cover rounded">
-              <div>
-                <h4 class="font-bold">${displayName}</h4>
+              <img 
+                loading="lazy" 
+                src="../assets/images/${item.img}" 
+                alt="${displayName}" 
+                class="w-24 h-24 object-cover rounded cursor-pointer"
+                onclick="openLightbox('../assets/images/${item.img}')"
+              >
+              <div class="flex-1">
+                <h4 class="font-bold text-slate-900">${displayName}</h4>
                 <p class="text-slate-600 text-sm">${typeLabel}${spec ? ` • ${spec}` : ''}</p>
-                <p class="mt-2"><span class="inline-block px-2 py-1 rounded text-xs ${
-                  item.condition === 'NEW' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'
-                }">${item.condition}</span></p>
-                <p class="font-bold text-lg text-yellow-600 mt-2">KES ${typeof item.price === 'number' ? item.price.toLocaleString() : item.price}</p>
+                <p class="mt-1">
+                  <span class="inline-block px-2 py-1 rounded text-xs ${
+                    item.condition === 'NEW' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'
+                  }">${item.condition}</span>
+                </p>
+                <p class="font-bold text-lg text-yellow-600 mt-2">KES ${priceDisplay}</p>
+                <button 
+                  class="add-to-cart-btn mt-2 w-full py-1 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
+                  onclick="addToCart('${item.brand}-${(item.model || item.name).replace(/[^a-zA-Z0-9]/g, '-')}', '${displayName}', ${typeof item.price === 'number' ? item.price : 0})"
+                >
+                  Add to Quote
+                </button>
               </div>
             </div>
           </div>
@@ -474,7 +564,15 @@
       filterOverlay.classList.remove('active');
     };
 
+    // Initialize
     renderBrandCards();
+    updateCartBadge();
+
+    // Expose global functions
+    window.openLightbox = openLightbox;
+    window.showFullDetails = showFullDetails;
+    window.addToCart = addToCart;
+    window.checkoutViaWhatsApp = checkoutViaWhatsApp;
   </script>
 </body>
 </html>

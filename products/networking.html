@@ -7,7 +7,7 @@
   <meta name="description" content="Buy TP-Link OC300 Omada Controller, Ubiquiti UniFi, Starlink, routers & switches in Kenya. Fast delivery, expert support, best prices in Nairobi & beyond."/>
   <link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
 
-  <!-- ✅ FIXED: Removed extra spaces in CDN URLs -->
+  <!-- ✅ FIXED: Removed extra spaces -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -79,6 +79,7 @@
       height: 200px;
       object-fit: cover;
       border-radius: var(--radius-sm);
+      cursor: zoom-in;
     }
     .specs-list {
       font-size: 0.875rem;
@@ -158,6 +159,7 @@
       margin-bottom: 1rem;
       display: block;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      cursor: zoom-in;
     }
   </style>
 </head>
@@ -170,14 +172,12 @@
 
   <main class="pt-20 pb-16">
     <div class="container mx-auto px-4">
-      <!-- ✅ SEO-FRIENDLY STATIC MENTION OF OC300 -->
       <div class="sr-only">
         <h2>TP-Link OC300 Omada Controller for sale in Kenya</h2>
         <p>Buy the TP-Link OC300 Omada Hardware Controller at KES 39,500 from Morel Tech Solution. Fast nationwide delivery. Official distributor in Nyeri, Kenya.</p>
       </div>
 
       <div class="flex flex-col lg:flex-row gap-8">
-        <!-- FILTER SIDEBAR -->
         <aside class="filter-sidebar" id="filterSidebar">
           <div class="flex justify-between items-center mb-6">
             <h2 class="text-xl font-bold">Filters</h2>
@@ -215,7 +215,6 @@
           </div>
         </aside>
 
-        <!-- BRAND CARDS -->
         <div class="flex-1">
           <div class="flex justify-between items-center mb-8">
             <h1 class="text-3xl font-bold text-slate-900">Networking & Connectivity</h1>
@@ -245,14 +244,32 @@
     </div>
   </div>
 
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="hidden fixed inset-0 bg-black bg-opacity-90 z-[1000] flex items-center justify-center p-4">
+    <img id="lightbox-img" class="max-w-full max-h-[90vh] rounded object-contain" />
+  </div>
+
+  <!-- FLOATING WHATSAPP CART BUTTON -->
+  <div class="fixed bottom-4 right-4 z-[999]">
+    <button 
+      id="checkout-btn"
+      onclick="checkoutViaWhatsApp()"
+      class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg flex items-center"
+    >
+      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.247-.595-.497-.52-.67.075-.173.595-.669 2.082-.817 2.379-.149.297-.298.333-.595.184-.297-.149-1.184-.434-1.654-.595-.47-.162-.817-.248-.817-.497 0-.248.247-.472.52-.745.274-.273.596-.708.893-1.055.297-.347.397-.62.546-.917.149-.297.074-.546-.025-.745-.099-.198-.893-2.124-.917-2.372-.025-.248-.174-.372-.174-.372s-.149.074-.446.371c-.297.298-1.016 1.016-1.016 2.372 0 1.356 1.016 2.663 1.14 2.836.124.174 1.768 2.662 4.25 3.955 1.356.708 2.418 1.016 3.013 1.19 1.118.322 2.134.273 2.903.174.769-.1 2.207-.72 2.48-1.512.273-.792.273-1.461.198-1.585-.074-.124-.272-.199-.595-.347z"/>
+      </svg>
+      <span class="ml-2 font-bold hidden sm:inline">Get Quote</span>
+      <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+    </button>
+  </div>
+
   <!-- OVERLAY -->
   <div class="overlay" id="filterOverlay"></div>
 
   <script>
     // ===== NETWORKING PRODUCTS =====
     const networkingProducts = [
-      // ... [your full product array as before] ...
-      // Include your full list here — unchanged
       // STARLINK PRODUCTS
       { brand: "Starlink", model: "Gen 3 Kit", price: 55000, category: "starlink", img: "networking/Starlink-Gen-3-Kit1.jpg" },
       { brand: "Starlink", model: "Router Gen 3", price: 33500, category: "starlink", img: "networking/Router-Gen-3.jpg" },
@@ -294,8 +311,6 @@
       { brand: "TP-Link", model: "OC200 Omada Controller", price: 18500, category: "access-points", img: "networking/OC200-Omada-Controller.jpg" },
       { brand: "TP-Link", model: "OC300 Omada Controller", price: 39500, category: "access-points", img: "networking/OC300-Omada-Controller.jpg" },
 
-      // ... [rest of your products unchanged] ...
-
       // TP-LINK CPE BRIDGES
       { brand: "TP-Link", model: "CPE210", price: 8000, category: "switches", img: "networking/CPE210.jpg" },
       { brand: "TP-Link", model: "CPE510", price: 10500, category: "switches", img: "networking/CPE510.jpg" },
@@ -326,13 +341,7 @@
       { brand: "Asus", model: "RT-AX55", price: 18500, category: "routers", img: "networking/Asus-RT-AX55.jpg" }
     ];
 
-    // Rest of your JS unchanged
-    const brands = {};
-    networkingProducts.forEach(item => {
-      if (!brands[item.brand]) brands[item.brand] = [];
-      brands[item.brand].push(item);
-    });
-
+    // DOM
     const brandGrid = document.getElementById('brandGrid');
     const modelSearch = document.getElementById('modelSearch');
     const brandFilter = document.getElementById('brandFilter');
@@ -345,13 +354,80 @@
     const modalContent = document.getElementById('modalContent');
     const closeModalBtn = document.getElementById('closeModalBtn');
 
+    // Group by brand
+    const brands = {};
+    networkingProducts.forEach(item => {
+      if (!brands[item.brand]) brands[item.brand] = [];
+      brands[item.brand].push(item);
+    });
+
+    // LIGHTBOX
+    function openLightbox(src) {
+      const img = document.getElementById('lightbox-img');
+      const modal = document.getElementById('lightbox');
+      if (img && modal) {
+        img.src = src;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox') closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // CART
+    let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
+    function saveCart() {
+      localStorage.setItem('morelCart', JSON.stringify(cart));
+      updateCartBadge();
+    }
+    function addToCart(id, name, price) {
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ id, name, price: parseFloat(price), quantity: 1 });
+      }
+      saveCart();
+      alert(`✅ "${name}" added to your quote!`);
+    }
+    function updateCartBadge() {
+      const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const badge = document.getElementById('cart-count');
+      if (badge) {
+        badge.textContent = total;
+        badge.classList.toggle('hidden', total === 0);
+      }
+    }
+    function checkoutViaWhatsApp() {
+      if (cart.length === 0) {
+        alert('📭 Your quote is empty!');
+        return;
+      }
+      const businessNumber = '254791864441';
+      let message = 'Hi Morel Tech! I\'d like a quote for:\n\n';
+      cart.forEach(item => {
+        message += `• ${item.name} (KES ${item.price.toLocaleString()}) ×${item.quantity}\n`;
+      });
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      message += `\nEstimated Total: KES ${total.toLocaleString()}\n\nSent from your website.`;
+      window.open(`https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    // Render brand cards
     function renderBrandCards(filteredData = networkingProducts) {
       const tempBrands = {};
       filteredData.forEach(item => {
         if (!tempBrands[item.brand]) tempBrands[item.brand] = [];
         tempBrands[item.brand].push(item);
       });
-
       let html = '';
       Object.entries(tempBrands).forEach(([brand, items]) => {
         const images = [...new Set(items.map(i => i.img))].slice(0, 3);
@@ -379,14 +455,13 @@
                   <img src="../assets/images/${img}"
                        class="product-image"
                        loading="lazy"
-                       alt="${brand} ${sample.model || ''}">
+                       alt="${brand} ${sample.model || ''}"
+                       onclick="openLightbox('../assets/images/${img}')">
                 `).join('')}
               </div>
               <ul class="specs-list mt-3 space-y-1">
                 <li>• ${sample.model || ''}</li>
-                <li>• From KES ${
-                  Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 999999)).toLocaleString()
-                }</li>
+                <li>• From KES ${Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 999999)).toLocaleString()}</li>
               </ul>
               <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
                       onclick="showFullDetails('${brand}', document.getElementById('typeFilter').value)">
@@ -399,22 +474,14 @@
       brandGrid.innerHTML = html;
     }
 
+    // Show modal
     function showFullDetails(brand, categoryFilter) {
       let items = brands[brand];
-
-      if (categoryFilter) {
-        items = items.filter(item => item.category === categoryFilter);
-      }
-
-      if (items.length === 0) {
-        alert("No products found for this selection.");
-        return;
-      }
+      if (categoryFilter) items = items.filter(item => item.category === categoryFilter);
+      if (items.length === 0) { alert("No products found."); return; }
 
       let content = `<h3 class="text-xl font-semibold mb-4">All ${brand} ${
-        categoryFilter 
-          ? categoryFilter.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
-          : 'Networking Products'
+        categoryFilter ? categoryFilter.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'Networking Products'
       }</h3><div class="space-y-4">`;
 
       items.sort((a, b) => (typeof a.price === 'number' ? a.price : 999999) - (typeof b.price === 'number' ? b.price : 999999));
@@ -429,60 +496,67 @@
           'extenders': 'Extender'
         };
         let meta = metaMap[item.category] || item.category;
-
+        const displayName = item.model;
         content += `
           <div class="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition">
-            <img src="../assets/images/${item.img}" alt="${item.model}" class="product-image-large">
-            <div>
-              <h4 class="font-bold">${item.model}</h4>
+            <img 
+              loading="lazy" 
+              src="../assets/images/${item.img}" 
+              alt="${displayName}" 
+              class="product-image-large"
+              onclick="openLightbox('../assets/images/${item.img}')"
+            >
+            <div class="flex-1">
+              <h4 class="font-bold text-slate-900">${displayName}</h4>
               <p class="text-slate-600 text-sm">${meta}</p>
               <p class="font-bold text-lg text-yellow-600 mt-2">KES ${typeof item.price === 'number' ? item.price.toLocaleString() : item.price}</p>
+              <button 
+                class="add-to-cart-btn mt-2 w-full py-1 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
+                onclick="addToCart('${item.brand}-${item.model.replace(/[^a-zA-Z0-9]/g, '-')}', '${displayName}', ${item.price})"
+              >
+                Add to Quote
+              </button>
             </div>
           </div>
         `;
       });
       content += `</div>`;
-
       modalTitle.textContent = brand + (categoryFilter ? ` – ${categoryFilter.replace(/-/g,' ').replace(/\b\w/g,l=>l.toUpperCase())}` : ' Networking');
       modalContent.innerHTML = content;
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
 
+    // Close modal
     function closeModal() {
       modal.classList.remove('active');
       document.body.style.overflow = '';
     }
-
     closeModalBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
-    });
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
 
+    // Filters
     function applyFilters() {
       const searchTerm = modelSearch.value.toLowerCase().trim();
       const brandSel = brandFilter.value;
       const typeSel = typeFilter.value;
-
       const filtered = networkingProducts.filter(item => {
         if (brandSel && item.brand !== brandSel) return false;
         if (typeSel && item.category !== typeSel) return false;
         if (searchTerm) {
-          const text = [item.model, item.brand, item.type].filter(Boolean).join(' ').toLowerCase();
-          if (!text.includes(searchTerm)) return false;
+          const text = [item.model, item.brand].filter(Boolean).join(' ').toLowerCase();
+          return text.includes(searchTerm);
         }
         return true;
       });
       renderBrandCards(filtered);
     }
-
     [modelSearch, brandFilter, typeFilter].forEach(el => {
       el.addEventListener('input', applyFilters);
     });
 
+    // Mobile filters
     openFilters.addEventListener('click', () => {
       document.getElementById('filterSidebar').classList.add('active');
       filterOverlay.classList.add('active');
@@ -496,7 +570,15 @@
       filterOverlay.classList.remove('active');
     });
 
+    // Initialize
     renderBrandCards();
+    updateCartBadge();
+
+    // Expose globally
+    window.openLightbox = openLightbox;
+    window.showFullDetails = showFullDetails;
+    window.addToCart = addToCart;
+    window.checkoutViaWhatsApp = checkoutViaWhatsApp;
   </script>
 </body>
 </html>

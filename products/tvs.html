@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <!-- ✅ SEO title with location -->
   <title>Buy Samsung, LG & Sony TVs in Kenya – Morel Tech</title>
-  <!-- ✅ Rich meta description -->
   <meta name="description" content="Shop Samsung QLED, LG OLED, Sony 4K & TCL Smart TVs in Kenya. Best prices in Nairobi, Nyeri & nationwide. Free delivery & installation."/>
   <link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
   <!-- ✅ FIXED: Removed trailing spaces -->
@@ -15,7 +13,7 @@
   <!-- ✅ STRUCTURED DATA -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
+    "@context": "https://schema.org/",
     "@type": "Store",
     "name": "Morel Tech Solution",
     "image": "/assets/images/logo.jpg",
@@ -73,6 +71,7 @@
       height: 200px;
       object-fit: cover;
       border-radius: var(--radius-sm);
+      cursor: zoom-in;
     }
     .specs-list {
       font-size: 0.875rem;
@@ -152,14 +151,12 @@
 
   <main class="pt-20 pb-16">
     <div class="container mx-auto px-4">
-      <!-- ✅ Hidden SEO content for crawlers -->
       <div class="sr-only">
         <h1>Buy Samsung Q90C, LG OLED C3 & Sony TVs in Kenya</h1>
         <p>Morel Tech offers Samsung 75-inch QLED, LG 65-inch OLED, Sony Bravia & TCL 4K Smart TVs at best prices in Nairobi, Nyeri, Mombasa and across Kenya. Free delivery & expert setup.</p>
       </div>
 
       <div class="flex flex-col lg:flex-row gap-8">
-        <!-- FILTER SIDEBAR -->
         <aside class="filter-sidebar" id="filterSidebar">
           <div class="flex justify-between items-center mb-6">
             <h2 class="text-xl font-bold">Filters</h2>
@@ -211,7 +208,6 @@
           </div>
         </aside>
 
-        <!-- BRAND CARDS -->
         <div class="flex-1">
           <div class="flex justify-between items-center mb-8">
             <h1 class="text-3xl font-bold text-slate-900">Televisions & Projectors</h1>
@@ -241,117 +237,135 @@
     </div>
   </div>
 
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="hidden fixed inset-0 bg-black bg-opacity-90 z-[1000] flex items-center justify-center p-4">
+    <img id="lightbox-img" class="max-w-full max-h-[90vh] rounded object-contain" />
+  </div>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <div class="fixed bottom-4 right-4 z-[999]">
+    <button 
+      id="checkout-btn"
+      onclick="checkoutViaWhatsApp()"
+      class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg flex items-center"
+    >
+      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.247-.595-.497-.52-.67.075-.173.595-.669 2.082-.817 2.379-.149.297-.298.333-.595.184-.297-.149-1.184-.434-1.654-.595-.47-.162-.817-.248-.817-.497 0-.248.247-.472.52-.745.274-.273.596-.708.893-1.055.297-.347.397-.62.546-.917.149-.297.074-.546-.025-.745-.099-.198-.893-2.124-.917-2.372-.025-.248-.174-.372-.174-.372s-.149.074-.446.371c-.297.298-1.016 1.016-1.016 2.372 0 1.356 1.016 2.663 1.14 2.836.124.174 1.768 2.662 4.25 3.955 1.356.708 2.418 1.016 3.013 1.19 1.118.322 2.134.273 2.903.174.769-.1 2.207-.72 2.48-1.512.273-.792.273-1.461.198-1.585-.074-.124-.272-.199-.595-.347z"/>
+      </svg>
+      <span class="ml-2 font-bold hidden sm:inline">Get Quote</span>
+      <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+    </button>
+  </div>
+
   <!-- OVERLAY -->
   <div class="overlay" id="filterOverlay"></div>
 
   <script>
-    // ===== TV & PROJECTOR PRODUCTS =====
     const tvProducts = [
       // SAMSUNG
-            { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "32-inch", price: 25000, category: "tvs", img: "tv-price-list/SAMSUNG — Standard Slim(LED-Crystal UHD)32 inch.jpg" },
-            { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "43-inch", price: 38000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)43-inch.jpg" },
-            { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "50-inch", price: 67500, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)50-inch.jpg" },
-            { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "55-inch", price: 78000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)55-inch.jpg" },
-            { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "65-inch", price: 125000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)65-inch.jpg" },
-            { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "75-inch", price: 198000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)75-inch.jpg" },
-            { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "85-inch", price: 315000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)85-inch.jpg" },
-            { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "98-inch", price: 680000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)98-inch.jpg" },
-            { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "43-inch", price: 78000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)43-inch.jpg" },
-            { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "50-inch", price: 95000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)50-inch.jpg" },
-            { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "55-inch", price: 140000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)55-inch.jpg" },
-            { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "65-inch", price: 205000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)65-inch.jpg" },
-            { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "75-inch", price: 280000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)75-inch.jpg" },
-            { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "85-inch", price: 450000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)85-inch.jpg" },
-            { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "98-inch", price: "900,000 – 1,200,000", category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)98-inch.jpg" },
+      { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "32-inch", price: 25000, category: "tvs", img: "tv-price-list/SAMSUNG — Standard Slim(LED-Crystal UHD)32 inch.jpg" },
+      { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "43-inch", price: 38000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)43-inch.jpg" },
+      { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "50-inch", price: 67500, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)50-inch.jpg" },
+      { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "55-inch", price: 78000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)55-inch.jpg" },
+      { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "65-inch", price: 125000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)65-inch.jpg" },
+      { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "75-inch", price: 198000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)75-inch.jpg" },
+      { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "85-inch", price: 315000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)85-inch.jpg" },
+      { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "98-inch", price: 680000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)98-inch.jpg" },
+      { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "43-inch", price: 78000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)43-inch.jpg" },
+      { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "50-inch", price: 95000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)50-inch.jpg" },
+      { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "55-inch", price: 140000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)55-inch.jpg" },
+      { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "65-inch", price: 205000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)65-inch.jpg" },
+      { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "75-inch", price: 280000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)75-inch.jpg" },
+      { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "85-inch", price: 450000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)85-inch.jpg" },
+      { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "98-inch", price: "900,000 – 1,200,000", category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)98-inch.jpg" },
 
       // LG
-             { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "32-inch", price: 28000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)32-inch.jpg" },
-            { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "43-inch", price: 50000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)43-inch.jpg" },
-            { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "50-inch", price: 72000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)50-inch.jpg" },
-            { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "55-inch", price: 95000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)55-inch.jpg" },
-            { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "65-inch", price: 150000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)65-inch.jpg" },
-            { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "75-inch", price: 245000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)75-inch.jpg" },
-            { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "85-inch", price: 380000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)85-inch.jpg" },
-            { brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "48-inch", price: 140000, category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)48-inch.jpg" },
-            { brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "55-inch", price: 170000, category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)55-inch.jpg" },
-            { brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "65-inch", price: 260000, category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)65-inch.jpg" },
-            { brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "75-inch", price: 430000, category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)75-inch.jpg" },
-            { brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "97-inch", price: "1,800,000 – 2,300,000", category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)97-inch.jpg" },
+      { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "32-inch", price: 28000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)32-inch.jpg" },
+      { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "43-inch", price: 50000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)43-inch.jpg" },
+      { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "50-inch", price: 72000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)50-inch.jpg" },
+      { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "55-inch", price: 95000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)55-inch.jpg" },
+      { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "65-inch", price: 150000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)65-inch.jpg" },
+      { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "75-inch", price: 245000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)75-inch.jpg" },
+      { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "85-inch", price: 380000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)85-inch.jpg" },
+      { brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "48-inch", price: 140000, category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)48-inch.jpg" },
+      { brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "55-inch", price: 170000, category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)55-inch.jpg" },
+      { brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "65-inch", price: 260000, category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)65-inch.jpg" },
+      { brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "75-inch", price: 430000, category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)75-inch.jpg" },
+      { brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "97-inch", price: "1,800,000 – 2,300,000", category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)97-inch.jpg" },
 
       // SONY
-            { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "32-inch", price: 28500, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)32-inch.jpg" },
-            { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "43-inch", price: 58000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)43-inch.jpg" },
-            { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "50-inch", price: 82000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)50-inch.jpg" },
-            { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "55-inch", price: 99000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)55-inch.jpg" },
-            { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "65-inch", price: 155000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)65-inch.jpg" },
-            { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "75-inch", price: 245000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)75-inch.jpg" },
-            { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "85-inch", price: 385000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)85-inch.jpg" },
-            { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "98-inch", price: 1000000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)98-inch.jpg" },
-            { brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "55-inch", price: 165000, category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)55-inch.jpg" },
-            { brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "65-inch", price: 240000, category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)65-inch.jpg" },
-            { brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "77-inch", price: 450000, category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)77-inch.jpg" },
-            { brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "83-inch", price: 760000, category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)83-inch.jpg" },
-            { brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "100-inch", price: "1,600,000 – 2,200,000", category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)100-inch.jpg" },
+      { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "32-inch", price: 28500, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)32-inch.jpg" },
+      { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "43-inch", price: 58000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)43-inch.jpg" },
+      { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "50-inch", price: 82000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)50-inch.jpg" },
+      { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "55-inch", price: 99000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)55-inch.jpg" },
+      { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "65-inch", price: 155000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)65-inch.jpg" },
+      { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "75-inch", price: 245000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)75-inch.jpg" },
+      { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "85-inch", price: 385000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)85-inch.jpg" },
+      { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "98-inch", price: 1000000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)98-inch.jpg" },
+      { brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "55-inch", price: 165000, category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)55-inch.jpg" },
+      { brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "65-inch", price: 240000, category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)65-inch.jpg" },
+      { brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "77-inch", price: 450000, category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)77-inch.jpg" },
+      { brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "83-inch", price: 760000, category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)83-inch.jpg" },
+      { brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "100-inch", price: "1,600,000 – 2,200,000", category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)100-inch.jpg" },
 
       // TCL
-                { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "32-inch", price: 22500, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)32-inch.jpg" },
-            { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "43-inch", price: 35000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)43-inch.jpg" },
-            { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "50-inch", price: 52000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)50-inch.jpg" },
-            { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "55-inch", price: 60000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)55-inch.jpg" },
-            { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "65-inch", price: 110000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)65-inch.jpg" },
-            { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "75-inch", price: 165000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)75-inch.jpg" },
-            { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "85-inch", price: 260000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)85-inch.jpg" },
-            { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "98-inch", price: 600000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)98-inch.jpg" },
-            { brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "50-inch", price: 72000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)50-inch.jpg" },
-            { brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "55-inch", price: 100000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)55-inch.jpg" },
-            { brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "65-inch", price: 160000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)65-inch.jpg" },
-            { brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "75-inch", price: 250000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)75-inch.jpg" },
-            { brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "85-inch", price: 330000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)85-inch.jpg" },
+      { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "32-inch", price: 22500, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)32-inch.jpg" },
+      { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "43-inch", price: 35000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)43-inch.jpg" },
+      { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "50-inch", price: 52000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)50-inch.jpg" },
+      { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "55-inch", price: 60000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)55-inch.jpg" },
+      { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "65-inch", price: 110000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)65-inch.jpg" },
+      { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "75-inch", price: 165000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)75-inch.jpg" },
+      { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "85-inch", price: 260000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)85-inch.jpg" },
+      { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "98-inch", price: 600000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)98-inch.jpg" },
+      { brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "50-inch", price: 72000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)50-inch.jpg" },
+      { brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "55-inch", price: 100000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)55-inch.jpg" },
+      { brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "65-inch", price: 160000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)65-inch.jpg" },
+      { brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "75-inch", price: 250000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)75-inch.jpg" },
+      { brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "85-inch", price: 330000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)85-inch.jpg" },
 
       // HISENSE
-            { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "32-inch", price: 21000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)32-inch.jpg" },
-            { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "43-inch", price: 39000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)43-inch.jpg" },
-            { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "50-inch", price: 48000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)50-inch.jpg" },
-            { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "55-inch", price: 60000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)55-inch.jpg" },
-            { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "65-inch", price: 85000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)65-inch.jpg" },
-            { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "75-inch", price: 150000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)75-inch.jpg" },
-            { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "85-inch", price: 220000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)85-inch.jpg" },
-            { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "98-inch", price: 550000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)98-inch.jpg" },
-            { brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "55-inch", price: 110000, category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)55-inch.jpg" },
-            { brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "65-inch", price: 180000, category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)65-inch.jpg" },
-            { brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "75-inch", price: 220000, category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)75-inch.jpg" },
-            { brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "85-inch", price: 340000, category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)85-inch.jpg" },
-            { brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "98-inch", price: "700,000 – 900,000", category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)98-inch.jpg" },
+      { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "32-inch", price: 21000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)32-inch.jpg" },
+      { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "43-inch", price: 39000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)43-inch.jpg" },
+      { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "50-inch", price: 48000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)50-inch.jpg" },
+      { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "55-inch", price: 60000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)55-inch.jpg" },
+      { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "65-inch", price: 85000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)65-inch.jpg" },
+      { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "75-inch", price: 150000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)75-inch.jpg" },
+      { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "85-inch", price: 220000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)85-inch.jpg" },
+      { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "98-inch", price: 550000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)98-inch.jpg" },
+      { brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "55-inch", price: 110000, category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)55-inch.jpg" },
+      { brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "65-inch", price: 180000, category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)65-inch.jpg" },
+      { brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "75-inch", price: 220000, category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)75-inch.jpg" },
+      { brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "85-inch", price: 340000, category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)85-inch.jpg" },
+      { brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "98-inch", price: "700,000 – 900,000", category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)98-inch.jpg" },
 
       // SKYWORTH
-            { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "32-inch", price: 20000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)32-inch.jpg" },
-            { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "43-inch", price: 30000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)43-inch.jpg" },
-            { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "50-inch", price: 39000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)50-inch.jpg" },
-            { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "55-inch", price: 46000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)55-inch.jpg" },
-            { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "65-inch", price: 82000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)65-inch.jpg" },
-            { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "75-inch", price: 160000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)75-inch.jpg" },
-            { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "85-inch", price: 230000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)85-inch.jpg" },
-            { brand: "SKYWORTH", name: "Ultra Slim (QLED Pro)", size: "55-inch", price: 105000, category: "tvs", img: "tv-price-list/SKYWORTH-Ultra-Slim(QLED-Pro)55-inch.jpg" },
-            { brand: "SKYWORTH", name: "Ultra Slim (QLED Pro)", size: "65-inch", price: 150000, category: "tvs", img: "tv-price-list/SKYWORTH-Ultra-Slim(QLED-Pro)65-inch.jpg" },
+      { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "32-inch", price: 20000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)32-inch.jpg" },
+      { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "43-inch", price: 30000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)43-inch.jpg" },
+      { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "50-inch", price: 39000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)50-inch.jpg" },
+      { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "55-inch", price: 46000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)55-inch.jpg" },
+      { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "65-inch", price: 82000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)65-inch.jpg" },
+      { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "75-inch", price: 160000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)75-inch.jpg" },
+      { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "85-inch", price: 230000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)85-inch.jpg" },
+      { brand: "SKYWORTH", name: "Ultra Slim (QLED Pro)", size: "55-inch", price: 105000, category: "tvs", img: "tv-price-list/SKYWORTH-Ultra-Slim(QLED-Pro)55-inch.jpg" },
+      { brand: "SKYWORTH", name: "Ultra Slim (QLED Pro)", size: "65-inch", price: 150000, category: "tvs", img: "tv-price-list/SKYWORTH-Ultra-Slim(QLED-Pro)65-inch.jpg" },
 
-                // 📽️ PROJECTORS
-            { brand: "Epson", model: "EB-X06", resolution: "XGA", price: 78995, category: "projectors", img: "projectors/Epson-EB-X06-(XGA).jpg" },
-            { brand: "Epson", model: "EB-W06", resolution: "WXGA", price: 92995, category: "projectors", img: "projectors/Epson-EB-W06-(WXGA).jpg" },
-            { brand: "Epson", model: "EB-FH06", resolution: "Full HD", price: 134995, category: "projectors", img: "projectors/Epson-EB-FH06(Full HD).jpg" },
-            { brand: "Epson", model: "EB-992F", resolution: "Full HD", price: 164995, category: "projectors", img: "projectors/Epson-EB-992F(Full HD).jpg" },
-            { brand: "BenQ", model: "MX560", resolution: "XGA", price: 89995, category: "projectors", img: "projectors/BenQ-MX560(XGA).jpg" },
-            { brand: "BenQ", model: "MW560", resolution: "WXGA", price: 113995, category: "projectors", img: "projectors/BenQ-MW560(WXGA).jpg" },
-            { brand: "BenQ", model: "TH585", resolution: "Full HD", price: 142995, category: "projectors", img: "projectors/BenQ-TH585(Full HD).jpg" },
-            { brand: "BenQ", model: "TK800M", resolution: "4K HDR", price: 198995, category: "projectors", img: "projectors/BenQ-TK800M(4K HDR).jpg" },
-            { brand: "Optoma", model: "S334e", resolution: "SVGA", price: 58995, category: "projectors", img: "projectors/Optoma-S334e(SVGA).jpg" },
-            { brand: "Optoma", model: "X343e", resolution: "XGA", price: 82995, category: "projectors", img: "projectors/Optoma-X343e(XGA).jpg" },
-            { brand: "Optoma", model: "HD146X", resolution: "Full HD", price: 128995, category: "projectors", img: "projectors/Optoma-HD146X(Full HD).jpg" },
-            { brand: "Optoma", model: "UHD35+", resolution: "4K HDR", price: 224995, category: "projectors", img: "projectors/Optoma-UHD35+(4K HDR).jpg" },
-            { brand: "Xiaomi", model: "Mi Smart Projector 2", resolution: "Full HD", price: 78995, category: "projectors", img: "projectors/Xiaomi-Mi-Smart-Projector2(Full HD).jpg" },
-            { brand: "Xiaomi", model: "Mi Laser 150\" 4K", resolution: "4K Laser", price: 218995, category: "projectors", img: "projectors/Xiaomi-Mi-Laser-150-4K-Projector.jpg" },
-            { brand: "ViewSonic", model: "PA503W", resolution: "WXGA", price: 88995, category: "projectors", img: "projectors/ViewSonic-PA503W(WXGA).jpg" },
-            { brand: "ViewSonic", model: "PX701-4K", resolution: "4K HDR", price: 192995, category: "projectors", img: "projectors/ViewSonic-PX701-4K(4K HDR).jpg" }
-
+      // PROJECTORS
+      { brand: "Epson", model: "EB-X06", resolution: "XGA", price: 78995, category: "projectors", img: "projectors/Epson-EB-X06-(XGA).jpg" },
+      { brand: "Epson", model: "EB-W06", resolution: "WXGA", price: 92995, category: "projectors", img: "projectors/Epson-EB-W06-(WXGA).jpg" },
+      { brand: "Epson", model: "EB-FH06", resolution: "Full HD", price: 134995, category: "projectors", img: "projectors/Epson-EB-FH06(Full HD).jpg" },
+      { brand: "Epson", model: "EB-992F", resolution: "Full HD", price: 164995, category: "projectors", img: "projectors/Epson-EB-992F(Full HD).jpg" },
+      { brand: "BenQ", model: "MX560", resolution: "XGA", price: 89995, category: "projectors", img: "projectors/BenQ-MX560(XGA).jpg" },
+      { brand: "BenQ", model: "MW560", resolution: "WXGA", price: 113995, category: "projectors", img: "projectors/BenQ-MW560(WXGA).jpg" },
+      { brand: "BenQ", model: "TH585", resolution: "Full HD", price: 142995, category: "projectors", img: "projectors/BenQ-TH585(Full HD).jpg" },
+      { brand: "BenQ", model: "TK800M", resolution: "4K HDR", price: 198995, category: "projectors", img: "projectors/BenQ-TK800M(4K HDR).jpg" },
+      { brand: "Optoma", model: "S334e", resolution: "SVGA", price: 58995, category: "projectors", img: "projectors/Optoma-S334e(SVGA).jpg" },
+      { brand: "Optoma", model: "X343e", resolution: "XGA", price: 82995, category: "projectors", img: "projectors/Optoma-X343e(XGA).jpg" },
+      { brand: "Optoma", model: "HD146X", resolution: "Full HD", price: 128995, category: "projectors", img: "projectors/Optoma-HD146X(Full HD).jpg" },
+      { brand: "Optoma", model: "UHD35+", resolution: "4K HDR", price: 224995, category: "projectors", img: "projectors/Optoma-UHD35+(4K HDR).jpg" },
+      { brand: "Xiaomi", model: "Mi Smart Projector 2", resolution: "Full HD", price: 78995, category: "projectors", img: "projectors/Xiaomi-Mi-Smart-Projector2(Full HD).jpg" },
+      { brand: "Xiaomi", model: "Mi Laser 150\" 4K", resolution: "4K Laser", price: 218995, category: "projectors", img: "projectors/Xiaomi-Mi-Laser-150-4K-Projector.jpg" },
+      { brand: "ViewSonic", model: "PA503W", resolution: "WXGA", price: 88995, category: "projectors", img: "projectors/ViewSonic-PA503W(WXGA).jpg" },
+      { brand: "ViewSonic", model: "PX701-4K", resolution: "4K HDR", price: 192995, category: "projectors", img: "projectors/ViewSonic-PX701-4K(4K HDR).jpg" }
     ];
 
     // DOM
@@ -375,9 +389,69 @@
       brands[item.brand].push(item);
     });
 
-    // ✅ HELPER: Safe display name
+    // Helpers
     function getDisplayName(item) {
-      return item.name || `${item.brand} TV`;
+      return item.name || item.model || `${item.brand} Device`;
+    }
+
+    // LIGHTBOX
+    function openLightbox(src) {
+      const img = document.getElementById('lightbox-img');
+      const modal = document.getElementById('lightbox');
+      if (img && modal) {
+        img.src = src;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox') closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // CART
+    let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
+    function saveCart() {
+      localStorage.setItem('morelCart', JSON.stringify(cart));
+      updateCartBadge();
+    }
+    function addToCart(id, name, price) {
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ id, name, price: parseFloat(price) || 0, quantity: 1 });
+      }
+      saveCart();
+      alert(`✅ "${name}" added to your quote!`);
+    }
+    function updateCartBadge() {
+      const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const badge = document.getElementById('cart-count');
+      if (badge) {
+        badge.textContent = total;
+        badge.classList.toggle('hidden', total === 0);
+      }
+    }
+    function checkoutViaWhatsApp() {
+      if (cart.length === 0) {
+        alert('📭 Your quote is empty!');
+        return;
+      }
+      const businessNumber = '254791864441';
+      let message = 'Hi Morel Tech! I\'d like a quote for:\n\n';
+      cart.forEach(item => {
+        message += `• ${item.name} (KES ${item.price.toLocaleString()}) ×${item.quantity}\n`;
+      });
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      message += `\nEstimated Total: KES ${total.toLocaleString()}\n\nSent from your website.`;
+      window.open(`https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`, '_blank');
     }
 
     // Render brand cards
@@ -387,14 +461,12 @@
         if (!tempBrands[item.brand]) tempBrands[item.brand] = [];
         tempBrands[item.brand].push(item);
       });
-
       let html = '';
       Object.entries(tempBrands).forEach(([brand, items]) => {
         const images = [...new Set(items.map(i => i.img))].slice(0, 3);
         const sample = items[0];
         const allTypes = [...new Set(items.map(i => i.category === 'tvs' ? 'TVs' : 'Projectors'))].join(', ');
         const allSizes = [...new Set(items.map(i => i.size || ''))].filter(Boolean).join(', ');
-
         html += `
           <div class="brand-card">
             <div class="p-5">
@@ -407,15 +479,14 @@
                   <img src="../assets/images/${img}"
                        class="product-image"
                        loading="lazy"
-                       alt="${brand} ${getDisplayName(sample)}">
+                       alt="${brand} ${getDisplayName(sample)}"
+                       onclick="openLightbox('../assets/images/${img}')">
                 `).join('')}
               </div>
               <ul class="specs-list mt-3 space-y-1">
                 <li>• ${getDisplayName(sample)}</li>
                 <li>• Sizes: ${allSizes || 'Various'}</li>
-                <li>• From KES ${
-                  Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 999999)).toLocaleString()
-                }</li>
+                <li>• From KES ${Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 999999)).toLocaleString()}</li>
               </ul>
               <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
                       onclick="showFullDetails('${brand}')">
@@ -436,14 +507,27 @@
         const displayName = getDisplayName(item);
         const spec = item.size || item.resolution || '';
         const typeLabel = item.category === 'tvs' ? 'Television' : 'Projector';
+        const priceDisplay = typeof item.price === 'number' ? item.price.toLocaleString() : item.price;
         content += `
           <div class="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition">
             <div class="flex gap-4">
-              <img src="../assets/images/${item.img}" alt="${displayName}" class="w-24 h-24 object-cover rounded">
-              <div>
-                <h4 class="font-bold">${displayName}</h4>
+              <img 
+                loading="lazy" 
+                src="../assets/images/${item.img}" 
+                alt="${displayName}" 
+                class="w-24 h-24 object-cover rounded cursor-pointer"
+                onclick="openLightbox('../assets/images/${item.img}')"
+              >
+              <div class="flex-1">
+                <h4 class="font-bold text-slate-900">${displayName}</h4>
                 <p class="text-slate-600 text-sm">${spec ? `${spec} • ` : ''}${typeLabel}</p>
-                <p class="font-bold text-lg text-yellow-600 mt-2">KES ${typeof item.price === 'number' ? item.price.toLocaleString() : item.price}</p>
+                <p class="font-bold text-lg text-yellow-600 mt-2">KES ${priceDisplay}</p>
+                <button 
+                  class="add-to-cart-btn mt-2 w-full py-1 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
+                  onclick="addToCart('${item.brand}-${(item.name || item.model).replace(/[^a-zA-Z0-9]/g, '-')}', '${displayName}', ${typeof item.price === 'number' ? item.price : 0})"
+                >
+                  Add to Quote
+                </button>
               </div>
             </div>
           </div>
@@ -461,31 +545,28 @@
       modal.classList.remove('active');
       document.body.style.overflow = '';
     }
-
     closeModalBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
 
-    // Apply filters
+    // Filters
     function applyFilters() {
       const searchTerm = modelSearch.value.toLowerCase().trim();
       const brandSel = brandFilter.value;
       const typeSel = typeFilter.value;
       const sizeSel = sizeFilter.value;
-
       const filtered = tvProducts.filter(item => {
         if (brandSel && item.brand !== brandSel) return false;
         if (typeSel && item.category !== typeSel) return false;
         if (sizeSel && item.size !== sizeSel) return false;
         if (searchTerm) {
-          const text = [item.name, item.brand, item.size, item.resolution].filter(Boolean).join(' ').toLowerCase();
+          const text = [item.name, item.model, item.brand, item.size, item.resolution].filter(Boolean).join(' ').toLowerCase();
           return text.includes(searchTerm);
         }
         return true;
       });
       renderBrandCards(filtered);
     }
-
     [modelSearch, brandFilter, typeFilter, sizeFilter].forEach(el => {
       el.addEventListener('input', applyFilters);
     });
@@ -502,7 +583,15 @@
       filterOverlay.classList.remove('active');
     };
 
+    // Initialize
     renderBrandCards();
+    updateCartBadge();
+
+    // Expose globally
+    window.openLightbox = openLightbox;
+    window.showFullDetails = showFullDetails;
+    window.addToCart = addToCart;
+    window.checkoutViaWhatsApp = checkoutViaWhatsApp;
   </script>
 </body>
 </html>
