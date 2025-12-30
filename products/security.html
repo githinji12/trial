@@ -6,14 +6,13 @@
   <title>Buy CCTV, Hikvision & Dahua Cameras in Kenya – Morel Tech</title>
   <meta name="description" content="Professional Hikvision, Dahua, Eufy & WD security systems in Kenya. CCTV kits, NVRs, access control & smart cameras. Best prices in Nairobi, Nyeri & nationwide."/>
   <link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
-  <!-- ✅ FIXED: Removed trailing spaces -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- ✅ STRUCTURED DATA -->
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org/",
+    "@context": "https://schema.org",
     "@type": "Store",
     "name": "Morel Tech Solution",
     "image": "/assets/images/logo.jpg",
@@ -77,6 +76,8 @@
       font-size: 0.875rem;
       color: var(--ink-500);
     }
+
+    /* MODALS */
     .modal {
       display: none;
       position: fixed;
@@ -99,6 +100,48 @@
       overflow-y: auto;
       box-shadow: 0 20px 50px rgba(0,0,0,0.3);
     }
+
+    /* CART MODAL */
+    #cartModal .modal-content {
+      max-width: 500px;
+    }
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+    }
+    .cart-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .cart-qty-btn {
+      width: 28px;
+      height: 28px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f1f5f9;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .cart-qty-display {
+      width: 36px;
+      text-align: center;
+      color: var(--ink-700);
+      font-weight: 600;
+    }
+
+    /* FILTER SIDEBAR */
     .filter-sidebar {
       position: sticky;
       top: 2rem;
@@ -139,6 +182,39 @@
     .focus-ring:focus-visible {
       outline: 2px solid var(--accent-gold);
       outline-offset: 3px;
+    }
+
+    /* LIGHTBOX */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      z-index: 1100;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.active {
+      display: flex;
+    }
+    #lightbox-img {
+      max-width: 90vw;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #10b981;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      z-index: 2000;
     }
   </style>
 </head>
@@ -215,7 +291,7 @@
     </div>
   </main>
 
-  <!-- MODAL -->
+  <!-- DETAIL MODAL -->
   <div id="detailModal" class="modal" role="dialog" aria-modal="true">
     <div class="modal-content">
       <div class="p-6">
@@ -228,22 +304,40 @@
     </div>
   </div>
 
+  <!-- CART MODAL -->
+  <div id="cartModal" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <div class="p-6">
+        <div class="flex justify-between items-start">
+          <h2 class="text-2xl font-bold text-slate-900">Your Quote</h2>
+          <button id="closeCartModal" class="text-gray-500 hover:text-gray-900 text-2xl focus:outline-none">&times;</button>
+        </div>
+        <div id="cartItems" class="mt-6">
+          <!-- Cart items rendered here -->
+        </div>
+        <div id="cartTotal" class="mt-4 font-bold text-lg text-slate-900"></div>
+        <button id="whatsappCheckoutBtn" class="mt-6 w-full py-2.5 bg-green-500 hover:bg-green-600 text-white rounded font-medium focus-ring">
+          Send Quote via WhatsApp
+        </button>
+      </div>
+    </div>
+  </div> <!-- ✅ Fixed: Added missing closing tag -->
+
   <!-- LIGHTBOX -->
-  <div id="lightbox" class="hidden fixed inset-0 bg-black bg-opacity-90 z-[1000] flex items-center justify-center p-4">
-    <img id="lightbox-img" class="max-w-full max-h-[90vh] rounded object-contain" />
+  <div id="lightbox" class="lightbox">
+    <img id="lightbox-img" />
   </div>
 
   <!-- FLOATING WHATSAPP BUTTON -->
   <div class="fixed bottom-4 right-4 z-[999]">
     <button 
-      id="checkout-btn"
-      onclick="checkoutViaWhatsApp()"
+      id="cart-btn"
       class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg flex items-center"
     >
       <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.247-.595-.497-.52-.67.075-.173.595-.669 2.082-.817 2.379-.149.297-.298.333-.595.184-.297-.149-1.184-.434-1.654-.595-.47-.162-.817-.248-.817-.497 0-.248.247-.472.52-.745.274-.273.596-.708.893-1.055.297-.347.397-.62.546-.917.149-.297.074-.546-.025-.745-.099-.198-.893-2.124-.917-2.372-.025-.248-.174-.372-.174-.372s-.149.074-.446.371c-.297.298-1.016 1.016-1.016 2.372 0 1.356 1.016 2.663 1.14 2.836.124.174 1.768 2.662 4.25 3.955 1.356.708 2.418 1.016 3.013 1.19 1.118.322 2.134.273 2.903.174.769-.1 2.207-.72 2.48-1.512.273-.792.273-1.461.198-1.585-.074-.124-.272-.199-.595-.347z"/>
       </svg>
-      <span class="ml-2 font-bold hidden sm:inline">Get Quote</span>
+      <span class="ml-2 font-bold hidden sm:inline">View Quote</span>
       <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
     </button>
   </div>
@@ -252,6 +346,10 @@
   <div class="overlay" id="filterOverlay"></div>
 
   <script>
+    // 🛒 CART MANAGEMENT
+    let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
+
+    // ✅ FULL PRODUCT LIST — ONLY ONE DECLARATION
     const securityProducts = [
       // ✅ SURVEILLANCE (CCTV)
       { brand: "D-Link", model: "DES-1005P (4-Port PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1005P(4-Port PoE).jpg", price: 8500 },
@@ -379,68 +477,41 @@
       }
     ];
 
-    // DOM
-    const brandGrid = document.getElementById('brandGrid');
-    const modelSearch = document.getElementById('modelSearch');
-    const brandFilter = document.getElementById('brandFilter');
-    const typeFilter = document.getElementById('typeFilter');
-    const openFilters = document.getElementById('openFilters');
-    const closeFilters = document.getElementById('closeFilters');
-    const filterOverlay = document.getElementById('filterOverlay');
-    const modal = document.getElementById('detailModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalContent = document.getElementById('modalContent');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-
-    // Group by brand
-    const brands = {};
-    securityProducts.forEach(item => {
-      if (!brands[item.brand]) brands[item.brand] = [];
-      brands[item.brand].push(item);
-    });
-
-    // Helpers
-    function getDisplayName(item) {
-      return item.model || item.name || `${item.brand} Security Device`;
-    }
-
-    // LIGHTBOX
-    function openLightbox(src) {
-      const img = document.getElementById('lightbox-img');
-      const modal = document.getElementById('lightbox');
-      if (img && modal) {
-        img.src = src;
-        modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-      }
-    }
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-    document.getElementById('lightbox').addEventListener('click', (e) => {
-      if (e.target.id === 'lightbox') closeLightbox();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
-
-    // CART
-    let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
     function saveCart() {
       localStorage.setItem('morelCart', JSON.stringify(cart));
+      renderCart();
       updateCartBadge();
     }
-    function addToCart(id, name, price) {
+
+    function isPriceNumeric(price) {
+      return typeof price === 'number' && !isNaN(price);
+    }
+
+    function addToCart(id, name, price, img = '') {
+      if (!isPriceNumeric(price)) {
+        showFeedback('⚠️ Custom quote required for this item.');
+        return;
+      }
       const existing = cart.find(item => item.id === id);
       if (existing) {
         existing.quantity += 1;
       } else {
-        cart.push({ id, name, price: parseFloat(price) || 0, quantity: 1 });
+        cart.push({ id, name, price, quantity: 1, img });
       }
       saveCart();
-      alert(`✅ "${name}" added to your quote!`);
+      showFeedback(`✅ “${name}” added to your quote!`);
     }
+
+    function updateQuantity(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+      item.quantity += delta;
+      if (item.quantity <= 0) {
+        cart = cart.filter(i => i.id !== id);
+      }
+      saveCart();
+    }
+
     function updateCartBadge() {
       const total = cart.reduce((sum, item) => sum + item.quantity, 0);
       const badge = document.getElementById('cart-count');
@@ -449,6 +520,60 @@
         badge.classList.toggle('hidden', total === 0);
       }
     }
+
+    function renderCart() {
+      const cartItemsEl = document.getElementById('cartItems');
+      const cartTotalEl = document.getElementById('cartTotal');
+      if (!cartItemsEl || !cartTotalEl) return;
+
+      if (cart.length === 0) {
+        cartItemsEl.innerHTML = '<p class="text-gray-500">Your quote is empty.</p>';
+        cartTotalEl.textContent = '';
+        return;
+      }
+
+      let html = '';
+      cart.forEach(item => {
+        const total = (item.price * item.quantity).toLocaleString();
+        const imgSrc = item.img.startsWith('http') ? item.img : `../assets/images/${item.img}`;
+        html += `
+          <div class="cart-item">
+            <img src="${imgSrc}" alt="${item.name}">
+            <div class="flex-1">
+              <h4 class="font-bold text-slate-900">${item.name}</h4>
+              <p class="text-slate-600">KES ${item.price.toLocaleString()}</p>
+              <div class="cart-controls mt-2">
+                <button class="cart-qty-btn" onclick="updateQuantity('${item.id}', -1)">-</button>
+                <span class="cart-qty-display">${item.quantity}</span>
+                <button class="cart-qty-btn" onclick="updateQuantity('${item.id}', 1)">+</button>
+                <button class="ml-2 text-red-600 hover:underline" onclick="removeFromCart('${item.id}')">Remove</button>
+              </div>
+            </div>
+            <div class="font-bold text-slate-900">KES ${total}</div>
+          </div>
+        `;
+      });
+
+      cartItemsEl.innerHTML = html;
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      cartTotalEl.textContent = `Total: KES ${total.toLocaleString()}`;
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(item => item.id !== id);
+      saveCart();
+    }
+
+    function showFeedback(message) {
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      setTimeout(() => {
+        if (toast.parentNode) toast.parentNode.removeChild(toast);
+      }, 2500);
+    }
+
     function checkoutViaWhatsApp() {
       if (cart.length === 0) {
         alert('📭 Your quote is empty!');
@@ -461,28 +586,94 @@
       });
       const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
       message += `\nEstimated Total: KES ${total.toLocaleString()}\n\nSent from your website.`;
-      window.open(`https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`, '_blank');
+      const url = `https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
     }
 
-    // Render cards
+    // 📱 UI CONTROLLERS
+    const brandGrid = document.getElementById('brandGrid');
+    const modelSearch = document.getElementById('modelSearch');
+    const brandFilter = document.getElementById('brandFilter');
+    const typeFilter = document.getElementById('typeFilter');
+    const openFilters = document.getElementById('openFilters');
+    const closeFilters = document.getElementById('closeFilters');
+    const filterOverlay = document.getElementById('filterOverlay');
+    const detailModal = document.getElementById('detailModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalContent');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const cartModal = document.getElementById('cartModal');
+    const closeCartModal = document.getElementById('closeCartModal');
+    const cartBtn = document.getElementById('cart-btn');
+    const whatsappCheckoutBtn = document.getElementById('whatsappCheckoutBtn');
+
+    function closeModal(modalEl) {
+      modalEl.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    closeModalBtn.addEventListener('click', () => closeModal(detailModal));
+    closeCartModal.addEventListener('click', () => closeModal(cartModal));
+    cartBtn.addEventListener('click', () => {
+      cartModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      renderCart();
+    });
+    whatsappCheckoutBtn.addEventListener('click', checkoutViaWhatsApp);
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (detailModal.classList.contains('active')) closeModal(detailModal);
+        if (cartModal.classList.contains('active')) closeModal(cartModal);
+        if (lightbox.classList.contains('active')) closeLightbox();
+      }
+    });
+
+    // 📦 GROUP PRODUCTS BY BRAND
+    const brands = {};
+    securityProducts.forEach(item => {
+      if (!brands[item.brand]) brands[item.brand] = [];
+      brands[item.brand].push(item);
+    });
+
+    function getDisplayName(item) {
+      return item.model || item.name || `${item.brand} Security Device`;
+    }
+
     function renderBrandCards(filteredData = securityProducts) {
       const tempBrands = {};
       filteredData.forEach(item => {
         if (!tempBrands[item.brand]) tempBrands[item.brand] = [];
         tempBrands[item.brand].push(item);
       });
+
       let html = '';
       Object.entries(tempBrands).forEach(([brand, items]) => {
         const images = [...new Set(items.map(i => i.img))].slice(0, 3);
         const sample = items[0];
-        const allTypes = [...new Set(items.map(i => i.category))]
-          .map(t => {
-            if (t === 'surveillance') return 'CCTV';
-            if (t === 'smart-cameras') return 'Smart Cameras';
-            if (t === 'access-controls') return 'Access Control';
-            if (t === 'security') return 'Systems';
-            return t;
-          }).join(', ');
+        const allTypes = [...new Set(items.map(i => i.category))].map(t => {
+          if (t === 'surveillance') return 'CCTV';
+          if (t === 'smart-cameras') return 'Smart Cameras';
+          if (t === 'access-controls') return 'Access Control';
+          if (t === 'security') return 'Systems';
+          return t;
+        }).join(', ');
+
         html += `
           <div class="brand-card">
             <div class="p-5">
@@ -501,7 +692,7 @@
               </div>
               <ul class="specs-list mt-3 space-y-1">
                 <li>• ${getDisplayName(sample)}</li>
-                <li>• From KES ${Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 999999)).toLocaleString()}</li>
+                <li>• From KES ${Math.min(...items.map(i => isPriceNumeric(i.price) ? i.price : 999999)).toLocaleString()}</li>
               </ul>
               <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
                       onclick="showFullDetails('${brand}', document.getElementById('typeFilter').value)">
@@ -514,13 +705,12 @@
       brandGrid.innerHTML = html;
     }
 
-    // Show modal
     function showFullDetails(brand, categoryFilter) {
       let items = brands[brand];
       if (categoryFilter) items = items.filter(item => item.category === categoryFilter);
-      if (items.length === 0) { alert("No products found."); return; }
+      if (items.length === 0) { showFeedback("No products found."); return; }
 
-      let typeName = categoryFilter 
+      let typeName = categoryFilter
         ? categoryFilter
             .replace('surveillance', 'Surveillance')
             .replace('smart-cameras', 'Smart Cameras')
@@ -535,7 +725,14 @@
                       item.category === 'smart-cameras' ? 'Smart Camera' :
                       item.category === 'access-controls' ? 'Access Control' :
                       item.type || 'Security System';
-        const priceDisplay = typeof item.price === 'number' ? item.price.toLocaleString() : item.price;
+        const priceDisplay = isPriceNumeric(item.price) ? item.price.toLocaleString() : item.price;
+        const addButton = isPriceNumeric(item.price)
+          ? `<button class="add-to-cart-btn mt-2 w-full py-1 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
+                    onclick="addToCart('${item.brand}-${(item.model || item.name).replace(/[^a-zA-Z0-9]/g, '-')}', '${displayName.replace(/'/g, "\\'")}', ${item.price}, '${item.img}')">
+                Add to Quote
+              </button>`
+          : `<div class="mt-2 text-gray-500 text-sm">Contact for pricing</div>`;
+
         content += `
           <div class="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition">
             <div class="flex gap-4">
@@ -550,12 +747,7 @@
                 <h4 class="font-bold text-slate-900">${displayName}</h4>
                 <p class="text-slate-600 text-sm">${meta}</p>
                 <p class="font-bold text-lg text-yellow-600 mt-2">KES ${priceDisplay}</p>
-                <button 
-                  class="add-to-cart-btn mt-2 w-full py-1 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
-                  onclick="addToCart('${item.brand}-${(item.model || item.name).replace(/[^a-zA-Z0-9]/g, '-')}', '${displayName}', ${typeof item.price === 'number' ? item.price : 0})"
-                >
-                  Add to Quote
-                </button>
+                ${addButton}
               </div>
             </div>
           </div>
@@ -564,20 +756,10 @@
       content += `</div>`;
       modalTitle.textContent = brand + (categoryFilter ? ` – ${typeName}` : ' Security');
       modalContent.innerHTML = content;
-      modal.classList.add('active');
+      detailModal.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
 
-    // Close modal
-    function closeModal() {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    closeModalBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
-
-    // Filters
     function applyFilters() {
       const searchTerm = modelSearch.value.toLowerCase().trim();
       const brandSel = brandFilter.value;
@@ -593,30 +775,30 @@
       });
       renderBrandCards(filtered);
     }
-    [modelSearch, brandFilter, typeFilter].forEach(el => {
-      el.addEventListener('input', applyFilters);
-    });
+    [modelSearch, brandFilter, typeFilter].forEach(el => el.addEventListener('input', applyFilters));
 
     // Mobile filters
     openFilters.addEventListener('click', () => {
       document.getElementById('filterSidebar').classList.add('active');
       filterOverlay.classList.add('active');
     });
-    closeFilters.addEventListener('click', closeFiltersHandler);
-    filterOverlay.addEventListener('click', closeFiltersHandler);
     function closeFiltersHandler() {
       document.getElementById('filterSidebar').classList.remove('active');
       filterOverlay.classList.remove('active');
-    };
+    }
+    closeFilters.addEventListener('click', closeFiltersHandler);
+    filterOverlay.addEventListener('click', closeFiltersHandler);
 
     // Initialize
     renderBrandCards();
     updateCartBadge();
 
-    // Expose globally
+    // 🔗 Expose globally
     window.openLightbox = openLightbox;
     window.showFullDetails = showFullDetails;
     window.addToCart = addToCart;
+    window.updateQuantity = updateQuantity;
+    window.removeFromCart = removeFromCart;
     window.checkoutViaWhatsApp = checkoutViaWhatsApp;
   </script>
 </body>

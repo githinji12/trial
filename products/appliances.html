@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org/",
+    "@context": "https://schema.org",
     "@type": "Store",
     "name": "Morel Tech Solution",
     "image": "/assets/images/logo.jpg",
@@ -73,11 +73,13 @@
       height: 200px;
       object-fit: cover;
       border-radius: var(--radius-sm);
+      cursor: zoom-in;
     }
     .specs-list {
       font-size: 0.875rem;
       color: var(--ink-500);
     }
+    /* Product Detail Modal */
     .modal {
       display: none;
       position: fixed;
@@ -100,6 +102,115 @@
       overflow-y: auto;
       box-shadow: 0 20px 50px rgba(0,0,0,0.3);
     }
+    /* Cart Modal */
+    #cart-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 2000;
+      padding: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+    #cart-modal.active {
+      display: flex;
+    }
+    #cart-modal-content {
+      background: white;
+      border-radius: var(--radius-lg);
+      max-width: 95vw;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+    .cart-header {
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .cart-items {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .cart-item {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+    }
+    .cart-item-details {
+      flex: 1;
+    }
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+    .quantity-btn {
+      width: 28px;
+      height: 28px;
+      background: #e0e0e0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .remove-btn {
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      margin-top: 0.25rem;
+    }
+    .cart-footer {
+      padding: 1rem;
+      border-top: 1px solid var(--border-subtle);
+      text-align: center;
+    }
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      width: 100%;
+      cursor: pointer;
+    }
+    /* Lightbox */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    #lightbox.active {
+      display: flex;
+    }
+    #lightbox-img {
+      max-width: 95vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    /* Filters */
     .filter-sidebar {
       position: sticky;
       top: 2rem;
@@ -149,12 +260,14 @@
       <a href="../#products" class="text-lg font-semibold">← Back to Catalog</a>
     </div>
   </nav>
+
   <main class="pt-20 pb-16">
     <div class="container mx-auto px-4">
       <div class="sr-only">
         <h1>Home Appliances for Sale in Kenya</h1>
         <p>Buy Samsung RF/407 fridge, Hisense AS-12CR4S air conditioner, LG washing machines and more from Morel Tech Solution. Fast delivery across Nairobi, Nyeri, Mombasa & Kenya. Both new and refurbished appliances available.</p>
       </div>
+
       <div class="flex flex-col lg:flex-row gap-8">
         <aside class="filter-sidebar" id="filterSidebar">
           <div class="flex justify-between items-center mb-6">
@@ -204,6 +317,7 @@
             </div>
           </div>
         </aside>
+
         <div class="flex-1">
           <div class="flex justify-between items-center mb-8">
             <h1 class="text-3xl font-bold text-slate-900">Home Appliances</h1>
@@ -217,7 +331,7 @@
     </div>
   </main>
 
-  <!-- MODAL -->
+  <!-- Product Detail Modal -->
   <div id="detailModal" class="modal" role="dialog" aria-modal="true">
     <div class="modal-content">
       <div class="p-6">
@@ -230,33 +344,49 @@
     </div>
   </div>
 
-  <!-- LIGHTBOX -->
-  <div id="lightbox" class="hidden fixed inset-0 bg-black bg-opacity-90 z-[1000] flex items-center justify-center p-4">
-    <img id="lightbox-img" class="max-w-full max-h-[90vh] rounded object-contain" />
+  <!-- Cart Modal -->
+  <div id="cart-modal" class="modal" role="dialog" aria-modal="true">
+    <div id="cart-modal-content">
+      <div class="cart-header">
+        <h2 class="text-lg font-bold">Your Quote</h2>
+        <button id="close-cart" class="text-gray-500 hover:text-gray-900 text-2xl">&times;</button>
+      </div>
+      <div id="cart-items" class="cart-items">
+        <!-- Items inserted by JS -->
+      </div>
+      <div class="cart-footer">
+        <div class="font-bold text-lg">Total: KES <span id="total-amount">0</span></div>
+        <button id="whatsapp-btn" class="whatsapp-btn">Send Quote via WhatsApp</button>
+      </div>
+    </div>
   </div>
 
-  <!-- FLOATING WHATSAPP QUOTE BUTTON -->
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <img id="lightbox-img" />
+    <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center">✕</button>
+  </div>
+
+  <!-- WhatsApp Cart Button -->
   <div class="fixed bottom-4 right-4 z-[999]">
-    <button 
-      id="checkout-btn"
-      onclick="checkoutViaWhatsApp()"
-      class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg flex items-center"
+    <button
+      id="cart-icon"
+      class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg flex items-center relative"
     >
       <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.247-.595-.497-.52-.67.075-.173.595-.669 2.082-.817 2.379-.149.297-.298.333-.595.184-.297-.149-1.184-.434-1.654-.595-.47-.162-.817-.248-.817-.497 0-.248.247-.472.52-.745.274-.273.596-.708.893-1.055.297-.347.397-.62.546-.917.149-.297.074-.546-.025-.745-.099-.198-.893-2.124-.917-2.372-.025-.248-.174-.372-.174-.372s-.149.074-.446.371c-.297.298-1.016 1.016-1.016 2.372 0 1.356 1.016 2.663 1.14 2.836.124.174 1.768 2.662 4.25 3.955 1.356.708 2.418 1.016 3.013 1.19 1.118.322 2.134.273 2.903.174.769-.1 2.207-.72 2.48-1.512.273-.792.273-1.461.198-1.585-.074-.124-.272-.199-.595-.347z"/>
       </svg>
-      <span class="ml-2 font-bold hidden sm:inline">Get Quote</span>
+      <span class="ml-2 font-bold hidden sm:inline">Quote</span>
       <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
     </button>
   </div>
 
-  <!-- ✅ CRITICAL: Overlay MUST be BEFORE script -->
+  <!-- Overlay -->
   <div class="overlay" id="filterOverlay"></div>
 
-  <!-- SCRIPTS -->
   <script>
-    // ===== APPLIANCES PRODUCTS =====
-    const appliancesProducts = [
+   const appliancesProducts = [
+      // ✅ SAME FULL PRODUCT LIST AS YOUR FILE — KEPT INTACT
       // ❄️ FRIDGES
       { name: "VON VART-13DHS", brand: "VON", model: "VART-13DHS – 138L", size: "138L", price: 37995, category: "fridges", img: "fridges/VON-VART-13DHS–138L.jpg" },
       { name: "RAMTONS RF/173", brand: "RAMTONS", model: "RF/173 – 128L", size: "128L", price: 30995, category: "fridges", img: "fridges/RAMTONS-RF-173–128L.jpg" },
@@ -312,6 +442,7 @@
       { name: "MIKA MAF370", brand: "MIKA", model: "MAF370 – 213L", size: "213L", price: 78995, category: "fridges", img: "fridges/MIKA-MAF370–213L.jpg" },
       { name: "MIKA MAF450", brand: "MIKA", model: "MAF450 – 260L", size: "260L", price: 95995, category: "fridges", img: "fridges/MIKA-MAF450–260L.jpg" },
       { name: "MIKA MAF510", brand: "MIKA", model: "MAF510 – 320L", size: "320L", price: 116995, category: "fridges", img: "fridges/MIKA-MAF510–320L.jpg" },
+
       // ❄️ AIR CONDITIONERS
       { name: "Hisense AS-12CR4S", brand: "Hisense", model: "AS-12CR4S", capacity: "12,000 BTU", price: 63995, category: "air-conditioners", img: "air-conditioners/AS-12CR4S.jpg" },
       { name: "Hisense AS-18CR4S", brand: "Hisense", model: "AS-18CR4S", capacity: "18,000 BTU", price: 92995, category: "air-conditioners", img: "air-conditioners/AS-18CR4S.jpg" },
@@ -328,6 +459,7 @@
       { name: "Mika MCF12CR", brand: "Mika", model: "MCF12CR", capacity: "12,000 BTU", price: 57995, category: "air-conditioners", img: "air-conditioners/MCF12CR.jpg" },
       { name: "Mika MCF18CR", brand: "Mika", model: "MCF18CR", capacity: "18,000 BTU", price: 85995, category: "air-conditioners", img: "air-conditioners/MCF18CR.jpg" },
       { name: "Mika MCF24CR", brand: "Mika", model: "MCF24CR", capacity: "24,000 BTU", price: 108995, category: "air-conditioners", img: "air-conditioners/MCF24CR.jpg" },
+
       // 🧼 DISHWASHERS
       { name: "Hisense H14DSS", brand: "Hisense", model: "H14DSS – Free-Standing", capacity: "14-Place Setting", price: 62995, category: "dishwashers", img: "dishwashers/H14DSS.jpg" },
       { name: "Hisense H12DSS", brand: "Hisense", model: "H12DSS – Free-Standing", capacity: "12-Place Setting", price: 54995, category: "dishwashers", img: "dishwashers/H12DSS.jpg" },
@@ -337,6 +469,7 @@
       { name: "Samsung DW60M5072", brand: "Samsung", model: "DW60M5072 – Premium Inverter", capacity: "14-Place Setting", price: 99995, category: "dishwashers", img: "dishwashers/DW60M5072.jpg" },
       { name: "Ramtons RW/143", brand: "Ramtons", model: "RW/143 – Dishwasher", capacity: "12-Place Setting", price: 66995, category: "dishwashers", img: "dishwashers/RW-143.jpg" },
       { name: "Mika MIDW14X", brand: "Mika", model: "MIDW14X – Dishwasher", capacity: "14-Place Setting", price: 74995, category: "dishwashers", img: "dishwashers/MIDW14X.jpg" },
+
       // 🔥 COOKERS & OVENS
       { name: "Ramtons RF/407", brand: "Ramtons", model: "RF/407 – 3 Gas + 1 Electric", size: "60 × 60", price: 60500, category: "cookers", img: "cookers/RF-407–3Gas +1Electric.jpg" },
       { name: "Ramtons RF/401", brand: "Ramtons", model: "RF/401 – 3 Gas + 1 Electric", size: "50 × 60", price: 48000, category: "cookers", img: "cookers/RF-401–3Gas+1Electric.jpg" },
@@ -366,6 +499,7 @@
       { name: "Von VAC60G", brand: "Von", model: "VAC60G – Full Gas", size: "60 × 60", price: 47995, category: "cookers", img: "cookers/VAC60G–FullGas.jpg" },
       { name: "Von VAC60GE", brand: "Von", model: "VAC60GE – Gas + Electric", size: "60 × 60", price: 50995, category: "cookers", img: "cookers/VAC60GE–Gas+Electric.jpg" },
       { name: "Von VAC9060", brand: "Von", model: "VAC9060 – 5 Gas (Premium)", size: "60 × 90", price: 79995, category: "cookers", img: "cookers/VAC9060–5Gas(Premium).jpg" },
+
       // Ovens
       { name: "Mika MEO360BL", brand: "Mika", model: "MEO360BL – Electric Oven", size: "Built-in 60cm", price: 38995, category: "cookers", img: "ovens/Mika-MEO360BL–Electric-Oven(Built-in 60cm).jpg" },
       { name: "Mika MEO361GR", brand: "Mika", model: "MEO361GR – Electric Oven", size: "Built-in 60cm", price: 42995, category: "cookers", img: "ovens/Mika-MEO361GR–Electric-Oven(Built-in 60cm).jpg" },
@@ -377,6 +511,7 @@
       { name: "Ramtons RM/311", brand: "Ramtons", model: "RM/311 – Large Table-Top Electric Oven", size: "Table-Top", price: 13995, category: "cookers", img: "ovens/Ramtons-RM-311–Large-Table-Top-Electric-Oven.jpg" },
       { name: "Von VOE-H60", brand: "Von", model: "VON VOE-H60 – Electric Oven", size: "Built-in 60cm", price: 36995, category: "cookers", img: "ovens/Von-VOE-H60–Electric-Oven-(Built-in 60cm).jpg" },
       { name: "Bruhm BEO-55", brand: "Bruhm", model: "BEO-55 – 55L Electric Oven", size: "Table-Top", price: 11995, category: "cookers", img: "ovens/Bruhm-BEO-55–55L-Table-Top-Oven.jpg" },
+
       // 🧺 WASHING MACHINES
       { brand: "Hisense", model: "WFQA8014EVJM – Front Load", capacity: "8kg", price: 47995, category: "washing-machines", img: "washing-machines/Hisense-WFQA8014EVJM-8kg-Front-Load.jpg" },
       { brand: "Hisense", model: "WFQA9014EVJM – Front Load", capacity: "9kg", price: 55995, category: "washing-machines", img: "washing-machines/Hisense-WFQA9014EVJM-9kg-Front-Load.jpg" },
@@ -397,6 +532,7 @@
       { brand: "Mika", model: "MWAF1018 – Front Load", capacity: "10kg", price: 59995, category: "washing-machines", img: "washing-machines/Mika-MWAF1018-10kg-Front-Load.jpg" },
       { brand: "Bruhm", model: "BWT-080H – Top Load", capacity: "8kg", price: 29995, category: "washing-machines", img: "washing-machines/Bruhm-BWT-080H-8kg-Top-Load.jpg" },
       { brand: "Bruhm", model: "BWF-100H – Front Load", capacity: "10kg", price: 48995, category: "washing-machines", img: "washing-machines/Bruhm-BWF-100H-10kg-Front-Load.jpg" },
+
       // 🧹 VACUUM CLEANERS
       { brand: "Samsung", model: "Jet 70 Turbo", type: "Stick Vacuum", price: 36995, category: "vacuum-cleaners", img: "vacuum-cleaners/Samsung-Jet-70-Turbo-Stick-Vacuum.jpg" },
       { brand: "Samsung", model: "Jet 90 Complete", type: "Premium Stick", price: 59995, category: "vacuum-cleaners", img: "vacuum-cleaners/Samsung-Jet-90-Complete-Premium-Stick-Vacuum.jpg" },
@@ -415,28 +551,144 @@
       if (!item.condition) item.condition = "NEW";
     });
 
-    // Group by brand
-    const brands = {};
-    appliancesProducts.forEach(item => {
-      if (!brands[item.brand]) brands[item.brand] = [];
-      brands[item.brand].push(item);
-    });
+    // ========== CART SYSTEM ==========
+    let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
 
-    // DOM Elements
-    const brandGrid = document.getElementById('brandGrid');
-    const modelSearch = document.getElementById('modelSearch');
-    const brandFilter = document.getElementById('brandFilter');
-    const typeFilter = document.getElementById('typeFilter');
-    const conditionFilter = document.getElementById('conditionFilter');
-    const openFilters = document.getElementById('openFilters');
-    const closeFilters = document.getElementById('closeFilters');
-    const filterOverlay = document.getElementById('filterOverlay'); // ✅ Now exists!
-    const modal = document.getElementById('detailModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalContent = document.getElementById('modalContent');
-    const closeModalBtn = document.getElementById('closeModalBtn');
+    function saveCart() {
+      localStorage.setItem('morelCart', JSON.stringify(cart));
+      updateCartDisplay();
+    }
 
-    // Helpers
+    // ✅ FIXED: Accept event as explicit parameter
+    function addToCart(id, name, price, image, event) {
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ id, name, price: parseFloat(price) || 0, image, quantity: 1 });
+      }
+      saveCart();
+      
+      // Visual feedback
+      const btn = event.target;
+      const original = btn.textContent;
+      btn.textContent = '✓ Added!';
+      setTimeout(() => btn.textContent = original, 1200);
+    }
+
+    function updateCartDisplay() {
+      const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const badge = document.getElementById('cart-count');
+      badge.textContent = totalCount;
+      badge.classList.toggle('hidden', totalCount === 0);
+    }
+
+    function renderCartModal() {
+      const container = document.getElementById('cart-items');
+      const totalEl = document.getElementById('total-amount');
+      if (cart.length === 0) {
+        container.innerHTML = '<p class="text-center text-gray-500 py-6">Your quote is empty.</p>';
+        totalEl.textContent = '0';
+        return;
+      }
+      let total = 0;
+      let html = '';
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        html += `
+          <div class="cart-item">
+            <img src="../assets/images/${item.image}" alt="${item.name}">
+            <div class="cart-item-details">
+              <h4 class="font-medium text-sm">${item.name}</h4>
+              <p class="text-xs text-slate-600">KES ${item.price.toLocaleString()}</p>
+              <div class="quantity-controls">
+                <button class="quantity-btn decrease" data-id="${item.id}">−</button>
+                <span>${item.quantity}</span>
+                <button class="quantity-btn increase" data-id="${item.id}">+</button>
+              </div>
+              <button class="remove-btn" data-id="${item.id}">Remove</button>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+      totalEl.textContent = total.toLocaleString();
+
+      // Attach event listeners
+      document.querySelectorAll('.decrease').forEach(btn => {
+        btn.addEventListener('click', () => updateQuantity(btn.dataset.id, -1));
+      });
+      document.querySelectorAll('.increase').forEach(btn => {
+        btn.addEventListener('click', () => updateQuantity(btn.dataset.id, 1));
+      });
+      document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', () => removeFromCart(btn.dataset.id));
+      });
+    }
+
+    function updateQuantity(id, change) {
+      const item = cart.find(i => i.id === id);
+      if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+          removeFromCart(id);
+          return;
+        }
+        saveCart();
+        renderCartModal();
+      }
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(item => item.id !== id);
+      saveCart();
+      renderCartModal();
+    }
+
+    function checkoutViaWhatsApp() {
+      if (cart.length === 0) return;
+      
+      // ✅ WhatsApp length safeguard
+      let message = 'Hi Morel Tech! I\'d like a quote for:\n';
+      cart.forEach(item => {
+        message += `• ${item.name} ×${item.quantity} — KES ${item.price.toLocaleString()}\n`;
+      });
+      const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+      message += `\nTotal: KES ${total.toLocaleString()}\nSent via your website.`;
+      
+      if (message.length > 4000) {
+        alert("Your quote is too long for WhatsApp. Please reduce the number of items.");
+        return;
+      }
+
+      const businessNumber = '254791864441';
+      window.open(`https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    // ========== UI FUNCTIONS ==========
+    function openCart() {
+      renderCartModal();
+      document.getElementById('cart-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCart() {
+      document.getElementById('cart-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = `../assets/images/${src}`;
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
     function getMetaValue(item) {
       if (item.category === 'fridges') return item.size || '';
       if (item.category === 'air-conditioners') return item.capacity || '';
@@ -447,82 +699,28 @@
       return '';
     }
 
-    // Lightbox
-    function openLightbox(src) {
-      const img = document.getElementById('lightbox-img');
-      const modal = document.getElementById('lightbox');
-      if (img && modal) {
-        img.src = src;
-        modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-      }
-    }
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-    document.getElementById('lightbox').addEventListener('click', (e) => {
-      if (e.target.id === 'lightbox') closeLightbox();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
+    // Group products by brand
+    const brands = {};
+    appliancesProducts.forEach(item => {
+      if (!brands[item.brand]) brands[item.brand] = [];
+      brands[item.brand].push(item);
     });
 
-    // Cart Logic
-    let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
-    function saveCart() {
-      localStorage.setItem('morelCart', JSON.stringify(cart));
-      updateCartBadge();
-    }
-    function addToCart(id, name, price) {
-      const existing = cart.find(item => item.id === id);
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        cart.push({ id, name, price: parseFloat(price), quantity: 1 });
-      }
-      saveCart();
-      alert(`✅ "${name}" added to your quote!`);
-    }
-    function updateCartBadge() {
-      const total = cart.reduce((sum, item) => sum + item.quantity, 0);
-      const badge = document.getElementById('cart-count');
-      if (badge) {
-        badge.textContent = total;
-        badge.classList.toggle('hidden', total === 0);
-      }
-    }
-    function checkoutViaWhatsApp() {
-      if (cart.length === 0) {
-        alert('📭 Your quote is empty!');
-        return;
-      }
-      const businessNumber = '254791864441';
-      let message = 'Hi Morel Tech! I\'d like a quote for:\n\n';
-      cart.forEach(item => {
-        message += `• ${item.name} (KES ${item.price.toLocaleString()}) ×${item.quantity}\n`;
-      });
-      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-      message += `\nEstimated Total: KES ${total.toLocaleString()}\n\nSent from your website.`;
-      window.open(`https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`, '_blank');
-    }
-
-    // Render Cards
-    function renderBrandCards(filteredData = appliancesProducts) {
+    function renderBrandCards(filtered = appliancesProducts) {
       const tempBrands = {};
-      filteredData.forEach(item => {
+      filtered.forEach(item => {
         if (!tempBrands[item.brand]) tempBrands[item.brand] = [];
         tempBrands[item.brand].push(item);
       });
-      let html = '';
-      Object.entries(tempBrands).forEach(([brand, items]) => {
+      const html = Object.entries(tempBrands).map(([brand, items]) => {
         const images = [...new Set(items.map(i => i.img))].slice(0, 3);
         const sample = items[0];
-        const metaValue = getMetaValue(sample) || 'Various';
         const allTypes = [...new Set(items.map(i => i.category))]
           .map(t => t.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()))
           .join(', ');
-        html += `
+        const metaValue = getMetaValue(sample) || 'Various';
+        const minPrice = Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 999999));
+        return `
           <div class="brand-card">
             <div class="p-5">
               <h3 class="text-xl font-bold text-slate-900">${brand}</h3>
@@ -535,59 +733,51 @@
                        class="product-image"
                        loading="lazy"
                        alt="${brand} ${sample.name || ''}"
-                       onclick="openLightbox('../assets/images/${img}')"
-                       style="cursor: zoom-in;">
+                       onclick="openLightbox('${img}')">
                 `).join('')}
               </div>
               <ul class="specs-list mt-3 space-y-1">
                 <li>• ${metaValue}</li>
-                <li>• From KES ${Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 999999)).toLocaleString()}</li>
+                <li>• From KES ${minPrice.toLocaleString()}</li>
                 <li>• ${[...new Set(items.map(i => i.condition))].join(' / ')}</li>
               </ul>
               <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
-                      onclick="showFullDetails('${brand}', document.getElementById('typeFilter').value)">
+                      onclick="showFullDetails('${brand}')">
                 View All Models
               </button>
             </div>
           </div>
         `;
-      });
-      brandGrid.innerHTML = html;
+      }).join('');
+      document.getElementById('brandGrid').innerHTML = html;
     }
 
-    // Show Full Details Modal
-    function showFullDetails(brand, categoryFilter) {
-      let items = brands[brand];
-      if (categoryFilter) items = items.filter(item => item.category === categoryFilter);
-      if (items.length === 0) { alert("No products found."); return; }
-      let content = `<h3 class="text-xl font-semibold mb-4">All ${brand} ${
-        categoryFilter ? categoryFilter.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'Appliances'
-      }</h3><div class="space-y-4">`;
-      items.sort((a, b) => (a.condition === "NEW" && b.condition !== "NEW") ? -1 : 0);
+    function showFullDetails(brand) {
+      const items = brands[brand];
+      let content = `<h3 class="text-lg font-semibold mb-2">All ${brand} Appliances</h3><div class="space-y-2">`;
       items.forEach(item => {
         const meta = getMetaValue(item);
+        const id = `${item.brand}-${(item.model || item.name).replace(/[^a-zA-Z0-9]/g, '-')}`;
         content += `
-          <div class="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition">
-            <div class="flex gap-4">
-              <img 
-                loading="lazy" 
-                src="../assets/images/${item.img}" 
-                alt="${item.name}" 
-                class="w-24 h-24 object-cover rounded cursor-pointer"
-                onclick="openLightbox('../assets/images/${item.img}')"
+          <div class="border border-gray-200 rounded-lg p-2 hover:shadow-sm transition">
+            <div class="flex gap-2">
+              <img
+                loading="lazy"
+                src="../assets/images/${item.img}"
+                alt="${item.name}"
+                class="w-16 h-16 object-cover rounded cursor-pointer flex-shrink-0"
+                onclick="openLightbox('${item.img}')"
               >
-              <div class="flex-1">
-                <h4 class="font-bold text-slate-900">${item.name}</h4>
-                ${meta ? `<p class="text-slate-600 text-sm">• ${meta}</p>` : ''}
-                <p class="mt-1">
-                  <span class="inline-block px-2 py-1 rounded text-xs ${
-                    item.condition === 'NEW' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'
-                  }">${item.condition}</span>
-                </p>
-                <p class="font-bold text-lg text-yellow-600 mt-2">KES ${typeof item.price === 'number' ? item.price.toLocaleString() : item.price}</p>
-                <button 
-                  class="add-to-cart-btn mt-2 w-full py-1 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
-                  onclick="addToCart('${item.brand}-${item.model.replace(/[^a-zA-Z0-9]/g, '-')}', '${item.name.replace(/'/g, '\\\'')}', ${item.price})"
+              <div class="flex-1 min-w-0">
+                <h4 class="font-bold text-sm truncate">${item.name}</h4>
+                ${meta ? `<p class="text-xs text-slate-600">${meta}</p>` : ''}
+                <p class="text-xs ${
+                  item.condition === 'NEW' ? 'text-green-600' : 'text-amber-600'
+                }">${item.condition}</p>
+                <p class="font-bold text-yellow-600 mt-1">KES ${typeof item.price === 'number' ? item.price.toLocaleString() : item.price}</p>
+                <button
+                  class="add-to-cart-btn mt-1 w-full py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
+                  onclick="addToCart('${id}', '${item.name.replaceAll("'", "\\\\'")}', ${typeof item.price === 'number' ? item.price : 0}, '${item.img}', event)"
                 >
                   Add to Quote
                 </button>
@@ -597,22 +787,23 @@
         `;
       });
       content += `</div>`;
-      modalTitle.textContent = brand + (categoryFilter ? ` – ${categoryFilter.replace(/-/g,' ').replace(/\b\w/g,l=>l.toUpperCase())}` : ' Appliances');
-      modalContent.innerHTML = content;
-      modal.classList.add('active');
+      document.getElementById('modalTitle').textContent = brand;
+      document.getElementById('modalContent').innerHTML = content;
+      document.getElementById('detailModal').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
 
-    // Close modal
     function closeModal() {
-      modal.classList.remove('active');
+      document.getElementById('detailModal').classList.remove('active');
       document.body.style.overflow = '';
     }
-    closeModalBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
 
-    // Filters
+    // ✅ FIXED: Declare conditionFilter
+    const modelSearch = document.getElementById('modelSearch');
+    const brandFilter = document.getElementById('brandFilter');
+    const typeFilter = document.getElementById('typeFilter');
+    const conditionFilter = document.getElementById('conditionFilter'); // ✅ NOW DECLARED
+
     function applyFilters() {
       const searchTerm = modelSearch.value.toLowerCase().trim();
       const brandSel = brandFilter.value;
@@ -630,31 +821,48 @@
       });
       renderBrandCards(filtered);
     }
+
+    // ========== INIT ==========
+    document.getElementById('cart-icon').addEventListener('click', openCart);
+    document.getElementById('close-cart').addEventListener('click', closeCart);
+    document.getElementById('whatsapp-btn').addEventListener('click', checkoutViaWhatsApp);
+    
     [modelSearch, brandFilter, typeFilter, conditionFilter].forEach(el => {
-      el.addEventListener('input', applyFilters);
+      if (el) el.addEventListener('input', applyFilters);
     });
 
-    // Mobile Filters
-    openFilters.addEventListener('click', () => {
+    document.getElementById('openFilters').addEventListener('click', () => {
       document.getElementById('filterSidebar').classList.add('active');
-      filterOverlay.classList.add('active');
+      document.getElementById('filterOverlay').classList.add('active');
     });
-    function closeFiltersHandler() {
-      document.getElementById('filterSidebar').classList.remove('active');
-      filterOverlay.classList.remove('active');
-    }
-    closeFilters.addEventListener('click', closeFiltersHandler);
-    filterOverlay.addEventListener('click', closeFiltersHandler);
 
-    // Initialize
+    document.querySelectorAll('#closeFilters, #filterOverlay').forEach(el => {
+      el?.addEventListener('click', () => {
+        document.getElementById('filterSidebar').classList.remove('active');
+        document.getElementById('filterOverlay').classList.remove('active');
+      });
+    });
+
+    document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+    document.getElementById('detailModal').addEventListener('click', (e) => {
+      if (e.target.id === 'detailModal') closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (document.getElementById('cart-modal').classList.contains('active')) closeCart();
+        if (document.getElementById('lightbox').classList.contains('active')) closeLightbox();
+        if (document.getElementById('detailModal').classList.contains('active')) closeModal();
+      }
+    });
+
     renderBrandCards();
-    updateCartBadge();
+    updateCartDisplay();
 
-    // Expose functions globally
+    // Expose globally
     window.openLightbox = openLightbox;
-    window.showFullDetails = showFullDetails;
+    window.closeLightbox = closeLightbox;
     window.addToCart = addToCart;
-    window.checkoutViaWhatsApp = checkoutViaWhatsApp;
   </script>
 </body>
 </html>
