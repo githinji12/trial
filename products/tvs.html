@@ -166,6 +166,29 @@
       cursor: pointer;
     }
 
+    /* Product Detail Modal */
+    #product-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1500;
+      padding: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+    #product-modal.active {
+      display: flex;
+    }
+    #product-modal-content {
+      background: white;
+      border-radius: var(--radius-lg);
+      max-width: 95vw;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
     /* Lightbox */
     #lightbox {
       display: none;
@@ -313,6 +336,17 @@
     </div>
   </main>
 
+  <!-- Product Detail Modal -->
+  <div id="product-modal" class="modal" role="dialog" aria-modal="true">
+    <div id="product-modal-content" class="bg-white rounded-lg max-w-2xl w-full max-h-[85vh] overflow-y-auto">
+      <div class="p-4 border-b flex justify-between items-center">
+        <h3 id="modal-title" class="text-lg font-bold">Models</h3>
+        <button id="close-product-modal" class="text-gray-500 hover:text-gray-800 text-xl">&times;</button>
+      </div>
+      <div id="product-list" class="p-4 space-y-3"></div>
+    </div>
+  </div>
+
   <!-- Cart Modal -->
   <div id="cart-modal" class="modal" role="dialog" aria-modal="true">
     <div id="cart-modal-content">
@@ -355,7 +389,6 @@
 
   <script>
     const tvProducts = [
-      // === SAME AS YOUR ORIGINAL ARRAY — KEPT INTACT ===
       // SAMSUNG
       { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "32-inch", price: 25000, category: "tvs", img: "tv-price-list/SAMSUNG — Standard Slim(LED-Crystal UHD)32 inch.jpg" },
       { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "43-inch", price: 38000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)43-inch.jpg" },
@@ -470,7 +503,7 @@
       updateCartDisplay();
     }
 
-    function addToCart(id, name, price, image) {
+    function addToCart(id, name, price, image, event) {
       const existing = cart.find(item => item.id === id);
       if (existing) {
         existing.quantity += 1;
@@ -479,11 +512,12 @@
       }
       saveCart();
 
-      // Visual feedback
-      const btn = event.target;
-      const original = btn.textContent;
-      btn.textContent = '✓ Added!';
-      setTimeout(() => btn.textContent = original, 1200);
+      if (event) {
+        const btn = event.target;
+        const original = btn.textContent;
+        btn.textContent = '✓ Added!';
+        setTimeout(() => btn.textContent = original, 1200);
+      }
     }
 
     function updateCartDisplay() {
@@ -529,7 +563,6 @@
       container.innerHTML = html;
       totalEl.textContent = total.toLocaleString();
 
-      // Attach event listeners
       document.querySelectorAll('.decrease').forEach(btn => {
         btn.addEventListener('click', () => updateQuantity(btn.dataset.id, -1));
       });
@@ -583,6 +616,54 @@
 
     function closeCart() {
       document.getElementById('cart-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function openProductModal(brand) {
+      const items = brands[brand];
+      let content = '';
+
+      items.forEach(item => {
+        const displayName = getDisplayName(item);
+        const spec = item.size || item.resolution || '';
+        const typeLabel = item.category === 'tvs' ? 'Television' : 'Projector';
+        const priceDisplay = typeof item.price === 'number' ? item.price.toLocaleString() : item.price;
+        const id = `${item.brand}-${(item.name || item.model).replace(/[^a-zA-Z0-9]/g, '-')}`;
+
+        content += `
+          <div class="border border-gray-200 rounded-lg p-3 hover:shadow-sm transition">
+            <div class="flex gap-3">
+              <img 
+                loading="lazy" 
+                src="../assets/images/${item.img}" 
+                alt="${displayName}" 
+                class="w-16 h-16 object-cover rounded cursor-pointer flex-shrink-0"
+                onclick="openLightbox('${item.img}')"
+              >
+              <div class="flex-1 min-w-0">
+                <h4 class="font-bold text-sm truncate">${displayName}</h4>
+                <p class="text-xs text-slate-600">${spec ? `${spec} • ` : ''}${typeLabel}</p>
+                <p class="font-bold text-yellow-600 mt-1">KES ${priceDisplay}</p>
+                <button 
+                  class="mt-2 w-full py-1.5 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
+                  onclick="addToCart('${id}', '${displayName.replaceAll("'", "\\\\'")}', ${typeof item.price === 'number' ? item.price : 0}, '${item.img}', event)"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      document.getElementById('modal-title').textContent = `All ${brand} Models`;
+      document.getElementById('product-list').innerHTML = content;
+      document.getElementById('product-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProductModal() {
+      document.getElementById('product-modal').classList.remove('active');
       document.body.style.overflow = '';
     }
 
@@ -644,7 +725,7 @@
                 <li>• From KES ${minPrice.toLocaleString()}</li>
               </ul>
               <button class="mt-3 w-full py-2 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring text-sm"
-                      onclick="showFullDetails('${brand}')">
+                      onclick="openProductModal('${brand}')">
                 View All Models
               </button>
             </div>
@@ -653,52 +734,6 @@
       }).join('');
 
       document.getElementById('brandGrid').innerHTML = html;
-    }
-
-    function showFullDetails(brand) {
-      const items = brands[brand];
-      let content = `<h3 class="text-lg font-semibold mb-2">All ${brand} TVs & Projectors</h3><div class="space-y-2">`;
-      
-      items.forEach(item => {
-        const displayName = getDisplayName(item);
-        const spec = item.size || item.resolution || '';
-        const typeLabel = item.category === 'tvs' ? 'Television' : 'Projector';
-        const priceDisplay = typeof item.price === 'number' ? item.price.toLocaleString() : item.price;
-        const id = `${item.brand}-${(item.name || item.model).replace(/[^a-zA-Z0-9]/g, '-')}`;
-
-        content += `
-          <div class="border border-gray-200 rounded-lg p-2 hover:shadow-sm transition">
-            <div class="flex gap-2">
-              <img 
-                loading="lazy" 
-                src="../assets/images/${item.img}" 
-                alt="${displayName}" 
-                class="w-16 h-16 object-cover rounded cursor-pointer flex-shrink-0"
-                onclick="openLightbox('${item.img}')"
-              >
-              <div class="flex-1 min-w-0">
-                <h4 class="font-bold text-sm truncate">${displayName}</h4>
-                <p class="text-xs text-slate-600">${spec ? `${spec} • ` : ''}${typeLabel}</p>
-                <p class="font-bold text-yellow-600 mt-1">KES ${priceDisplay}</p>
-                <button 
-                  class="add-to-cart-btn mt-1 w-full py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
-                  onclick="addToCart('${id}', '${displayName.replaceAll("'", "\\\\'")}', ${typeof item.price === 'number' ? item.price : 0}, '${item.img}')"
-                >
-                  Add to Quote
-                </button>
-              </div>
-            </div>
-          </div>
-        `;
-      });
-      content += `</div>`;
-
-      const modal = document.getElementById('detailModal');
-      if (!modal) {
-        // Reuse cart modal for product view if needed, or create separate one
-        alert("Product list shown. Use 'Add to Quote' to build your cart.");
-        return;
-      }
     }
 
     function applyFilters() {
@@ -724,8 +759,10 @@
     document.getElementById('cart-icon').addEventListener('click', openCart);
     document.getElementById('close-cart').addEventListener('click', closeCart);
     document.getElementById('whatsapp-btn').addEventListener('click', checkoutViaWhatsApp);
+    document.getElementById('close-product-modal').addEventListener('click', closeProductModal);
 
-    [modelSearch, brandFilter, typeFilter, sizeFilter].forEach(el => {
+    ['modelSearch', 'brandFilter', 'typeFilter', 'sizeFilter'].forEach(id => {
+      const el = document.getElementById(id);
       if (el) el.addEventListener('input', applyFilters);
     });
 
@@ -745,6 +782,7 @@
       if (e.key === 'Escape') {
         if (document.getElementById('cart-modal').classList.contains('active')) closeCart();
         if (document.getElementById('lightbox').classList.contains('active')) closeLightbox();
+        if (document.getElementById('product-modal').classList.contains('active')) closeProductModal();
       }
     });
 
@@ -757,4 +795,4 @@
     window.addToCart = addToCart;
   </script>
 </body>
-</html>1
+</html>

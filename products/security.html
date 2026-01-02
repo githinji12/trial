@@ -729,7 +729,7 @@
         const addButton = isPriceNumeric(item.price)
           ? `<button class="add-to-cart-btn mt-2 w-full py-1 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
                     onclick="addToCart('${item.brand}-${(item.model || item.name).replace(/[^a-zA-Z0-9]/g, '-')}', '${displayName.replace(/'/g, "\\'")}', ${item.price}, '${item.img}')">
-                Add to Quote
+                Add to Cart
               </button>`
           : `<div class="mt-2 text-gray-500 text-sm">Contact for pricing</div>`;
 
