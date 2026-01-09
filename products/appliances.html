@@ -546,10 +546,15 @@
       { brand: "Ramtons", model: "RM/362 – Cyclone Vacuum", type: "1600W", price: 14995, category: "vacuum-cleaners", img: "vacuum-cleaners/Ramtons-RM-362-1600W-Cyclone-Vacuum.jpg" }
     ];
 
-    // Ensure all items have 'condition'
-    appliancesProducts.forEach(item => {
-      if (!item.condition) item.condition = "NEW";
-    });
+  // ✅ CRITICAL FIX: Ensure every product has a 'name' and 'condition'
+appliancesProducts.forEach(item => {
+  if (!item.hasOwnProperty('name')) {
+    item.name = `${item.brand} ${item.model || item.type || 'Product'}`.trim();
+  }
+  if (!item.condition) {
+    item.condition = "NEW";
+  }
+});
 
     // ========== CART SYSTEM ==========
     let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
