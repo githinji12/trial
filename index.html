@@ -1,1056 +1,1069 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!-- ✅ Optimized SEO title -->
-    <title>Smart Home Automation, CCTV & Starlink Installer in Nairobi – Morel Tech</title>
-    <!-- ✅ Rich, location-focused meta description -->
-    <meta name="description" content="Top-rated smart home installer in Nairobi & Kenya. CCTV, Starlink, audio systems, automation & security. Free site survey. Call +254 791 864 441.">
-    <link rel="icon" type="image/png" href="assets/images/favicon.ico"/>
-    
-    <!-- ✅ Preconnect for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-      <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Morel Tech Solution",
-      "image": "https://moreltech.co.ke/assets/images/logo.png",
-      "url": "https://moreltech.co.ke",
-      "telephone": "+254791864441",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Nyeri Town",
-        "addressLocality": "Nyeri",
-        "addressCountry": "KE"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -0.4247,
-        "longitude": 36.9455
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "opens": "08:00",
-        "closes": "18:00"
-      },
-      "serviceArea": {
-        "@type": "Place",
-        "name": "Kenya"
-      },
-      "knowsAbout": ["Smart Home Automation", "CCTV Installation", "Starlink Setup", "Home Audio Systems"]
-    }
-    </script>
-  <style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!-- ✅ Optimized SEO title -->
+<title>Smart Home Automation, CCTV & Starlink Installer in Nairobi – Morel Tech</title>
+<!-- ✅ Rich, location-focused meta description -->
+<meta name="description" content="Top-rated smart home installer in Nairobi & Kenya. CCTV, Starlink, audio systems, automation & security. Free site survey. Call +254 791 864 441.">
+<link rel="icon" type="image/png" href="assets/images/favicon.ico"/>
+<!-- ✅ Preconnect for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "ProfessionalService",
+"name": "Morel Tech Solution",
+"image": "https://moreltech.co.ke/assets/images/logo.png",
+"url": "https://moreltech.co.ke",
+"telephone": "+254791864441",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Nyeri Town",
+"addressLocality": "Nyeri",
+"addressCountry": "KE"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": -0.4247,
+"longitude": 36.9455
+},
+"openingHoursSpecification": {
+"@type": "OpeningHoursSpecification",
+"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+"opens": "08:00",
+"closes": "18:00"
+},
+"serviceArea": {
+"@type": "Place",
+"name": "Kenya"
+},
+"knowsAbout": ["Smart Home Automation", "CCTV Installation", "Starlink Setup", "Home Audio Systems"]
+}
+</script>
+<style>
 /* =====================
-   DESIGN TOKENS
+DESIGN TOKENS
 ===================== */
 :root {
-    --bg-page: #0b112a;
-    --bg-surface: #ffffff;
-    --ink-900: #0f172a;
-    --ink-700: #334155;
-    --ink-500: #64748b;
-    --border-subtle: #0b112a;
-    --accent-gold: #d4af37;
-    --radius-sm: 10px;
-    --radius-md: 14px;
-    --radius-lg: 18px;
-    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
-    --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
-    --ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
+--bg-page: #0b112a;
+--bg-surface: #ffffff;
+--ink-900: #0f172a;
+--ink-700: #334155;
+--ink-500: #64748b;
+--border-subtle: #0b112a;
+--accent-gold: #d4af37;
+--radius-sm: 10px;
+--radius-md: 14px;
+--radius-lg: 18px;
+--shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+--shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+--ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* =====================
-   HEADER / NAVIGATION
+HEADER / NAVIGATION
 ===================== */
 .site-header {
-    background: rgba(11, 17, 42, 0.9);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+background: rgba(11, 17, 42, 0.9);
+backdrop-filter: blur(10px);
+border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0.75rem 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+max-width: 1200px;
+margin: 0 auto;
+padding: 0.75rem 1.25rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
 }
 .brand {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-weight: 600;
-    color: #fff;
+display: flex;
+align-items: center;
+gap: 0.6rem;
+font-weight: 600;
+color: #fff;
 }
 .brand span {
-    opacity: 0.9;
+opacity: 0.9;
 }
 .navy-button {
-  background-color: #0f172a;
-  color: white;
-  border: 2px solid #d4af37;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  transition: background-color 0.2s;
+background-color: #0f172a;
+color: white;
+border: 2px solid #d4af37;
+padding: 0.75rem 1.5rem;
+border-radius: 9999px;
+font-weight: 600;
+transition: background-color 0.2s;
 }
 /* Navigation */
 .nav-links {
-    display: flex;
-    gap: 1.75rem;
+display: flex;
+gap: 1.75rem;
 }
 .nav-link {
-    position: relative;
-    font-size: 0.9rem;
-    font-weight: 500;
-    /* ✅ Fixed low-contrast color */
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    padding: 0.25rem 0;
-    transition: color 0.2s ease;
+position: relative;
+font-size: 0.9rem;
+font-weight: 500;
+/* ✅ Fixed low-contrast color */
+color: rgba(255, 255, 255, 0.85);
+text-decoration: none;
+padding: 0.25rem 0;
+transition: color 0.2s ease;
 }
 .nav-link:hover {
-    color: #d4af37;
+color: #d4af37;
 }
 .nav-link.active {
-    color: #d4af37;
-    font-weight: 600;
+color: #d4af37;
+font-weight: 600;
 }
 .nav-link.active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 100%;
-    height: 2px;
-    background: #d4af37;
-    border-radius: 2px;
+content: "";
+position: absolute;
+left: 0;
+bottom: -6px;
+width: 100%;
+height: 2px;
+background: #d4af37;
+border-radius: 2px;
 }
 /* =====================
-   GLOBAL BASE
+GLOBAL BASE
 ===================== */
 html {
-    -webkit-text-size-adjust: 100%;
+-webkit-text-size-adjust: 100%;
 }
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: var(--bg-page);
-    color: var(--ink-700);
-    line-height: 1.6;
-    letter-spacing: -0.01em;
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+background-color: var(--bg-page);
+color: var(--ink-700);
+line-height: 1.6;
+letter-spacing: -0.01em;
 }
 /* =====================
-   ACCESSIBILITY
+ACCESSIBILITY
 ===================== */
 .focus-ring:focus-visible {
-    outline: 2px solid var(--accent-gold);
-    outline-offset: 3px;
+outline: 2px solid var(--accent-gold);
+outline-offset: 3px;
 }
 .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
+position: absolute;
+width: 1px;
+height: 1px;
+margin: -1px;
+overflow: hidden;
+clip: rect(0, 0, 0, 0);
+white-space: nowrap;
 }
 /* =====================
-   MODAL
+MODAL
 ===================== */
 .modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.85);
-    z-index: 1000;
-    padding: env(safe-area-inset-bottom);
-    justify-content: center;
-    align-items: center;
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(15, 23, 42, 0.85);
+z-index: 1000;
+padding: env(safe-area-inset-bottom);
+justify-content: center;
+align-items: center;
 }
 .modal.active {
-    display: flex;
+display: flex;
 }
 .modal-content {
-    width: 90vw;
-    height: 90vh;
-    max-width: 1200px;
-    max-height: 720px;
-    background: #000;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+width: 90vw;
+height: 90vh;
+max-width: 1200px;
+max-height: 720px;
+background: #000;
+border-radius: var(--radius-lg);
+overflow: hidden;
+box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+display: flex;
+justify-content: center;
+align-items: center;
 }
 .modal-content video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+width: 100%;
+height: 100%;
+object-fit: contain;
 }
 .modal-close {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.12);
-    color: #fff;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    backdrop-filter: blur(6px);
+position: fixed;
+top: 1rem;
+right: 1rem;
+width: 44px;
+height: 44px;
+border-radius: 50%;
+background: rgba(255, 255, 255, 0.12);
+color: #fff;
+font-size: 1.5rem;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+backdrop-filter: blur(6px);
 }
 .brand-marquee {
-  animation: marquee 30s linear infinite;
-  width: max-content;
+animation: marquee 30s linear infinite;
+width: max-content;
 }
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+0% { transform: translateX(0); }
+100% { transform: translateX(-50%); }
 }
 /* =====================
-   PRODUCT GRID
+PRODUCT GRID
 ===================== */
 #productGrid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-    margin-top: 1.5rem;
+display: grid;
+grid-template-columns: 1fr;
+gap: 1.25rem;
+margin-top: 1.5rem;
 }
 @media (min-width: 640px) {
-    #productGrid { grid-template-columns: repeat(2, 1fr); }
+#productGrid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (min-width: 1024px) {
-    #productGrid { grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+#productGrid { grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
 }
 /* =====================
-   PRODUCT CARD
+PRODUCT CARD
 ===================== */
 .product-card {
-    background: var(--bg-surface);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    overflow: hidden;
-    transition: box-shadow 0.3s var(--ease-ui), transform 0.3s var(--ease-ui);
+background: var(--bg-surface);
+border-radius: var(--radius-md);
+box-shadow: var(--shadow-sm);
+overflow: hidden;
+transition: box-shadow 0.3s var(--ease-ui), transform 0.3s var(--ease-ui);
 }
 @media (hover: hover) {
-    .product-card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-md);
-    }
+.product-card:hover {
+transform: translateY(-4px);
+box-shadow: var(--shadow-md);
+}
 }
 .product-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 9999px;
-    background-color: #f1f5f9;
+width: 100%;
+height: 200px;
+object-fit: cover;
+border-radius: 9999px;
+background-color: #f1f5f9;
 }
 @media (min-width: 1024px) {
-    .product-image-large {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: var(--radius-sm);
-      margin-bottom: 1rem;
-    }
+.product-image-large {
+width: 100%;
+height: 180px;
+object-fit: cover;
+border-radius: var(--radius-sm);
+margin-bottom: 1rem;
+}
 }
 .product-content {
-    padding: 0.75rem 1rem 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
+padding: 0.75rem 1rem 1rem;
+display: flex;
+flex-direction: column;
+gap: 0.35rem;
 }
 .product-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--ink-900);
+font-size: 1rem;
+font-weight: 600;
+color: var(--ink-900);
 }
 .product-meta,
 .product-desc {
-    font-size: 0.875rem;
-    color: var(--ink-500);
+font-size: 0.875rem;
+color: var(--ink-500);
 }
 .product-price {
-    margin-top: 0.75rem;
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--accent-gold);
+margin-top: 0.75rem;
+font-size: 1.15rem;
+font-weight: 600;
+color: var(--accent-gold);
 }
 /* =====================
-   PAGINATION
+PAGINATION
 ===================== */
 .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 3rem 0 1rem;
-    gap: 0.5rem;
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 3rem 0 1rem;
+gap: 0.5rem;
 }
 .pagination-number,
 .page-button {
-    min-width: 44px;
-    min-height: 44px;
-    border-radius: 9999px;
-    border: 1px solid var(--border-subtle);
-    background: var(--bg-surface);
-    color: var(--ink-700);
-    font-size: 0.875rem;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s var(--ease-ui), border-color 0.2s var(--ease-ui), color 0.2s var(--ease-ui);
+min-width: 44px;
+min-height: 44px;
+border-radius: 9999px;
+border: 1px solid var(--border-subtle);
+background: var(--bg-surface);
+color: var(--ink-700);
+font-size: 0.875rem;
+font-weight: 500;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+transition: background 0.2s var(--ease-ui), border-color 0.2s var(--ease-ui), color 0.2s var(--ease-ui);
 }
 .pagination-number.active,
 .pagination-number:hover,
 .page-button:hover:not(:disabled) {
-    background: var(--accent-gold);
-    border-color: var(--accent-gold);
-    color: #fff;
+background: var(--accent-gold);
+border-color: var(--accent-gold);
+color: #fff;
 }
 .page-button:disabled {
-    opacity: 0.4;
+opacity: 0.4;
 }
 /* =====================
-   SUBCATEGORY
+SUBCATEGORY
 ===================== */
 .subcategory-link {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-    color: var(--ink-500);
-    border-radius: 9999px;
+padding: 0.5rem 0.75rem;
+font-size: 0.875rem;
+color: var(--ink-500);
+border-radius: 9999px;
 }
 .subcategory-link.active-subcategory {
-    background-color: #fff9e6;
-    color: #a37c00;
-    border-color: #d4af37;
-    font-weight: 600;
-    box-shadow: 0 2px 6px rgba(212, 175, 55, 0.2);
-    color: var(--ink-900);
-    background: rgba(212, 175, 55, 0.12);
-    font-weight: 600;
+background-color: #fff9e6;
+color: #a37c00;
+border-color: #d4af37;
+font-weight: 600;
+box-shadow: 0 2px 6px rgba(212, 175, 55, 0.2);
+color: var(--ink-900);
+background: rgba(212, 175, 55, 0.12);
+font-weight: 600;
 }
 /* =====================
-   CATEGORY CARDS
+CATEGORY CARDS
 ===================== */
 .category-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 1.5rem;
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    display: flex; /* 👈 Add this */
-    flex-direction: column; /* 👈 Add this */
-    align-items: center; /* 👈 This centers content horizontally */
-    justify-content: center; /* 👈 This centers content vertically if needed */
+background: white;
+padding: 2rem;
+border-radius: 1.5rem;
+box-shadow: var(--shadow-sm);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+position: relative;
+overflow: hidden;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
 }
 .category-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-md);
+transform: translateY(-6px);
+box-shadow: var(--shadow-md);
 }
 .category-card img {
-    height: 120px;
-    width: auto;
-    max-width: 100%;
-    object-fit: contain;
-    margin-bottom: 1.25rem;
-    opacity: 0.9;
-    display: block;
+height: 120px;
+width: auto;
+max-width: 100%;
+object-fit: contain;
+margin-bottom: 1.25rem;
+opacity: 0.9;
+display: block;
 }
 .category-card h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: var(--ink-900);
+font-size: 1.25rem;
+font-weight: 700;
+margin-bottom: 0.5rem;
+color: var(--ink-900);
 }
 .category-card p {
-    font-size: 0.95rem;
-    color: var(--ink-500);
+font-size: 0.95rem;
+color: var(--ink-500);
 }
 .category-card-link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    text-decoration: none;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 10;
+text-decoration: none;
 }
 /* =====================
-   MOTION REDUCTION
+MOTION REDUCTION
 ===================== */
 @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
+* { transition: none !important; }
 }
 /* =====================
-   HERO SECTION
+HERO SECTION
 ===================== */
-/* =====================
-   HERO SECTION
-===================== */
-
-
 .hero-section {
-  background: linear-gradient(rgba(11,17,42,0.94), rgba(11,17,42,0.85)), 
-              url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&q=80  ') center/cover no-repeat;
+background: linear-gradient(rgba(11,17,42,0.94), rgba(11,17,42,0.85)),
+url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
 }
 </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
-    <a href="#main" class="sr-only focus:not-sr-only focus:bg-slate-900 focus:text-white p-2 focus:ring">Skip to main content</a>
+<a href="#main" class="sr-only focus:not-sr-only focus:bg-slate-900 focus:text-white p-2 focus:ring">Skip to main content</a>
 <nav class="bg-[#0b112a] text-white fixed w-full top-0 z-50 shadow-md">
-  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-    <!-- Logo -->
-    <div class="flex items-center space-x-3">
-      <img loading="lazy" src="assets/images/logo.png" alt="Morel Tech Solution Logo" class="h-10 w-auto">
-      <span class="text-lg font-semibold hidden md:block">Morel Tech Solution</span>
-    </div>
-    <!-- Desktop Menu -->
-    <ul id="navMenu" class="hidden md:flex space-x-3 items-center">
-      <li><a href="#home" data-section="home" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Home</a></li>
-      <li><a href="#about" data-section="about" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">About</a></li>
-      <li><a href="#services" data-section="services" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Services</a></li>
-      <li><a href="#projects" data-section="projects" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Projects</a></li>
-      <li><a href="#products" data-section="products" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Products</a></li>
-      <li><a href="#contact" data-section="contact" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Contact</a></li>
-    </ul>
-    <!-- Mobile Menu Button -->
-    <button id="mobileMenuButton" class="md:hidden text-white text-2xl font-bold focus-ring">☰</button>
-  </div>
-  <!-- Mobile Menu -->
-  <ul id="mobileNav" class="md:hidden hidden flex-col items-center space-y-2 py-6 bg-slate-900 w-full mt-2 rounded-xl shadow-2xl">
-    <li><a href="#home" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Home</a></li>
-    <li><a href="#about" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">About</a></li>
-    <li><a href="#services" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Services</a></li>
-    <li><a href="#projects" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Projects</a></li>
-    <li><a href="#products" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Products</a></li>
-    <li><a href="#contact" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Contact</a></li>
-  </ul>
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<!-- Logo -->
+<div class="flex items-center space-x-3">
+<img loading="lazy" decoding="async" src="assets/images/logo.png" alt="Morel Tech Solution Logo" class="h-10 w-auto">
+<span class="text-lg font-semibold hidden md:block">Morel Tech Solution</span>
+</div>
+<!-- Desktop Menu -->
+<ul id="navMenu" class="hidden md:flex space-x-3 items-center">
+<li><a href="#home" data-section="home" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Home</a></li>
+<li><a href="#about" data-section="about" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">About</a></li>
+<li><a href="#services" data-section="services" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Services</a></li>
+<li><a href="#projects" data-section="projects" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Projects</a></li>
+<li><a href="#products" data-section="products" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Products</a></li>
+<li><a href="#contact" data-section="contact" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Contact</a></li>
+</ul>
+<!-- Mobile Menu Button -->
+<button id="mobileMenuButton" class="md:hidden text-white text-2xl font-bold focus-ring" aria-expanded="false" aria-controls="mobileNav">☰</button>
+</div>
+<!-- Mobile Menu -->
+<ul id="mobileNav" class="md:hidden hidden flex-col items-center space-y-2 py-6 bg-slate-900 w-full mt-2 rounded-xl shadow-2xl">
+<li><a href="#home" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Home</a></li>
+<li><a href="#about" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">About</a></li>
+<li><a href="#services" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Services</a></li>
+<li><a href="#projects" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Projects</a></li>
+<li><a href="#products" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Products</a></li>
+<li><a href="#contact" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Contact</a></li>
+</ul>
 </nav>
-    <main id="main" class="pt-20">
-        <!-- ========== HOME ========== -->
-        <section id="home" data-observer-id="home" class="min-h-screen flex items-center justify-center text-center text-white pt-20 hero-section">
-            <div class="container mx-auto px-1">
-                <h1 class="text-4xl md:text-6xl font-black text-gold mb-6">Morel Tech Solution</h1>
-                <p class="text-xl md:text-3xl font-light mb-6">Smarter Spaces, Better Living.</p>
-                
-                <!-- ✅ Value prop badge -->
-                <div class="bg-yellow-100 text-slate-900 inline-block px-4 py-1 rounded-full font-medium mb-4">
-                  🇰🇪 100% Kenyan-Owned | Free On-Site Consultation
-                </div>
-                
-                <p class="text-lg md:text-xl max-w-4xl mx-auto mb-10">
-                    Premium smart home automation • CCTV • Starlink • Piped music • Security systems<br>
-                    Clean installations across <strong>Nairobi, Karen, Runda, Kiambu, Tatu City & Nationwide</strong>
-                </p>
-                
-                <!-- ✅ Trust badges -->
-                <div class="mt-8 flex flex-wrap justify-center gap-6 text-sm text-gray-300">
-                  <span>✅ Licensed & Insured</span>
-                  <span>✅ 2-Year Warranty</span>
-                  <span>✅ Free Site Survey</span>
-                  <span>✅ 500+ Installations in Kenya</span>
-                </div>
-                
-                <div class="space-x-4 flex flex-col sm:flex-row justify-center gap-4 mt-8">
-                    <a href="#contact" class="bg-yellow-600 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-10 rounded-full text-lg shadow-xl transform hover:scale-105 transition focus-ring">Get a Quote</a>
-                    <a href="#projects" class="border-2 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-slate-900 font-bold py-4 px-10 rounded-full text-lg transition focus-ring">View Projects</a>
-                </div>
-            </div>
-        </section>
-        <!-- ========== ABOUT ========== -->
-        <section id="about" data-observer-id="about" class="py-24 bg-white">
-            <div class="container mx-auto px-6 text-center max-w-5xl">
-                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-12">Who We Are</h2>
-                <p class="text-lg md:text-xl leading-relaxed text-gray-700">
-                    Morel Tech Solution delivers <strong>clean, reliable, premium technology</strong> for homes and businesses in Kenya.<br><br>
-                    We specialize in smart home automation, CCTV, piped music, Starlink internet, WiFi systems, gate automation and security — all installed with precision and supported long-term.<br><br>
-                    From Karen to Tatu City, Runda to Westlands — we’ve built a reputation for <strong>neat work, honest pricing, and systems that just work</strong>.
-                </p>
-            </div>
-        </section>
-        <!-- ========== SERVICES ========== -->
-        <section id="services" data-observer-id="services" class="py-24 bg-slate-50">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-16">Our Services</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    <div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition text-center flex flex-col">
-                        <div class="w-full h-48 overflow-hidden rounded-2xl mb-6">
-                            <img loading="lazy" src="assets/images/smarthome automations.jpg" alt="Smart Home Automation" class="w-full h-full object-cover">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Smart Home Automation</h3>
-                        <p class="text-gray-600 text-sm">Lighting • Curtains • Climate • Voice Control • Scenes</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition text-center flex flex-col">
-                        <div class="w-full h-48 overflow-hidden rounded-2xl mb-6">
-                            <img loading="lazy" src="assets/images/Home entertainment and AV.jpg" alt="Home Entertainment & AV" class="w-full h-full object-cover">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Home Entertainment & AV</h3>
-                        <p class="text-gray-600 text-sm">Home theatre • Projectors • Soundbars • TV mounting</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition text-center flex flex-col">
-                        <div class="w-full h-48 overflow-hidden rounded-2xl mb-6">
-                            <img loading="lazy" src="assets/images/security and surveillance.jpg" alt="Security & Surveillance" class="w-full h-full object-cover">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Security & Surveillance</h3>
-                        <p class="text-gray-600 text-sm">CCTV • Smart alarms • Motion sensors • Access control</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition text-center flex flex-col">
-                        <div class="w-full h-48 overflow-hidden rounded-2xl mb-6">
-                            <img loading="lazy" src="assets/images/networking and internet.jpg" alt="Networking & Internet" class="w-full h-full object-cover">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Networking & Internet</h3>
-                        <p class="text-gray-600 text-sm">WiFi design • Structured cabling • Racks • Optimization</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition text-center flex flex-col">
-                        <div class="w-full h-48 overflow-hidden rounded-2xl mb-6">
-                            <img loading="lazy" src="assets/images/maintenance1.jpg" alt="Maintenance & Support" class="w-full h-full object-cover">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Maintenance & Support</h3>
-                        <p class="text-gray-600 text-sm">System upgrades • Diagnostics • Scheduled servicing</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<main id="main" class="pt-20">
+<!-- ========== HOME ========== -->
+<section id="home" data-observer-id="home" class="min-h-screen flex items-center justify-center text-center text-white pt-20 hero-section">
+<div class="container mx-auto px-1">
+<h1 class="text-4xl md:text-6xl font-black text-gold mb-6">Morel Tech Solution</h1>
+<p class="text-xl md:text-3xl font-light mb-6">Smarter Spaces, Better Living.</p>
+<!-- ✅ Value prop badge -->
+<div class="bg-yellow-100 text-slate-900 inline-block px-4 py-1 rounded-full font-medium mb-4">
+🇰🇪 100% Kenyan-Owned | Free On-Site Consultation
+</div>
+<p class="text-lg md:text-xl max-w-4xl mx-auto mb-10">
+Premium smart home automation • CCTV • Starlink • Piped music • Security systems<br>
+Clean installations across <strong>Nairobi, Karen, Runda, Kiambu, Tatu City & Nationwide</strong>
+</p>
+<!-- ✅ Trust badges -->
+<div class="mt-8 flex flex-wrap justify-center gap-6 text-sm text-gray-300">
+<span>✅ Licensed & Insured</span>
+<span>✅ 2-Year Warranty</span>
+<span>✅ Free Site Survey</span>
+<span>✅ 500+ Installations in Kenya</span>
+</div>
+<div class="space-x-4 flex flex-col sm:flex-row justify-center gap-4 mt-8">
+<a href="#contact" class="bg-yellow-600 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-10 rounded-full text-lg shadow-xl transform hover:scale-105 transition focus-ring">Get a Quote</a>
+<a href="#projects" class="border-2 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-slate-900 font-bold py-4 px-10 rounded-full text-lg transition focus-ring">View Projects</a>
+</div>
+</div>
+</section>
+<!-- ========== ABOUT ========== -->
+<section id="about" data-observer-id="about" class="py-24 bg-white">
+<div class="container mx-auto px-6 text-center max-w-5xl">
+<h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-12">Who We Are</h2>
+<p class="text-lg md:text-xl leading-relaxed text-gray-700">
+Morel Tech Solution delivers <strong>clean, reliable, premium technology</strong> for homes and businesses in Kenya.<br><br>
+We specialize in smart home automation, CCTV, piped music, Starlink internet, WiFi systems, gate automation and security — all installed with precision and supported long-term.<br><br>
+From Karen to Tatu City, Runda to Westlands — we’ve built a reputation for <strong>neat work, honest pricing, and systems that just work</strong>.
+</p>
+</div>
+</section>
+<!-- ========== SERVICES ========== -->
+<section id="services" data-observer-id="services" class="py-24 bg-slate-50">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-16">Our Services</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+<div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition text-center flex flex-col">
+<div class="w-full h-48 overflow-hidden rounded-2xl mb-6">
+<img loading="lazy" decoding="async" src="assets/images/smarthome automations.jpg" alt="Smart Home Automation" class="w-full h-full object-cover">
+</div>
+<h3 class="text-xl font-bold mb-2">Smart Home Automation</h3>
+<p class="text-gray-600 text-sm">Lighting • Curtains • Climate • Voice Control • Scenes</p>
+</div>
+<div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition text-center flex flex-col">
+<div class="w-full h-48 overflow-hidden rounded-2xl mb-6">
+<img loading="lazy" decoding="async" src="assets/images/Home entertainment and AV.jpg" alt="Home Entertainment & AV" class="w-full h-full object-cover">
+</div>
+<h3 class="text-xl font-bold mb-2">Home Entertainment & AV</h3>
+<p class="text-gray-600 text-sm">Home theatre • Projectors • Soundbars • TV mounting</p>
+</div>
+<div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition text-center flex flex-col">
+<div class="w-full h-48 overflow-hidden rounded-2xl mb-6">
+<img loading="lazy" decoding="async" src="assets/images/security and surveillance.jpg" alt="Security & Surveillance" class="w-full h-full object-cover">
+</div>
+<h3 class="text-xl font-bold mb-2">Security & Surveillance</h3>
+<p class="text-gray-600 text-sm">CCTV • Smart alarms • Motion sensors • Access control</p>
+</div>
+<div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition text-center flex flex-col">
+<div class="w-full h-48 overflow-hidden rounded-2xl mb-6">
+<img loading="lazy" decoding="async" src="assets/images/networking and internet.jpg" alt="Networking & Internet" class="w-full h-full object-cover">
+</div>
+<h3 class="text-xl font-bold mb-2">Networking & Internet</h3>
+<p class="text-gray-600 text-sm">WiFi design • Structured cabling • Racks • Optimization</p>
+</div>
+<div class="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition text-center flex flex-col">
+<div class="w-full h-48 overflow-hidden rounded-2xl mb-6">
+<img loading="lazy" decoding="async" src="assets/images/maintenance1.jpg" alt="Maintenance & Support" class="w-full h-full object-cover">
+</div>
+<h3 class="text-xl font-bold mb-2">Maintenance & Support</h3>
+<p class="text-gray-600 text-sm">System upgrades • Diagnostics • Scheduled servicing</p>
+</div>
+</div>
+</div>
+</section>
 <!-- ========== PROJECTS ========== -->
 <section id="projects" data-observer-id="projects" class="py-24 bg-white">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-8">Featured Projects</h2>
-        <div class="swiper projectSwiper">
-            <div class="swiper-wrapper">
-           
-
-                <!-- 2. Garden Speaker System -->
-                <div class="swiper-slide p-2">
-                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                        <div class="relative">
-                            <img loading="lazy" src="assets/images/projects/garden-speaker.jpg" alt="Garden Speaker System" class="w-full h-56 object-cover" />
-                            <button onclick="openModal('garden-speaker')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">Garden Speaker System</h3>
-                            <p class="text-gray-600 text-sm">Weatherproof outdoor audio for villa in Karen</p>
-                            <button onclick="openModal('garden-speaker')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3. Corporate Office – Westlands -->
-                <div class="swiper-slide p-2">
-                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                        <div class="relative">
-                            <img loading="lazy" src="assets/images/projects/office-project.jpg" alt="Corporate Office Project" class="w-full h-56 object-cover" />
-                            <button onclick="openModal('office-project')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">Corporate Office – Westlands</h3>
-                            <p class="text-gray-600 text-sm">Full AV, access control & network infrastructure</p>
-                            <button onclick="openModal('office-project')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. Smart Home – Karen -->
-                <div class="swiper-slide p-2">
-                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                        <div class="relative">
-                            <img loading="lazy" src="assets/images/projects/project1.jpg" alt="Smart Home – Karen" class="w-full h-56 object-cover" />
-                            <button onclick="openModal('video1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">Smart Home – Karen</h3>
-                            <p class="text-gray-600 text-sm">Full automation + Starlink + 32ch CCTV</p>
-                            <button onclick="openModal('video1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
+<div class="container mx-auto px-6">
+<h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-8">Featured Projects</h2>
+<div class="swiper projectSwiper">
+<div class="swiper-wrapper">
+<!-- 2. Garden Speaker System -->
+<div class="swiper-slide p-2">
+<div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+<div class="relative">
+<img loading="lazy" decoding="async" src="assets/images/projects/garden-speaker.jpg" alt="Garden Speaker System" class="w-full h-56 object-cover" />
+<button onclick="openModal('garden-speaker')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition" aria-label="Watch video: Garden Speaker System">
+<div class="bg-white bg-opacity-90 rounded-full p-3">
+<svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+</div>
+</button>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg">Garden Speaker System</h3>
+<p class="text-gray-600 text-sm">Weatherproof outdoor audio for villa in Karen</p>
+<button onclick="openModal('garden-speaker')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+</div>
+</div>
+</div>
+<!-- 3. Corporate Office – Westlands -->
+<div class="swiper-slide p-2">
+<div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+<div class="relative">
+<img loading="lazy" decoding="async" src="assets/images/projects/office-project.jpg" alt="Corporate Office Project" class="w-full h-56 object-cover" />
+<button onclick="openModal('office-project')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition" aria-label="Watch video: Corporate Office – Westlands">
+<div class="bg-white bg-opacity-90 rounded-full p-3">
+<svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+</div>
+</button>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg">Corporate Office – Westlands</h3>
+<p class="text-gray-600 text-sm">Full AV, access control & network infrastructure</p>
+<button onclick="openModal('office-project')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+</div>
+</div>
+</div>
+<!-- 4. Smart Home – Karen -->
+<div class="swiper-slide p-2">
+<div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+<div class="relative">
+<img loading="lazy" decoding="async" src="assets/images/projects/project1.jpg" alt="Smart Home – Karen" class="w-full h-56 object-cover" />
+<button onclick="openModal('video1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition" aria-label="Watch video: Smart Home – Karen">
+<div class="bg-white bg-opacity-90 rounded-full p-3">
+<svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+</div>
+</button>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg">Smart Home – Karen</h3>
+<p class="text-gray-600 text-sm">Full automation + Starlink + 32ch CCTV</p>
+<button onclick="openModal('video1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+</div>
+</div>
+</div>
 <!-- Structured Cabling Project -->
 <div class="swiper-slide p-2">
-    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-        <div class="relative">
-            <img loading="lazy" src="assets/images/projects/structred-cabling1.jpg" alt="Structured Cabling" class="w-full h-56 object-cover" />
-            <button onclick="openModal('structured-cabling1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                <div class="bg-white bg-opacity-90 rounded-full p-3">
-                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                    </svg>
-                </div>
-            </button>
-        </div>
-        <div class="p-4">
-            <h3 class="font-bold text-lg">Structured Cabling</h3>
-            <p class="text-gray-600 text-sm">Structured cabling installation + network setup</p>
-            <button onclick="openModal('structured-cabling1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-        </div>
-    </div>
+<div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+<div class="relative">
+<img loading="lazy" decoding="async" src="assets/images/projects/structred-cabling1.jpg" alt="Structured Cabling" class="w-full h-56 object-cover" />
+<button onclick="openModal('structured-cabling1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition" aria-label="Watch video: Structured Cabling">
+<div class="bg-white bg-opacity-90 rounded-full p-3">
+<svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+<path d="M8 5v14l11-7z"/>
+</svg>
 </div>
-
-
-          
-
-                <!-- 7. Smart Home Control Panel -->
-                <div class="swiper-slide p-2">
-                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                        <div class="relative">
-                            <img loading="lazy" src="assets/images/projects/smart-control-panel.jpg" alt="Smart Home Control Panel" class="w-full h-56 object-cover" />
-                            <button onclick="openModal('smart-control-panel')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">Smart Home Control Panel</h3>
-                            <p class="text-gray-600 text-sm">Centralized control for lighting, climate & security</p>
-                            <button onclick="openModal('smart-control-panel')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 8. Smart Curtain Motor -->
-                <div class="swiper-slide p-2">
-                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                        <div class="relative">
-                            <img loading="lazy" src="assets/images/projects/smart-curtain-motor.jpg" alt="Smart Curtain Motor" class="w-full h-56 object-cover" />
-                            <button onclick="openModal('smart-curtain-motor')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">Smart Curtain Motor</h3>
-                            <p class="text-gray-600 text-sm">Automated blinds with sun-tracking & voice control</p>
-                            <button onclick="openModal('smart-curtain-motor')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <!-- 10. Zoned Amplifier System -->
-                <div class="swiper-slide p-2">
-                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                        <div class="relative">
-                            <img loading="lazy" src="assets/images/projects/zoned-amplified.jpg" alt="Zoned Amplifier System" class="w-full h-56 object-cover" />
-                            <button onclick="openModal('zoned-amplifier-project')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">Zoned Amplifier System</h3>
-                            <p class="text-gray-600 text-sm">Multi-room audio with independent zone control</p>
-                            <button onclick="openModal('zoned-amplifier-project')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ========== NEW PROJECTS ========== -->
-
-                <!-- 11. CCTV Installations -->
-                <div class="swiper-slide p-2">
-                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                        <div class="relative">
-                            <img loading="lazy" src="assets/images/projects/cctv-installations1.jpg" alt="CCTV Installations" class="w-full h-56 object-cover" />
-                            <button onclick="openModal('cctv-installations1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">CCTV Installations</h3>
-                            <p class="text-gray-600 text-sm">Professional surveillance system setup</p>
-                            <button onclick="openModal('cctv-installations1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 12. Gate Automation -->
-                <div class="swiper-slide p-2">
-                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                        <div class="relative">
-                            <img loading="lazy" src="assets/images/projects/gate-automation1.jpg" alt="Gate Automation" class="w-full h-56 object-cover" />
-                            <button onclick="openModal('gate-automation1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">Gate Automation</h3>
-                            <p class="text-gray-600 text-sm">Smart entry system with remote access</p>
-                            <button onclick="openModal('gate-automation1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 13. Smart Lighting -->
-                <div class="swiper-slide p-2">
-                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                        <div class="relative">
-                            <!-- ⚠️ Filename contains typo: 'lightining' → should be 'lighting' -->
-                            <img loading="lazy" src="assets/images/projects/smart-lightining1.jpg" alt="Smart Lighting" class="w-full h-56 object-cover" />
-                            <button onclick="openModal('smart-lightining1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">Smart Lighting</h3>
-                            <p class="text-gray-600 text-sm">Automated, mood-based lighting control</p>
-                            <button onclick="openModal('smart-lightining1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 14. Starlink Installations -->
-                <div class="swiper-slide p-2">
-                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                        <div class="relative">
-                            <img loading="lazy" src="assets/images/projects/starlink-installations1.jpg" alt="Starlink Installations" class="w-full h-56 object-cover" />
-                            <button onclick="openModal('starlink-installation')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">Starlink Installations</h3>
-                            <p class="text-gray-600 text-sm">High-speed satellite internet deployment</p>
-                            <button onclick="openModal('starlink-installation')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 15. Zoned Music System -->
-                <div class="swiper-slide p-2">
-                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
-                        <div class="relative">
-                            <img loading="lazy" src="assets/images/projects/zoned-music1.jpg" alt="Zoned Music System" class="w-full h-56 object-cover" />
-                            <button onclick="openModal('zoned-music1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
-                                <div class="bg-white bg-opacity-90 rounded-full p-3">
-                                    <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">Zoned Music System</h3>
-                            <p class="text-gray-600 text-sm">Multi-zone audio with independent control</p>
-                            <button onclick="openModal('zoned-music1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Swiper Navigation -->
-            <div class="swiper-button-next !text-gold !w-10 !h-10 !top-1/2"></div>
-            <div class="swiper-button-prev !text-gold !w-10 !h-10 !top-1/2"></div>
-            <div class="swiper-pagination !bottom-0 mt-4"></div>
-        </div>
-    </div>
+</button>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg">Structured Cabling</h3>
+<p class="text-gray-600 text-sm">Structured cabling installation + network setup</p>
+<button onclick="openModal('structured-cabling1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+</div>
+</div>
+</div>
+<!-- 7. Smart Home Control Panel -->
+<div class="swiper-slide p-2">
+<div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+<div class="relative">
+<img loading="lazy" decoding="async" src="assets/images/projects/smart-control-panel.jpg" alt="Smart Home Control Panel" class="w-full h-56 object-cover" />
+<button onclick="openModal('smart-control-panel')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition" aria-label="Watch video: Smart Home Control Panel">
+<div class="bg-white bg-opacity-90 rounded-full p-3">
+<svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+</div>
+</button>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg">Smart Home Control Panel</h3>
+<p class="text-gray-600 text-sm">Centralized control for lighting, climate & security</p>
+<button onclick="openModal('smart-control-panel')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+</div>
+</div>
+</div>
+<!-- 8. Smart Curtain Motor -->
+<div class="swiper-slide p-2">
+<div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+<div class="relative">
+<img loading="lazy" decoding="async" src="assets/images/projects/smart-curtain-motor.jpg" alt="Smart Curtain Motor" class="w-full h-56 object-cover" />
+<button onclick="openModal('smart-curtain-motor')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition" aria-label="Watch video: Smart Curtain Motor">
+<div class="bg-white bg-opacity-90 rounded-full p-3">
+<svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+</div>
+</button>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg">Smart Curtain Motor</h3>
+<p class="text-gray-600 text-sm">Automated blinds with sun-tracking & voice control</p>
+<button onclick="openModal('smart-curtain-motor')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+</div>
+</div>
+</div>
+<!-- 10. Zoned Amplifier System -->
+<div class="swiper-slide p-2">
+<div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+<div class="relative">
+<img loading="lazy" decoding="async" src="assets/images/projects/zoned-amplified.jpg" alt="Zoned Amplifier System" class="w-full h-56 object-cover" />
+<button onclick="openModal('zoned-amplifier-project')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition" aria-label="Watch video: Zoned Amplifier System">
+<div class="bg-white bg-opacity-90 rounded-full p-3">
+<svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+</div>
+</button>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg">Zoned Amplifier System</h3>
+<p class="text-gray-600 text-sm">Multi-room audio with independent zone control</p>
+<button onclick="openModal('zoned-amplifier-project')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+</div>
+</div>
+</div>
+<!-- ========== NEW PROJECTS ========== -->
+<!-- 11. CCTV Installations -->
+<div class="swiper-slide p-2">
+<div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+<div class="relative">
+<img loading="lazy" decoding="async" src="assets/images/projects/cctv-installations1.jpg" alt="CCTV Installations" class="w-full h-56 object-cover" />
+<button onclick="openModal('cctv-installations1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition" aria-label="Watch video: CCTV Installations">
+<div class="bg-white bg-opacity-90 rounded-full p-3">
+<svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+</div>
+</button>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg">CCTV Installations</h3>
+<p class="text-gray-600 text-sm">Professional surveillance system setup</p>
+<button onclick="openModal('cctv-installations1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+</div>
+</div>
+</div>
+<!-- 12. Gate Automation -->
+<div class="swiper-slide p-2">
+<div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+<div class="relative">
+<img loading="lazy" decoding="async" src="assets/images/projects/gate-automation1.jpg" alt="Gate Automation" class="w-full h-56 object-cover" />
+<button onclick="openModal('gate-automation1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition" aria-label="Watch video: Gate Automation">
+<div class="bg-white bg-opacity-90 rounded-full p-3">
+<svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+</div>
+</button>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg">Gate Automation</h3>
+<p class="text-gray-600 text-sm">Smart entry system with remote access</p>
+<button onclick="openModal('gate-automation1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+</div>
+</div>
+</div>
+<!-- 13. Smart Lighting -->
+<div class="swiper-slide p-2">
+<div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+<div class="relative">
+<!-- ⚠️ Filename contains typo: 'lightining' → should be 'lighting' -->
+<img loading="lazy" decoding="async" src="assets/images/projects/smart-lightining1.jpg" alt="Smart Lighting" class="w-full h-56 object-cover" />
+<button onclick="openModal('smart-lightining1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition" aria-label="Watch video: Smart Lighting">
+<div class="bg-white bg-opacity-90 rounded-full p-3">
+<svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+</div>
+</button>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg">Smart Lighting</h3>
+<p class="text-gray-600 text-sm">Automated, mood-based lighting control</p>
+<button onclick="openModal('smart-lightining1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+</div>
+</div>
+</div>
+<!-- 14. Starlink Installations -->
+<div class="swiper-slide p-2">
+<div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+<div class="relative">
+<img loading="lazy" decoding="async" src="assets/images/projects/starlink-installations1.jpg" alt="Starlink Installations" class="w-full h-56 object-cover" />
+<button onclick="openModal('starlink-installation')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition" aria-label="Watch video: Starlink Installations">
+<div class="bg-white bg-opacity-90 rounded-full p-3">
+<svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+</div>
+</button>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg">Starlink Installations</h3>
+<p class="text-gray-600 text-sm">High-speed satellite internet deployment</p>
+<button onclick="openModal('starlink-installation')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+</div>
+</div>
+</div>
+<!-- 15. Zoned Music System -->
+<div class="swiper-slide p-2">
+<div class="bg-white rounded-2xl shadow-2xl overflow-hidden group relative">
+<div class="relative">
+<img loading="lazy" decoding="async" src="assets/images/projects/zoned-music1.jpg" alt="Zoned Music System" class="w-full h-56 object-cover" />
+<button onclick="openModal('zoned-music1')" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition" aria-label="Watch video: Zoned Music System">
+<div class="bg-white bg-opacity-90 rounded-full p-3">
+<svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+</div>
+</button>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg">Zoned Music System</h3>
+<p class="text-gray-600 text-sm">Multi-zone audio with independent control</p>
+<button onclick="openModal('zoned-music1')" class="mt-2 text-blue-600 hover:underline font-medium">Watch Video</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Swiper Navigation -->
+<div class="swiper-button-next !text-gold !w-10 !h-10 !top-1/2"></div>
+<div class="swiper-button-prev !text-gold !w-10 !h-10 !top-1/2"></div>
+<div class="swiper-pagination !bottom-0 mt-4"></div>
+</div>
+</div>
 </section>
-
-        <!-- ========== PRODUCTS ========== -->
-        <section id="products" data-observer-id="products" class="py-24 bg-slate-50">
-          <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
-              Our Product Catalog
-            </h2>
-            <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
-              Premium tech solutions for smart homes and businesses across Kenya.
-            </p>
-
-
-
-
+<!-- ========== PRODUCTS ========== -->
+<section id="products" data-observer-id="products" class="py-24 bg-slate-50">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
+Our Product Catalog
+</h2>
+<p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+Premium tech solutions for smart homes and businesses across Kenya.
+</p>
 <!-- ===== CATEGORY CARDS ===== -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-  <!-- Computing -->
-  <div class="category-card group">
-    <a href="products/computing.html" class="category-card-link" aria-label="Browse Computing & Office Equipment"></a>
-    <img loading="lazy" src="assets/images/desktops/HP-ProDesk400G7 (i3).jpg" alt="Computing">
-    <h3>Computing & Office</h3>
-    <p class="text-slate-600">Desktops, laptops, monitors</p>
-    <p class="text-sm font-medium text-yellow-600 mt-1 transition-colors group-hover:text-yellow-700">Click to view all models →</p>
-  </div>
-  <!-- TVs -->
-  <div class="category-card group">
-    <a href="products/tvs.html" class="category-card-link" aria-label="Browse TVs & Projectors"></a>
-    <img loading="lazy" src="assets/images/tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)55-inch.jpg" alt="TVs">
-    <h3>TVs & Projectors</h3>
-    <p class="text-slate-600">LED, QLED, OLED, 4K</p>
-    <p class="text-sm font-medium text-yellow-600 mt-1 transition-colors group-hover:text-yellow-700">Click to view all models →</p>
-  </div>
-  <!-- Audio -->
-  <div class="category-card group">
-    <a href="products/audio.html" class="category-card-link" aria-label="Browse Audio & Home Entertainment"></a>
-    <img loading="lazy" src="assets/images/soundbars/Bose-Smart-Soundbar-700.jpg" alt="Audio">
-    <h3>Audio & Home Entertainment</h3>
-    <p class="text-slate-600">Receivers, soundbars, speakers</p>
-    <p class="text-sm font-medium text-yellow-600 mt-1 transition-colors group-hover:text-yellow-700">Click to view all models →</p>
-  </div>
-  <!-- Appliances -->
-  <div class="category-card group">
-    <a href="products/appliances.html" class="category-card-link" aria-label="Browse Home Appliances"></a>
-    <img loading="lazy" src="assets/images/fridges/Samsung-RS54N3A13S8–535L.jpg" alt="Appliances">
-    <h3>Home Appliances</h3>
-    <p class="text-slate-600">Fridges, ACs, cookers, washers</p>
-    <p class="text-sm font-medium text-yellow-600 mt-1 transition-colors group-hover:text-yellow-700">Click to view all models →</p>
-  </div>
-  <!-- Mobile -->
-  <div class="category-card group">
-    <a href="products/mobile.html" class="category-card-link" aria-label="Browse Mobile Devices & Smart Tech"></a>
-    <img loading="lazy" src="assets/images/phones/Apple-iPhone-15-Pro.jpg" alt="Mobile">
-    <h3>Mobile & Smart Tech</h3>
-    <p class="text-slate-600">Phones, watches, smart devices</p>
-    <p class="text-sm font-medium text-yellow-600 mt-1 transition-colors group-hover:text-yellow-700">Click to view all models →</p>
-  </div>
-  <!-- Power -->
-  <div class="category-card group">
-    <a href="products/power.html" class="category-card-link" aria-label="Browse Power & Solar Solutions"></a>
-    <img loading="lazy" src="assets/images/solar-panels/Morel-Techs-Complete-Solar-Kit–3kW.jpg" alt="Power">
-    <h3>Power & Solar</h3>
-    <p class="text-slate-600">Inverters, batteries, kits</p>
-    <p class="text-sm font-medium text-yellow-600 mt-1 transition-colors group-hover:text-yellow-700">Click to view all models →</p>
-  </div>
-  <!-- Security -->
-  <div class="category-card group">
-    <a href="products/security.html" class="category-card-link" aria-label="Browse Security & Surveillance"></a>
-    <img loading="lazy" src="assets/images/surveillance/HIKVISION-DS-2CD2T43G0-I5(4MP Bullet IR 50m).jpg" alt="Security">
-    <h3>Security & Surveillance</h3>
-    <p class="text-slate-600">CCTV, access control, smart cams</p>
-    <p class="text-sm font-medium text-yellow-600 mt-1 transition-colors group-hover:text-yellow-700">Click to view all models →</p>
-  </div>
-  <!-- Networking -->
-  <div class="category-card group">
-    <a href="products/networking.html" class="category-card-link" aria-label="Browse Networking & Connectivity"></a>
-    <img loading="lazy" src="assets/images/networking/Starlink-Gen-3-Kit.jpg" alt="Networking">
-    <h3>Networking & Connectivity</h3>
-    <p class="text-slate-600">Starlink, routers, mesh, APs</p>
-    <p class="text-sm font-medium text-yellow-600 mt-1 transition-colors group-hover:text-yellow-700">Click to view all models →</p>
-  </div>
+<!-- Computing -->
+<div class="category-card group">
+<a href="products/computing.html" class="category-card-link" aria-label="Browse Computing & Office Equipment"></a>
+<img loading="lazy" decoding="async" src="assets/images/desktops/HP-ProDesk400G7 (i3).jpg" alt="Computing">
+<h3>Computing & Office</h3>
+<p class="text-slate-600">Desktops, laptops, monitors</p>
+<p class="text-sm font-medium text-yellow-600 mt-1 transition-colors group-hover:text-yellow-700">Click to view all models →</p>
+</div>
+<!-- TVs -->
+<div class="category-card group">
+<a href="products/tvs.html" class="category-card-link" aria-label="Browse TVs & Projectors"></a>
+<img loading="lazy" decoding="async" src="assets/images/tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)55-inch.jpg" alt="TVs">
+<h3>TVs & Projectors</h3>
+<p class="text-slate-600">LED, QLED, OLED, 4K</p>
+<p class="text-sm font-medium text-yellow-600 mt-1 transition-colors group-hover:text-yellow-700">Click to view all models →</p>
+</div>
+<!-- Audio -->
+<div class="category-card group">
+<a href="products/audio.html" class="category-card-link" aria-label="Browse Audio & Home Entertainment"></a>
+<img loading="lazy" decoding="async" src="assets/images/soundbars/Bose-Smart-Soundbar-700.jpg" alt="Audio">
+<h3>Audio & Home Entertainment</h3>
+<p class="text-slate-600">Receivers, soundbars, speakers</p>
+<p class="text-sm font-medium text-yellow-600 mt-1 transition-colors group-hover:text-yellow-700">Click to view all models →</p>
+</div>
+<!-- Appliances -->
+<div class="category-card group">
+<a href="products/appliances.html" class="category-card-link" aria-label="Browse Home Appliances"></a>
+<img loading="lazy" decoding="async" src="assets/images/fridges/Samsung-RS54N3A13S8–535L.jpg" alt="Appliances">
+<h3>Home Appliances</h3>
+<p class="text-slate-600">Fridges, ACs, cookers, washers</p>
+<p class="text-sm font-medium text-yellow-600 mt-1 transition-colors group-hover:text-yellow-700">Click to view all models →</p>
+</div>
+<!-- Mobile -->
+<div class="category-card group">
+<a href="products/mobile.html" class="category-card-link" aria-label="Browse Mobile Devices & Smart Tech"></a>
+<img loading="lazy" decoding="async" src="assets/images/phones/Apple-iPhone-15-Pro.jpg" alt="Mobile">
+<h3>Mobile & Smart Tech</h3>
+<p class="text-slate-600">Phones, watches, smart devices</p>
+<p class="text-sm font-medium text-yellow-600 mt-1 transition-colors group-hover:text-yellow-700">Click to view all models →</p>
+</div>
+<!-- Power -->
+<div class="category-card group">
+<a href="products/power.html" class="category-card-link" aria-label="Browse Power & Solar Solutions"></a>
+<img loading="lazy" decoding="async" src="assets/images/solar-panels/Morel-Techs-Complete-Solar-Kit–3kW.jpg" alt="Power">
+<h3>Power & Solar</h3>
+<p class="text-slate-600">Inverters, batteries, kits</p>
+<p class="text-sm font-medium text-yellow-600 mt-1 transition-colors group-hover:text-yellow-700">Click to view all models →</p>
+</div>
+<!-- Security -->
+<div class="category-card group">
+<a href="products/security.html" class="category-card-link" aria-label="Browse Security & Surveillance"></a>
+<img loading="lazy" decoding="async" src="assets/images/surveillance/HIKVISION-DS-2CD2T43G0-I5(4MP Bullet IR 50m).jpg" alt="Security">
+<h3>Security & Surveillance</h3>
+<p class="text-slate-600">CCTV, access control, smart cams</p>
+<p class="text-sm font-medium text-yellow-600 mt-1 transition-colors group-hover:text-yellow-700">Click to view all models →</p>
+</div>
+<!-- Networking -->
+<div class="category-card group">
+<a href="products/networking.html" class="category-card-link" aria-label="Browse Networking & Connectivity"></a>
+<img loading="lazy" decoding="async" src="assets/images/networking/Starlink-Gen-3-Kit.jpg" alt="Networking">
+<h3>Networking & Connectivity</h3>
+<p class="text-slate-600">Starlink, routers, mesh, APs</p>
+<p class="text-sm font-medium text-yellow-600 mt-1 transition-colors group-hover:text-yellow-700">Click to view all models →</p>
+</div>
 </div>
 </section>
-
-            <!-- ===== TRUSTED BRANDS MACQUÉE ===== -->
+<!-- ===== TRUSTED BRANDS MACQUÉE ===== -->
 <div class="overflow-hidden relative">
-  <div class="brand-marquee flex gap-16 items-center">
-    <!-- Logos (repeat once for infinite loop) -->
-    <img loading="lazy" src="assets/images/brands/samsung.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/apple.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/lg.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/sony.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/hikvision.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/dahua.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/starlink.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/ubiquiti.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/denon.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/jbl.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/bose.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/hisense.jpg" class="h-10" />
-
-    <!-- DUPLICATE for seamless loop -->
-    <img loading="lazy" src="assets/images/brands/samsung.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/apple.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/lg.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/sony.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/hikvision.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/dahua.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/starlink.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/ubiquiti.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/denon.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/jbl.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/bose.jpg" class="h-10" />
-    <img loading="lazy" src="assets/images/brands/hisense.jpg" class="h-10" />
-  </div>
+<div class="brand-marquee flex gap-16 items-center">
+<!-- Logos (repeat once for infinite loop) -->
+<img loading="lazy" decoding="async" src="assets/images/brands/samsung.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/apple.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/lg.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/sony.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/hikvision.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/dahua.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/starlink.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/ubiquiti.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/denon.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/jbl.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/bose.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/hisense.jpg" class="h-10" />
+<!-- DUPLICATE for seamless loop -->
+<img loading="lazy" decoding="async" src="assets/images/brands/samsung.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/apple.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/lg.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/sony.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/hikvision.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/dahua.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/starlink.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/ubiquiti.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/denon.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/jbl.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/bose.jpg" class="h-10" />
+<img loading="lazy" decoding="async" src="assets/images/brands/hisense.jpg" class="h-10" />
 </div>
-        
-        <!-- ========== CONTACT ========== -->
-        <section id="contact" data-observer-id="contact" class="py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white text-center">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl md:text-5xl font-bold mb-8">Ready to Upgrade?</h2>
-                <p class="text-xl mb-6 text-gold">WhatsApp or Call: <strong>+254 791 864 441</strong></p>
-                <a href="https://wa.me/254791864441" target="_blank" rel="noopener noreferrer"
-                    class="bg-green-500 hover:bg-green-600 text-white font-bold text-lg py-4 px-10 rounded-full shadow-2xl inline-flex items-center gap-3 transition focus-ring">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.034-.967-.277-.099-.479-.148-.684-.148-.202 0-.53.074-.76.197l-.76.371c-.203.099-1.562.743-1.837.867-.277.123-1.04.321-1.86.321-1.31 0-2.41-.693-2.768-1.656-.102-.297-.148-.594-.148-.891 0-.297.046-.594.148-.891.101-.297.203-.545.277-.743.074-.197.148-.545.277-.842.124-.297.203-.545.203-.545s.074-.297.148-.545c.074-.197.277-.891.277-.891l.074-.148c.124-.297.326-.645.529-.892.203-.248.405-.645.68-.993.275-.348.5-.696.703-.944.203-.248.405-.645.68-.993.275-.348.5-.696.703-.944.203-.248.405-.645.68-.993.275-.348.5-.696.703-.944"/>
-                    </svg>
-                    Chat on WhatsApp Now
-                </a>
-                <p class="mt-6 text-lg">
-                    Email: <a href="mailto:moreltechsolution@gmail.com" class="text-gold underline hover:text-yellow-300">moreltechsolution@gmail.com</a>
-                </p>
-                <p class="mt-2">We reply in under 10 minutes • Mon–Sat 8am–6pm</p>
-            </div>
-        </section>
-    </main>
-    <!-- ========== FOOTER ========== -->
-    <footer class="bg-slate-900 text-white py-8 text-center">
-        <p class="text-lg font-bold">Morel Tech Solution</p>
-        <p>Smarter Spaces, Better Living. © 2025</p>
-    </footer>
-    <!-- ========== WHATSAPP FLOATING BUTTON ========== -->
-    <a href="https://wa.me/254791864441" target="_blank" rel="noopener noreferrer"
-        class="fixed bottom-6 right-6 z-50 group">
-        <div class="relative">
-            <div class="bg-[#25D366] hover:bg-[#128C7E] text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition hover:scale-110 focus-ring">
-                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.034-.967-.277-.099-.479-.148-.684-.148-.202 0-.53.074-.76.197l-.76.371c-.203.099-1.562.743-1.837.867-.277.123-1.04.321-1.86.321-1.31 0-2.41-.693-2.768-1.656-.102-.297-.148-.594-.148-.891 0-.297.046-.594.148-.891.101-.297.203-.545.277-.743.074-.197.148-.545.277-.842.124-.297.203-.545.203-.545s.074-.297.148-.545c.074-.197.148-.445.277-.693.124-.248.203-.496.203-.496s.074-.297.148-.545c.074-.248.277-.891.277-.891l.074-.148c.124-.297.326-.645.529-.892.203-.248.405-.645.68-.993.275-.348.5-.696.703-.944.203-.248.405-.645.68-.993.275-.348.5-.696.703-.944.203-.248.405-.645.68-.993.275-.348.5-.696.703-.944"/>
-                </svg>
-            </div>
-            <span class="absolute inset-0 rounded-full bg-[#25D366] opacity-30 animate-ping"></span>
-            <div class="absolute bottom-full mb-3 right-0 bg-gray-900 text-white text-sm px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
-                Chat on WhatsApp
-            </div>
-        </div>
-    </a>
-    <!-- ========== VIDEO MODAL ========== -->
-    <div id="videoModal" class="modal" role="dialog" aria-modal="true">
-        <div class="modal-content">
-            <video controls></video>
-        </div>
-        <button id="modalCloseButton" class="modal-close focus-ring" aria-label="Close video player">&times;</button>
-    </div>
-    <!-- ========== JS LIBRARIES ========== -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        // --- Keep all your existing JS: mobile menu, modal, swiper, observer ---
-        // (Omitted here for brevity but ensure it's included)
+</div>
+<!-- ========== CONTACT ========== -->
+<section id="contact" data-observer-id="contact" class="py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white text-center">
+<div class="container mx-auto px-6">
+<h2 class="text-4xl md:text-5xl font-bold mb-8">Ready to Upgrade?</h2>
+<p class="text-xl mb-6 text-gold">WhatsApp or Call: <strong>+254 791 864 441</strong></p>
+<a href="https://wa.me/254791864441" target="_blank" rel="noopener noreferrer"
+   class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-bold text-lg py-4 px-10 rounded-full shadow-2xl transition focus-ring">
+   
+   <!-- WhatsApp Image Icon -->
+   <img 
+     src="assets/images/whatsapp-icon.jpg"
+     alt="WhatsApp"
+     class="w-8 h-8 object-contain"
+     loading="lazy"
+     decoding="async"
+   />
 
-        // --- MOBILE MENU (Enhanced) ---
-        const mobileMenuButton = document.getElementById('mobileMenuButton');
-        const mobileNav = document.getElementById('mobileNav');
-        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-        function toggleMobileMenu() {
-            const isExpanded = mobileNav.classList.contains('hidden');
-            mobileNav.classList.toggle('hidden');
-            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-            mobileMenuButton.textContent = isExpanded ? '✕' : '☰';
-            if (!isExpanded) {
-                const firstLink = mobileNav.querySelector('a');
-                if (firstLink) firstLink.focus();
-            }
-        }
-        function closeMobileMenu() {
-            mobileNav.classList.add('hidden');
-            mobileMenuButton.setAttribute('aria-expanded', 'false');
-            mobileMenuButton.textContent = '☰';
-        }
-        mobileMenuButton.addEventListener('click', toggleMobileMenu);
-        mobileLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
-        document.addEventListener('click', (e) => {
-            if (!mobileNav.contains(e.target) && 
-                !mobileMenuButton.contains(e.target) && 
-                !mobileNav.classList.contains('hidden')) {
-                closeMobileMenu();
-            }
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !mobileNav.classList.contains('hidden')) {
-                closeMobileMenu();
-                mobileMenuButton.focus();
-            }
-        });
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
-        mobileMenuButton.setAttribute('aria-controls', 'mobileNav');
-        mobileNav.setAttribute('id', 'mobileNav');
+   <!-- Button Text -->
+   Chat on WhatsApp Now
+</a>
 
-        // --- VIDEO MODAL ---
-        const videoModal = document.getElementById('videoModal');
-        const modalVideo = videoModal.querySelector('video');
-        const modalCloseButton = document.getElementById('modalCloseButton');
-        let lastFocusedElement = null;
-        function lockBodyScroll() {
-            const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-            document.body.style.overflow = 'hidden';
-            document.body.style.paddingRight = scrollBarWidth + 'px';
-        }
-        function unlockBodyScroll() {
-            document.body.style.overflow = '';
-            document.body.style.paddingRight = '';
-        }
-        function openModal(videoId) {
-            lastFocusedElement = document.activeElement;
-            modalVideo.src = `assets/images/projects/${videoId}.mp4`;
-            modalVideo.load();
-            videoModal.classList.add('active');
-            lockBodyScroll();
-            setTimeout(() => modalVideo.play(), 100);
-            modalCloseButton.focus();
-        }
-        function closeModal() {
-            modalVideo.pause();
-            modalVideo.src = '';
-            videoModal.classList.remove('active');
-            unlockBodyScroll();
-            if (lastFocusedElement) lastFocusedElement.focus();
-        }
-        modalCloseButton.addEventListener('click', closeModal);
-        videoModal.addEventListener('click', (e) => {
-            if (e.target === videoModal) closeModal();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && videoModal.classList.contains('active')) closeModal();
-        });
+<p class="mt-6 text-lg">
+Email: <a href="mailto:moreltechsolution@gmail.com" class="text-gold underline hover:text-yellow-300">moreltechsolution@gmail.com</a>
+</p>
+<p class="mt-2">We reply in under 10 minutes • Mon–Sat 8am–6pm</p>
+</div>
+</section>
+</main>
+<!-- ========== FOOTER ========== -->
+<footer class="bg-slate-900 text-white py-8 text-center">
+<p class="text-lg font-bold">Morel Tech Solution</p>
+<p>Smarter Spaces, Better Living. © 2025</p>
+</footer>
+<!-- ========== WHATSAPP FLOATING BUTTON ========== -->
+<a href="https://wa.me/254791864441" target="_blank" rel="noopener noreferrer"
+class="fixed bottom-6 right-6 z-50 group">
+<div class="relative">
+<div class="bg-[#25D366] hover:bg-[#128C7E] text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition hover:scale-110 focus-ring">
+<img 
+  src="assets/images/whatsapp-icon.jpg"
+  alt="WhatsApp"
+  class="w-8 h-8 object-contain"
+  loading="lazy"
+  decoding="async"
+/>
 
-        // --- SWIPER ---
-        new Swiper('.projectSwiper', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: false,
-            pagination: { el: '.swiper-pagination', clickable: true },
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-            breakpoints: {
-                640: { slidesPerView: 2, spaceBetween: 30 },
-                1024: { slidesPerView: 3, spaceBetween: 40 }
-            }
-        });
+</div>
+<span class="absolute inset-0 rounded-full bg-[#25D366] opacity-30 animate-ping"></span>
+<div class="absolute bottom-full mb-3 right-0 bg-gray-900 text-white text-sm px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
+Chat on WhatsApp
+</div>
+</div>
+</a>
+<!-- ========== VIDEO MODAL ========== -->
+<div id="videoModal" class="modal" role="dialog" aria-modal="true">
+<div class="modal-content">
+<video controls></video>
+</div>
+<button id="modalCloseButton" class="modal-close focus-ring" aria-label="Close video player">&times;</button>
+</div>
 
-        // --- ACTIVE NAVIGATION ---
-        const sections = document.querySelectorAll('main section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navLinks.forEach(link => link.classList.remove('nav-link-active'));
-                    const link = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
-                    if (link) link.classList.add('nav-link-active');
-                }
-            });
-        }, { rootMargin: '0px 0px -75% 0px' });
-        sections.forEach(section => observer.observe(section));
-    </script>
+<!-- ========== JS LIBRARIES ========== -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+// Wrap all JS in DOMContentLoaded to ensure elements exist
+document.addEventListener('DOMContentLoaded', () => {
+  // --- MOBILE MENU (Enhanced) ---
+  const mobileMenuButton = document.getElementById('mobileMenuButton');
+  const mobileNav = document.getElementById('mobileNav');
+
+  if (mobileMenuButton && mobileNav) {
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    function toggleMobileMenu() {
+      const isExpanded = mobileNav.classList.contains('hidden');
+      mobileNav.classList.toggle('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+      mobileMenuButton.textContent = isExpanded ? '✕' : '☰';
+      if (!isExpanded) {
+        const firstLink = mobileNav.querySelector('a');
+        if (firstLink) firstLink.focus();
+      }
+    }
+
+    function closeMobileMenu() {
+      mobileNav.classList.add('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', 'false');
+      mobileMenuButton.textContent = '☰';
+    }
+
+    mobileMenuButton.addEventListener('click', toggleMobileMenu);
+    mobileLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+
+    document.addEventListener('click', (e) => {
+      if (!mobileNav.contains(e.target) &&
+          !mobileMenuButton.contains(e.target) &&
+          !mobileNav.classList.contains('hidden')) {
+        closeMobileMenu();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !mobileNav.classList.contains('hidden')) {
+        closeMobileMenu();
+        mobileMenuButton.focus();
+      }
+    });
+  }
+
+  // --- VIDEO MODAL ---
+  const videoModal = document.getElementById('videoModal');
+  const modalCloseButton = document.getElementById('modalCloseButton');
+
+  let lastFocusedElement = null;
+
+  function lockBodyScroll() {
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.overflow = 'hidden';
+    document.body.style.paddingRight = scrollBarWidth + 'px';
+  }
+
+  function unlockBodyScroll() {
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+  }
+
+  function openModal(videoId) {
+    if (!videoModal) return;
+    lastFocusedElement = document.activeElement;
+    const modalVideo = videoModal.querySelector('video');
+    if (modalVideo) {
+      modalVideo.src = `assets/images/projects/${videoId}.mp4`;
+      modalVideo.load();
+      videoModal.classList.add('active');
+      lockBodyScroll();
+      setTimeout(() => modalVideo.play(), 100);
+    }
+    if (modalCloseButton) modalCloseButton.focus();
+  }
+
+  function closeModal() {
+    if (!videoModal) return;
+    const modalVideo = videoModal.querySelector('video');
+    if (modalVideo) {
+      modalVideo.pause();
+      modalVideo.src = '';
+    }
+    videoModal.classList.remove('active');
+    unlockBodyScroll();
+    if (lastFocusedElement) lastFocusedElement.focus();
+  }
+
+  if (modalCloseButton) {
+    modalCloseButton.addEventListener('click', closeModal);
+  }
+
+  if (videoModal) {
+    videoModal.addEventListener('click', (e) => {
+      if (e.target === videoModal) closeModal();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && videoModal && videoModal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // Expose openModal globally for inline onclick handlers
+  window.openModal = openModal;
+
+  // --- SWIPER ---
+  const swiperContainer = document.querySelector('.projectSwiper');
+  if (swiperContainer) {
+    new Swiper('.projectSwiper', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: false,
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+      breakpoints: {
+        640: { slidesPerView: 2, spaceBetween: 30 },
+        1024: { slidesPerView: 3, spaceBetween: 40 }
+      }
+    });
+  }
+
+  // --- ACTIVE NAVIGATION ---
+  const sections = document.querySelectorAll('main section');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  if (sections.length > 0 && navLinks.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.remove('nav-link-active'));
+          const link = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+          if (link) link.classList.add('nav-link-active');
+        }
+      });
+    }, { rootMargin: '0px 0px -75% 0px' });
+
+    sections.forEach(section => observer.observe(section));
+  }
+});
+</script>
 </body>
 </html>
