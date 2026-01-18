@@ -1,798 +1,781 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Buy Samsung, LG & Sony TVs in Kenya – Morel Tech</title>
-  <meta name="description" content="Shop Samsung QLED, LG OLED, Sony 4K & TCL Smart TVs in Kenya. Best prices in Nairobi, Nyeri & nationwide. Free delivery & installation."/>
-  <link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Store",
-    "name": "Morel Tech Solution",
-    "image": "/assets/images/logo.jpg",
-    "url": "https://moreltech.co.ke",
-    "telephone": "+254700000000",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Nyeri Town",
-      "addressLocality": "Nyeri",
-      "addressCountry": "KE"
-    },
-    "productSupported": ["Televisions", "Projectors", "Smart TVs", "OLED TVs", "QLED TVs"],
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -0.4247,
-      "longitude": 36.9455
-    }
-  }
-  </script>
-
-  <style>
-    :root {
-      --bg-page: #f8fafc;
-      --bg-surface: #ffffff;
-      --ink-900: #0f172a;
-      --ink-700: #334155;
-      --ink-500: #64748b;
-      --border-subtle: #e2e8f0;
-      --accent-gold: #d4af37;
-      --radius-sm: 10px;
-      --radius-md: 14px;
-      --radius-lg: 18px;
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
-      --ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    body {
-      background-color: var(--bg-page);
-      color: var(--ink-700);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-    .brand-card {
-      background: var(--bg-surface);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      overflow: hidden;
-      transition: box-shadow 0.3s var(--ease-ui), transform 0.2s var(--ease-ui);
-    }
-    .brand-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-    .product-image {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: var(--radius-sm);
-      cursor: zoom-in;
-    }
-    .specs-list {
-      font-size: 0.875rem;
-      color: var(--ink-500);
-    }
-
-    /* Cart Modal */
-    #cart-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 2000;
-      padding: 1rem;
-      justify-content: center;
-      align-items: center;
-    }
-    #cart-modal.active {
-      display: flex;
-    }
-    #cart-modal-content {
-      background: white;
-      border-radius: var(--radius-lg);
-      max-width: 95vw;
-      width: 100%;
-      max-height: 85vh;
-      overflow-y: auto;
-    }
-    .cart-header {
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-    .cart-items {
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .cart-item {
-      display: flex;
-      gap: 0.75rem;
-    }
-    .cart-item img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: var(--radius-sm);
-    }
-    .cart-item-details {
-      flex: 1;
-    }
-    .quantity-controls {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 0.25rem;
-    }
-    .quantity-btn {
-      width: 28px;
-      height: 28px;
-      background: #e0e0e0;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .remove-btn {
-      background: #ef4444;
-      color: white;
-      border: none;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      cursor: pointer;
-      margin-top: 0.25rem;
-    }
-    .cart-footer {
-      padding: 1rem;
-      border-top: 1px solid var(--border-subtle);
-      text-align: center;
-    }
-    .whatsapp-btn {
-      background: #25D366;
-      color: white;
-      border: none;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      font-weight: 600;
-      width: 100%;
-      cursor: pointer;
-    }
-
-    /* Product Detail Modal */
-    #product-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1500;
-      padding: 1rem;
-      justify-content: center;
-      align-items: center;
-    }
-    #product-modal.active {
-      display: flex;
-    }
-    #product-modal-content {
-      background: white;
-      border-radius: var(--radius-lg);
-      max-width: 95vw;
-      width: 100%;
-      max-height: 85vh;
-      overflow-y: auto;
-    }
-
-    /* Lightbox */
-    #lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.95);
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-    #lightbox.active {
-      display: flex;
-    }
-    #lightbox-img {
-      max-width: 95vw;
-      max-height: 90vh;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-
-    /* Filters */
-    .filter-sidebar {
-      position: sticky;
-      top: 2rem;
-      height: fit-content;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-    @media (max-width: 768px) {
-      .mobile-filter-trigger { display: block !important; }
-      .filter-sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 85%;
-        height: 100vh;
-        z-index: 1000;
-        background: white;
-        padding: 1.5rem;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-      }
-      .filter-sidebar.active { transform: translateX(0); }
-      .overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.5);
-        z-index: 999;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s;
-      }
-      .overlay.active {
-        opacity: 1;
-        visibility: visible;
-      }
-    }
-    .mobile-filter-trigger { display: none; }
-    .focus-ring:focus-visible {
-      outline: 2px solid var(--accent-gold);
-      outline-offset: 3px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Buy Samsung, LG & Sony TVs in Kenya – Morel Tech</title>
+<meta name="description" content="Shop Samsung QLED, LG OLED, Sony 4K & TCL Smart TVs in Kenya. Best prices in Nairobi, Nyeri & nationwide. Free delivery & installation."/>
+<link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Store",
+"name": "Morel Tech Solution",
+"image": "/assets/images/logo.jpg",
+"url": "https://moreltech.co.ke",
+"telephone": "+254700000000",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Nyeri Town",
+"addressLocality": "Nyeri",
+"addressCountry": "KE"
+},
+"productSupported": ["Televisions", "Projectors", "Smart TVs", "OLED TVs", "QLED TVs"],
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": -0.4247,
+"longitude": 36.9455
+}
+}
+</script>
+<style>
+:root {
+--bg-page: #f8fafc;
+--bg-surface: #ffffff;
+--ink-900: #0f172a;
+--ink-700: #334155;
+--ink-500: #64748b;
+--border-subtle: #e2e8f0;
+--accent-gold: #d4af37;
+--radius-sm: 10px;
+--radius-md: 14px;
+--radius-lg: 18px;
+--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+--shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+--ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
+}
+body {
+background-color: var(--bg-page);
+color: var(--ink-700);
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.brand-card {
+background: var(--bg-surface);
+border-radius: var(--radius-md);
+box-shadow: var(--shadow-sm);
+overflow: hidden;
+transition: box-shadow 0.3s var(--ease-ui), transform 0.2s var(--ease-ui);
+}
+.brand-card:hover {
+transform: translateY(-4px);
+box-shadow: var(--shadow-md);
+}
+.product-image {
+width: 100%;
+height: 160px;
+object-fit: cover;
+border-radius: var(--radius-sm);
+cursor: zoom-in;
+}
+.specs-list {
+font-size: 0.875rem;
+color: var(--ink-500);
+}
+/* Cart Modal */
+#cart-modal {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0, 0, 0, 0.6);
+z-index: 2000;
+padding: 1rem;
+justify-content: center;
+align-items: center;
+}
+#cart-modal.active {
+display: flex;
+}
+#cart-modal-content {
+background: white;
+border-radius: var(--radius-lg);
+max-width: 95vw;
+width: 100%;
+max-height: 85vh;
+overflow-y: auto;
+}
+.cart-header {
+padding: 1rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-bottom: 1px solid var(--border-subtle);
+}
+.cart-items {
+padding: 1rem;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+.cart-item {
+display: flex;
+gap: 0.75rem;
+}
+.cart-item img {
+width: 60px;
+height: 60px;
+object-fit: cover;
+border-radius: var(--radius-sm);
+}
+.cart-item-details {
+flex: 1;
+}
+.quantity-controls {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+margin-top: 0.25rem;
+}
+.quantity-btn {
+width: 28px;
+height: 28px;
+background: #e0e0e0;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-weight: bold;
+}
+.remove-btn {
+background: #ef4444;
+color: white;
+border: none;
+padding: 0.25rem 0.5rem;
+border-radius: 4px;
+font-size: 0.8rem;
+cursor: pointer;
+margin-top: 0.25rem;
+}
+.cart-footer {
+padding: 1rem;
+border-top: 1px solid var(--border-subtle);
+text-align: center;
+}
+.whatsapp-btn {
+background: #25D366;
+color: white;
+border: none;
+padding: 0.75rem 1rem;
+border-radius: 8px;
+font-weight: 600;
+width: 100%;
+cursor: pointer;
+}
+/* Product Detail Modal */
+#product-modal {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0, 0, 0, 0.5);
+z-index: 1500;
+padding: 1rem;
+justify-content: center;
+align-items: center;
+}
+#product-modal.active {
+display: flex;
+}
+#product-modal-content {
+background: white;
+border-radius: var(--radius-lg);
+max-width: 95vw;
+width: 100%;
+max-height: 85vh;
+overflow-y: auto;
+}
+/* Lightbox */
+#lightbox {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.95);
+z-index: 2000;
+align-items: center;
+justify-content: center;
+padding: 1rem;
+}
+#lightbox.active {
+display: flex;
+}
+#lightbox-img {
+max-width: 95vw;
+max-height: 90vh;
+object-fit: contain;
+border-radius: 8px;
+}
+/* Filters */
+.filter-sidebar {
+position: sticky;
+top: 2rem;
+height: fit-content;
+max-height: 80vh;
+overflow-y: auto;
+}
+@media (max-width: 768px) {
+.mobile-filter-trigger { display: block !important; }
+.filter-sidebar {
+position: fixed;
+top: 0;
+left: 0;
+width: 85%;
+height: 100vh;
+z-index: 1000;
+background: white;
+padding: 1.5rem;
+transform: translateX(-100%);
+transition: transform 0.3s ease;
+}
+.filter-sidebar.active { transform: translateX(0); }
+.overlay {
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.5);
+z-index: 999;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s;
+}
+.overlay.active {
+opacity: 1;
+visibility: visible;
+}
+}
+.mobile-filter-trigger { display: none; }
+.focus-ring:focus-visible {
+outline: 2px solid var(--accent-gold);
+outline-offset: 3px;
+}
+</style>
 </head>
 <body class="text-slate-800">
-  <nav class="bg-slate-900 text-white fixed w-full top-0 z-50 shadow-md">
-    <div class="container mx-auto px-4 py-3">
-      <a href="../#products" class="text-lg font-semibold">← Back to Catalog</a>
-    </div>
-  </nav>
-
-  <main class="pt-20 pb-16">
-    <div class="container mx-auto px-4">
-      <div class="sr-only">
-        <h1>Buy Samsung Q90C, LG OLED C3 & Sony TVs in Kenya</h1>
-        <p>Morel Tech offers Samsung 75-inch QLED, LG 65-inch OLED, Sony Bravia & TCL 4K Smart TVs at best prices in Nairobi, Nyeri, Mombasa and across Kenya. Free delivery & expert setup.</p>
-      </div>
-
-      <div class="flex flex-col lg:flex-row gap-8">
-        <aside class="filter-sidebar" id="filterSidebar">
-          <div class="flex justify-between items-center mb-6">
-            <h2 class="text-xl font-bold">Filters</h2>
-            <button id="closeFilters" class="lg:hidden text-gray-500 hover:text-gray-900">✕</button>
-          </div>
-          <div class="space-y-5">
-            <div>
-              <label class="block font-medium mb-2">Search Model</label>
-              <input type="text" id="modelSearch" placeholder="e.g. Q90C, OLED C3..." class="w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-yellow-500">
-            </div>
-            <div>
-              <label class="block font-medium mb-2">Brand</label>
-              <select id="brandFilter" class="w-full p-2.5 border rounded-lg">
-                <option value="">All Brands</option>
-                <option value="SAMSUNG">Samsung</option>
-                <option value="LG">LG</option>
-                <option value="SONY">Sony</option>
-                <option value="TCL">TCL</option>
-                <option value="HISENSE">Hisense</option>
-                <option value="SKYWORTH">Skyworth</option>
-                <option value="Epson">Epson</option>
-                <option value="BenQ">BenQ</option>
-                <option value="Xiaomi">Xiaomi</option>
-                <option value="ViewSonic">ViewSonic</option>
-              </select>
-            </div>
-            <div>
-              <label class="block font-medium mb-2">Type</label>
-              <select id="typeFilter" class="w-full p-2.5 border rounded-lg">
-                <option value="">All Types</option>
-                <option value="tvs">Televisions</option>
-                <option value="projectors">Projectors</option>
-              </select>
-            </div>
-            <div>
-              <label class="block font-medium mb-2">Size</label>
-              <select id="sizeFilter" class="w-full p-2.5 border rounded-lg">
-                <option value="">All Sizes</option>
-                <option value="32-inch">32"</option>
-                <option value="43-inch">43"</option>
-                <option value="50-inch">50"</option>
-                <option value="55-inch">55"</option>
-                <option value="65-inch">65"</option>
-                <option value="75-inch">75"</option>
-                <option value="85-inch">85"</option>
-                <option value="98-inch">98"</option>
-              </select>
-            </div>
-          </div>
-        </aside>
-
-        <div class="flex-1">
-          <div class="flex justify-between items-center mb-6">
-            <h1 class="text-2xl md:text-3xl font-bold text-slate-900">Televisions & Projectors</h1>
-            <button class="mobile-filter-trigger px-4 py-2 bg-yellow-600 text-white rounded font-medium" id="openFilters">
-              Filters
-            </button>
-          </div>
-
-          <div id="brandGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Generated by JS -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- Product Detail Modal -->
-  <div id="product-modal" class="modal" role="dialog" aria-modal="true">
-    <div id="product-modal-content" class="bg-white rounded-lg max-w-2xl w-full max-h-[85vh] overflow-y-auto">
-      <div class="p-4 border-b flex justify-between items-center">
-        <h3 id="modal-title" class="text-lg font-bold">Models</h3>
-        <button id="close-product-modal" class="text-gray-500 hover:text-gray-800 text-xl">&times;</button>
-      </div>
-      <div id="product-list" class="p-4 space-y-3"></div>
-    </div>
-  </div>
-
-  <!-- Cart Modal -->
-  <div id="cart-modal" class="modal" role="dialog" aria-modal="true">
-    <div id="cart-modal-content">
-      <div class="cart-header">
-        <h2 class="text-lg font-bold">Your Quote</h2>
-        <button id="close-cart" class="text-gray-500 hover:text-gray-900 text-2xl">&times;</button>
-      </div>
-      <div id="cart-items" class="cart-items">
-        <!-- Items inserted by JS -->
-      </div>
-      <div class="cart-footer">
-        <div class="font-bold text-lg">Total: KES <span id="total-amount">0</span></div>
-        <button id="whatsapp-btn" class="whatsapp-btn">Send Quote via WhatsApp</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox">
-    <img id="lightbox-img" />
-    <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center">✕</button>
-  </div>
-
-  <!-- WhatsApp Cart Button -->
-  <div class="fixed bottom-4 right-4 z-[999]">
-    <button
-      id="cart-icon"
-      class="bg-yellow-500 hover:bg-yellow-600 text-white p-4 rounded-full shadow-lg flex items-center relative"
-    >
- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+<nav class="bg-slate-900 text-white fixed w-full top-0 z-50 shadow-md">
+<div class="container mx-auto px-4 py-3">
+<a href="../#products" class="text-lg font-semibold">← Back to Catalog</a>
+</div>
+</nav>
+<main class="pt-20 pb-16">
+<div class="container mx-auto px-4">
+<div class="sr-only">
+<h1>Buy Samsung Q90C, LG OLED C3 & Sony TVs in Kenya</h1>
+<p>Morel Tech offers Samsung 75-inch QLED, LG 65-inch OLED, Sony Bravia & TCL 4K Smart TVs at best prices in Nairobi, Nyeri, Mombasa and across Kenya. Free delivery & expert setup.</p>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<aside class="filter-sidebar" id="filterSidebar">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-xl font-bold">Filters</h2>
+<button id="closeFilters" class="lg:hidden text-gray-500 hover:text-gray-900">✕</button>
+</div>
+<div class="space-y-5">
+<div>
+<label class="block font-medium mb-2">Search Model</label>
+<input type="text" id="modelSearch" placeholder="e.g. Q90C, OLED C3..." class="w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-yellow-500">
+</div>
+<div>
+<label class="block font-medium mb-2">Brand</label>
+<select id="brandFilter" class="w-full p-2.5 border rounded-lg">
+<option value="">All Brands</option>
+<option value="SAMSUNG">Samsung</option>
+<option value="LG">LG</option>
+<option value="SONY">Sony</option>
+<option value="TCL">TCL</option>
+<option value="HISENSE">Hisense</option>
+<option value="SKYWORTH">Skyworth</option>
+<option value="Epson">Epson</option>
+<option value="BenQ">BenQ</option>
+<option value="Xiaomi">Xiaomi</option>
+<option value="ViewSonic">ViewSonic</option>
+</select>
+</div>
+<div>
+<label class="block font-medium mb-2">Type</label>
+<select id="typeFilter" class="w-full p-2.5 border rounded-lg">
+<option value="">All Types</option>
+<option value="tvs">Televisions</option>
+<option value="projectors">Projectors</option>
+</select>
+</div>
+<div>
+<label class="block font-medium mb-2">Size</label>
+<select id="sizeFilter" class="w-full p-2.5 border rounded-lg">
+<option value="">All Sizes</option>
+<option value="32-inch">32"</option>
+<option value="43-inch">43"</option>
+<option value="50-inch">50"</option>
+<option value="55-inch">55"</option>
+<option value="65-inch">65"</option>
+<option value="75-inch">75"</option>
+<option value="85-inch">85"</option>
+<option value="98-inch">98"</option>
+</select>
+</div>
+</div>
+</aside>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-6">
+<h1 class="text-2xl md:text-3xl font-bold text-slate-900">Televisions & Projectors</h1>
+<button class="mobile-filter-trigger px-4 py-2 bg-yellow-600 text-white rounded font-medium" id="openFilters">
+Filters
+</button>
+</div>
+<div id="brandGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Generated by JS -->
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Product Detail Modal -->
+<div id="product-modal" class="modal" role="dialog" aria-modal="true">
+<div id="product-modal-content" class="bg-white rounded-lg max-w-2xl w-full max-h-[85vh] overflow-y-auto">
+<div class="p-4 border-b flex justify-between items-center">
+<h3 id="modal-title" class="text-lg font-bold">Models</h3>
+<button id="close-product-modal" class="text-gray-500 hover:text-gray-800 text-xl">&times;</button>
+</div>
+<div id="product-list" class="p-4 space-y-3"></div>
+</div>
+</div>
+<!-- Cart Modal -->
+<div id="cart-modal" class="modal" role="dialog" aria-modal="true">
+<div id="cart-modal-content">
+<div class="cart-header">
+<h2 class="text-lg font-bold">Your Quote</h2>
+<button id="close-cart" class="text-gray-500 hover:text-gray-900 text-2xl">&times;</button>
+</div>
+<div id="cart-items" class="cart-items">
+<!-- Items inserted by JS -->
+</div>
+<div class="cart-footer">
+<div class="font-bold text-lg">Total: KES <span id="total-amount">0</span></div>
+<button id="whatsapp-btn" class="whatsapp-btn">Send Quote via WhatsApp</button>
+</div>
+</div>
+</div>
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+<img id="lightbox-img" />
+<button onclick="closeLightbox()" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center">✕</button>
+</div>
+<!-- WhatsApp Cart Button -->
+<div class="fixed bottom-4 right-4 z-[999]">
+<button
+id="cart-icon"
+class="bg-yellow-500 hover:bg-yellow-600 text-white p-4 rounded-full shadow-lg flex items-center relative"
+>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
 </svg>
 <span class="ml-2 font-bold hidden sm:inline"> Cart</span>
 <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
-    </button>
-  </div>
+</button>
+</div>
+<!-- Overlay -->
+<div class="overlay" id="filterOverlay"></div>
+<script>
+const tvProducts = [
+// SAMSUNG
+{ brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "32-inch", price: 25000, category: "tvs", img: "tv-price-list/SAMSUNG — Standard Slim(LED-Crystal UHD)32 inch.jpg" },
+{ brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "43-inch", price: 38000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)43-inch.jpg" },
+{ brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "50-inch", price: 67500, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)50-inch.jpg" },
+{ brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "55-inch", price: 78000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)55-inch.jpg" },
+{ brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "65-inch", price: 125000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)65-inch.jpg" },
+{ brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "75-inch", price: 198000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)75-inch.jpg" },
+{ brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "85-inch", price: 315000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)85-inch.jpg" },
+{ brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "98-inch", price: 680000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)98-inch.jpg" },
+{ brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "43-inch", price: 78000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)43-inch.jpg" },
+{ brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "50-inch", price: 95000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)50-inch.jpg" },
+{ brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "55-inch", price: 140000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)55-inch.jpg" },
+{ brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "65-inch", price: 205000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)65-inch.jpg" },
+{ brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "75-inch", price: 280000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)75-inch.jpg" },
+{ brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "85-inch", price: 450000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)85-inch.jpg" },
+{ brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "98-inch", price: "900,000 – 1,200,000", category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)98-inch.jpg" },
+// LG
+{ brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "32-inch", price: 28000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)32-inch.jpg" },
+{ brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "43-inch", price: 50000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)43-inch.jpg" },
+{ brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "50-inch", price: 72000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)50-inch.jpg" },
+{ brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "55-inch", price: 95000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)55-inch.jpg" },
+{ brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "65-inch", price: 150000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)65-inch.jpg" },
+{ brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "75-inch", price: 245000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)75-inch.jpg" },
+{ brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "85-inch", price: 380000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)85-inch.jpg" },
+{ brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "48-inch", price: 140000, category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)48-inch.jpg" },
+{ brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "55-inch", price: 170000, category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)55-inch.jpg" },
+{ brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "65-inch", price: 260000, category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)65-inch.jpg" },
+{ brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "75-inch", price: 430000, category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)75-inch.jpg" },
+{ brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "97-inch", price: "1,800,000 – 2,300,000", category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)97-inch.jpg" },
+// SONY
+{ brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "32-inch", price: 28500, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)32-inch.jpg" },
+{ brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "43-inch", price: 58000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)43-inch.jpg" },
+{ brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "50-inch", price: 82000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)50-inch.jpg" },
+{ brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "55-inch", price: 99000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)55-inch.jpg" },
+{ brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "65-inch", price: 155000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)65-inch.jpg" },
+{ brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "75-inch", price: 245000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)75-inch.jpg" },
+{ brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "85-inch", price: 385000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)85-inch.jpg" },
+{ brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "98-inch", price: 1000000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)98-inch.jpg" },
+{ brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "55-inch", price: 165000, category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)55-inch.jpg" },
+{ brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "65-inch", price: 240000, category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)65-inch.jpg" },
+{ brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "77-inch", price: 450000, category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)77-inch.jpg" },
+{ brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "83-inch", price: 760000, category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)83-inch.jpg" },
+{ brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "100-inch", price: "1,600,000 – 2,200,000", category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)100-inch.jpg" },
+// TCL
+{ brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "32-inch", price: 22500, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)32-inch.jpg" },
+{ brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "43-inch", price: 35000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)43-inch.jpg" },
+{ brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "50-inch", price: 52000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)50-inch.jpg" },
+{ brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "55-inch", price: 60000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)55-inch.jpg" },
+{ brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "65-inch", price: 110000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)65-inch.jpg" },
+{ brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "75-inch", price: 165000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)75-inch.jpg" },
+{ brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "85-inch", price: 260000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)85-inch.jpg" },
+{ brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "98-inch", price: 600000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)98-inch.jpg" },
+{ brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "50-inch", price: 72000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)50-inch.jpg" },
+{ brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "55-inch", price: 100000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)55-inch.jpg" },
+{ brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "65-inch", price: 160000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)65-inch.jpg" },
+{ brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "75-inch", price: 250000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)75-inch.jpg" },
+{ brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "85-inch", price: 330000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)85-inch.jpg" },
+// HISENSE
+{ brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "32-inch", price: 21000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)32-inch.jpg" },
+{ brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "43-inch", price: 39000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)43-inch.jpg" },
+{ brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "50-inch", price: 48000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)50-inch.jpg" },
+{ brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "55-inch", price: 60000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)55-inch.jpg" },
+{ brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "65-inch", price: 85000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)65-inch.jpg" },
+{ brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "75-inch", price: 150000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)75-inch.jpg" },
+{ brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "85-inch", price: 220000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)85-inch.jpg" },
+{ brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "98-inch", price: 550000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)98-inch.jpg" },
+{ brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "55-inch", price: 110000, category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)55-inch.jpg" },
+{ brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "65-inch", price: 180000, category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)65-inch.jpg" },
+{ brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "75-inch", price: 220000, category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)75-inch.jpg" },
+{ brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "85-inch", price: 340000, category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)85-inch.jpg" },
+{ brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "98-inch", price: "700,000 – 900,000", category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)98-inch.jpg" },
+// SKYWORTH
+{ brand: "SKYWORTH", name: "Standard Slim (LED)", size: "32-inch", price: 20000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)32-inch.jpg" },
+{ brand: "SKYWORTH", name: "Standard Slim (LED)", size: "43-inch", price: 30000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)43-inch.jpg" },
+{ brand: "SKYWORTH", name: "Standard Slim (LED)", size: "50-inch", price: 39000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)50-inch.jpg" },
+{ brand: "SKYWORTH", name: "Standard Slim (LED)", size: "55-inch", price: 46000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)55-inch.jpg" },
+{ brand: "SKYWORTH", name: "Standard Slim (LED)", size: "65-inch", price: 82000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)65-inch.jpg" },
+{ brand: "SKYWORTH", name: "Standard Slim (LED)", size: "75-inch", price: 160000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)75-inch.jpg" },
+{ brand: "SKYWORTH", name: "Standard Slim (LED)", size: "85-inch", price: 230000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)85-inch.jpg" },
+{ brand: "SKYWORTH", name: "Ultra Slim (QLED Pro)", size: "55-inch", price: 105000, category: "tvs", img: "tv-price-list/SKYWORTH-Ultra-Slim(QLED-Pro)55-inch.jpg" },
+{ brand: "SKYWORTH", name: "Ultra Slim (QLED Pro)", size: "65-inch", price: 150000, category: "tvs", img: "tv-price-list/SKYWORTH-Ultra-Slim(QLED-Pro)65-inch.jpg" },
+// PROJECTORS
+{ brand: "Epson", model: "EB-X06", resolution: "XGA", price: 78995, category: "projectors", img: "projectors/Epson-EB-X06-(XGA).jpg" },
+{ brand: "Epson", model: "EB-W06", resolution: "WXGA", price: 92995, category: "projectors", img: "projectors/Epson-EB-W06-(WXGA).jpg" },
+{ brand: "Epson", model: "EB-FH06", resolution: "Full HD", price: 134995, category: "projectors", img: "projectors/Epson-EB-FH06(Full HD).jpg" },
+{ brand: "Epson", model: "EB-992F", resolution: "Full HD", price: 164995, category: "projectors", img: "projectors/Epson-EB-992F(Full HD).jpg" },
+{ brand: "BenQ", model: "MX560", resolution: "XGA", price: 89995, category: "projectors", img: "projectors/BenQ-MX560(XGA).jpg" },
+{ brand: "BenQ", model: "MW560", resolution: "WXGA", price: 113995, category: "projectors", img: "projectors/BenQ-MW560(WXGA).jpg" },
+{ brand: "BenQ", model: "TH585", resolution: "Full HD", price: 142995, category: "projectors", img: "projectors/BenQ-TH585(Full HD).jpg" },
+{ brand: "BenQ", model: "TK800M", resolution: "4K HDR", price: 198995, category: "projectors", img: "projectors/BenQ-TK800M(4K HDR).jpg" },
+{ brand: "Optoma", model: "S334e", resolution: "SVGA", price: 58995, category: "projectors", img: "projectors/Optoma-S334e(SVGA).jpg" },
+{ brand: "Optoma", model: "X343e", resolution: "XGA", price: 82995, category: "projectors", img: "projectors/Optoma-X343e(XGA).jpg" },
+{ brand: "Optoma", model: "HD146X", resolution: "Full HD", price: 128995, category: "projectors", img: "projectors/Optoma-HD146X(Full HD).jpg" },
+{ brand: "Optoma", model: "UHD35+", resolution: "4K HDR", price: 224995, category: "projectors", img: "projectors/Optoma-UHD35+(4K HDR).jpg" },
+{ brand: "Xiaomi", model: "Mi Smart Projector 2", resolution: "Full HD", price: 78995, category: "projectors", img: "projectors/Xiaomi-Mi-Smart-Projector2(Full HD).jpg" },
+{ brand: "Xiaomi", model: "Mi Laser 150\" 4K", resolution: "4K Laser", price: 218995, category: "projectors", img: "projectors/Xiaomi-Mi-Laser-150-4K-Projector.jpg" },
+{ brand: "ViewSonic", model: "PA503W", resolution: "WXGA", price: 88995, category: "projectors", img: "projectors/ViewSonic-PA503W(WXGA).jpg" },
+{ brand: "ViewSonic", model: "PX701-4K", resolution: "4K HDR", price: 192995, category: "projectors", img: "projectors/ViewSonic-PX701-4K(4K HDR).jpg" }
+];
 
-  <!-- Overlay -->
-  <div class="overlay" id="filterOverlay"></div>
+// ========== CART SYSTEM ==========
+let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
 
-  <script>
-    const tvProducts = [
-      // SAMSUNG
-      { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "32-inch", price: 25000, category: "tvs", img: "tv-price-list/SAMSUNG — Standard Slim(LED-Crystal UHD)32 inch.jpg" },
-      { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "43-inch", price: 38000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)43-inch.jpg" },
-      { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "50-inch", price: 67500, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)50-inch.jpg" },
-      { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "55-inch", price: 78000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)55-inch.jpg" },
-      { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "65-inch", price: 125000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)65-inch.jpg" },
-      { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "75-inch", price: 198000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)75-inch.jpg" },
-      { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "85-inch", price: 315000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)85-inch.jpg" },
-      { brand: "SAMSUNG", name: "Standard Slim (LED / Crystal UHD)", size: "98-inch", price: 680000, category: "tvs", img: "tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)98-inch.jpg" },
-      { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "43-inch", price: 78000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)43-inch.jpg" },
-      { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "50-inch", price: 95000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)50-inch.jpg" },
-      { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "55-inch", price: 140000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)55-inch.jpg" },
-      { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "65-inch", price: 205000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)65-inch.jpg" },
-      { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "75-inch", price: 280000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)75-inch.jpg" },
-      { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "85-inch", price: 450000, category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)85-inch.jpg" },
-      { brand: "SAMSUNG", name: "Ultra Slim (QLED / Neo QLED / The Frame)", size: "98-inch", price: "900,000 – 1,200,000", category: "tvs", img: "tv-price-list/SAMSUNG-Ultra-Slim(QLED-Neo-QLED-The-Frame)98-inch.jpg" },
+function saveCart() {
+  localStorage.setItem('morelCart', JSON.stringify(cart));
+  updateCartDisplay();
+}
 
-      // LG
-      { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "32-inch", price: 28000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)32-inch.jpg" },
-      { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "43-inch", price: 50000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)43-inch.jpg" },
-      { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "50-inch", price: 72000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)50-inch.jpg" },
-      { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "55-inch", price: 95000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)55-inch.jpg" },
-      { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "65-inch", price: 150000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)65-inch.jpg" },
-      { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "75-inch", price: 245000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)75-inch.jpg" },
-      { brand: "LG", name: "Standard Slim (LED / NanoCell Basic)", size: "85-inch", price: 380000, category: "tvs", img: "tv-price-list/LG-Standard-Slim(LED-NanoCell-Basic)85-inch.jpg" },
-      { brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "48-inch", price: 140000, category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)48-inch.jpg" },
-      { brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "55-inch", price: 170000, category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)55-inch.jpg" },
-      { brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "65-inch", price: 260000, category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)65-inch.jpg" },
-      { brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "75-inch", price: 430000, category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)75-inch.jpg" },
-      { brand: "LG", name: "Ultra Slim (OLED / QNED / Premium Slim)", size: "97-inch", price: "1,800,000 – 2,300,000", category: "tvs", img: "tv-price-list/LG-Ultra-Slim(OLED-QNED-Premium-Slim)97-inch.jpg" },
+function addToCart(id, name, price, image, event) {
+  const existing = cart.find(item => item.id === id);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ id, name, price: parseFloat(price) || 0, image, quantity: 1 });
+  }
+  saveCart();
 
-      // SONY
-      { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "32-inch", price: 28500, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)32-inch.jpg" },
-      { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "43-inch", price: 58000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)43-inch.jpg" },
-      { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "50-inch", price: 82000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)50-inch.jpg" },
-      { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "55-inch", price: 99000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)55-inch.jpg" },
-      { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "65-inch", price: 155000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)65-inch.jpg" },
-      { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "75-inch", price: 245000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)75-inch.jpg" },
-      { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "85-inch", price: 385000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)85-inch.jpg" },
-      { brand: "SONY", name: "Standard Slim (LED / Google TV)", size: "98-inch", price: 1000000, category: "tvs", img: "tv-price-list/SONY-Standard-Slim(LED-Google-TV)98-inch.jpg" },
-      { brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "55-inch", price: 165000, category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)55-inch.jpg" },
-      { brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "65-inch", price: 240000, category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)65-inch.jpg" },
-      { brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "77-inch", price: 450000, category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)77-inch.jpg" },
-      { brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "83-inch", price: 760000, category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)83-inch.jpg" },
-      { brand: "SONY", name: "Ultra Slim (OLED / Master Series)", size: "100-inch", price: "1,600,000 – 2,200,000", category: "tvs", img: "tv-price-list/SONY-Ultra-Slim(OLED-Master-Series)100-inch.jpg" },
+  if (event) {
+    const btn = event.target;
+    const original = btn.textContent;
+    btn.textContent = '✓ Added!';
+    setTimeout(() => btn.textContent = original, 1200);
+  }
+}
 
-      // TCL
-      { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "32-inch", price: 22500, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)32-inch.jpg" },
-      { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "43-inch", price: 35000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)43-inch.jpg" },
-      { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "50-inch", price: 52000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)50-inch.jpg" },
-      { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "55-inch", price: 60000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)55-inch.jpg" },
-      { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "65-inch", price: 110000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)65-inch.jpg" },
-      { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "75-inch", price: 165000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)75-inch.jpg" },
-      { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "85-inch", price: 260000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)85-inch.jpg" },
-      { brand: "TCL", name: "Standard Slim (LED / UHD / Google TV)", size: "98-inch", price: 600000, category: "tvs", img: "tv-price-list/TCL-Standard-Slim(LED-UHD-Google-TV)98-inch.jpg" },
-      { brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "50-inch", price: 72000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)50-inch.jpg" },
-      { brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "55-inch", price: 100000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)55-inch.jpg" },
-      { brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "65-inch", price: 160000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)65-inch.jpg" },
-      { brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "75-inch", price: 250000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)75-inch.jpg" },
-      { brand: "TCL", name: "Ultra Slim (QLED / Mini LED)", size: "85-inch", price: 330000, category: "tvs", img: "tv-price-list/TCL-Ultra-Slim(QLED-Mini-LED)85-inch.jpg" },
+function updateCartDisplay() {
+  const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const badge = document.getElementById('cart-count');
+  badge.textContent = totalCount;
+  badge.classList.toggle('hidden', totalCount === 0);
+}
 
-      // HISENSE
-      { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "32-inch", price: 21000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)32-inch.jpg" },
-      { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "43-inch", price: 39000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)43-inch.jpg" },
-      { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "50-inch", price: 48000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)50-inch.jpg" },
-      { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "55-inch", price: 60000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)55-inch.jpg" },
-      { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "65-inch", price: 85000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)65-inch.jpg" },
-      { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "75-inch", price: 150000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)75-inch.jpg" },
-      { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "85-inch", price: 220000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)85-inch.jpg" },
-      { brand: "HISENSE", name: "Standard Slim (LED / UHD)", size: "98-inch", price: 550000, category: "tvs", img: "tv-price-list/HISENSE-Standard-Slim(LED-UHD)98-inch.jpg" },
-      { brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "55-inch", price: 110000, category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)55-inch.jpg" },
-      { brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "65-inch", price: 180000, category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)65-inch.jpg" },
-      { brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "75-inch", price: 220000, category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)75-inch.jpg" },
-      { brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "85-inch", price: 340000, category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)85-inch.jpg" },
-      { brand: "HISENSE", name: "Ultra Slim (ULED / Premium)", size: "98-inch", price: "700,000 – 900,000", category: "tvs", img: "tv-price-list/HISENSE-Ultra-Slim(ULED-Premium)98-inch.jpg" },
+function renderCartModal() {
+  const container = document.getElementById('cart-items');
+  const totalEl = document.getElementById('total-amount');
 
-      // SKYWORTH
-      { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "32-inch", price: 20000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)32-inch.jpg" },
-      { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "43-inch", price: 30000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)43-inch.jpg" },
-      { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "50-inch", price: 39000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)50-inch.jpg" },
-      { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "55-inch", price: 46000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)55-inch.jpg" },
-      { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "65-inch", price: 82000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)65-inch.jpg" },
-      { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "75-inch", price: 160000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)75-inch.jpg" },
-      { brand: "SKYWORTH", name: "Standard Slim (LED)", size: "85-inch", price: 230000, category: "tvs", img: "tv-price-list/SKYWORTH-Standard-Slim(LED)85-inch.jpg" },
-      { brand: "SKYWORTH", name: "Ultra Slim (QLED Pro)", size: "55-inch", price: 105000, category: "tvs", img: "tv-price-list/SKYWORTH-Ultra-Slim(QLED-Pro)55-inch.jpg" },
-      { brand: "SKYWORTH", name: "Ultra Slim (QLED Pro)", size: "65-inch", price: 150000, category: "tvs", img: "tv-price-list/SKYWORTH-Ultra-Slim(QLED-Pro)65-inch.jpg" },
+  if (cart.length === 0) {
+    container.innerHTML = '<p class="text-center text-gray-500 py-6">Your quote is empty.</p>';
+    totalEl.textContent = '0';
+    return;
+  }
 
-      // PROJECTORS
-      { brand: "Epson", model: "EB-X06", resolution: "XGA", price: 78995, category: "projectors", img: "projectors/Epson-EB-X06-(XGA).jpg" },
-      { brand: "Epson", model: "EB-W06", resolution: "WXGA", price: 92995, category: "projectors", img: "projectors/Epson-EB-W06-(WXGA).jpg" },
-      { brand: "Epson", model: "EB-FH06", resolution: "Full HD", price: 134995, category: "projectors", img: "projectors/Epson-EB-FH06(Full HD).jpg" },
-      { brand: "Epson", model: "EB-992F", resolution: "Full HD", price: 164995, category: "projectors", img: "projectors/Epson-EB-992F(Full HD).jpg" },
-      { brand: "BenQ", model: "MX560", resolution: "XGA", price: 89995, category: "projectors", img: "projectors/BenQ-MX560(XGA).jpg" },
-      { brand: "BenQ", model: "MW560", resolution: "WXGA", price: 113995, category: "projectors", img: "projectors/BenQ-MW560(WXGA).jpg" },
-      { brand: "BenQ", model: "TH585", resolution: "Full HD", price: 142995, category: "projectors", img: "projectors/BenQ-TH585(Full HD).jpg" },
-      { brand: "BenQ", model: "TK800M", resolution: "4K HDR", price: 198995, category: "projectors", img: "projectors/BenQ-TK800M(4K HDR).jpg" },
-      { brand: "Optoma", model: "S334e", resolution: "SVGA", price: 58995, category: "projectors", img: "projectors/Optoma-S334e(SVGA).jpg" },
-      { brand: "Optoma", model: "X343e", resolution: "XGA", price: 82995, category: "projectors", img: "projectors/Optoma-X343e(XGA).jpg" },
-      { brand: "Optoma", model: "HD146X", resolution: "Full HD", price: 128995, category: "projectors", img: "projectors/Optoma-HD146X(Full HD).jpg" },
-      { brand: "Optoma", model: "UHD35+", resolution: "4K HDR", price: 224995, category: "projectors", img: "projectors/Optoma-UHD35+(4K HDR).jpg" },
-      { brand: "Xiaomi", model: "Mi Smart Projector 2", resolution: "Full HD", price: 78995, category: "projectors", img: "projectors/Xiaomi-Mi-Smart-Projector2(Full HD).jpg" },
-      { brand: "Xiaomi", model: "Mi Laser 150\" 4K", resolution: "4K Laser", price: 218995, category: "projectors", img: "projectors/Xiaomi-Mi-Laser-150-4K-Projector.jpg" },
-      { brand: "ViewSonic", model: "PA503W", resolution: "WXGA", price: 88995, category: "projectors", img: "projectors/ViewSonic-PA503W(WXGA).jpg" },
-      { brand: "ViewSonic", model: "PX701-4K", resolution: "4K HDR", price: 192995, category: "projectors", img: "projectors/ViewSonic-PX701-4K(4K HDR).jpg" }
-    ];
+  let total = 0;
+  let html = '';
 
-    // ========== CART SYSTEM ==========
-    let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
-
-    function saveCart() {
-      localStorage.setItem('morelCart', JSON.stringify(cart));
-      updateCartDisplay();
-    }
-
-    function addToCart(id, name, price, image, event) {
-      const existing = cart.find(item => item.id === id);
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        cart.push({ id, name, price: parseFloat(price) || 0, image, quantity: 1 });
-      }
-      saveCart();
-
-      if (event) {
-        const btn = event.target;
-        const original = btn.textContent;
-        btn.textContent = '✓ Added!';
-        setTimeout(() => btn.textContent = original, 1200);
-      }
-    }
-
-    function updateCartDisplay() {
-      const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-      const badge = document.getElementById('cart-count');
-      badge.textContent = totalCount;
-      badge.classList.toggle('hidden', totalCount === 0);
-    }
-
-    function renderCartModal() {
-      const container = document.getElementById('cart-items');
-      const totalEl = document.getElementById('total-amount');
-      
-      if (cart.length === 0) {
-        container.innerHTML = '<p class="text-center text-gray-500 py-6">Your quote is empty.</p>';
-        totalEl.textContent = '0';
-        return;
-      }
-
-      let total = 0;
-      let html = '';
-
-      cart.forEach(item => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-        html += `
-          <div class="cart-item">
-            <img src="../assets/images/${item.image}" alt="${item.name}">
-            <div class="cart-item-details">
-              <h4 class="font-medium text-sm">${item.name}</h4>
-              <p class="text-xs text-slate-600">KES ${item.price.toLocaleString()}</p>
-              <div class="quantity-controls">
-                <button class="quantity-btn decrease" data-id="${item.id}">−</button>
-                <span>${item.quantity}</span>
-                <button class="quantity-btn increase" data-id="${item.id}">+</button>
-              </div>
-              <button class="remove-btn" data-id="${item.id}">Remove</button>
-            </div>
+  cart.forEach(item => {
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+    html += `
+      <div class="cart-item">
+        <img src="../assets/images/${item.image}" alt="${item.name}">
+        <div class="cart-item-details">
+          <h4 class="font-medium text-sm">${item.name}</h4>
+          <p class="text-xs text-slate-600">KES ${item.price.toLocaleString()}</p>
+          <div class="quantity-controls">
+            <button class="quantity-btn decrease" data-id="${item.id}">−</button>
+            <span>${item.quantity}</span>
+            <button class="quantity-btn increase" data-id="${item.id}">+</button>
           </div>
-        `;
-      });
+          <button class="remove-btn" data-id="${item.id}">Remove</button>
+        </div>
+      </div>
+    `;
+  });
 
-      container.innerHTML = html;
-      totalEl.textContent = total.toLocaleString();
+  container.innerHTML = html;
+  totalEl.textContent = total.toLocaleString();
 
-      document.querySelectorAll('.decrease').forEach(btn => {
-        btn.addEventListener('click', () => updateQuantity(btn.dataset.id, -1));
-      });
-      document.querySelectorAll('.increase').forEach(btn => {
-        btn.addEventListener('click', () => updateQuantity(btn.dataset.id, 1));
-      });
-      document.querySelectorAll('.remove-btn').forEach(btn => {
-        btn.addEventListener('click', () => removeFromCart(btn.dataset.id));
-      });
+  document.querySelectorAll('.decrease').forEach(btn => {
+    btn.addEventListener('click', () => updateQuantity(btn.dataset.id, -1));
+  });
+  document.querySelectorAll('.increase').forEach(btn => {
+    btn.addEventListener('click', () => updateQuantity(btn.dataset.id, 1));
+  });
+  document.querySelectorAll('.remove-btn').forEach(btn => {
+    btn.addEventListener('click', () => removeFromCart(btn.dataset.id));
+  });
+}
+
+function updateQuantity(id, change) {
+  const item = cart.find(i => i.id === id);
+  if (item) {
+    item.quantity += change;
+    if (item.quantity <= 0) {
+      removeFromCart(id);
+      return;
     }
+    saveCart();
+    renderCartModal();
+  }
+}
 
-    function updateQuantity(id, change) {
-      const item = cart.find(i => i.id === id);
-      if (item) {
-        item.quantity += change;
-        if (item.quantity <= 0) {
-          removeFromCart(id);
-          return;
-        }
-        saveCart();
-        renderCartModal();
-      }
-    }
+function removeFromCart(id) {
+  cart = cart.filter(item => item.id !== id);
+  saveCart();
+  renderCartModal();
+}
 
-    function removeFromCart(id) {
-      cart = cart.filter(item => item.id !== id);
-      saveCart();
-      renderCartModal();
-    }
+function checkoutViaWhatsApp() {
+  if (cart.length === 0) return;
 
-    function checkoutViaWhatsApp() {
-      if (cart.length === 0) return;
-      
-      const businessNumber = '254791864441';
-      let message = 'Hi Morel Tech! I\'d like a quote for:\n\n';
-      cart.forEach(item => {
-        message += `• ${item.name} ×${item.quantity} — KES ${item.price.toLocaleString()}\n`;
-      });
-      const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
-      message += `\nTotal: KES ${total.toLocaleString()}\n\nSent via your website.`;
+  const businessNumber = '254791864441';
+  let message = 'Hi Morel Tech! I\'d like a quote for:\n\n';
+  cart.forEach(item => {
+    message += `• ${item.name} ×${item.quantity} — KES ${item.price.toLocaleString()}\n`;
+  });
+  const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+  message += `\nTotal: KES ${total.toLocaleString()}\n\nSent via your website.`;
 
-      window.open(`https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`, '_blank');
-    }
+  window.open(`https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`, '_blank');
+}
 
-    // ========== UI FUNCTIONS ==========
-    function openCart() {
-      renderCartModal();
-      document.getElementById('cart-modal').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+// ========== UI FUNCTIONS ==========
+function openCart() {
+  renderCartModal();
+  document.getElementById('cart-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
 
-    function closeCart() {
-      document.getElementById('cart-modal').classList.remove('active');
-      document.body.style.overflow = '';
-    }
+function closeCart() {
+  document.getElementById('cart-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
 
-    function openProductModal(brand) {
-      const items = brands[brand];
-      let content = '';
+function openProductModal(brand) {
+  const items = brands[brand];
+  let content = '';
 
-      items.forEach(item => {
-        const displayName = getDisplayName(item);
-        const spec = item.size || item.resolution || '';
-        const typeLabel = item.category === 'tvs' ? 'Television' : 'Projector';
-        const priceDisplay = typeof item.price === 'number' ? item.price.toLocaleString() : item.price;
-        const id = `${item.brand}-${(item.name || item.model).replace(/[^a-zA-Z0-9]/g, '-')}`;
+  items.forEach(item => {
+    // Build display name with size/resolution
+    const displayName = `${item.name || item.model}${item.size ? ` (${item.size})` : item.resolution ? ` (${item.resolution})` : ''}`;
+    
+    // Unique ID: include size or resolution
+    const variantKey = item.size || item.resolution || item.model || 'default';
+    const fullId = `${item.brand}-${(item.name || item.model)}-${variantKey}`.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
-        content += `
-          <div class="border border-gray-200 rounded-lg p-3 hover:shadow-sm transition">
-            <div class="flex gap-3">
-              <img 
-                loading="lazy" 
-                src="../assets/images/${item.img}" 
-                alt="${displayName}" 
-                class="w-16 h-16 object-cover rounded cursor-pointer flex-shrink-0"
-                onclick="openLightbox('${item.img}')"
-              >
-              <div class="flex-1 min-w-0">
-                <h4 class="font-bold text-sm truncate">${displayName}</h4>
-                <p class="text-xs text-slate-600">${spec ? `${spec} • ` : ''}${typeLabel}</p>
-                <p class="font-bold text-yellow-600 mt-1">KES ${priceDisplay}</p>
-                <button 
-                  class="mt-2 w-full py-1.5 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
-                  onclick="addToCart('${id}', '${displayName.replaceAll("'", "\\\\'")}', ${typeof item.price === 'number' ? item.price : 0}, '${item.img}', event)"
-                >
-                  Add to Cart
-                </button>
-              </div>
-            </div>
+    const spec = item.size || item.resolution || '';
+    const typeLabel = item.category === 'tvs' ? 'Television' : 'Projector';
+    const priceDisplay = typeof item.price === 'number' ? item.price.toLocaleString() : item.price;
+
+    content += `
+      <div class="border border-gray-200 rounded-lg p-3 hover:shadow-sm transition">
+        <div class="flex gap-3">
+          <img
+            loading="lazy"
+            src="../assets/images/${item.img}"
+            alt="${displayName}"
+            class="w-16 h-16 object-cover rounded cursor-pointer flex-shrink-0"
+            onclick="openLightbox('${item.img}')"
+          >
+          <div class="flex-1 min-w-0">
+            <h4 class="font-bold text-sm truncate">${displayName}</h4>
+            <p class="text-xs text-slate-600">${spec ? `${spec} • ` : ''}${typeLabel}</p>
+            <p class="font-bold text-yellow-600 mt-1">KES ${priceDisplay}</p>
+            <button
+              class="mt-2 w-full py-1.5 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
+              onclick="addToCart('${fullId}', '${displayName.replaceAll("'", "\\\\'")}', ${typeof item.price === 'number' ? item.price : 0}, '${item.img}', event)"
+            >
+              Add to Cart
+            </button>
           </div>
-        `;
-      });
+        </div>
+      </div>
+    `;
+  });
 
-      document.getElementById('modal-title').textContent = `All ${brand} Models`;
-      document.getElementById('product-list').innerHTML = content;
-      document.getElementById('product-modal').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+  document.getElementById('modal-title').textContent = `All ${brand} Models`;
+  document.getElementById('product-list').innerHTML = content;
+  document.getElementById('product-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
 
-    function closeProductModal() {
-      document.getElementById('product-modal').classList.remove('active');
-      document.body.style.overflow = '';
-    }
+function closeProductModal() {
+  document.getElementById('product-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
 
-    function openLightbox(src) {
-      document.getElementById('lightbox-img').src = `../assets/images/${src}`;
-      document.getElementById('lightbox').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = `../assets/images/${src}`;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
 
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('active');
-      document.body.style.overflow = '';
-    }
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
 
-    function getDisplayName(item) {
-      return item.name || item.model || `${item.brand} Device`;
-    }
+function getDisplayName(item) {
+  return item.name || item.model || `${item.brand} Device`;
+}
 
-    // Group products by brand
-    const brands = {};
-    tvProducts.forEach(item => {
-      if (!brands[item.brand]) brands[item.brand] = [];
-      brands[item.brand].push(item);
-    });
+// Group products by brand
+const brands = {};
+tvProducts.forEach(item => {
+  if (!brands[item.brand]) brands[item.brand] = [];
+  brands[item.brand].push(item);
+});
 
-    function renderBrandCards(filtered = tvProducts) {
-      const tempBrands = {};
-      filtered.forEach(item => {
-        if (!tempBrands[item.brand]) tempBrands[item.brand] = [];
-        tempBrands[item.brand].push(item);
-      });
+function renderBrandCards(filtered = tvProducts) {
+  const tempBrands = {};
+  filtered.forEach(item => {
+    if (!tempBrands[item.brand]) tempBrands[item.brand] = [];
+    tempBrands[item.brand].push(item);
+  });
 
-      const html = Object.entries(tempBrands).map(([brand, items]) => {
-        const images = [...new Set(items.map(i => i.img))].slice(0, 3);
-        const sample = items[0];
-        const allTypes = [...new Set(items.map(i => i.category === 'tvs' ? 'TVs' : 'Projectors'))].join(', ');
-        const allSizes = [...new Set(items.map(i => i.size || ''))].filter(Boolean).join(', ');
-        const minPrice = Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 999999));
+  const html = Object.entries(tempBrands).map(([brand, items]) => {
+    const images = [...new Set(items.map(i => i.img))].slice(0, 3);
+    const sample = items[0];
+    const allTypes = [...new Set(items.map(i => i.category === 'tvs' ? 'TVs' : 'Projectors'))].join(', ');
+    const allSizes = [...new Set(items.map(i => i.size || ''))].filter(Boolean).join(', ');
+    const minPrice = Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 999999));
 
-        return `
-          <div class="brand-card">
-            <div class="p-4 md:p-5">
-              <h3 class="text-lg md:text-xl font-bold text-slate-900">${brand}</h3>
-              <p class="text-slate-600 text-sm mt-1">${items.length} models • ${allTypes}</p>
-            </div>
-            <div class="px-4 md:px-5 pb-4">
-              <div class="flex space-x-2 overflow-x-auto py-2">
-                ${images.map(img => `
-                  <img src="../assets/images/${img}"
-                       class="product-image"
-                       loading="lazy"
-                       alt="${brand} ${getDisplayName(sample)}"
-                       onclick="openLightbox('${img}')">
-                `).join('')}
-              </div>
-              <ul class="specs-list mt-3 space-y-1 text-sm">
-                <li>• ${getDisplayName(sample)}</li>
-                <li>• Sizes: ${allSizes || 'Various'}</li>
-                <li>• From KES ${minPrice.toLocaleString()}</li>
-              </ul>
-              <button class="mt-3 w-full py-2 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring text-sm"
-                      onclick="openProductModal('${brand}')">
-                View All Models
-              </button>
-            </div>
+    return `
+      <div class="brand-card">
+        <div class="p-4 md:p-5">
+          <h3 class="text-lg md:text-xl font-bold text-slate-900">${brand}</h3>
+          <p class="text-slate-600 text-sm mt-1">${items.length} models • ${allTypes}</p>
+        </div>
+        <div class="px-4 md:px-5 pb-4">
+          <div class="flex space-x-2 overflow-x-auto py-2">
+            ${images.map(img => `
+              <img src="../assets/images/${img}"
+                   class="product-image"
+                   loading="lazy"
+                   alt="${brand} ${getDisplayName(sample)}"
+                   onclick="openLightbox('${img}')">
+            `).join('')}
           </div>
-        `;
-      }).join('');
+          <ul class="specs-list mt-3 space-y-1 text-sm">
+            <li>• ${getDisplayName(sample)}</li>
+            <li>• Sizes: ${allSizes || 'Various'}</li>
+            <li>• From KES ${minPrice.toLocaleString()}</li>
+          </ul>
+          <button class="mt-3 w-full py-2 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring text-sm"
+                  onclick="openProductModal('${brand}')">
+            View All Models
+          </button>
+        </div>
+      </div>
+    `;
+  }).join('');
 
-      document.getElementById('brandGrid').innerHTML = html;
+  document.getElementById('brandGrid').innerHTML = html;
+}
+
+function applyFilters() {
+  const searchTerm = document.getElementById('modelSearch').value.toLowerCase().trim();
+  const brandSel = document.getElementById('brandFilter').value;
+  const typeSel = document.getElementById('typeFilter').value;
+  const sizeSel = document.getElementById('sizeFilter').value;
+
+  const filtered = tvProducts.filter(item => {
+    if (brandSel && item.brand !== brandSel) return false;
+    if (typeSel && item.category !== typeSel) return false;
+    if (sizeSel && item.size !== sizeSel) return false;
+    if (searchTerm) {
+      const text = [item.name, item.model, item.brand, item.size, item.resolution].filter(Boolean).join(' ').toLowerCase();
+      return text.includes(searchTerm);
     }
+    return true;
+  });
+  renderBrandCards(filtered);
+}
 
-    function applyFilters() {
-      const searchTerm = document.getElementById('modelSearch').value.toLowerCase().trim();
-      const brandSel = document.getElementById('brandFilter').value;
-      const typeSel = document.getElementById('typeFilter').value;
-      const sizeSel = document.getElementById('sizeFilter').value;
+// ========== INIT ==========
+document.getElementById('cart-icon').addEventListener('click', openCart);
+document.getElementById('close-cart').addEventListener('click', closeCart);
+document.getElementById('whatsapp-btn').addEventListener('click', checkoutViaWhatsApp);
+document.getElementById('close-product-modal').addEventListener('click', closeProductModal);
 
-      const filtered = tvProducts.filter(item => {
-        if (brandSel && item.brand !== brandSel) return false;
-        if (typeSel && item.category !== typeSel) return false;
-        if (sizeSel && item.size !== sizeSel) return false;
-        if (searchTerm) {
-          const text = [item.name, item.model, item.brand, item.size, item.resolution].filter(Boolean).join(' ').toLowerCase();
-          return text.includes(searchTerm);
-        }
-        return true;
-      });
-      renderBrandCards(filtered);
-    }
+['modelSearch', 'brandFilter', 'typeFilter', 'sizeFilter'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', applyFilters);
+});
 
-    // ========== INIT ==========
-    document.getElementById('cart-icon').addEventListener('click', openCart);
-    document.getElementById('close-cart').addEventListener('click', closeCart);
-    document.getElementById('whatsapp-btn').addEventListener('click', checkoutViaWhatsApp);
-    document.getElementById('close-product-modal').addEventListener('click', closeProductModal);
+document.getElementById('openFilters').addEventListener('click', () => {
+  document.getElementById('filterSidebar').classList.add('active');
+  document.getElementById('filterOverlay').classList.add('active');
+});
 
-    ['modelSearch', 'brandFilter', 'typeFilter', 'sizeFilter'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.addEventListener('input', applyFilters);
-    });
+document.querySelectorAll('#closeFilters, #filterOverlay').forEach(el => {
+  el?.addEventListener('click', () => {
+    document.getElementById('filterSidebar').classList.remove('active');
+    document.getElementById('filterOverlay').classList.remove('active');
+  });
+});
 
-    document.getElementById('openFilters').addEventListener('click', () => {
-      document.getElementById('filterSidebar').classList.add('active');
-      document.getElementById('filterOverlay').classList.add('active');
-    });
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (document.getElementById('cart-modal').classList.contains('active')) closeCart();
+    if (document.getElementById('lightbox').classList.contains('active')) closeLightbox();
+    if (document.getElementById('product-modal').classList.contains('active')) closeProductModal();
+  }
+});
 
-    document.querySelectorAll('#closeFilters, #filterOverlay').forEach(el => {
-      el?.addEventListener('click', () => {
-        document.getElementById('filterSidebar').classList.remove('active');
-        document.getElementById('filterOverlay').classList.remove('active');
-      });
-    });
+renderBrandCards();
+updateCartDisplay();
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (document.getElementById('cart-modal').classList.contains('active')) closeCart();
-        if (document.getElementById('lightbox').classList.contains('active')) closeLightbox();
-        if (document.getElementById('product-modal').classList.contains('active')) closeProductModal();
-      }
-    });
-
-    renderBrandCards();
-    updateCartDisplay();
-
-    // Expose globally
-    window.openLightbox = openLightbox;
-    window.closeLightbox = closeLightbox;
-    window.addToCart = addToCart;
-  </script>
+// Expose globally
+window.openLightbox = openLightbox;
+window.closeLightbox = closeLightbox;
+window.addToCart = addToCart;
+</script>
 </body>
 </html>

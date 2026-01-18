@@ -481,7 +481,6 @@
       container.innerHTML = html;
       totalEl.textContent = total.toLocaleString();
 
-      // Attach event listeners
       document.querySelectorAll('.decrease').forEach(btn => {
         btn.addEventListener('click', () => updateQuantity(btn.dataset.id, -1));
       });
@@ -550,10 +549,17 @@
     }
 
     function getDisplayName(item) {
-      if (item.name && item.model) return `${item.name} ${item.model}`;
-      if (item.model) return item.model;
-      if (item.name) return item.name;
-      return 'Power Product';
+      let base = '';
+      if (item.name && item.model) {
+        base = `${item.name} ${item.model}`;
+      } else if (item.model) {
+        base = item.model;
+      } else if (item.name) {
+        base = item.name;
+      } else {
+        base = 'Power Product';
+      }
+      return item.size ? `${base} (${item.size})` : base;
     }
 
     // Group products by brand
@@ -595,7 +601,7 @@
                 `).join('')}
               </div>
               <ul class="specs-list mt-3 space-y-1">
-                <li>• ${getDisplayName(sample)} ${sample.size ? `(${sample.size})` : ''}</li>
+                <li>• ${getDisplayName(sample)}</li>
                 <li>• From KES ${minPrice.toLocaleString()}</li>
               </ul>
               <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
@@ -616,8 +622,9 @@
       
       items.forEach(item => {
         const displayName = getDisplayName(item);
-        const meta = item.size ? `${item.size}` : '';
-        const id = `${item.brand}-${(item.model || item.name).replace(/[^a-zA-Z0-9]/g, '-')}`;
+        // Unique ID: include size for variant distinction
+        const variantKey = item.size || item.model || 'default';
+        const fullId = `${item.brand}-${(item.model || item.name)}-${variantKey}`.replace(/[^a-zA-Z0-9]/g, '-');
 
         content += `
           <div class="border border-gray-200 rounded-lg p-2 hover:shadow-sm transition">
@@ -631,11 +638,10 @@
               >
               <div class="flex-1 min-w-0">
                 <h4 class="font-bold text-sm truncate">${displayName}</h4>
-                ${meta ? `<p class="text-xs text-slate-600">${meta}</p>` : ''}
                 <p class="font-bold text-yellow-600 mt-1">KES ${typeof item.price === 'number' ? item.price.toLocaleString() : item.price}</p>
                 <button 
                   class="add-to-cart-btn mt-1 w-full py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
-                  onclick="addToCart('${id}', '${displayName.replaceAll("'", "\\\\'")}', ${typeof item.price === 'number' ? item.price : 0}, '${item.img}')"
+                  onclick="addToCart('${fullId}', '${displayName.replaceAll("'", "\\\\'")}', ${typeof item.price === 'number' ? item.price : 0}, '${item.img}')"
                 >
                   Add to Cart
                 </button>
@@ -679,7 +685,8 @@
     document.getElementById('close-cart').addEventListener('click', closeCart);
     document.getElementById('whatsapp-btn').addEventListener('click', checkoutViaWhatsApp);
 
-    [modelSearch, brandFilter, typeFilter].forEach(el => {
+    ['modelSearch', 'brandFilter', 'typeFilter'].forEach(id => {
+      const el = document.getElementById(id);
       if (el) el.addEventListener('input', applyFilters);
     });
 

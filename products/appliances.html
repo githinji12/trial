@@ -1,552 +1,536 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Buy Home Appliances in Kenya – Fridges, ACs, Washers | Morel Tech</title>
-  <meta name="description" content="Buy Samsung, LG, Hisense & Ramtons fridges, air conditioners, washing machines & cookers in Kenya. Best prices in Nairobi, Nyeri & nationwide. NEW & refurbished options available."/>
-  <link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Store",
-    "name": "Morel Tech Solution",
-    "image": "/assets/images/logo.jpg",
-    "url": "https://moreltech.co.ke",
-    "telephone": "+254700000000",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Nyeri Town",
-      "addressLocality": "Nyeri",
-      "addressCountry": "KE"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -0.4247,
-      "longitude": 36.9455
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      "opens": "08:00",
-      "closes": "18:00"
-    },
-    "productSupported": ["Refrigerators", "Air Conditioners", "Washing Machines", "Dishwashers", "Cookers"]
-  }
-  </script>
-  <style>
-    :root {
-      --bg-page: #f8fafc;
-      --bg-surface: #ffffff;
-      --ink-900: #0f172a;
-      --ink-700: #334155;
-      --ink-500: #64748b;
-      --border-subtle: #e2e8f0;
-      --accent-gold: #d4af37;
-      --radius-sm: 10px;
-      --radius-md: 14px;
-      --radius-lg: 18px;
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
-      --ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    body {
-      background-color: var(--bg-page);
-      color: var(--ink-700);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-    .brand-card {
-      background: var(--bg-surface);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      overflow: hidden;
-      transition: box-shadow 0.3s var(--ease-ui), transform 0.2s var(--ease-ui);
-    }
-    .brand-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-    .product-image {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: var(--radius-sm);
-      cursor: zoom-in;
-    }
-    .specs-list {
-      font-size: 0.875rem;
-      color: var(--ink-500);
-    }
-    /* Product Detail Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      z-index: 1000;
-      padding: 1.5rem;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal.active {
-      display: flex;
-    }
-    .modal-content {
-      background: white;
-      border-radius: var(--radius-lg);
-      max-width: 900px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    }
-    /* Cart Modal */
-    #cart-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 2000;
-      padding: 1rem;
-      justify-content: center;
-      align-items: center;
-    }
-    #cart-modal.active {
-      display: flex;
-    }
-    #cart-modal-content {
-      background: white;
-      border-radius: var(--radius-lg);
-      max-width: 95vw;
-      width: 100%;
-      max-height: 85vh;
-      overflow-y: auto;
-    }
-    .cart-header {
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-    .cart-items {
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .cart-item {
-      display: flex;
-      gap: 0.75rem;
-    }
-    .cart-item img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: var(--radius-sm);
-    }
-    .cart-item-details {
-      flex: 1;
-    }
-    .quantity-controls {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 0.25rem;
-    }
-    .quantity-btn {
-      width: 28px;
-      height: 28px;
-      background: #e0e0e0;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .remove-btn {
-      background: #ef4444;
-      color: white;
-      border: none;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      cursor: pointer;
-      margin-top: 0.25rem;
-    }
-    .cart-footer {
-      padding: 1rem;
-      border-top: 1px solid var(--border-subtle);
-      text-align: center;
-    }
-    .whatsapp-btn {
-      background: #25D366;
-      color: white;
-      border: none;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      font-weight: 600;
-      width: 100%;
-      cursor: pointer;
-    }
-    /* Lightbox */
-    #lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.95);
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-    #lightbox.active {
-      display: flex;
-    }
-    #lightbox-img {
-      max-width: 95vw;
-      max-height: 90vh;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-    /* Filters */
-    .filter-sidebar {
-      position: sticky;
-      top: 2rem;
-      height: fit-content;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-    @media (max-width: 768px) {
-      .mobile-filter-trigger { display: block !important; }
-      .filter-sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 85%;
-        height: 100vh;
-        z-index: 1000;
-        background: white;
-        padding: 1.5rem;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-      }
-      .filter-sidebar.active { transform: translateX(0); }
-      .overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.5);
-        z-index: 999;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s;
-      }
-      .overlay.active {
-        opacity: 1;
-        visibility: visible;
-      }
-    }
-    .mobile-filter-trigger { display: none; }
-    .focus-ring:focus-visible {
-      outline: 2px solid var(--accent-gold);
-      outline-offset: 3px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Buy Home Appliances in Kenya – Fridges, ACs, Washers | Morel Tech</title>
+<meta name="description" content="Buy Samsung, LG, Hisense & Ramtons fridges, air conditioners, washing machines & cookers in Kenya. Best prices in Nairobi, Nyeri & nationwide. NEW & refurbished options available."/>
+<link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Store",
+"name": "Morel Tech Solution",
+"image": "/assets/images/logo.jpg",
+"url": "https://moreltech.co.ke",
+"telephone": "+254700000000",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Nyeri Town",
+"addressLocality": "Nyeri",
+"addressCountry": "KE"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": -0.4247,
+"longitude": 36.9455
+},
+"openingHoursSpecification": {
+"@type": "OpeningHoursSpecification",
+"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+"opens": "08:00",
+"closes": "18:00"
+},
+"productSupported": ["Refrigerators", "Air Conditioners", "Washing Machines", "Dishwashers", "Cookers"]
+}
+</script>
+<style>
+:root {
+--bg-page: #f8fafc;
+--bg-surface: #ffffff;
+--ink-900: #0f172a;
+--ink-700: #334155;
+--ink-500: #64748b;
+--border-subtle: #e2e8f0;
+--accent-gold: #d4af37;
+--radius-sm: 10px;
+--radius-md: 14px;
+--radius-lg: 18px;
+--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+--shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+--ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
+}
+body {
+background-color: var(--bg-page);
+color: var(--ink-700);
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.brand-card {
+background: var(--bg-surface);
+border-radius: var(--radius-md);
+box-shadow: var(--shadow-sm);
+overflow: hidden;
+transition: box-shadow 0.3s var(--ease-ui), transform 0.2s var(--ease-ui);
+}
+.brand-card:hover {
+transform: translateY(-4px);
+box-shadow: var(--shadow-md);
+}
+.product-image {
+width: 200px;
+height: 200px;
+object-fit: cover;
+border-radius: var(--radius-sm);
+cursor: zoom-in;
+}
+.specs-list {
+font-size: 0.875rem;
+color: var(--ink-500);
+}
+/* Product Detail Modal */
+.modal {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0, 0, 0, 0.75);
+z-index: 1000;
+padding: 1.5rem;
+justify-content: center;
+align-items: center;
+}
+.modal.active {
+display: flex;
+}
+.modal-content {
+background: white;
+border-radius: var(--radius-lg);
+max-width: 900px;
+width: 100%;
+max-height: 90vh;
+overflow-y: auto;
+box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+/* Cart Modal */
+#cart-modal {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0, 0, 0, 0.6);
+z-index: 2000;
+padding: 1rem;
+justify-content: center;
+align-items: center;
+}
+#cart-modal.active {
+display: flex;
+}
+#cart-modal-content {
+background: white;
+border-radius: var(--radius-lg);
+max-width: 95vw;
+width: 100%;
+max-height: 85vh;
+overflow-y: auto;
+}
+.cart-header {
+padding: 1rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-bottom: 1px solid var(--border-subtle);
+}
+.cart-items {
+padding: 1rem;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+.cart-item {
+display: flex;
+gap: 0.75rem;
+}
+.cart-item img {
+width: 60px;
+height: 60px;
+object-fit: cover;
+border-radius: var(--radius-sm);
+}
+.cart-item-details {
+flex: 1;
+}
+.quantity-controls {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+margin-top: 0.25rem;
+}
+.quantity-btn {
+width: 28px;
+height: 28px;
+background: #e0e0e0;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-weight: bold;
+}
+.remove-btn {
+background: #ef4444;
+color: white;
+border: none;
+padding: 0.25rem 0.5rem;
+border-radius: 4px;
+font-size: 0.8rem;
+cursor: pointer;
+margin-top: 0.25rem;
+}
+.cart-footer {
+padding: 1rem;
+border-top: 1px solid var(--border-subtle);
+text-align: center;
+}
+.whatsapp-btn {
+background: #25D366;
+color: white;
+border: none;
+padding: 0.75rem 1rem;
+border-radius: 8px;
+font-weight: 600;
+width: 100%;
+cursor: pointer;
+}
+/* Lightbox */
+#lightbox {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.95);
+z-index: 2000;
+align-items: center;
+justify-content: center;
+padding: 1rem;
+}
+#lightbox.active {
+display: flex;
+}
+#lightbox-img {
+max-width: 95vw;
+max-height: 90vh;
+object-fit: contain;
+border-radius: 8px;
+}
+/* Filters */
+.filter-sidebar {
+position: sticky;
+top: 2rem;
+height: fit-content;
+max-height: 80vh;
+overflow-y: auto;
+}
+@media (max-width: 768px) {
+.mobile-filter-trigger { display: block !important; }
+.filter-sidebar {
+position: fixed;
+top: 0;
+left: 0;
+width: 85%;
+height: 100vh;
+z-index: 1000;
+background: white;
+padding: 1.5rem;
+transform: translateX(-100%);
+transition: transform 0.3s ease;
+}
+.filter-sidebar.active { transform: translateX(0); }
+.overlay {
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.5);
+z-index: 999;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s;
+}
+.overlay.active {
+opacity: 1;
+visibility: visible;
+}
+}
+.mobile-filter-trigger { display: none; }
+.focus-ring:focus-visible {
+outline: 2px solid var(--accent-gold);
+outline-offset: 3px;
+}
+</style>
 </head>
 <body class="text-slate-800">
-  <nav class="bg-slate-900 text-white fixed w-full top-0 z-50 shadow-md">
-    <div class="container mx-auto px-4 py-3">
-      <a href="../#products" class="text-lg font-semibold">← Back to Catalog</a>
-    </div>
-  </nav>
-
-  <main class="pt-20 pb-16">
-    <div class="container mx-auto px-4">
-      <div class="sr-only">
-        <h1>Home Appliances for Sale in Kenya</h1>
-        <p>Buy Samsung RF/407 fridge, Hisense AS-12CR4S air conditioner, LG washing machines and more from Morel Tech Solution. Fast delivery across Nairobi, Nyeri, Mombasa & Kenya. Both new and refurbished appliances available.</p>
-      </div>
-
-      <div class="flex flex-col lg:flex-row gap-8">
-        <aside class="filter-sidebar" id="filterSidebar">
-          <div class="flex justify-between items-center mb-6">
-            <h2 class="text-xl font-bold">Filters</h2>
-            <button id="closeFilters" class="lg:hidden text-gray-500 hover:text-gray-900">✕</button>
-          </div>
-          <div class="space-y-5">
-            <div>
-              <label class="block font-medium mb-2">Search Model</label>
-              <input type="text" id="modelSearch" placeholder="e.g. RF/407, AS-12CR4S..." class="w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-yellow-500">
-            </div>
-            <div>
-              <label class="block font-medium mb-2">Brand</label>
-              <select id="brandFilter" class="w-full p-2.5 border rounded-lg">
-                <option value="">All Brands</option>
-                <option value="Samsung">Samsung</option>
-                <option value="LG">LG</option>
-                <option value="Hisense">Hisense</option>
-                <option value="Ramtons">Ramtons</option>
-                <option value="Mika">Mika</option>
-                <option value="Bruhm">Bruhm</option>
-                <option value="Hotpoint">Hotpoint</option>
-                <option value="Von">Von</option>
-                <option value="Haier">Haier</option>
-                <option value="Xiaomi">Xiaomi</option>
-              </select>
-            </div>
-            <div>
-              <label class="block font-medium mb-2">Type</label>
-              <select id="typeFilter" class="w-full p-2.5 border rounded-lg">
-                <option value="">All Types</option>
-                <option value="air-conditioners">Air Conditioners</option>
-                <option value="dishwashers">Dishwashers</option>
-                <option value="cookers">Cookers & Ovens</option>
-                <option value="fridges">Fridges</option>
-                <option value="washing-machines">Washing Machines</option>
-                <option value="vacuum-cleaners">Vacuum Cleaners</option>
-              </select>
-            </div>
-            <div>
-              <label class="block font-medium mb-2">Condition</label>
-              <select id="conditionFilter" class="w-full p-2.5 border rounded-lg">
-                <option value="">All Conditions</option>
-                <option value="NEW">New</option>
-                <option value="REFURBISHED">Refurbished</option>
-              </select>
-            </div>
-          </div>
-        </aside>
-
-        <div class="flex-1">
-          <div class="flex justify-between items-center mb-8">
-            <h1 class="text-3xl font-bold text-slate-900">Home Appliances</h1>
-            <button class="mobile-filter-trigger px-4 py-2 bg-yellow-600 text-white rounded font-medium" id="openFilters">
-              Filters
-            </button>
-          </div>
-          <div id="brandGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- Product Detail Modal -->
-  <div id="detailModal" class="modal" role="dialog" aria-modal="true">
-    <div class="modal-content">
-      <div class="p-6">
-        <div class="flex justify-between items-start">
-          <h2 id="modalTitle" class="text-2xl font-bold text-slate-900"></h2>
-          <button id="closeModalBtn" class="text-gray-500 hover:text-gray-900 text-2xl focus:outline-none">&times;</button>
-        </div>
-        <div id="modalContent" class="mt-6"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Cart Modal -->
-  <div id="cart-modal" class="modal" role="dialog" aria-modal="true">
-    <div id="cart-modal-content">
-      <div class="cart-header">
-        <h2 class="text-lg font-bold">Your Quote</h2>
-        <button id="close-cart" class="text-gray-500 hover:text-gray-900 text-2xl">&times;</button>
-      </div>
-      <div id="cart-items" class="cart-items">
-        <!-- Items inserted by JS -->
-      </div>
-      <div class="cart-footer">
-        <div class="font-bold text-lg">Total: KES <span id="total-amount">0</span></div>
-        <button id="whatsapp-btn" class="whatsapp-btn">Send Quote via WhatsApp</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox">
-    <img id="lightbox-img" />
-    <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center">✕</button>
-  </div>
-
-  <!-- WhatsApp Cart Button -->
-  <div class="fixed bottom-4 right-4 z-[999]">
-    <button
-      id="cart-icon"
-      class="bg-yellow-500 hover:bg-yellow-600 text-white p-4 rounded-full shadow-lg flex items-center relative"
-    >
- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+<nav class="bg-slate-900 text-white fixed w-full top-0 z-50 shadow-md">
+<div class="container mx-auto px-4 py-3">
+<a href="../#products" class="text-lg font-semibold">← Back to Catalog</a>
+</div>
+</nav>
+<main class="pt-20 pb-16">
+<div class="container mx-auto px-4">
+<div class="sr-only">
+<h1>Home Appliances for Sale in Kenya</h1>
+<p>Buy Samsung RF/407 fridge, Hisense AS-12CR4S air conditioner, LG washing machines and more from Morel Tech Solution. Fast delivery across Nairobi, Nyeri, Mombasa & Kenya. Both new and refurbished appliances available.</p>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<aside class="filter-sidebar" id="filterSidebar">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-xl font-bold">Filters</h2>
+<button id="closeFilters" class="lg:hidden text-gray-500 hover:text-gray-900">✕</button>
+</div>
+<div class="space-y-5">
+<div>
+<label class="block font-medium mb-2">Search Model</label>
+<input type="text" id="modelSearch" placeholder="e.g. RF/407, AS-12CR4S..." class="w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-yellow-500">
+</div>
+<div>
+<label class="block font-medium mb-2">Brand</label>
+<select id="brandFilter" class="w-full p-2.5 border rounded-lg">
+<option value="">All Brands</option>
+<option value="Samsung">Samsung</option>
+<option value="LG">LG</option>
+<option value="Hisense">Hisense</option>
+<option value="Ramtons">Ramtons</option>
+<option value="Mika">Mika</option>
+<option value="Bruhm">Bruhm</option>
+<option value="Hotpoint">Hotpoint</option>
+<option value="Von">Von</option>
+<option value="Haier">Haier</option>
+<option value="Xiaomi">Xiaomi</option>
+</select>
+</div>
+<div>
+<label class="block font-medium mb-2">Type</label>
+<select id="typeFilter" class="w-full p-2.5 border rounded-lg">
+<option value="">All Types</option>
+<option value="air-conditioners">Air Conditioners</option>
+<option value="dishwashers">Dishwashers</option>
+<option value="cookers">Cookers & Ovens</option>
+<option value="fridges">Fridges</option>
+<option value="washing-machines">Washing Machines</option>
+<option value="vacuum-cleaners">Vacuum Cleaners</option>
+</select>
+</div>
+<div>
+<label class="block font-medium mb-2">Condition</label>
+<select id="conditionFilter" class="w-full p-2.5 border rounded-lg">
+<option value="">All Conditions</option>
+<option value="NEW">New</option>
+<option value="REFURBISHED">Refurbished</option>
+</select>
+</div>
+</div>
+</aside>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-8">
+<h1 class="text-3xl font-bold text-slate-900">Home Appliances</h1>
+<button class="mobile-filter-trigger px-4 py-2 bg-yellow-600 text-white rounded font-medium" id="openFilters">
+Filters
+</button>
+</div>
+<div id="brandGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Product Detail Modal -->
+<div id="detailModal" class="modal" role="dialog" aria-modal="true">
+<div class="modal-content">
+<div class="p-6">
+<div class="flex justify-between items-start">
+<h2 id="modalTitle" class="text-2xl font-bold text-slate-900"></h2>
+<button id="closeModalBtn" class="text-gray-500 hover:text-gray-900 text-2xl focus:outline-none">&times;</button>
+</div>
+<div id="modalContent" class="mt-6"></div>
+</div>
+</div>
+</div>
+<!-- Cart Modal -->
+<div id="cart-modal" class="modal" role="dialog" aria-modal="true">
+<div id="cart-modal-content">
+<div class="cart-header">
+<h2 class="text-lg font-bold">Your Quote</h2>
+<button id="close-cart" class="text-gray-500 hover:text-gray-900 text-2xl">&times;</button>
+</div>
+<div id="cart-items" class="cart-items">
+<!-- Items inserted by JS -->
+</div>
+<div class="cart-footer">
+<div class="font-bold text-lg">Total: KES <span id="total-amount">0</span></div>
+<button id="whatsapp-btn" class="whatsapp-btn">Send Quote via WhatsApp</button>
+</div>
+</div>
+</div>
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+<img id="lightbox-img" />
+<button onclick="closeLightbox()" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center">✕</button>
+</div>
+<!-- WhatsApp Cart Button -->
+<div class="fixed bottom-4 right-4 z-[999]">
+<button
+id="cart-icon"
+class="bg-yellow-500 hover:bg-yellow-600 text-white p-4 rounded-full shadow-lg flex items-center relative"
+>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
 </svg>
 <span class="ml-2 font-bold hidden sm:inline"> Cart</span>
 <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
-    </button>
-  </div>
+</button>
+</div>
+<!-- Overlay -->
+<div class="overlay" id="filterOverlay"></div>
+<script>
+const appliancesProducts = [
+// ❄️ FRIDGES
+{ name: "VON VART-13DHS", brand: "VON", model: "VART-13DHS – 138L", size: "138L", price: 37995, category: "fridges", img: "fridges/VON-VART-13DHS–138L.jpg" },
+{ name: "RAMTONS RF/173", brand: "RAMTONS", model: "RF/173 – 128L", size: "128L", price: 30995, category: "fridges", img: "fridges/RAMTONS-RF-173–128L.jpg" },
+{ name: "RAMTONS RF/263", brand: "RAMTONS", model: "RF/263 – 150L", size: "150L", price: 34999, category: "fridges", img: "fridges/RAMTONS-RF-263–150L.jpg" },
+{ name: "MIKA MRDCS140SBL", brand: "MIKA", model: "MRDCS140SBL – 140L", size: "140L", price: 36995, category: "fridges", img: "fridges/MIKA-MRDCS140SBL–140L.jpg" },
+{ name: "MIKA MRDC170X", brand: "MIKA", model: "MRDC170X – 170L", size: "170L", price: 42995, category: "fridges", img: "fridges/MIKA-MRDC170X–170L.jpg" },
+{ name: "HISENSE REF120DR", brand: "HISENSE", model: "REF120DR – 120L", size: "120L", price: 34999, category: "fridges", img: "fridges/HISENSE-REF120DR–120L.jpg" },
+{ name: "HISENSE REF176DR", brand: "HISENSE", model: "REF176DR – 176L", size: "176L", price: 47995, category: "fridges", img: "fridges/HISENSE-REF176DR–176L.jpg" },
+{ name: "SAMSUNG RR19T1444S8", brand: "SAMSUNG", model: "RR19T1444S8 – 192L", size: "192L", price: 63995, category: "fridges", img: "fridges/SAMSUNG-RR19T1444S8–192L.jpg" },
+{ name: "LG GL-B201ALLB", brand: "LG", model: "GL-B201ALLB – 190L", size: "190L", price: 67995, category: "fridges", img: "fridges/LG-GL-B201ALLB–190L.jpg" },
+{ name: "HISENSE REF251FL", brand: "HISENSE", model: "REF251FL – 251L", size: "251L", price: 79800, category: "fridges", img: "fridges/HISENSE-REF251FL–251L.jpg" },
+{ name: "HISENSE REF300DR", brand: "HISENSE", model: "REF300DR – 300L", size: "300L", price: 90000, category: "fridges", img: "fridges/HISENSE-REF300DR–300L.jpg" },
+{ name: "SAMSUNG RT31K3082S8", brand: "SAMSUNG", model: "RT31K3082S8 – 253L", size: "253L", price: 103990, category: "fridges", img: "fridges/SAMSUNG-RT31K3082S8–253L.jpg" },
+{ name: "SAMSUNG RT34 Series", brand: "SAMSUNG", model: "RT34 Series – 300L", size: "300L", price: 130000, category: "fridges", img: "fridges/SAMSUNG-RT34-Series–300L.jpg" },
+{ name: "LG GL-C322SLBB", brand: "LG", model: "GL-C322SLBB – 284L", size: "284L", price: 119995, category: "fridges", img: "fridges/LG-GL-C322SLBB–284L.jpg" },
+{ name: "LG GN-B302SQBB", brand: "LG", model: "GN-B302SQBB – 302L", size: "302L", price: 130995, category: "fridges", img: "fridges/LG-GN-B302SQBB–302L.jpg" },
+{ name: "VON VART-22DHS", brand: "VON", model: "VART-22DHS – ~220L", size: "~220L", price: 79995, category: "fridges", img: "fridges/VON-VART-22DHS–220L.jpg" },
+{ name: "VON VART-31DHS", brand: "VON", model: "VART-31DHS – ~310L", size: "~310L", price: 91995, category: "fridges", img: "fridges/VON-VART-31DHS–310L.jpg" },
+{ name: "RAMTONS RF/268", brand: "RAMTONS", model: "RF/268 – 260L", size: "260L", price: 66995, category: "fridges", img: "fridges/RAMTONS-RF-268–260L.jpg" },
+{ name: "RAMTONS RF/407 (296L)", brand: "RAMTONS", model: "RF/407 – 296L", size: "296L", price: 84995, category: "fridges", img: "fridges/RAMTONS-RF-407–296L.jpg" },
+{ name: "MIKA MRDCD260X", brand: "MIKA", model: "MRDCD260X – 260L", size: "260L", price: 69995, category: "fridges", img: "fridges/MIKA-MRDCD260X–260L.jpg" },
+{ name: "MIKA MRDCD300X", brand: "MIKA", model: "MRDCD300X – 300L", size: "300L", price: 78995, category: "fridges", img: "fridges/MIKA-MRDCD300X–300L.jpg" },
+{ name: "HISENSE REF320DR", brand: "HISENSE", model: "REF320DR – 320L", size: "320L", price: 90995, category: "fridges", img: "fridges/HISENSE-REF320DR–320L.jpg" },
+{ name: "HISENSE REF433DR", brand: "HISENSE", model: "REF433DR – 433L", size: "433L", price: 123995, category: "fridges", img: "fridges/HISENSE-REF433DR–433L.jpg" },
+{ name: "SAMSUNG RT34K5532S8", brand: "SAMSUNG", model: "RT34K5532S8 – 345L", size: "345L", price: 144995, category: "fridges", img: "fridges/SAMSUNG-RT34K5532S8–345L.jpg" },
+{ name: "SAMSUNG RT42K5532S8", brand: "SAMSUNG", model: "RT42K5532S8 – 420L", size: "420L", price: 178995, category: "fridges", img: "fridges/SAMSUNG-RT42K5532S8–420L.jpg" },
+{ name: "LG GL-C322SLBB (322L)", brand: "LG", model: "GL-C322SLBB – 322L", size: "322L", price: 124995, category: "fridges", img: "fridges/LG-GL-C322SLBB–322L.jpg" },
+{ name: "LG GN-B422SQCL", brand: "LG", model: "GN-B422SQCL – 419L", size: "419L", price: 168995, category: "fridges", img: "fridges/LG-GN-B422SQCL–419L.jpg" },
+{ name: "VON VART-42DHS", brand: "VON", model: "VART-42DHS – ~420L", size: "~420L", price: 128995, category: "fridges", img: "fridges/VON-VART-42DHS–420L.jpg" },
+{ name: "RAMTONS RF/492", brand: "RAMTONS", model: "RF/492 – 413L", size: "413L", price: 123995, category: "fridges", img: "fridges/RAMTONS-RF-492–413L.jpg" },
+{ name: "MIKA MRDCD430X", brand: "MIKA", model: "MRDCD430X – ~430L", size: "~430L", price: 128995, category: "fridges", img: "fridges/MIKA-MRDCD430X–430L.jpg" },
+{ name: "SAMSUNG RS54N3A13S8", brand: "SAMSUNG", model: "RS54N3A13S8 – 535L", size: "535L", price: 185000, category: "fridges", img: "fridges/Samsung-RS54N3A13S8–535L.jpg" },
+{ name: "SAMSUNG RS57DG400EM9EU", brand: "SAMSUNG", model: "RS57DG400EM9EU – 583L", size: "583L", price: 208990, category: "fridges", img: "fridges/Samsung-RS57DG400EM9EU–583L.jpg" },
+{ name: "SAMSUNG RS64T5F01B4", brand: "SAMSUNG", model: "RS64T5F01B4 – 617L", size: "617L", price: 272995, category: "fridges", img: "fridges/Samsung-RS64T5F01B4–617L.jpg" },
+{ name: "SAMSUNG RS72R5011M9", brand: "SAMSUNG", model: "RS72R5011M9 – 700L", size: "700L", price: 316995, category: "fridges", img: "fridges/Samsung-RS72R5011M9–700L.jpg" },
+{ name: "LG GC-B257SLQV", brand: "LG", model: "GC-B257SLQV – 635L", size: "635L", price: 225000, category: "fridges", img: "fridges/LG-GC-B257SLQV–635L.jpg" },
+{ name: "LG GC-B257SLLV", brand: "LG", model: "GC-B257SLLV – 655L", size: "655L", price: 254000, category: "fridges", img: "fridges/LG-GC-B257SLLV–655L.jpg" },
+{ name: "LG GC-X257CQES", brand: "LG", model: "GC-X257CQES – 657L", size: "657L", price: 353000, category: "fridges", img: "fridges/LG-GC-X257CQES–657L.jpg" },
+{ name: "LG GC-X31GNSL", brand: "LG", model: "GC-X31GNSL – 674L", size: "674L", price: 447000, category: "fridges", img: "fridges/LG-GC-X31GNSL–674L.jpg" },
+{ name: "HISENSE H590SS", brand: "HISENSE", model: "H590SS – 508L", size: "508L", price: 145000, category: "fridges", img: "fridges/Hisense-H590SS–508L.jpg" },
+{ name: "HISENSE H650SS", brand: "HISENSE", model: "H650SS – 636L", size: "636L", price: 178995, category: "fridges", img: "fridges/Hisense-H650SS–636L.jpg" },
+{ name: "HISENSE H700SS", brand: "HISENSE", model: "H700SS – 700L", size: "700L", price: 212995, category: "fridges", img: "fridges/Hisense-H700SS–700L.jpg" },
+{ name: "HISENSE H780FS", brand: "HISENSE", model: "H780FS – 768L", size: "768L", price: 262000, category: "fridges", img: "fridges/Hisense-H780FS–768L.jpg" },
+{ name: "VON VAUF17NHS", brand: "VON", model: "VAUF17NHS – 170L", size: "170L", price: 70995, category: "fridges", img: "fridges/VON-VAUF17NHS–170L.jpg" },
+{ name: "VON VAUF21NHS", brand: "VON", model: "VAUF21NHS – 210L", size: "210L", price: 83995, category: "fridges", img: "fridges/VON-VAUF21NHS–210L.jpg" },
+{ name: "VON VAUF26NHS", brand: "VON", model: "VAUF26NHS – 260L", size: "260L", price: 97995, category: "fridges", img: "fridges/VON-VAUF26NHS–260L.jpg" },
+{ name: "VON VAUF30NHS", brand: "VON", model: "VAUF30NHS – 300L", size: "300L", price: 116995, category: "fridges", img: "fridges/VON-VAUF30NHS–300L.jpg" },
+{ name: "RAMTONS CF/237", brand: "RAMTONS", model: "CF/237 – 180L", size: "180L", price: 64995, category: "fridges", img: "fridges/RAMTONS-CF-237–180L.jpg" },
+{ name: "RAMTONS RF/340", brand: "RAMTONS", model: "RF/340 – 213L", size: "213L", price: 78995, category: "fridges", img: "fridges/RAMTONS-RF-340–213L.jpg" },
+{ name: "RAMTONS RF/316", brand: "RAMTONS", model: "RF/316 – 257L", size: "257L", price: 91995, category: "fridges", img: "fridges/RAMTONS-RF-316–257L.jpg" },
+{ name: "RAMTONS RF/338", brand: "RAMTONS", model: "RF/338 – 315L", size: "315L", price: 111995, category: "fridges", img: "fridges/RAMTONS-RF-338–315.jpg" },
+{ name: "MIKA MAF320", brand: "MIKA", model: "MAF320 – 168L", size: "168L", price: 64995, category: "fridges", img: "fridges/MIKA-MAF320–168L.jpg" },
+{ name: "MIKA MAF370", brand: "MIKA", model: "MAF370 – 213L", size: "213L", price: 78995, category: "fridges", img: "fridges/MIKA-MAF370–213L.jpg" },
+{ name: "MIKA MAF450", brand: "MIKA", model: "MAF450 – 260L", size: "260L", price: 95995, category: "fridges", img: "fridges/MIKA-MAF450–260L.jpg" },
+{ name: "MIKA MAF510", brand: "MIKA", model: "MAF510 – 320L", size: "320L", price: 116995, category: "fridges", img: "fridges/MIKA-MAF510–320L.jpg" },
+// ❄️ AIR CONDITIONERS
+{ name: "Hisense AS-12CR4S", brand: "Hisense", model: "AS-12CR4S", capacity: "12,000 BTU", price: 63995, category: "air-conditioners", img: "air-conditioners/AS-12CR4S.jpg" },
+{ name: "Hisense AS-18CR4S", brand: "Hisense", model: "AS-18CR4S", capacity: "18,000 BTU", price: 92995, category: "air-conditioners", img: "air-conditioners/AS-18CR4S.jpg" },
+{ name: "Hisense AS-24CR4S", brand: "Hisense", model: "AS-24CR4S", capacity: "24,000 BTU", price: 118995, category: "air-conditioners", img: "air-conditioners/AS-24CR4S.jpg" },
+{ name: "Samsung AR12TXFYAWK/AF", brand: "Samsung", model: "AR12TXFYAWK/AF", capacity: "12,000 BTU", price: 76995, category: "air-conditioners", img: "air-conditioners/AR12TXFYAWK-AF.jpg" },
+{ name: "Samsung AR18TVFZAWK/AF", brand: "Samsung", model: "AR18TVFZAWK/AF", capacity: "18,000 BTU", price: 104995, category: "air-conditioners", img: "air-conditioners/AR18TVFZAWK-AF.jpg" },
+{ name: "Samsung AR24TVFZAWK/AF", brand: "Samsung", model: "AR24TVFZAWK/AF", capacity: "24,000 BTU", price: 138995, category: "air-conditioners", img: "air-conditioners/AR24TVFZAWK-AF.jpg" },
+{ name: "LG S3-Q12JA3AA", brand: "LG", model: "S3-Q12JA3AA", capacity: "12,000 BTU", price: 82995, category: "air-conditioners", img: "air-conditioners/S3-Q12JA3AA.jpg" },
+{ name: "LG S3-Q18K233BA", brand: "LG", model: "S3-Q18K233BA", capacity: "18,000 BTU", price: 119995, category: "air-conditioners", img: "air-conditioners/S3-Q18K233BA.jpg" },
+{ name: "LG S3-Q24K233AA", brand: "LG", model: "S3-Q24K233AA", capacity: "24,000 BTU", price: 154995, category: "air-conditioners", img: "air-conditioners/S3-Q24K233AA.jpg" },
+{ name: "Haier HSU-12LEK", brand: "Haier", model: "HSU-12LEK", capacity: "12,000 BTU", price: 61995, category: "air-conditioners", img: "air-conditioners/HSU-12LEK.jpg" },
+{ name: "Haier HSU-18LEK", brand: "Haier", model: "HSU-18LEK", capacity: "18,000 BTU", price: 89995, category: "air-conditioners", img: "air-conditioners/HSU-18LEK.jpg" },
+{ name: "Haier HSU-24LEK", brand: "Haier", model: "HSU-24LEK", capacity: "24,000 BTU", price: 119995, category: "air-conditioners", img: "air-conditioners/HSU-24LEK.jpg" },
+{ name: "Mika MCF12CR", brand: "Mika", model: "MCF12CR", capacity: "12,000 BTU", price: 57995, category: "air-conditioners", img: "air-conditioners/MCF12CR.jpg" },
+{ name: "Mika MCF18CR", brand: "Mika", model: "MCF18CR", capacity: "18,000 BTU", price: 85995, category: "air-conditioners", img: "air-conditioners/MCF18CR.jpg" },
+{ name: "Mika MCF24CR", brand: "Mika", model: "MCF24CR", capacity: "24,000 BTU", price: 108995, category: "air-conditioners", img: "air-conditioners/MCF24CR.jpg" },
+// 🧼 DISHWASHERS
+{ name: "Hisense H14DSS", brand: "Hisense", model: "H14DSS – Free-Standing", capacity: "14-Place Setting", price: 62995, category: "dishwashers", img: "dishwashers/H14DSS.jpg" },
+{ name: "Hisense H12DSS", brand: "Hisense", model: "H12DSS – Free-Standing", capacity: "12-Place Setting", price: 54995, category: "dishwashers", img: "dishwashers/H12DSS.jpg" },
+{ name: "LG DFB512FP", brand: "LG", model: "DFB512FP – QuadWash", capacity: "14-Place Setting", price: 109995, category: "dishwashers", img: "dishwashers/DFB512FP.jpg" },
+{ name: "LG DFC532FP", brand: "LG", model: "DFC532FP – Smart Inverter", capacity: "14-Place Setting", price: 114995, category: "dishwashers", img: "dishwashers/DFC532FP.jpg" },
+{ name: "Samsung DW60M5052", brand: "Samsung", model: "DW60M5052 – Freestanding", capacity: "14-Place Setting", price: 89995, category: "dishwashers", img: "dishwashers/DW60M5052.jpg" },
+{ name: "Samsung DW60M5072", brand: "Samsung", model: "DW60M5072 – Premium Inverter", capacity: "14-Place Setting", price: 99995, category: "dishwashers", img: "dishwashers/DW60M5072.jpg" },
+{ name: "Ramtons RW/143", brand: "Ramtons", model: "RW/143 – Dishwasher", capacity: "12-Place Setting", price: 66995, category: "dishwashers", img: "dishwashers/RW-143.jpg" },
+{ name: "Mika MIDW14X", brand: "Mika", model: "MIDW14X – Dishwasher", capacity: "14-Place Setting", price: 74995, category: "dishwashers", img: "dishwashers/MIDW14X.jpg" },
+// 🔥 COOKERS & OVENS
+{ name: "Ramtons RF/407", brand: "Ramtons", model: "RF/407 – 3 Gas + 1 Electric", size: "60 × 60", price: 60500, category: "cookers", img: "cookers/RF-407–3Gas +1Electric.jpg" },
+{ name: "Ramtons RF/401", brand: "Ramtons", model: "RF/401 – 3 Gas + 1 Electric", size: "50 × 60", price: 48000, category: "cookers", img: "cookers/RF-401–3Gas+1Electric.jpg" },
+{ name: "Ramtons RF/406", brand: "Ramtons", model: "RF/406 – 4 Gas", size: "50 × 60", price: 45500, category: "cookers", img: "cookers/RF-406–4Gas.jpg" },
+{ name: "Ramtons RF/494", brand: "Ramtons", model: "RF/494 – 4 Gas", size: "60 × 60", price: 55500, category: "cookers", img: "cookers/RF-494–4Gas.jpg" },
+{ name: "Hisense HFG50111X", brand: "Hisense", model: "HFG50111X – 4 Gas", size: "50 × 50", price: 33500, category: "cookers", img: "cookers/HFG50111X–4Gas.jpg" },
+{ name: "Hisense HFG50112X", brand: "Hisense", model: "HFG50112X – 4 Gas", size: "50 × 50", price: 34995, category: "cookers", img: "cookers/HFG50112X–4Gas.jpg" },
+{ name: "Hisense HFG60111X", brand: "Hisense", model: "HFG60111X – 4 Gas", size: "60 × 60", price: 54995, category: "cookers", img: "cookers/HFG60111X–4Gas.jpg" },
+{ name: "Hisense HF631GEES", brand: "Hisense", model: "HF631GEES – 3 Gas + 1 Electric", size: "60 × 60", price: 52000, category: "cookers", img: "cookers/HF631GEES–3Gas+1Electric.jpg" },
+{ name: "Mika MST55PU", brand: "Mika", model: "MST55PU – 4 Gas", size: "50 × 50", price: 32500, category: "cookers", img: "cookers/MST55PU–4Gas.jpg" },
+{ name: "Mika MST55PI", brand: "Mika", model: "MST55PI – 3+1 Combo", size: "50 × 50", price: 30995, category: "cookers", img: "cookers/MST55PI–3+1Combo.jpg" },
+{ name: "Mika MST60PU", brand: "Mika", model: "MST60PU – Dual Fuel", size: "60 × 60", price: 53500, category: "cookers", img: "cookers/MST60PU–DualFuel.jpg" },
+{ name: "Mika MST60PE", brand: "Mika", model: "MST60PE – 3 Gas + 1 Electric", size: "60 × 60", price: 51500, category: "cookers", img: "cookers/MST60PE–3Gas+1Electric.jpg" },
+{ name: "Bruhm BGC-5531", brand: "Bruhm", model: "BGC-5531 – 4 Gas", size: "50 × 50", price: 33995, category: "cookers", img: "cookers/BGC-5531–4Gas.jpg" },
+{ name: "Bruhm BGC-5040", brand: "Bruhm", model: "BGC-5040 – 4 Gas", size: "50 × 60", price: 33995, category: "cookers", img: "cookers/BGC-5040–4Gas.jpg" },
+{ name: "Bruhm BGC-6631", brand: "Bruhm", model: "BGC-6631 – Full Gas", size: "60 × 60", price: 39500, category: "cookers", img: "cookers/BGC-6631–FullGas.jpg" },
+{ name: "Bruhm BGC-6640", brand: "Bruhm", model: "BGC-6640 – 4 Gas", size: "60 × 60", price: 41500, category: "cookers", img: "cookers/BGC-6640–4Gas.jpg" },
+{ name: "Bruhm BGC-9060", brand: "Bruhm", model: "BGC-9060 – 6 Gas (Premium)", size: "60 × 90", price: 90995, category: "cookers", img: "cookers/BGC-9060–6Gas(Premium}.jpg" },
+{ name: "Hotpoint CKR6040", brand: "Hotpoint", model: "CKR6040 – 4 Gas", size: "50 × 60", price: 42995, category: "cookers", img: "cookers/CKR6040–4Gas.jpg" },
+{ name: "Hotpoint CKR6031", brand: "Hotpoint", model: "CKR6031 – 3+1 Combo", size: "50 × 60", price: 44995, category: "cookers", img: "cookers/CKR6031–3+1Combo.jpg" },
+{ name: "Hotpoint CKR6640", brand: "Hotpoint", model: "CKR6640 – 4 Gas", size: "60 × 60", price: 56995, category: "cookers", img: "cookers/CKR6640–4Gas.jpg" },
+{ name: "Hotpoint CKR6631", brand: "Hotpoint", model: "CKR6631 – 3+1 Combo", size: "60 × 60", price: 57995, category: "cookers", img: "cookers/CKR6631–3+1Combo.jpg" },
+{ name: "Hotpoint CKR9060", brand: "Hotpoint", model: "CKR9060 – 5 Gas (Premium)", size: "60 × 90", price: 107995, category: "cookers", img: "cookers/CKR9060–5Gas(Premium).jpg" },
+{ name: "Von VAC5FSS", brand: "Von", model: "VAC5FSS – 4 Gas", size: "50 × 50", price: 27995, category: "cookers", img: "cookers/VAC5FSS–4Gas.jpg" },
+{ name: "Von VAC6FSS", brand: "Von", model: "VAC6FSS – 4 Gas", size: "50 × 60", price: 35995, category: "cookers", img: "cookers/VAC6FSS–4Gas.jpg" },
+{ name: "Von VAC6FE", brand: "Von", model: "VAC6FE – 3+1 Combo", size: "50 × 60", price: 37995, category: "cookers", img: "cookers/VAC6FE–3+1Combo.jpg" },
+{ name: "Von VAC60G", brand: "Von", model: "VAC60G – Full Gas", size: "60 × 60", price: 47995, category: "cookers", img: "cookers/VAC60G–FullGas.jpg" },
+{ name: "Von VAC60GE", brand: "Von", model: "VAC60GE – Gas + Electric", size: "60 × 60", price: 50995, category: "cookers", img: "cookers/VAC60GE–Gas+Electric.jpg" },
+{ name: "Von VAC9060", brand: "Von", model: "VAC9060 – 5 Gas (Premium)", size: "60 × 90", price: 79995, category: "cookers", img: "cookers/VAC9060–5Gas(Premium).jpg" },
+// Ovens
+{ name: "Mika MEO360BL", brand: "Mika", model: "MEO360BL – Electric Oven", size: "Built-in 60cm", price: 38995, category: "cookers", img: "ovens/Mika-MEO360BL–Electric-Oven(Built-in 60cm).jpg" },
+{ name: "Mika MEO361GR", brand: "Mika", model: "MEO361GR – Electric Oven", size: "Built-in 60cm", price: 42995, category: "cookers", img: "ovens/Mika-MEO361GR–Electric-Oven(Built-in 60cm).jpg" },
+{ name: "Mika MEO762BL", brand: "Mika", model: "MEO762BL – Pyrolytic Oven", size: "Premium 60cm", price: 68995, category: "cookers", img: "ovens/Mika-MEO762BL–Pyrolytic-Oven(Premium 60cm).jpg" },
+{ name: "Hisense BI6011PG", brand: "Hisense", model: "BI6011PG – Built-In Oven", size: "Built-in 60cm", price: 35995, category: "cookers", img: "ovens/Hisense-BI6011PG–Built-In-Oven(60cm).jpg" },
+{ name: "Hisense BI5223ABUK", brand: "Hisense", model: "BI5223ABUK – Convection Oven", size: "Built-in 60cm", price: 41995, category: "cookers", img: "ovens/Hisense-BI5223ABUK–Convection-Oven(60cm).jpg" },
+{ name: "Hotpoint 600MM Oven Series", brand: "Hotpoint", model: "HOTPOINT 600MM Oven Series", size: "Built-in 60cm", price: 43995, category: "cookers", img: "ovens/Hotpoint-600MM-Oven-Series–Built-In-60cm.jpg" },
+{ name: "Ramtons RM/250", brand: "Ramtons", model: "RM/250 – Electric Oven", size: "Table-Top", price: 10995, category: "cookers", img: "ovens/Ramtons-RM-250–Table-Top-Electric-Oven.jpg" },
+{ name: "Ramtons RM/311", brand: "Ramtons", model: "RM/311 – Large Table-Top Electric Oven", size: "Table-Top", price: 13995, category: "cookers", img: "ovens/Ramtons-RM-311–Large-Table-Top-Electric-Oven.jpg" },
+{ name: "Von VOE-H60", brand: "Von", model: "VON VOE-H60 – Electric Oven", size: "Built-in 60cm", price: 36995, category: "cookers", img: "ovens/Von-VOE-H60–Electric-Oven-(Built-in 60cm).jpg" },
+{ name: "Bruhm BEO-55", brand: "Bruhm", model: "BEO-55 – 55L Electric Oven", size: "Table-Top", price: 11995, category: "cookers", img: "ovens/Bruhm-BEO-55–55L-Table-Top-Oven.jpg" },
+// 🧺 WASHING MACHINES
+{ brand: "Hisense", model: "WFQA8014EVJM – Front Load", capacity: "8kg", price: 47995, category: "washing-machines", img: "washing-machines/Hisense-WFQA8014EVJM-8kg-Front-Load.jpg" },
+{ brand: "Hisense", model: "WFQA9014EVJM – Front Load", capacity: "9kg", price: 55995, category: "washing-machines", img: "washing-machines/Hisense-WFQA9014EVJM-9kg-Front-Load.jpg" },
+{ brand: "Hisense", model: "WFPV1014EMT – Front Load", capacity: "10kg", price: 63995, category: "washing-machines", img: "washing-machines/Hisense-WFPV1014EMT-10kg-Front-Load.jpg" },
+{ brand: "Hisense", model: "WDQ1214EVJM – Washer Dryer", capacity: "12kg/8kg", price: 94995, category: "washing-machines", img: "washing-machines/Hisense-WDQ1214EVJM-12kg-8kg-Washer-Dryer.jpg" },
+{ brand: "LG", model: "F2J3WDNP0 – Front Load", capacity: "7kg", price: 54995, category: "washing-machines", img: "washing-machines/LG-F2J3WDNP0-7kg-Front-Load.jpg" },
+{ brand: "LG", model: "F4J3VYP2E – Front Load", capacity: "9kg", price: 69995, category: "washing-machines", img: "washing-machines/LG-F4J3VYP2E-9kg-Front-Load.jpg" },
+{ brand: "LG", model: "F4V5VYP2T – AI Direct Drive", capacity: "10.5kg", price: 84995, category: "washing-machines", img: "washing-machines/LG-F4V5VYP2T-10.5kg-AI-Direct-Drive.jpg" },
+{ brand: "LG", model: "F4V5RYP2T – Washer Dryer", capacity: "10.5/7kg", price: 119995, category: "washing-machines", img: "washing-machines/LG-F4V5RYP2T-10.5kg-7kg-Washer-Dryer.jpg" },
+{ brand: "Samsung", model: "WW80J5555FX – EcoBubble Front", capacity: "8kg", price: 59995, category: "washing-machines", img: "washing-machines/Samsung-WW80J5555FX-8kg-EcoBubble.jpg" },
+{ brand: "Samsung", model: "WW90T4040CE – Front Load", capacity: "9kg", price: 69995, category: "washing-machines", img: "washing-machines/Samsung-WW90T4040CE-9kg-Front-Load.jpg" },
+{ brand: "Samsung", model: "WW11BBA046AB – Smart", capacity: "11kg", price: 93995, category: "washing-machines", img: "washing-machines/Samsung-WW11BBA046AB-11kg-Smart.jpg" },
+{ brand: "Samsung", model: "WD12T504DBN – Washer Dryer", capacity: "12/7kg", price: 124995, category: "washing-machines", img: "washing-machines/Samsung-WD12T504DBN-12kg-7kg-Washer-Dryer.jpg" },
+{ brand: "Ramtons", model: "RW/116 – Top Load", capacity: "8kg", price: 32995, category: "washing-machines", img: "washing-machines/Ramtons-RW-116-8kg-Top-Load.jpg" },
+{ brand: "Ramtons", model: "RW/147 – Top Load", capacity: "10kg", price: 43995, category: "washing-machines", img: "washing-machines/Ramtons-RW-147-10kg-Top-Load.jpg" },
+{ brand: "Ramtons", model: "RW/147WD – Washer Dryer", capacity: "10/7kg", price: 73995, category: "washing-machines", img: "washing-machines/Ramtons-RW-147WD-10kg-7kg-Washer-Dryer.jpg" },
+{ brand: "Mika", model: "MWAF816XX – Front Load", capacity: "8kg", price: 46995, category: "washing-machines", img: "washing-machines/Mika-MWAF816XX-8kg-Front-Load.jpg" },
+{ brand: "Mika", model: "MWAF1018 – Front Load", capacity: "10kg", price: 59995, category: "washing-machines", img: "washing-machines/Mika-MWAF1018-10kg-Front-Load.jpg" },
+{ brand: "Bruhm", model: "BWT-080H – Top Load", capacity: "8kg", price: 29995, category: "washing-machines", img: "washing-machines/Bruhm-BWT-080H-8kg-Top-Load.jpg" },
+{ brand: "Bruhm", model: "BWF-100H – Front Load", capacity: "10kg", price: 48995, category: "washing-machines", img: "washing-machines/Bruhm-BWF-100H-10kg-Front-Load.jpg" },
+// 🧹 VACUUM CLEANERS
+{ brand: "Samsung", model: "Jet 70 Turbo", type: "Stick Vacuum", price: 36995, category: "vacuum-cleaners", img: "vacuum-cleaners/Samsung-Jet-70-Turbo-Stick-Vacuum.jpg" },
+{ brand: "Samsung", model: "Jet 90 Complete", type: "Premium Stick", price: 59995, category: "vacuum-cleaners", img: "vacuum-cleaners/Samsung-Jet-90-Complete-Premium-Stick-Vacuum.jpg" },
+{ brand: "Samsung", model: "VC2100 (Bagless)", type: "Canister", price: 16995, category: "vacuum-cleaners", img: "vacuum-cleaners/Samsung-VC2100-Bagless-Canister-Vacuum.jpg" },
+{ brand: "LG", model: "A9 Lite", type: "Stick Vacuum", price: 54995, category: "vacuum-cleaners", img: "vacuum-cleaners/LG-A9-Lite-Stick-Vacuum.jpg" },
+{ brand: "LG", model: "VK5320NNT", type: "Bagless Canister", price: 19995, category: "vacuum-cleaners", img: "vacuum-cleaners/LG-VK5320NNT-Bagless-Canister-Vacuum.jpg" },
+{ brand: "Xiaomi", model: "Mi Vacuum Cleaner G9", type: "Stick Vacuum", price: 24995, category: "vacuum-cleaners", img: "vacuum-cleaners/Xiaomi-Mi-Vacuum-Cleaner-G9-Stick-Vacuum.jpg" },
+{ brand: "Xiaomi", model: "Mi Robot Vacuum Mop 2", type: "Robot Vacuum", price: 39995, category: "vacuum-cleaners", img: "vacuum-cleaners/Xiaomi-Mi-Robot-Vacuum-Mop-2-Robot-Vacuum.jpg" },
+{ brand: "Xiaomi", model: "Roborock S7", type: "Premium Robot", price: 74995, category: "vacuum-cleaners", img: "vacuum-cleaners/Xiaomi-Roborock-S7-Premium-Robot-Vacuum.jpg" },
+{ brand: "Ramtons", model: "RM/368 – Bagless Vacuum", type: "1800W", price: 12995, category: "vacuum-cleaners", img: "vacuum-cleaners/Ramtons-RM-368-1800W-Bagless-Vacuum.jpg" },
+{ brand: "Ramtons", model: "RM/362 – Cyclone Vacuum", type: "1600W", price: 14995, category: "vacuum-cleaners", img: "vacuum-cleaners/Ramtons-RM-362-1600W-Cyclone-Vacuum.jpg" }
+];
 
-  <!-- Overlay -->
-  <div class="overlay" id="filterOverlay"></div>
-
-  <script>
-   const appliancesProducts = [
-      // ✅ SAME FULL PRODUCT LIST AS YOUR FILE — KEPT INTACT
-      // ❄️ FRIDGES
-      { name: "VON VART-13DHS", brand: "VON", model: "VART-13DHS – 138L", size: "138L", price: 37995, category: "fridges", img: "fridges/VON-VART-13DHS–138L.jpg" },
-      { name: "RAMTONS RF/173", brand: "RAMTONS", model: "RF/173 – 128L", size: "128L", price: 30995, category: "fridges", img: "fridges/RAMTONS-RF-173–128L.jpg" },
-      { name: "RAMTONS RF/263", brand: "RAMTONS", model: "RF/263 – 150L", size: "150L", price: 34999, category: "fridges", img: "fridges/RAMTONS-RF-263–150L.jpg" },
-      { name: "MIKA MRDCS140SBL", brand: "MIKA", model: "MRDCS140SBL – 140L", size: "140L", price: 36995, category: "fridges", img: "fridges/MIKA-MRDCS140SBL–140L.jpg" },
-      { name: "MIKA MRDC170X", brand: "MIKA", model: "MRDC170X – 170L", size: "170L", price: 42995, category: "fridges", img: "fridges/MIKA-MRDC170X–170L.jpg" },
-      { name: "HISENSE REF120DR", brand: "HISENSE", model: "REF120DR – 120L", size: "120L", price: 34999, category: "fridges", img: "fridges/HISENSE-REF120DR–120L.jpg" },
-      { name: "HISENSE REF176DR", brand: "HISENSE", model: "REF176DR – 176L", size: "176L", price: 47995, category: "fridges", img: "fridges/HISENSE-REF176DR–176L.jpg" },
-      { name: "SAMSUNG RR19T1444S8", brand: "SAMSUNG", model: "RR19T1444S8 – 192L", size: "192L", price: 63995, category: "fridges", img: "fridges/SAMSUNG-RR19T1444S8–192L.jpg" },
-      { name: "LG GL-B201ALLB", brand: "LG", model: "GL-B201ALLB – 190L", size: "190L", price: 67995, category: "fridges", img: "fridges/LG-GL-B201ALLB–190L.jpg" },
-      { name: "HISENSE REF251FL", brand: "HISENSE", model: "REF251FL – 251L", size: "251L", price: 79800, category: "fridges", img: "fridges/HISENSE-REF251FL–251L.jpg" },
-      { name: "HISENSE REF300DR", brand: "HISENSE", model: "REF300DR – 300L", size: "300L", price: 90000, category: "fridges", img: "fridges/HISENSE-REF300DR–300L.jpg" },
-      { name: "SAMSUNG RT31K3082S8", brand: "SAMSUNG", model: "RT31K3082S8 – 253L", size: "253L", price: 103990, category: "fridges", img: "fridges/SAMSUNG-RT31K3082S8–253L.jpg" },
-      { name: "SAMSUNG RT34 Series", brand: "SAMSUNG", model: "RT34 Series – 300L", size: "300L", price: 130000, category: "fridges", img: "fridges/SAMSUNG-RT34-Series–300L.jpg" },
-      { name: "LG GL-C322SLBB", brand: "LG", model: "GL-C322SLBB – 284L", size: "284L", price: 119995, category: "fridges", img: "fridges/LG-GL-C322SLBB–284L.jpg" },
-      { name: "LG GN-B302SQBB", brand: "LG", model: "GN-B302SQBB – 302L", size: "302L", price: 130995, category: "fridges", img: "fridges/LG-GN-B302SQBB–302L.jpg" },
-      { name: "VON VART-22DHS", brand: "VON", model: "VART-22DHS – ~220L", size: "~220L", price: 79995, category: "fridges", img: "fridges/VON-VART-22DHS–220L.jpg" },
-      { name: "VON VART-31DHS", brand: "VON", model: "VART-31DHS – ~310L", size: "~310L", price: 91995, category: "fridges", img: "fridges/VON-VART-31DHS–310L.jpg" },
-      { name: "RAMTONS RF/268", brand: "RAMTONS", model: "RF/268 – 260L", size: "260L", price: 66995, category: "fridges", img: "fridges/RAMTONS-RF-268–260L.jpg" },
-      { name: "RAMTONS RF/407 (296L)", brand: "RAMTONS", model: "RF/407 – 296L", size: "296L", price: 84995, category: "fridges", img: "fridges/RAMTONS-RF-407–296L.jpg" },
-      { name: "MIKA MRDCD260X", brand: "MIKA", model: "MRDCD260X – 260L", size: "260L", price: 69995, category: "fridges", img: "fridges/MIKA-MRDCD260X–260L.jpg" },
-      { name: "MIKA MRDCD300X", brand: "MIKA", model: "MRDCD300X – 300L", size: "300L", price: 78995, category: "fridges", img: "fridges/MIKA-MRDCD300X–300L.jpg" },
-      { name: "HISENSE REF320DR", brand: "HISENSE", model: "REF320DR – 320L", size: "320L", price: 90995, category: "fridges", img: "fridges/HISENSE-REF320DR–320L.jpg" },
-      { name: "HISENSE REF433DR", brand: "HISENSE", model: "REF433DR – 433L", size: "433L", price: 123995, category: "fridges", img: "fridges/HISENSE-REF433DR–433L.jpg" },
-      { name: "SAMSUNG RT34K5532S8", brand: "SAMSUNG", model: "RT34K5532S8 – 345L", size: "345L", price: 144995, category: "fridges", img: "fridges/SAMSUNG-RT34K5532S8–345L.jpg" },
-      { name: "SAMSUNG RT42K5532S8", brand: "SAMSUNG", model: "RT42K5532S8 – 420L", size: "420L", price: 178995, category: "fridges", img: "fridges/SAMSUNG-RT42K5532S8–420L.jpg" },
-      { name: "LG GL-C322SLBB (322L)", brand: "LG", model: "GL-C322SLBB – 322L", size: "322L", price: 124995, category: "fridges", img: "fridges/LG-GL-C322SLBB–322L.jpg" },
-      { name: "LG GN-B422SQCL", brand: "LG", model: "GN-B422SQCL – 419L", size: "419L", price: 168995, category: "fridges", img: "fridges/LG-GN-B422SQCL–419L.jpg" },
-      { name: "VON VART-42DHS", brand: "VON", model: "VART-42DHS – ~420L", size: "~420L", price: 128995, category: "fridges", img: "fridges/VON-VART-42DHS–420L.jpg" },
-      { name: "RAMTONS RF/492", brand: "RAMTONS", model: "RF/492 – 413L", size: "413L", price: 123995, category: "fridges", img: "fridges/RAMTONS-RF-492–413L.jpg" },
-      { name: "MIKA MRDCD430X", brand: "MIKA", model: "MRDCD430X – ~430L", size: "~430L", price: 128995, category: "fridges", img: "fridges/MIKA-MRDCD430X–430L.jpg" },
-      { name: "SAMSUNG RS54N3A13S8", brand: "SAMSUNG", model: "RS54N3A13S8 – 535L", size: "535L", price: 185000, category: "fridges", img: "fridges/Samsung-RS54N3A13S8–535L.jpg" },
-      { name: "SAMSUNG RS57DG400EM9EU", brand: "SAMSUNG", model: "RS57DG400EM9EU – 583L", size: "583L", price: 208990, category: "fridges", img: "fridges/Samsung-RS57DG400EM9EU–583L.jpg" },
-      { name: "SAMSUNG RS64T5F01B4", brand: "SAMSUNG", model: "RS64T5F01B4 – 617L", size: "617L", price: 272995, category: "fridges", img: "fridges/Samsung-RS64T5F01B4–617L.jpg" },
-      { name: "SAMSUNG RS72R5011M9", brand: "SAMSUNG", model: "RS72R5011M9 – 700L", size: "700L", price: 316995, category: "fridges", img: "fridges/Samsung-RS72R5011M9–700L.jpg" },
-      { name: "LG GC-B257SLQV", brand: "LG", model: "GC-B257SLQV – 635L", size: "635L", price: 225000, category: "fridges", img: "fridges/LG-GC-B257SLQV–635L.jpg" },
-      { name: "LG GC-B257SLLV", brand: "LG", model: "GC-B257SLLV – 655L", size: "655L", price: 254000, category: "fridges", img: "fridges/LG-GC-B257SLLV–655L.jpg" },
-      { name: "LG GC-X257CQES", brand: "LG", model: "GC-X257CQES – 657L", size: "657L", price: 353000, category: "fridges", img: "fridges/LG-GC-X257CQES–657L.jpg" },
-      { name: "LG GC-X31GNSL", brand: "LG", model: "GC-X31GNSL – 674L", size: "674L", price: 447000, category: "fridges", img: "fridges/LG-GC-X31GNSL–674L.jpg" },
-      { name: "HISENSE H590SS", brand: "HISENSE", model: "H590SS – 508L", size: "508L", price: 145000, category: "fridges", img: "fridges/Hisense-H590SS–508L.jpg" },
-      { name: "HISENSE H650SS", brand: "HISENSE", model: "H650SS – 636L", size: "636L", price: 178995, category: "fridges", img: "fridges/Hisense-H650SS–636L.jpg" },
-      { name: "HISENSE H700SS", brand: "HISENSE", model: "H700SS – 700L", size: "700L", price: 212995, category: "fridges", img: "fridges/Hisense-H700SS–700L.jpg" },
-      { name: "HISENSE H780FS", brand: "HISENSE", model: "H780FS – 768L", size: "768L", price: 262000, category: "fridges", img: "fridges/Hisense-H780FS–768L.jpg" },
-      { name: "VON VAUF17NHS", brand: "VON", model: "VAUF17NHS – 170L", size: "170L", price: 70995, category: "fridges", img: "fridges/VON-VAUF17NHS–170L.jpg" },
-      { name: "VON VAUF21NHS", brand: "VON", model: "VAUF21NHS – 210L", size: "210L", price: 83995, category: "fridges", img: "fridges/VON-VAUF21NHS–210L.jpg" },
-      { name: "VON VAUF26NHS", brand: "VON", model: "VAUF26NHS – 260L", size: "260L", price: 97995, category: "fridges", img: "fridges/VON-VAUF26NHS–260L.jpg" },
-      { name: "VON VAUF30NHS", brand: "VON", model: "VAUF30NHS – 300L", size: "300L", price: 116995, category: "fridges", img: "fridges/VON-VAUF30NHS–300L.jpg" },
-      { name: "RAMTONS CF/237", brand: "RAMTONS", model: "CF/237 – 180L", size: "180L", price: 64995, category: "fridges", img: "fridges/RAMTONS-CF-237–180L.jpg" },
-      { name: "RAMTONS RF/340", brand: "RAMTONS", model: "RF/340 – 213L", size: "213L", price: 78995, category: "fridges", img: "fridges/RAMTONS-RF-340–213L.jpg" },
-      { name: "RAMTONS RF/316", brand: "RAMTONS", model: "RF/316 – 257L", size: "257L", price: 91995, category: "fridges", img: "fridges/RAMTONS-RF-316–257L.jpg" },
-      { name: "RAMTONS RF/338", brand: "RAMTONS", model: "RF/338 – 315L", size: "315L", price: 111995, category: "fridges", img: "fridges/RAMTONS-RF-338–315.jpg" },
-      { name: "MIKA MAF320", brand: "MIKA", model: "MAF320 – 168L", size: "168L", price: 64995, category: "fridges", img: "fridges/MIKA-MAF320–168L.jpg" },
-      { name: "MIKA MAF370", brand: "MIKA", model: "MAF370 – 213L", size: "213L", price: 78995, category: "fridges", img: "fridges/MIKA-MAF370–213L.jpg" },
-      { name: "MIKA MAF450", brand: "MIKA", model: "MAF450 – 260L", size: "260L", price: 95995, category: "fridges", img: "fridges/MIKA-MAF450–260L.jpg" },
-      { name: "MIKA MAF510", brand: "MIKA", model: "MAF510 – 320L", size: "320L", price: 116995, category: "fridges", img: "fridges/MIKA-MAF510–320L.jpg" },
-
-      // ❄️ AIR CONDITIONERS
-      { name: "Hisense AS-12CR4S", brand: "Hisense", model: "AS-12CR4S", capacity: "12,000 BTU", price: 63995, category: "air-conditioners", img: "air-conditioners/AS-12CR4S.jpg" },
-      { name: "Hisense AS-18CR4S", brand: "Hisense", model: "AS-18CR4S", capacity: "18,000 BTU", price: 92995, category: "air-conditioners", img: "air-conditioners/AS-18CR4S.jpg" },
-      { name: "Hisense AS-24CR4S", brand: "Hisense", model: "AS-24CR4S", capacity: "24,000 BTU", price: 118995, category: "air-conditioners", img: "air-conditioners/AS-24CR4S.jpg" },
-      { name: "Samsung AR12TXFYAWK/AF", brand: "Samsung", model: "AR12TXFYAWK/AF", capacity: "12,000 BTU", price: 76995, category: "air-conditioners", img: "air-conditioners/AR12TXFYAWK-AF.jpg" },
-      { name: "Samsung AR18TVFZAWK/AF", brand: "Samsung", model: "AR18TVFZAWK/AF", capacity: "18,000 BTU", price: 104995, category: "air-conditioners", img: "air-conditioners/AR18TVFZAWK-AF.jpg" },
-      { name: "Samsung AR24TVFZAWK/AF", brand: "Samsung", model: "AR24TVFZAWK/AF", capacity: "24,000 BTU", price: 138995, category: "air-conditioners", img: "air-conditioners/AR24TVFZAWK-AF.jpg" },
-      { name: "LG S3-Q12JA3AA", brand: "LG", model: "S3-Q12JA3AA", capacity: "12,000 BTU", price: 82995, category: "air-conditioners", img: "air-conditioners/S3-Q12JA3AA.jpg" },
-      { name: "LG S3-Q18K233BA", brand: "LG", model: "S3-Q18K233BA", capacity: "18,000 BTU", price: 119995, category: "air-conditioners", img: "air-conditioners/S3-Q18K233BA.jpg" },
-      { name: "LG S3-Q24K233AA", brand: "LG", model: "S3-Q24K233AA", capacity: "24,000 BTU", price: 154995, category: "air-conditioners", img: "air-conditioners/S3-Q24K233AA.jpg" },
-      { name: "Haier HSU-12LEK", brand: "Haier", model: "HSU-12LEK", capacity: "12,000 BTU", price: 61995, category: "air-conditioners", img: "air-conditioners/HSU-12LEK.jpg" },
-      { name: "Haier HSU-18LEK", brand: "Haier", model: "HSU-18LEK", capacity: "18,000 BTU", price: 89995, category: "air-conditioners", img: "air-conditioners/HSU-18LEK.jpg" },
-      { name: "Haier HSU-24LEK", brand: "Haier", model: "HSU-24LEK", capacity: "24,000 BTU", price: 119995, category: "air-conditioners", img: "air-conditioners/HSU-24LEK.jpg" },
-      { name: "Mika MCF12CR", brand: "Mika", model: "MCF12CR", capacity: "12,000 BTU", price: 57995, category: "air-conditioners", img: "air-conditioners/MCF12CR.jpg" },
-      { name: "Mika MCF18CR", brand: "Mika", model: "MCF18CR", capacity: "18,000 BTU", price: 85995, category: "air-conditioners", img: "air-conditioners/MCF18CR.jpg" },
-      { name: "Mika MCF24CR", brand: "Mika", model: "MCF24CR", capacity: "24,000 BTU", price: 108995, category: "air-conditioners", img: "air-conditioners/MCF24CR.jpg" },
-
-      // 🧼 DISHWASHERS
-      { name: "Hisense H14DSS", brand: "Hisense", model: "H14DSS – Free-Standing", capacity: "14-Place Setting", price: 62995, category: "dishwashers", img: "dishwashers/H14DSS.jpg" },
-      { name: "Hisense H12DSS", brand: "Hisense", model: "H12DSS – Free-Standing", capacity: "12-Place Setting", price: 54995, category: "dishwashers", img: "dishwashers/H12DSS.jpg" },
-      { name: "LG DFB512FP", brand: "LG", model: "DFB512FP – QuadWash", capacity: "14-Place Setting", price: 109995, category: "dishwashers", img: "dishwashers/DFB512FP.jpg" },
-      { name: "LG DFC532FP", brand: "LG", model: "DFC532FP – Smart Inverter", capacity: "14-Place Setting", price: 114995, category: "dishwashers", img: "dishwashers/DFC532FP.jpg" },
-      { name: "Samsung DW60M5052", brand: "Samsung", model: "DW60M5052 – Freestanding", capacity: "14-Place Setting", price: 89995, category: "dishwashers", img: "dishwashers/DW60M5052.jpg" },
-      { name: "Samsung DW60M5072", brand: "Samsung", model: "DW60M5072 – Premium Inverter", capacity: "14-Place Setting", price: 99995, category: "dishwashers", img: "dishwashers/DW60M5072.jpg" },
-      { name: "Ramtons RW/143", brand: "Ramtons", model: "RW/143 – Dishwasher", capacity: "12-Place Setting", price: 66995, category: "dishwashers", img: "dishwashers/RW-143.jpg" },
-      { name: "Mika MIDW14X", brand: "Mika", model: "MIDW14X – Dishwasher", capacity: "14-Place Setting", price: 74995, category: "dishwashers", img: "dishwashers/MIDW14X.jpg" },
-
-      // 🔥 COOKERS & OVENS
-      { name: "Ramtons RF/407", brand: "Ramtons", model: "RF/407 – 3 Gas + 1 Electric", size: "60 × 60", price: 60500, category: "cookers", img: "cookers/RF-407–3Gas +1Electric.jpg" },
-      { name: "Ramtons RF/401", brand: "Ramtons", model: "RF/401 – 3 Gas + 1 Electric", size: "50 × 60", price: 48000, category: "cookers", img: "cookers/RF-401–3Gas+1Electric.jpg" },
-      { name: "Ramtons RF/406", brand: "Ramtons", model: "RF/406 – 4 Gas", size: "50 × 60", price: 45500, category: "cookers", img: "cookers/RF-406–4Gas.jpg" },
-      { name: "Ramtons RF/494", brand: "Ramtons", model: "RF/494 – 4 Gas", size: "60 × 60", price: 55500, category: "cookers", img: "cookers/RF-494–4Gas.jpg" },
-      { name: "Hisense HFG50111X", brand: "Hisense", model: "HFG50111X – 4 Gas", size: "50 × 50", price: 33500, category: "cookers", img: "cookers/HFG50111X–4Gas.jpg" },
-      { name: "Hisense HFG50112X", brand: "Hisense", model: "HFG50112X – 4 Gas", size: "50 × 50", price: 34995, category: "cookers", img: "cookers/HFG50112X–4Gas.jpg" },
-      { name: "Hisense HFG60111X", brand: "Hisense", model: "HFG60111X – 4 Gas", size: "60 × 60", price: 54995, category: "cookers", img: "cookers/HFG60111X–4Gas.jpg" },
-      { name: "Hisense HF631GEES", brand: "Hisense", model: "HF631GEES – 3 Gas + 1 Electric", size: "60 × 60", price: 52000, category: "cookers", img: "cookers/HF631GEES–3Gas+1Electric.jpg" },
-      { name: "Mika MST55PU", brand: "Mika", model: "MST55PU – 4 Gas", size: "50 × 50", price: 32500, category: "cookers", img: "cookers/MST55PU–4Gas.jpg" },
-      { name: "Mika MST55PI", brand: "Mika", model: "MST55PI – 3+1 Combo", size: "50 × 50", price: 30995, category: "cookers", img: "cookers/MST55PI–3+1Combo.jpg" },
-      { name: "Mika MST60PU", brand: "Mika", model: "MST60PU – Dual Fuel", size: "60 × 60", price: 53500, category: "cookers", img: "cookers/MST60PU–DualFuel.jpg" },
-      { name: "Mika MST60PE", brand: "Mika", model: "MST60PE – 3 Gas + 1 Electric", size: "60 × 60", price: 51500, category: "cookers", img: "cookers/MST60PE–3Gas+1Electric.jpg" },
-      { name: "Bruhm BGC-5531", brand: "Bruhm", model: "BGC-5531 – 4 Gas", size: "50 × 50", price: 33995, category: "cookers", img: "cookers/BGC-5531–4Gas.jpg" },
-      { name: "Bruhm BGC-5040", brand: "Bruhm", model: "BGC-5040 – 4 Gas", size: "50 × 60", price: 33995, category: "cookers", img: "cookers/BGC-5040–4Gas.jpg" },
-      { name: "Bruhm BGC-6631", brand: "Bruhm", model: "BGC-6631 – Full Gas", size: "60 × 60", price: 39500, category: "cookers", img: "cookers/BGC-6631–FullGas.jpg" },
-      { name: "Bruhm BGC-6640", brand: "Bruhm", model: "BGC-6640 – 4 Gas", size: "60 × 60", price: 41500, category: "cookers", img: "cookers/BGC-6640–4Gas.jpg" },
-      { name: "Bruhm BGC-9060", brand: "Bruhm", model: "BGC-9060 – 6 Gas (Premium)", size: "60 × 90", price: 90995, category: "cookers", img: "cookers/BGC-9060–6Gas(Premium}.jpg" },
-      { name: "Hotpoint CKR6040", brand: "Hotpoint", model: "CKR6040 – 4 Gas", size: "50 × 60", price: 42995, category: "cookers", img: "cookers/CKR6040–4Gas.jpg" },
-      { name: "Hotpoint CKR6031", brand: "Hotpoint", model: "CKR6031 – 3+1 Combo", size: "50 × 60", price: 44995, category: "cookers", img: "cookers/CKR6031–3+1Combo.jpg" },
-      { name: "Hotpoint CKR6640", brand: "Hotpoint", model: "CKR6640 – 4 Gas", size: "60 × 60", price: 56995, category: "cookers", img: "cookers/CKR6640–4Gas.jpg" },
-      { name: "Hotpoint CKR6631", brand: "Hotpoint", model: "CKR6631 – 3+1 Combo", size: "60 × 60", price: 57995, category: "cookers", img: "cookers/CKR6631–3+1Combo.jpg" },
-      { name: "Hotpoint CKR9060", brand: "Hotpoint", model: "CKR9060 – 5 Gas (Premium)", size: "60 × 90", price: 107995, category: "cookers", img: "cookers/CKR9060–5Gas(Premium).jpg" },
-      { name: "Von VAC5FSS", brand: "Von", model: "VAC5FSS – 4 Gas", size: "50 × 50", price: 27995, category: "cookers", img: "cookers/VAC5FSS–4Gas.jpg" },
-      { name: "Von VAC6FSS", brand: "Von", model: "VAC6FSS – 4 Gas", size: "50 × 60", price: 35995, category: "cookers", img: "cookers/VAC6FSS–4Gas.jpg" },
-      { name: "Von VAC6FE", brand: "Von", model: "VAC6FE – 3+1 Combo", size: "50 × 60", price: 37995, category: "cookers", img: "cookers/VAC6FE–3+1Combo.jpg" },
-      { name: "Von VAC60G", brand: "Von", model: "VAC60G – Full Gas", size: "60 × 60", price: 47995, category: "cookers", img: "cookers/VAC60G–FullGas.jpg" },
-      { name: "Von VAC60GE", brand: "Von", model: "VAC60GE – Gas + Electric", size: "60 × 60", price: 50995, category: "cookers", img: "cookers/VAC60GE–Gas+Electric.jpg" },
-      { name: "Von VAC9060", brand: "Von", model: "VAC9060 – 5 Gas (Premium)", size: "60 × 90", price: 79995, category: "cookers", img: "cookers/VAC9060–5Gas(Premium).jpg" },
-
-      // Ovens
-      { name: "Mika MEO360BL", brand: "Mika", model: "MEO360BL – Electric Oven", size: "Built-in 60cm", price: 38995, category: "cookers", img: "ovens/Mika-MEO360BL–Electric-Oven(Built-in 60cm).jpg" },
-      { name: "Mika MEO361GR", brand: "Mika", model: "MEO361GR – Electric Oven", size: "Built-in 60cm", price: 42995, category: "cookers", img: "ovens/Mika-MEO361GR–Electric-Oven(Built-in 60cm).jpg" },
-      { name: "Mika MEO762BL", brand: "Mika", model: "MEO762BL – Pyrolytic Oven", size: "Premium 60cm", price: 68995, category: "cookers", img: "ovens/Mika-MEO762BL–Pyrolytic-Oven(Premium 60cm).jpg" },
-      { name: "Hisense BI6011PG", brand: "Hisense", model: "BI6011PG – Built-In Oven", size: "Built-in 60cm", price: 35995, category: "cookers", img: "ovens/Hisense-BI6011PG–Built-In-Oven(60cm).jpg" },
-      { name: "Hisense BI5223ABUK", brand: "Hisense", model: "BI5223ABUK – Convection Oven", size: "Built-in 60cm", price: 41995, category: "cookers", img: "ovens/Hisense-BI5223ABUK–Convection-Oven(60cm).jpg" },
-      { name: "Hotpoint 600MM Oven Series", brand: "Hotpoint", model: "HOTPOINT 600MM Oven Series", size: "Built-in 60cm", price: 43995, category: "cookers", img: "ovens/Hotpoint-600MM-Oven-Series–Built-In-60cm.jpg" },
-      { name: "Ramtons RM/250", brand: "Ramtons", model: "RM/250 – Electric Oven", size: "Table-Top", price: 10995, category: "cookers", img: "ovens/Ramtons-RM-250–Table-Top-Electric-Oven.jpg" },
-      { name: "Ramtons RM/311", brand: "Ramtons", model: "RM/311 – Large Table-Top Electric Oven", size: "Table-Top", price: 13995, category: "cookers", img: "ovens/Ramtons-RM-311–Large-Table-Top-Electric-Oven.jpg" },
-      { name: "Von VOE-H60", brand: "Von", model: "VON VOE-H60 – Electric Oven", size: "Built-in 60cm", price: 36995, category: "cookers", img: "ovens/Von-VOE-H60–Electric-Oven-(Built-in 60cm).jpg" },
-      { name: "Bruhm BEO-55", brand: "Bruhm", model: "BEO-55 – 55L Electric Oven", size: "Table-Top", price: 11995, category: "cookers", img: "ovens/Bruhm-BEO-55–55L-Table-Top-Oven.jpg" },
-
-      // 🧺 WASHING MACHINES
-      { brand: "Hisense", model: "WFQA8014EVJM – Front Load", capacity: "8kg", price: 47995, category: "washing-machines", img: "washing-machines/Hisense-WFQA8014EVJM-8kg-Front-Load.jpg" },
-      { brand: "Hisense", model: "WFQA9014EVJM – Front Load", capacity: "9kg", price: 55995, category: "washing-machines", img: "washing-machines/Hisense-WFQA9014EVJM-9kg-Front-Load.jpg" },
-      { brand: "Hisense", model: "WFPV1014EMT – Front Load", capacity: "10kg", price: 63995, category: "washing-machines", img: "washing-machines/Hisense-WFPV1014EMT-10kg-Front-Load.jpg" },
-      { brand: "Hisense", model: "WDQ1214EVJM – Washer Dryer", capacity: "12kg/8kg", price: 94995, category: "washing-machines", img: "washing-machines/Hisense-WDQ1214EVJM-12kg-8kg-Washer-Dryer.jpg" },
-      { brand: "LG", model: "F2J3WDNP0 – Front Load", capacity: "7kg", price: 54995, category: "washing-machines", img: "washing-machines/LG-F2J3WDNP0-7kg-Front-Load.jpg" },
-      { brand: "LG", model: "F4J3VYP2E – Front Load", capacity: "9kg", price: 69995, category: "washing-machines", img: "washing-machines/LG-F4J3VYP2E-9kg-Front-Load.jpg" },
-      { brand: "LG", model: "F4V5VYP2T – AI Direct Drive", capacity: "10.5kg", price: 84995, category: "washing-machines", img: "washing-machines/LG-F4V5VYP2T-10.5kg-AI-Direct-Drive.jpg" },
-      { brand: "LG", model: "F4V5RYP2T – Washer Dryer", capacity: "10.5/7kg", price: 119995, category: "washing-machines", img: "washing-machines/LG-F4V5RYP2T-10.5kg-7kg-Washer-Dryer.jpg" },
-      { brand: "Samsung", model: "WW80J5555FX – EcoBubble Front", capacity: "8kg", price: 59995, category: "washing-machines", img: "washing-machines/Samsung-WW80J5555FX-8kg-EcoBubble.jpg" },
-      { brand: "Samsung", model: "WW90T4040CE – Front Load", capacity: "9kg", price: 69995, category: "washing-machines", img: "washing-machines/Samsung-WW90T4040CE-9kg-Front-Load.jpg" },
-      { brand: "Samsung", model: "WW11BBA046AB – Smart", capacity: "11kg", price: 93995, category: "washing-machines", img: "washing-machines/Samsung-WW11BBA046AB-11kg-Smart.jpg" },
-      { brand: "Samsung", model: "WD12T504DBN – Washer Dryer", capacity: "12/7kg", price: 124995, category: "washing-machines", img: "washing-machines/Samsung-WD12T504DBN-12kg-7kg-Washer-Dryer.jpg" },
-      { brand: "Ramtons", model: "RW/116 – Top Load", capacity: "8kg", price: 32995, category: "washing-machines", img: "washing-machines/Ramtons-RW-116-8kg-Top-Load.jpg" },
-      { brand: "Ramtons", model: "RW/147 – Top Load", capacity: "10kg", price: 43995, category: "washing-machines", img: "washing-machines/Ramtons-RW-147-10kg-Top-Load.jpg" },
-      { brand: "Ramtons", model: "RW/147WD – Washer Dryer", capacity: "10/7kg", price: 73995, category: "washing-machines", img: "washing-machines/Ramtons-RW-147WD-10kg-7kg-Washer-Dryer.jpg" },
-      { brand: "Mika", model: "MWAF816XX – Front Load", capacity: "8kg", price: 46995, category: "washing-machines", img: "washing-machines/Mika-MWAF816XX-8kg-Front-Load.jpg" },
-      { brand: "Mika", model: "MWAF1018 – Front Load", capacity: "10kg", price: 59995, category: "washing-machines", img: "washing-machines/Mika-MWAF1018-10kg-Front-Load.jpg" },
-      { brand: "Bruhm", model: "BWT-080H – Top Load", capacity: "8kg", price: 29995, category: "washing-machines", img: "washing-machines/Bruhm-BWT-080H-8kg-Top-Load.jpg" },
-      { brand: "Bruhm", model: "BWF-100H – Front Load", capacity: "10kg", price: 48995, category: "washing-machines", img: "washing-machines/Bruhm-BWF-100H-10kg-Front-Load.jpg" },
-
-      // 🧹 VACUUM CLEANERS
-      { brand: "Samsung", model: "Jet 70 Turbo", type: "Stick Vacuum", price: 36995, category: "vacuum-cleaners", img: "vacuum-cleaners/Samsung-Jet-70-Turbo-Stick-Vacuum.jpg" },
-      { brand: "Samsung", model: "Jet 90 Complete", type: "Premium Stick", price: 59995, category: "vacuum-cleaners", img: "vacuum-cleaners/Samsung-Jet-90-Complete-Premium-Stick-Vacuum.jpg" },
-      { brand: "Samsung", model: "VC2100 (Bagless)", type: "Canister", price: 16995, category: "vacuum-cleaners", img: "vacuum-cleaners/Samsung-VC2100-Bagless-Canister-Vacuum.jpg" },
-      { brand: "LG", model: "A9 Lite", type: "Stick Vacuum", price: 54995, category: "vacuum-cleaners", img: "vacuum-cleaners/LG-A9-Lite-Stick-Vacuum.jpg" },
-      { brand: "LG", model: "VK5320NNT", type: "Bagless Canister", price: 19995, category: "vacuum-cleaners", img: "vacuum-cleaners/LG-VK5320NNT-Bagless-Canister-Vacuum.jpg" },
-      { brand: "Xiaomi", model: "Mi Vacuum Cleaner G9", type: "Stick Vacuum", price: 24995, category: "vacuum-cleaners", img: "vacuum-cleaners/Xiaomi-Mi-Vacuum-Cleaner-G9-Stick-Vacuum.jpg" },
-      { brand: "Xiaomi", model: "Mi Robot Vacuum Mop 2", type: "Robot Vacuum", price: 39995, category: "vacuum-cleaners", img: "vacuum-cleaners/Xiaomi-Mi-Robot-Vacuum-Mop-2-Robot-Vacuum.jpg" },
-      { brand: "Xiaomi", model: "Roborock S7", type: "Premium Robot", price: 74995, category: "vacuum-cleaners", img: "vacuum-cleaners/Xiaomi-Roborock-S7-Premium-Robot-Vacuum.jpg" },
-      { brand: "Ramtons", model: "RM/368 – Bagless Vacuum", type: "1800W", price: 12995, category: "vacuum-cleaners", img: "vacuum-cleaners/Ramtons-RM-368-1800W-Bagless-Vacuum.jpg" },
-      { brand: "Ramtons", model: "RM/362 – Cyclone Vacuum", type: "1600W", price: 14995, category: "vacuum-cleaners", img: "vacuum-cleaners/Ramtons-RM-362-1600W-Cyclone-Vacuum.jpg" }
-    ];
-
-  // ✅ CRITICAL FIX: Ensure every product has a 'name' and 'condition'
+// Ensure every product has 'name' and 'condition'
 appliancesProducts.forEach(item => {
   if (!item.hasOwnProperty('name')) {
     item.name = `${item.brand} ${item.model || item.type || 'Product'}`.trim();
@@ -556,318 +540,320 @@ appliancesProducts.forEach(item => {
   }
 });
 
-    // ========== CART SYSTEM ==========
-    let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
+// ========== CART SYSTEM ==========
+let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
 
-    function saveCart() {
-      localStorage.setItem('morelCart', JSON.stringify(cart));
-      updateCartDisplay();
-    }
+function saveCart() {
+  localStorage.setItem('morelCart', JSON.stringify(cart));
+  updateCartDisplay();
+}
 
-    // ✅ FIXED: Accept event as explicit parameter
-    function addToCart(id, name, price, image, event) {
-      const existing = cart.find(item => item.id === id);
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        cart.push({ id, name, price: parseFloat(price) || 0, image, quantity: 1 });
-      }
-      saveCart();
-      
-      // Visual feedback
-      const btn = event.target;
-      const original = btn.textContent;
-      btn.textContent = '✓ Added!';
-      setTimeout(() => btn.textContent = original, 1200);
-    }
+function addToCart(id, name, price, image) {
+  const existing = cart.find(item => item.id === id);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ id, name, price: parseFloat(price) || 0, image, quantity: 1 });
+  }
+  saveCart();
 
-    function updateCartDisplay() {
-      const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-      const badge = document.getElementById('cart-count');
-      badge.textContent = totalCount;
-      badge.classList.toggle('hidden', totalCount === 0);
-    }
+  // Visual feedback
+  const btn = event.target;
+  const original = btn.textContent;
+  btn.textContent = '✓ Added!';
+  setTimeout(() => btn.textContent = original, 1200);
+}
 
-    function renderCartModal() {
-      const container = document.getElementById('cart-items');
-      const totalEl = document.getElementById('total-amount');
-      if (cart.length === 0) {
-        container.innerHTML = '<p class="text-center text-gray-500 py-6">Your quote is empty.</p>';
-        totalEl.textContent = '0';
-        return;
-      }
-      let total = 0;
-      let html = '';
-      cart.forEach(item => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-        html += `
-          <div class="cart-item">
-            <img src="../assets/images/${item.image}" alt="${item.name}">
-            <div class="cart-item-details">
-              <h4 class="font-medium text-sm">${item.name}</h4>
-              <p class="text-xs text-slate-600">KES ${item.price.toLocaleString()}</p>
-              <div class="quantity-controls">
-                <button class="quantity-btn decrease" data-id="${item.id}">−</button>
-                <span>${item.quantity}</span>
-                <button class="quantity-btn increase" data-id="${item.id}">+</button>
-              </div>
-              <button class="remove-btn" data-id="${item.id}">Remove</button>
-            </div>
+function updateCartDisplay() {
+  const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const badge = document.getElementById('cart-count');
+  badge.textContent = totalCount;
+  badge.classList.toggle('hidden', totalCount === 0);
+}
+
+function renderCartModal() {
+  const container = document.getElementById('cart-items');
+  const totalEl = document.getElementById('total-amount');
+  
+  if (cart.length === 0) {
+    container.innerHTML = '<p class="text-center text-gray-500 py-6">Your quote is empty.</p>';
+    totalEl.textContent = '0';
+    return;
+  }
+
+  let total = 0;
+  let html = '';
+
+  cart.forEach(item => {
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+    html += `
+      <div class="cart-item">
+        <img src="../assets/images/${item.image}" alt="${item.name}">
+        <div class="cart-item-details">
+          <h4 class="font-medium text-sm">${item.name}</h4>
+          <p class="text-xs text-slate-600">KES ${item.price.toLocaleString()}</p>
+          <div class="quantity-controls">
+            <button class="quantity-btn decrease" data-id="${item.id}">−</button>
+            <span>${item.quantity}</span>
+            <button class="quantity-btn increase" data-id="${item.id}">+</button>
           </div>
-        `;
-      });
-      container.innerHTML = html;
-      totalEl.textContent = total.toLocaleString();
+          <button class="remove-btn" data-id="${item.id}">Remove</button>
+        </div>
+      </div>
+    `;
+  });
 
-      // Attach event listeners
-      document.querySelectorAll('.decrease').forEach(btn => {
-        btn.addEventListener('click', () => updateQuantity(btn.dataset.id, -1));
-      });
-      document.querySelectorAll('.increase').forEach(btn => {
-        btn.addEventListener('click', () => updateQuantity(btn.dataset.id, 1));
-      });
-      document.querySelectorAll('.remove-btn').forEach(btn => {
-        btn.addEventListener('click', () => removeFromCart(btn.dataset.id));
-      });
+  container.innerHTML = html;
+  totalEl.textContent = total.toLocaleString();
+
+  document.querySelectorAll('.decrease').forEach(btn => {
+    btn.addEventListener('click', () => updateQuantity(btn.dataset.id, -1));
+  });
+  document.querySelectorAll('.increase').forEach(btn => {
+    btn.addEventListener('click', () => updateQuantity(btn.dataset.id, 1));
+  });
+  document.querySelectorAll('.remove-btn').forEach(btn => {
+    btn.addEventListener('click', () => removeFromCart(btn.dataset.id));
+  });
+}
+
+function updateQuantity(id, change) {
+  const item = cart.find(i => i.id === id);
+  if (item) {
+    item.quantity += change;
+    if (item.quantity <= 0) {
+      removeFromCart(id);
+      return;
     }
+    saveCart();
+    renderCartModal();
+  }
+}
 
-    function updateQuantity(id, change) {
-      const item = cart.find(i => i.id === id);
-      if (item) {
-        item.quantity += change;
-        if (item.quantity <= 0) {
-          removeFromCart(id);
-          return;
-        }
-        saveCart();
-        renderCartModal();
-      }
-    }
+function removeFromCart(id) {
+  cart = cart.filter(item => item.id !== id);
+  saveCart();
+  renderCartModal();
+}
 
-    function removeFromCart(id) {
-      cart = cart.filter(item => item.id !== id);
-      saveCart();
-      renderCartModal();
-    }
+function checkoutViaWhatsApp() {
+  if (cart.length === 0) return;
+  
+  const businessNumber = '254791864441';
+  let message = 'Hi Morel Tech! I\'d like a quote for:\n\n';
+  cart.forEach(item => {
+    message += `• ${item.name} ×${item.quantity} — KES ${item.price.toLocaleString()}\n`;
+  });
+  const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+  message += `\nTotal: KES ${total.toLocaleString()}\n\nSent via your website.`;
 
-    function checkoutViaWhatsApp() {
-      if (cart.length === 0) return;
-      
-      // ✅ WhatsApp length safeguard
-      let message = 'Hi Morel Tech! I\'d like a quote for:\n';
-      cart.forEach(item => {
-        message += `• ${item.name} ×${item.quantity} — KES ${item.price.toLocaleString()}\n`;
-      });
-      const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
-      message += `\nTotal: KES ${total.toLocaleString()}\nSent via your website.`;
-      
-      if (message.length > 4000) {
-        alert("Your quote is too long for WhatsApp. Please reduce the number of items.");
-        return;
-      }
+  window.open(`https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`, '_blank');
+}
 
-      const businessNumber = '254791864441';
-      window.open(`https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`, '_blank');
-    }
+// ========== UI FUNCTIONS ==========
+function openCart() {
+  renderCartModal();
+  document.getElementById('cart-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
 
-    // ========== UI FUNCTIONS ==========
-    function openCart() {
-      renderCartModal();
-      document.getElementById('cart-modal').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+function closeCart() {
+  document.getElementById('cart-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
 
-    function closeCart() {
-      document.getElementById('cart-modal').classList.remove('active');
-      document.body.style.overflow = '';
-    }
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = `../assets/images/${src}`;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
 
-    function openLightbox(src) {
-      document.getElementById('lightbox-img').src = `../assets/images/${src}`;
-      document.getElementById('lightbox').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
 
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('active');
-      document.body.style.overflow = '';
-    }
+function getMetaValue(item) {
+  if (item.category === 'fridges') return item.size || '';
+  if (item.category === 'air-conditioners') return item.capacity || '';
+  if (item.category === 'dishwashers') return item.capacity || '';
+  if (item.category === 'cookers') return item.size || '';
+  if (item.category === 'washing-machines') return item.capacity || '';
+  if (item.category === 'vacuum-cleaners') return item.type || '';
+  return '';
+}
 
-    function getMetaValue(item) {
-      if (item.category === 'fridges') return item.size || '';
-      if (item.category === 'air-conditioners') return item.capacity || '';
-      if (item.category === 'dishwashers') return item.capacity || '';
-      if (item.category === 'cookers') return item.size || '';
-      if (item.category === 'washing-machines') return item.capacity || '';
-      if (item.category === 'vacuum-cleaners') return item.type || '';
-      return '';
-    }
+// Group products by brand
+const brands = {};
+appliancesProducts.forEach(item => {
+  if (!brands[item.brand]) brands[item.brand] = [];
+  brands[item.brand].push(item);
+});
 
-    // Group products by brand
-    const brands = {};
-    appliancesProducts.forEach(item => {
-      if (!brands[item.brand]) brands[item.brand] = [];
-      brands[item.brand].push(item);
-    });
+function renderBrandCards(filtered = appliancesProducts) {
+  const tempBrands = {};
+  filtered.forEach(item => {
+    if (!tempBrands[item.brand]) tempBrands[item.brand] = [];
+    tempBrands[item.brand].push(item);
+  });
 
-    function renderBrandCards(filtered = appliancesProducts) {
-      const tempBrands = {};
-      filtered.forEach(item => {
-        if (!tempBrands[item.brand]) tempBrands[item.brand] = [];
-        tempBrands[item.brand].push(item);
-      });
-      const html = Object.entries(tempBrands).map(([brand, items]) => {
-        const images = [...new Set(items.map(i => i.img))].slice(0, 3);
-        const sample = items[0];
-        const allTypes = [...new Set(items.map(i => i.category))]
-          .map(t => t.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()))
-          .join(', ');
-        const metaValue = getMetaValue(sample) || 'Various';
-        const minPrice = Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 999999));
-        return `
-          <div class="brand-card">
-            <div class="p-5">
-              <h3 class="text-xl font-bold text-slate-900">${brand}</h3>
-              <p class="text-slate-600 text-sm mt-1">${items.length} models • ${allTypes}</p>
-            </div>
-            <div class="px-5 pb-4">
-              <div class="flex space-x-2 overflow-x-auto py-2">
-                ${images.map(img => `
-                  <img src="../assets/images/${img}"
-                       class="product-image"
-                       loading="lazy"
-                       alt="${brand} ${sample.name || ''}"
-                       onclick="openLightbox('${img}')">
-                `).join('')}
-              </div>
-              <ul class="specs-list mt-3 space-y-1">
-                <li>• ${metaValue}</li>
-                <li>• From KES ${minPrice.toLocaleString()}</li>
-                <li>• ${[...new Set(items.map(i => i.condition))].join(' / ')}</li>
-              </ul>
-              <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
-                      onclick="showFullDetails('${brand}')">
-                View All Models
-              </button>
-            </div>
+  const html = Object.entries(tempBrands).map(([brand, items]) => {
+    const images = [...new Set(items.map(i => i.img))].slice(0, 3);
+    const sample = items[0];
+    const allTypes = [...new Set(items.map(i => i.category))]
+      .map(t => t.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()))
+      .join(', ');
+    const minPrice = Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 999999));
+
+    return `
+      <div class="brand-card">
+        <div class="p-5">
+          <h3 class="text-xl font-bold text-slate-900">${brand}</h3>
+          <p class="text-slate-600 text-sm mt-1">${items.length} models • ${allTypes}</p>
+        </div>
+        <div class="px-5 pb-4">
+          <div class="flex space-x-2 overflow-x-auto py-2">
+            ${images.map(img => `
+              <img src="../assets/images/${img}"
+                   class="product-image"
+                   loading="lazy"
+                   alt="${brand} ${sample.name || ''}"
+                   onclick="openLightbox('${img}')">
+            `).join('')}
           </div>
-        `;
-      }).join('');
-      document.getElementById('brandGrid').innerHTML = html;
-    }
+          <ul class="specs-list mt-3 space-y-1">
+            <li>• ${getMetaValue(sample) || 'Various'}</li>
+            <li>• From KES ${minPrice.toLocaleString()}</li>
+            <li>• ${[...new Set(items.map(i => i.condition))].join(' / ')}</li>
+          </ul>
+          <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
+                  onclick="showFullDetails('${brand}')">
+            View All Models
+          </button>
+        </div>
+      </div>
+    `;
+  }).join('');
 
-    function showFullDetails(brand) {
-      const items = brands[brand];
-      let content = `<h3 class="text-lg font-semibold mb-2">All ${brand} Appliances</h3><div class="space-y-2">`;
-      items.forEach(item => {
-        const meta = getMetaValue(item);
-        const id = `${item.brand}-${(item.model || item.name).replace(/[^a-zA-Z0-9]/g, '-')}`;
-        content += `
-          <div class="border border-gray-200 rounded-lg p-2 hover:shadow-sm transition">
-            <div class="flex gap-2">
-              <img
-                loading="lazy"
-                src="../assets/images/${item.img}"
-                alt="${item.name}"
-                class="w-16 h-16 object-cover rounded cursor-pointer flex-shrink-0"
-                onclick="openLightbox('${item.img}')"
-              >
-              <div class="flex-1 min-w-0">
-                <h4 class="font-bold text-sm truncate">${item.name}</h4>
-                ${meta ? `<p class="text-xs text-slate-600">${meta}</p>` : ''}
-                <p class="text-xs ${
-                  item.condition === 'NEW' ? 'text-green-600' : 'text-amber-600'
-                }">${item.condition}</p>
-                <p class="font-bold text-yellow-600 mt-1">KES ${typeof item.price === 'number' ? item.price.toLocaleString() : item.price}</p>
-                <button
-                  class="add-to-cart-btn mt-1 w-full py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
-                  onclick="addToCart('${id}', '${item.name.replaceAll("'", "\\\\'")}', ${typeof item.price === 'number' ? item.price : 0}, '${item.img}', event)"
-                >
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-          </div>
-        `;
-      });
-      content += `</div>`;
-      document.getElementById('modalTitle').textContent = brand;
-      document.getElementById('modalContent').innerHTML = content;
-      document.getElementById('detailModal').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+  document.getElementById('brandGrid').innerHTML = html;
+}
 
-    function closeModal() {
-      document.getElementById('detailModal').classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    // ✅ FIXED: Declare conditionFilter
-    const modelSearch = document.getElementById('modelSearch');
-    const brandFilter = document.getElementById('brandFilter');
-    const typeFilter = document.getElementById('typeFilter');
-    const conditionFilter = document.getElementById('conditionFilter'); // ✅ NOW DECLARED
-
-    function applyFilters() {
-      const searchTerm = modelSearch.value.toLowerCase().trim();
-      const brandSel = brandFilter.value;
-      const typeSel = typeFilter.value;
-      const conditionSel = conditionFilter.value;
-      const filtered = appliancesProducts.filter(item => {
-        if (brandSel && item.brand !== brandSel) return false;
-        if (typeSel && item.category !== typeSel) return false;
-        if (conditionSel && item.condition !== conditionSel) return false;
-        if (searchTerm) {
-          const text = [item.name, item.model, item.brand, item.size, item.capacity, item.type].filter(Boolean).join(' ').toLowerCase();
-          return text.includes(searchTerm);
-        }
-        return true;
-      });
-      renderBrandCards(filtered);
-    }
-
-    // ========== INIT ==========
-    document.getElementById('cart-icon').addEventListener('click', openCart);
-    document.getElementById('close-cart').addEventListener('click', closeCart);
-    document.getElementById('whatsapp-btn').addEventListener('click', checkoutViaWhatsApp);
+function showFullDetails(brand) {
+  const items = brands[brand];
+  let content = `<h3 class="text-lg font-semibold mb-2">All ${brand} Appliances</h3><div class="space-y-2">`;
+  
+  items.forEach(item => {
+    const meta = getMetaValue(item);
+    // Build display name with variant
+    const displayName = `${item.name}${meta ? ` (${meta})` : ''}`;
     
-    [modelSearch, brandFilter, typeFilter, conditionFilter].forEach(el => {
-      if (el) el.addEventListener('input', applyFilters);
-    });
+    // Unique ID: include variant key
+    const variantKey = meta || item.model || 'default';
+    const fullId = `${item.brand}-${(item.model || item.name)}-${variantKey}`.replace(/[^a-zA-Z0-9]/g, '-');
 
-    document.getElementById('openFilters').addEventListener('click', () => {
-      document.getElementById('filterSidebar').classList.add('active');
-      document.getElementById('filterOverlay').classList.add('active');
-    });
+    content += `
+      <div class="border border-gray-200 rounded-lg p-2 hover:shadow-sm transition">
+        <div class="flex gap-2">
+          <img
+            loading="lazy"
+            src="../assets/images/${item.img}"
+            alt="${displayName}"
+            class="w-16 h-16 object-cover rounded cursor-pointer flex-shrink-0"
+            onclick="openLightbox('${item.img}')"
+          >
+          <div class="flex-1 min-w-0">
+            <h4 class="font-bold text-sm truncate">${displayName}</h4>
+            ${meta ? `<p class="text-xs text-slate-600">${meta}</p>` : ''}
+            <p class="text-xs ${
+              item.condition === 'NEW' ? 'text-green-600' : 'text-amber-600'
+            }">${item.condition}</p>
+            <p class="font-bold text-yellow-600 mt-1">KES ${typeof item.price === 'number' ? item.price.toLocaleString() : item.price}</p>
+            <button
+              class="add-to-cart-btn mt-1 w-full py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
+              onclick="addToCart('${fullId}', '${displayName.replaceAll("'", "\\\\'")}', ${typeof item.price === 'number' ? item.price : 0}, '${item.img}')"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+  content += `</div>`;
 
-    document.querySelectorAll('#closeFilters, #filterOverlay').forEach(el => {
-      el?.addEventListener('click', () => {
-        document.getElementById('filterSidebar').classList.remove('active');
-        document.getElementById('filterOverlay').classList.remove('active');
-      });
-    });
+  document.getElementById('modalTitle').textContent = brand;
+  document.getElementById('modalContent').innerHTML = content;
+  document.getElementById('detailModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
 
-    document.getElementById('closeModalBtn').addEventListener('click', closeModal);
-    document.getElementById('detailModal').addEventListener('click', (e) => {
-      if (e.target.id === 'detailModal') closeModal();
-    });
+function closeModal() {
+  document.getElementById('detailModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (document.getElementById('cart-modal').classList.contains('active')) closeCart();
-        if (document.getElementById('lightbox').classList.contains('active')) closeLightbox();
-        if (document.getElementById('detailModal').classList.contains('active')) closeModal();
-      }
-    });
+function applyFilters() {
+  const searchTerm = document.getElementById('modelSearch').value.toLowerCase().trim();
+  const brandSel = document.getElementById('brandFilter').value;
+  const typeSel = document.getElementById('typeFilter').value;
+  const conditionSel = document.getElementById('conditionFilter').value;
 
-    renderBrandCards();
-    updateCartDisplay();
+  const filtered = appliancesProducts.filter(item => {
+    if (brandSel && item.brand !== brandSel) return false;
+    if (typeSel && item.category !== typeSel) return false;
+    if (conditionSel && item.condition !== conditionSel) return false;
+    if (searchTerm) {
+      const text = [item.name, item.model, item.brand, item.size, item.capacity, item.type].filter(Boolean).join(' ').toLowerCase();
+      return text.includes(searchTerm);
+    }
+    return true;
+  });
+  renderBrandCards(filtered);
+}
 
-    // Expose globally
-    window.openLightbox = openLightbox;
-    window.closeLightbox = closeLightbox;
-    window.addToCart = addToCart;
-  </script>
+// ========== INIT ==========
+document.getElementById('cart-icon').addEventListener('click', openCart);
+document.getElementById('close-cart').addEventListener('click', closeCart);
+document.getElementById('whatsapp-btn').addEventListener('click', checkoutViaWhatsApp);
+
+['modelSearch', 'brandFilter', 'typeFilter', 'conditionFilter'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', applyFilters);
+});
+
+document.getElementById('openFilters').addEventListener('click', () => {
+  document.getElementById('filterSidebar').classList.add('active');
+  document.getElementById('filterOverlay').classList.add('active');
+});
+
+document.querySelectorAll('#closeFilters, #filterOverlay').forEach(el => {
+  el?.addEventListener('click', () => {
+    document.getElementById('filterSidebar').classList.remove('active');
+    document.getElementById('filterOverlay').classList.remove('active');
+  });
+});
+
+document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+document.getElementById('detailModal').addEventListener('click', (e) => {
+  if (e.target.id === 'detailModal') closeModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (document.getElementById('cart-modal').classList.contains('active')) closeCart();
+    if (document.getElementById('lightbox').classList.contains('active')) closeLightbox();
+    if (document.getElementById('detailModal').classList.contains('active')) closeModal();
+  }
+});
+
+renderBrandCards();
+updateCartDisplay();
+
+// Expose globally
+window.openLightbox = openLightbox;
+window.closeLightbox = closeLightbox;
+window.addToCart = addToCart;
+</script>
 </body>
 </html>

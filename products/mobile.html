@@ -380,59 +380,59 @@
 
   <script>
     const mobileProducts = [
-      // 📱 PHONES
+      // 📱 PHONES — Added `storage` for variant distinction
       { brand: "Apple", model: "iPhone 8", condition: "REFURBISHED", price: 24000, category: "phones", img: "phones/Apple-iPhone-8.jpg" },
       { brand: "Apple", model: "iPhone X", condition: "REFURBISHED", price: 36000, category: "phones", img: "phones/Apple-iPhone-X.jpg" },
       { brand: "Apple", model: "iPhone XR", condition: "REFURBISHED", price: 42000, category: "phones", img: "phones/Apple-iPhone-XR.jpg" },
-      { brand: "Apple", model: "iPhone 11", condition: "REFURBISHED", price: 56000, category: "phones", img: "phones/Apple-iPhone-11.jpg" },
-      { brand: "Apple", model: "iPhone 12", condition: "REFURBISHED", price: 69000, category: "phones", img: "phones/Apple-iPhone-12.jpg" },
-      { brand: "Apple", model: "iPhone 13", condition: "REFURBISHED", price: 102000, category: "phones", img: "phones/Apple-iPhone-13.jpg" },
-      { brand: "Apple", model: "iPhone 13 Pro", condition: "REFURBISHED", price: 137000, category: "phones", img: "phones/Apple-iPhone-13-Pro.jpg" },
-      { brand: "Apple", model: "iPhone 13 Pro Max", condition: "REFURBISHED", price: 157000, category: "phones", img: "phones/Apple-iPhone-13-Pro-Max.jpg" },
-      { brand: "Apple", model: "iPhone 11 (64GB)", condition: "NEW", price: 61000, category: "phones", img: "phones/Apple-iPhone-11(64GB — NEW).jpg" },
-      { brand: "Apple", model: "iPhone 12 (64GB)", condition: "NEW", price: 82000, category: "phones", img: "phones/Apple-iPhone-12(64GB).jpg" },
-      { brand: "Apple", model: "iPhone 13 (128GB)", condition: "NEW", price: 104000, category: "phones", img: "phones/Apple-iPhone-13(128GB).jpg" },
-      { brand: "Apple", model: "iPhone 13 Pro", condition: "NEW", price: 140000, category: "phones", img: "phones/Apple-iPhone-13Pro.jpg" },
-      { brand: "Apple", model: "iPhone 14", condition: "NEW", price: 126000, category: "phones", img: "phones/Apple-iPhone-14.jpg" },
-      { brand: "Apple", model: "iPhone 14 Pro", condition: "NEW", price: 170000, category: "phones", img: "phones/Apple-iPhone-14Pro.jpg" },
-      { brand: "Apple", model: "iPhone 15", condition: "NEW", price: 149000, category: "phones", img: "phones/Apple-iPhone-15.jpg" },
-      { brand: "Apple", model: "iPhone 15 Pro", condition: "NEW", price: 198000, category: "phones", img: "phones/Apple-iPhone-15-Pro.jpg" },
-      { brand: "Apple", model: "iPhone 16", condition: "NEW", price: 126000, category: "phones", img: "phones/Apple-iPhone-16.jpg" },
-      { brand: "Apple", model: "iPhone 16 Plus", condition: "NEW", price: 150000, category: "phones", img: "phones/Apple-iPhone-16-Plus.jpg" },
-      { brand: "Apple", model: "iPhone 16 Pro", condition: "NEW", price: 188000, category: "phones", img: "phones/Apple-iPhone-16-Pro.jpg" },
-      { brand: "Apple", model: "iPhone 16 Pro Max", condition: "NEW", price: 215000, category: "phones", img: "phones/Apple-iPhone-16-Pro-Max.jpg" },
-      { brand: "Apple", model: "iPhone 17 Pro", condition: "NEW", price: 240000, category: "phones", img: "phones/Apple-iPhone-17-Pro.jpg" },
-      { brand: "Apple", model: "iPhone 17 Pro Max", condition: "NEW", price: 270000, category: "phones", img: "phones/Apple-iPhone-17-Pro-Max.jpg" },
+      { brand: "Apple", model: "iPhone 11", storage: "64GB", condition: "REFURBISHED", price: 56000, category: "phones", img: "phones/Apple-iPhone-11.jpg" },
+      { brand: "Apple", model: "iPhone 12", storage: "64GB", condition: "REFURBISHED", price: 69000, category: "phones", img: "phones/Apple-iPhone-12.jpg" },
+      { brand: "Apple", model: "iPhone 13", storage: "128GB", condition: "REFURBISHED", price: 102000, category: "phones", img: "phones/Apple-iPhone-13.jpg" },
+      { brand: "Apple", model: "iPhone 13 Pro", storage: "128GB", condition: "REFURBISHED", price: 137000, category: "phones", img: "phones/Apple-iPhone-13-Pro.jpg" },
+      { brand: "Apple", model: "iPhone 13 Pro Max", storage: "128GB", condition: "REFURBISHED", price: 157000, category: "phones", img: "phones/Apple-iPhone-13-Pro-Max.jpg" },
+      { brand: "Apple", model: "iPhone 11", storage: "64GB", condition: "NEW", price: 61000, category: "phones", img: "phones/Apple-iPhone-11(64GB — NEW).jpg" },
+      { brand: "Apple", model: "iPhone 12", storage: "64GB", condition: "NEW", price: 82000, category: "phones", img: "phones/Apple-iPhone-12(64GB).jpg" },
+      { brand: "Apple", model: "iPhone 13", storage: "128GB", condition: "NEW", price: 104000, category: "phones", img: "phones/Apple-iPhone-13(128GB).jpg" },
+      { brand: "Apple", model: "iPhone 13 Pro", storage: "128GB", condition: "NEW", price: 140000, category: "phones", img: "phones/Apple-iPhone-13Pro.jpg" },
+      { brand: "Apple", model: "iPhone 14", storage: "128GB", condition: "NEW", price: 126000, category: "phones", img: "phones/Apple-iPhone-14.jpg" },
+      { brand: "Apple", model: "iPhone 14 Pro", storage: "128GB", condition: "NEW", price: 170000, category: "phones", img: "phones/Apple-iPhone-14Pro.jpg" },
+      { brand: "Apple", model: "iPhone 15", storage: "128GB", condition: "NEW", price: 149000, category: "phones", img: "phones/Apple-iPhone-15.jpg" },
+      { brand: "Apple", model: "iPhone 15 Pro", storage: "128GB", condition: "NEW", price: 198000, category: "phones", img: "phones/Apple-iPhone-15-Pro.jpg" },
+      { brand: "Apple", model: "iPhone 16", storage: "128GB", condition: "NEW", price: 126000, category: "phones", img: "phones/Apple-iPhone-16.jpg" },
+      { brand: "Apple", model: "iPhone 16 Plus", storage: "128GB", condition: "NEW", price: 150000, category: "phones", img: "phones/Apple-iPhone-16-Plus.jpg" },
+      { brand: "Apple", model: "iPhone 16 Pro", storage: "128GB", condition: "NEW", price: 188000, category: "phones", img: "phones/Apple-iPhone-16-Pro.jpg" },
+      { brand: "Apple", model: "iPhone 16 Pro Max", storage: "256GB", condition: "NEW", price: 215000, category: "phones", img: "phones/Apple-iPhone-16-Pro-Max.jpg" },
+      { brand: "Apple", model: "iPhone 17 Pro", storage: "256GB", condition: "NEW", price: 240000, category: "phones", img: "phones/Apple-iPhone-17-Pro.jpg" },
+      { brand: "Apple", model: "iPhone 17 Pro Max", storage: "512GB", condition: "NEW", price: 270000, category: "phones", img: "phones/Apple-iPhone-17-Pro-Max.jpg" },
       // Samsung
       { brand: "Samsung", model: "Galaxy S10", condition: "REFURBISHED", price: 32000, category: "phones", img: "phones/Samsung-Galaxy-S10.jpg" },
       { brand: "Samsung", model: "Galaxy S20", condition: "REFURBISHED", price: 51000, category: "phones", img: "phones/Samsung-Galaxy-S20.jpg" },
       { brand: "Samsung", model: "Galaxy S21", condition: "REFURBISHED", price: 64000, category: "phones", img: "phones/Samsung-Galaxy-S21.jpg" },
-      { brand: "Samsung", model: "Galaxy S21 Ultra", condition: "REFURBISHED", price: 82000, category: "phones", img: "phones/Samsung-Galaxy-S21-Ultra.jpg" },
-      { brand: "Samsung", model: "Galaxy A14", condition: "NEW", price: 27500, category: "phones", img: "phones/Samsung-Galaxy-A14.jpg" },
-      { brand: "Samsung", model: "Galaxy A24", condition: "NEW", price: 40000, category: "phones", img: "phones/Samsung-Galaxy-A24.jpg" },
-      { brand: "Samsung", model: "Galaxy A34", condition: "NEW", price: 52000, category: "phones", img: "phones/Samsung-Galaxy-A34.jpg" },
-      { brand: "Samsung", model: "Galaxy A54", condition: "NEW", price: 75000, category: "phones", img: "phones/Samsung-Galaxy-A54.jpg" },
-      { brand: "Samsung", model: "Galaxy S21 FE", condition: "NEW", price: 77000, category: "phones", img: "phones/Samsung-Galaxy-S21-FE.jpg" },
-      { brand: "Samsung", model: "Galaxy S22", condition: "NEW", price: 88000, category: "phones", img: "phones/Samsung-Galaxy-S22.jpg" },
-      { brand: "Samsung", model: "Galaxy S23", condition: "NEW", price: 114000, category: "phones", img: "phones/Samsung-Galaxy-S23.jpg" },
-      { brand: "Samsung", model: "Galaxy S23 Ultra", condition: "NEW", price: 168000, category: "phones", img: "phones/Samsung-Galaxy-S23-Ultra.jpg" },
-      { brand: "Samsung", model: "Galaxy S24", condition: "NEW", price: 135000, category: "phones", img: "phones/Samsung-Galaxy-S24.jpg" },
-      { brand: "Samsung", model: "Galaxy S24 Ultra", condition: "NEW", price: 208000, category: "phones", img: "phones/Samsung-Galaxy-S24-Ultra.jpg" },
-      { brand: "Samsung", model: "Galaxy Z Fold 4", condition: "NEW", price: 210000, category: "phones", img: "phones/Samsung-GalaxyZ-Fold4.jpg" },
-      { brand: "Samsung", model: "Galaxy Z Fold 5", condition: "NEW", price: 240000, category: "phones", img: "phones/Samsung-Galaxy-Z-Fold5.jpg" },
-      { brand: "Samsung", model: "Galaxy Z Fold 6", condition: "NEW", price: 283000, category: "phones", img: "phones/Samsung-Galaxy-Z-Fold-6.jpg" },
+      { brand: "Samsung", model: "Galaxy S21 Ultra", storage: "128GB", condition: "REFURBISHED", price: 82000, category: "phones", img: "phones/Samsung-Galaxy-S21-Ultra.jpg" },
+      { brand: "Samsung", model: "Galaxy A14", storage: "64GB", condition: "NEW", price: 27500, category: "phones", img: "phones/Samsung-Galaxy-A14.jpg" },
+      { brand: "Samsung", model: "Galaxy A24", storage: "128GB", condition: "NEW", price: 40000, category: "phones", img: "phones/Samsung-Galaxy-A24.jpg" },
+      { brand: "Samsung", model: "Galaxy A34", storage: "128GB", condition: "NEW", price: 52000, category: "phones", img: "phones/Samsung-Galaxy-A34.jpg" },
+      { brand: "Samsung", model: "Galaxy A54", storage: "128GB", condition: "NEW", price: 75000, category: "phones", img: "phones/Samsung-Galaxy-A54.jpg" },
+      { brand: "Samsung", model: "Galaxy S21 FE", storage: "128GB", condition: "NEW", price: 77000, category: "phones", img: "phones/Samsung-Galaxy-S21-FE.jpg" },
+      { brand: "Samsung", model: "Galaxy S22", storage: "128GB", condition: "NEW", price: 88000, category: "phones", img: "phones/Samsung-Galaxy-S22.jpg" },
+      { brand: "Samsung", model: "Galaxy S23", storage: "128GB", condition: "NEW", price: 114000, category: "phones", img: "phones/Samsung-Galaxy-S23.jpg" },
+      { brand: "Samsung", model: "Galaxy S23 Ultra", storage: "256GB", condition: "NEW", price: 168000, category: "phones", img: "phones/Samsung-Galaxy-S23-Ultra.jpg" },
+      { brand: "Samsung", model: "Galaxy S24", storage: "128GB", condition: "NEW", price: 135000, category: "phones", img: "phones/Samsung-Galaxy-S24.jpg" },
+      { brand: "Samsung", model: "Galaxy S24 Ultra", storage: "256GB", condition: "NEW", price: 208000, category: "phones", img: "phones/Samsung-Galaxy-S24-Ultra.jpg" },
+      { brand: "Samsung", model: "Galaxy Z Fold 4", storage: "256GB", condition: "NEW", price: 210000, category: "phones", img: "phones/Samsung-GalaxyZ-Fold4.jpg" },
+      { brand: "Samsung", model: "Galaxy Z Fold 5", storage: "512GB", condition: "NEW", price: 240000, category: "phones", img: "phones/Samsung-Galaxy-Z-Fold5.jpg" },
+      { brand: "Samsung", model: "Galaxy Z Fold 6", storage: "512GB", condition: "NEW", price: 283000, category: "phones", img: "phones/Samsung-Galaxy-Z-Fold-6.jpg" },
       // Pixel
       { brand: "Pixel", model: "Pixel 4", condition: "REFURBISHED", price: 23000, category: "phones", img: "phones/Google-Pixel-4.jpg" },
       { brand: "Pixel", model: "Pixel 4a", condition: "REFURBISHED", price: 31000, category: "phones", img: "phones/Google-Pixel-4a.jpg" },
       { brand: "Pixel", model: "Pixel 5", condition: "REFURBISHED", price: 41000, category: "phones", img: "phones/Google-Pixel-5.jpg" },
-      { brand: "Pixel", model: "Pixel 6", condition: "REFURBISHED", price: 49000, category: "phones", img: "phones/Google-Pixel-6.jpg" },
-      { brand: "Pixel", model: "Pixel 6 Pro", condition: "REFURBISHED", price: 75000, category: "phones", img: "phones/Google-Pixel-6-Pro.jpg" },
-      { brand: "Pixel", model: "Pixel 6", condition: "NEW", price: 51000, category: "phones", img: "phones/Google-Pixel-6(NEW).jpg" },
-      { brand: "Pixel", model: "Pixel 6 Pro", condition: "NEW", price: 70000, category: "phones", img: "phones/Google-Pixel-6-Pro(NEW).jpg" },
-      { brand: "Pixel", model: "Pixel 7", condition: "NEW", price: 71000, category: "phones", img: "phones/Google-Pixel-7.jpg" },
-      { brand: "Pixel", model: "Pixel 7 Pro", condition: "NEW", price: 94000, category: "phones", img: "phones/Google-Pixel-7-Pro.jpg" },
-      { brand: "Pixel", model: "Pixel 8", condition: "NEW", price: 108000, category: "phones", img: "phones/Google-Pixel-8.jpg" },
-      { brand: "Pixel", model: "Pixel 8 Pro", condition: "NEW", price: 149000, category: "phones", img: "phones/Google-Pixel-8-Pro.jpg" },
+      { brand: "Pixel", model: "Pixel 6", storage: "128GB", condition: "REFURBISHED", price: 49000, category: "phones", img: "phones/Google-Pixel-6.jpg" },
+      { brand: "Pixel", model: "Pixel 6 Pro", storage: "128GB", condition: "REFURBISHED", price: 75000, category: "phones", img: "phones/Google-Pixel-6-Pro.jpg" },
+      { brand: "Pixel", model: "Pixel 6", storage: "128GB", condition: "NEW", price: 51000, category: "phones", img: "phones/Google-Pixel-6(NEW).jpg" },
+      { brand: "Pixel", model: "Pixel 6 Pro", storage: "128GB", condition: "NEW", price: 70000, category: "phones", img: "phones/Google-Pixel-6-Pro(NEW).jpg" },
+      { brand: "Pixel", model: "Pixel 7", storage: "128GB", condition: "NEW", price: 71000, category: "phones", img: "phones/Google-Pixel-7.jpg" },
+      { brand: "Pixel", model: "Pixel 7 Pro", storage: "128GB", condition: "NEW", price: 94000, category: "phones", img: "phones/Google-Pixel-7-Pro.jpg" },
+      { brand: "Pixel", model: "Pixel 8", storage: "128GB", condition: "NEW", price: 108000, category: "phones", img: "phones/Google-Pixel-8.jpg" },
+      { brand: "Pixel", model: "Pixel 8 Pro", storage: "128GB", condition: "NEW", price: 149000, category: "phones", img: "phones/Google-Pixel-8-Pro.jpg" },
       // 📲 SMART DEVICES
       { brand: "Samsung", name: "Galaxy Watch 6 Classic LTE", category: "smart", price: 62500, img: "smart-tech/Samsung-Watch-6-Classic-LTE.jpg" },
       { brand: "Apple", name: "Watch Series 9 GPS", category: "smart", price: 75000, img: "smart-tech/Apple-Watch-Series-9-GPS.jpg" },
@@ -510,7 +510,6 @@
       container.innerHTML = html;
       totalEl.textContent = total.toLocaleString();
 
-      // Attach event listeners
       document.querySelectorAll('.decrease').forEach(btn => {
         btn.addEventListener('click', () => updateQuantity(btn.dataset.id, -1));
       });
@@ -582,6 +581,12 @@
       return item.model || item.name || `${item.brand} Device`;
     }
 
+    function getMetaValue(item) {
+      // For phones, use storage; for others, leave blank
+      if (item.category === 'phones') return item.storage || '';
+      return '';
+    }
+
     // Group products by brand
     const brands = {};
     mobileProducts.forEach(item => {
@@ -642,8 +647,15 @@
       let content = `<h3 class="text-lg font-semibold mb-2">All ${brand} Mobile Tech</h3><div class="space-y-2">`;
       
       items.forEach(item => {
+        const meta = getMetaValue(item);
+        // Build display name with storage if available
+        const displayName = getDisplayName(item) + (meta ? ` (${meta})` : '');
+        
+        // Unique ID: include storage or fallback
+        const variantKey = meta || item.model || 'default';
+        const fullId = `${item.brand}-${(item.model || item.name)}-${variantKey}`.replace(/[^a-zA-Z0-9]/g, '-');
+
         const typeLabel = item.category === 'phones' ? 'Smartphone' : 'Smart Device';
-        const id = `${item.brand}-${(item.model || item.name).replace(/[^a-zA-Z0-9]/g, '-')}`;
 
         content += `
           <div class="border border-gray-200 rounded-lg p-2 hover:shadow-sm transition">
@@ -651,12 +663,12 @@
               <img 
                 loading="lazy" 
                 src="../assets/images/${item.img}" 
-                alt="${getDisplayName(item)}" 
+                alt="${displayName}" 
                 class="w-16 h-16 object-cover rounded cursor-pointer flex-shrink-0"
                 onclick="openLightbox('${item.img}')"
               >
               <div class="flex-1 min-w-0">
-                <h4 class="font-bold text-sm truncate">${getDisplayName(item)}</h4>
+                <h4 class="font-bold text-sm truncate">${displayName}</h4>
                 <p class="text-xs text-slate-600">${typeLabel}</p>
                 <p class="text-xs ${
                   item.condition === 'REFURBISHED' ? 'text-amber-600' : 'text-green-600'
@@ -664,7 +676,7 @@
                 <p class="font-bold text-yellow-600 mt-1">KES ${typeof item.price === 'number' ? item.price.toLocaleString() : item.price}</p>
                 <button 
                   class="add-to-cart-btn mt-1 w-full py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
-                  onclick="addToCart('${id}', '${getDisplayName(item).replaceAll("'", "\\\\'")}', ${typeof item.price === 'number' ? item.price : 0}, '${item.img}')"
+                  onclick="addToCart('${fullId}', '${displayName.replaceAll("'", "\\\\'")}', ${typeof item.price === 'number' ? item.price : 0}, '${item.img}')"
                 >
                   Add to Cart
                 </button>
@@ -697,7 +709,7 @@
         if (typeSel && item.category !== typeSel) return false;
         if (conditionSel && item.condition !== conditionSel) return false;
         if (searchTerm) {
-          const text = [item.name, item.brand, item.model].filter(Boolean).join(' ').toLowerCase();
+          const text = [item.name, item.brand, item.model, item.storage].filter(Boolean).join(' ').toLowerCase();
           return text.includes(searchTerm);
         }
         return true;
@@ -710,7 +722,8 @@
     document.getElementById('close-cart').addEventListener('click', closeCart);
     document.getElementById('whatsapp-btn').addEventListener('click', checkoutViaWhatsApp);
 
-    [modelSearch, brandFilter, typeFilter, conditionFilter].forEach(el => {
+    ['modelSearch', 'brandFilter', 'typeFilter', 'conditionFilter'].forEach(id => {
+      const el = document.getElementById(id);
       if (el) el.addEventListener('input', applyFilters);
     });
 

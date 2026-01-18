@@ -1,823 +1,812 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Buy CCTV, Hikvision & Dahua Cameras in Kenya – Morel Tech</title>
-  <meta name="description" content="Professional Hikvision, Dahua, Eufy & WD security systems in Kenya. CCTV kits, NVRs, access control & smart cameras. Best prices in Nairobi, Nyeri & nationwide."/>
-  <link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Store",
-    "name": "Morel Tech Solution",
-    "image": "/assets/images/logo.jpg",
-    "url": "https://moreltech.co.ke",
-    "telephone": "+254700000000",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Nyeri Town",
-      "addressLocality": "Nyeri",
-      "addressCountry": "KE"
-    },
-    "productSupported": ["CCTV Cameras", "NVR Systems", "Access Control", "Smart Cameras"],
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -0.4247,
-      "longitude": 36.9455
-    }
-  }
-  </script>
-
-  <style>
-    :root {
-      --bg-page: #f8fafc;
-      --bg-surface: #ffffff;
-      --ink-900: #0f172a;
-      --ink-700: #334155;
-      --ink-500: #64748b;
-      --border-subtle: #e2e8f0;
-      --accent-gold: #d4af37;
-      --radius-sm: 10px;
-      --radius-md: 14px;
-      --radius-lg: 18px;
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
-      --ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    body {
-      background-color: var(--bg-page);
-      color: var(--ink-700);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-    .brand-card {
-      background: var(--bg-surface);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      overflow: hidden;
-      transition: box-shadow 0.3s var(--ease-ui), transform 0.2s var(--ease-ui);
-    }
-    .brand-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-    .product-image {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: var(--radius-sm);
-      cursor: zoom-in;
-    }
-    .specs-list {
-      font-size: 0.875rem;
-      color: var(--ink-500);
-    }
-
-    /* MODALS */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      z-index: 1000;
-      padding: 1.5rem;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal.active {
-      display: flex;
-    }
-    .modal-content {
-      background: white;
-      border-radius: var(--radius-lg);
-      max-width: 900px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    }
-
-    /* CART MODAL */
-    #cartModal .modal-content {
-      max-width: 500px;
-    }
-    .cart-item {
-      display: flex;
-      gap: 1rem;
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-    .cart-item img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: var(--radius-sm);
-    }
-    .cart-controls {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .cart-qty-btn {
-      width: 28px;
-      height: 28px;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f1f5f9;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .cart-qty-display {
-      width: 36px;
-      text-align: center;
-      color: var(--ink-700);
-      font-weight: 600;
-    }
-
-    /* FILTER SIDEBAR */
-    .filter-sidebar {
-      position: sticky;
-      top: 2rem;
-      height: fit-content;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-    @media (max-width: 768px) {
-      .mobile-filter-trigger { display: block !important; }
-      .filter-sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 85%;
-        height: 100vh;
-        z-index: 1000;
-        background: white;
-        padding: 1.5rem;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-      }
-      .filter-sidebar.active { transform: translateX(0); }
-      .overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.5);
-        z-index: 999;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s;
-      }
-      .overlay.active {
-        opacity: 1;
-        visibility: visible;
-      }
-    }
-    .mobile-filter-trigger { display: none; }
-    .focus-ring:focus-visible {
-      outline: 2px solid var(--accent-gold);
-      outline-offset: 3px;
-    }
-
-    /* LIGHTBOX */
-    #lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.9);
-      z-index: 1100;
-      align-items: center;
-      justify-content: center;
-    }
-    #lightbox.active {
-      display: flex;
-    }
-    #lightbox-img {
-      max-width: 90vw;
-      max-height: 80vh;
-      object-fit: contain;
-    }
-
-    /* TOAST */
-    .toast {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #10b981;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 0.375rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      z-index: 2000;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Buy CCTV, Hikvision & Dahua Cameras in Kenya – Morel Tech</title>
+<meta name="description" content="Professional Hikvision, Dahua, Eufy & WD security systems in Kenya. CCTV kits, NVRs, access control & smart cameras. Best prices in Nairobi, Nyeri & nationwide."/>
+<link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Store",
+"name": "Morel Tech Solution",
+"image": "/assets/images/logo.jpg",
+"url": "https://moreltech.co.ke",
+"telephone": "+254700000000",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Nyeri Town",
+"addressLocality": "Nyeri",
+"addressCountry": "KE"
+},
+"productSupported": ["CCTV Cameras", "NVR Systems", "Access Control", "Smart Cameras"],
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": -0.4247,
+"longitude": 36.9455
+}
+}
+</script>
+<style>
+:root {
+--bg-page: #f8fafc;
+--bg-surface: #ffffff;
+--ink-900: #0f172a;
+--ink-700: #334155;
+--ink-500: #64748b;
+--border-subtle: #e2e8f0;
+--accent-gold: #d4af37;
+--radius-sm: 10px;
+--radius-md: 14px;
+--radius-lg: 18px;
+--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+--shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+--ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
+}
+body {
+background-color: var(--bg-page);
+color: var(--ink-700);
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.brand-card {
+background: var(--bg-surface);
+border-radius: var(--radius-md);
+box-shadow: var(--shadow-sm);
+overflow: hidden;
+transition: box-shadow 0.3s var(--ease-ui), transform 0.2s var(--ease-ui);
+}
+.brand-card:hover {
+transform: translateY(-4px);
+box-shadow: var(--shadow-md);
+}
+.product-image {
+width: 200px;
+height: 200px;
+object-fit: cover;
+border-radius: var(--radius-sm);
+cursor: zoom-in;
+}
+.specs-list {
+font-size: 0.875rem;
+color: var(--ink-500);
+}
+/* MODALS */
+.modal {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0, 0, 0, 0.75);
+z-index: 1000;
+padding: 1.5rem;
+justify-content: center;
+align-items: center;
+}
+.modal.active {
+display: flex;
+}
+.modal-content {
+background: white;
+border-radius: var(--radius-lg);
+max-width: 900px;
+width: 100%;
+max-height: 90vh;
+overflow-y: auto;
+box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+/* CART MODAL */
+#cartModal .modal-content {
+max-width: 500px;
+}
+.cart-item {
+display: flex;
+gap: 1rem;
+padding: 1rem 0;
+border-bottom: 1px solid var(--border-subtle);
+}
+.cart-item img {
+width: 60px;
+height: 60px;
+object-fit: cover;
+border-radius: var(--radius-sm);
+}
+.cart-controls {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+.cart-qty-btn {
+width: 28px;
+height: 28px;
+font-size: 1rem;
+display: flex;
+align-items: center;
+justify-content: center;
+background: #f1f5f9;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+.cart-qty-display {
+width: 36px;
+text-align: center;
+color: var(--ink-700);
+font-weight: 600;
+}
+/* FILTER SIDEBAR */
+.filter-sidebar {
+position: sticky;
+top: 2rem;
+height: fit-content;
+max-height: 80vh;
+overflow-y: auto;
+}
+@media (max-width: 768px) {
+.mobile-filter-trigger { display: block !important; }
+.filter-sidebar {
+position: fixed;
+top: 0;
+left: 0;
+width: 85%;
+height: 100vh;
+z-index: 1000;
+background: white;
+padding: 1.5rem;
+transform: translateX(-100%);
+transition: transform 0.3s ease;
+}
+.filter-sidebar.active { transform: translateX(0); }
+.overlay {
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.5);
+z-index: 999;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s;
+}
+.overlay.active {
+opacity: 1;
+visibility: visible;
+}
+}
+.mobile-filter-trigger { display: none; }
+.focus-ring:focus-visible {
+outline: 2px solid var(--accent-gold);
+outline-offset: 3px;
+}
+/* LIGHTBOX */
+#lightbox {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.9);
+z-index: 1100;
+align-items: center;
+justify-content: center;
+}
+#lightbox.active {
+display: flex;
+}
+#lightbox-img {
+max-width: 90vw;
+max-height: 80vh;
+object-fit: contain;
+}
+/* TOAST */
+.toast {
+position: fixed;
+bottom: 20px;
+left: 50%;
+transform: translateX(-50%);
+background: #10b981;
+color: white;
+padding: 0.5rem 1rem;
+border-radius: 0.375rem;
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+z-index: 2000;
+}
+</style>
 </head>
 <body class="text-slate-800">
-  <nav class="bg-slate-900 text-white fixed w-full top-0 z-50 shadow-md">
-    <div class="container mx-auto px-4 py-3">
-      <a href="../#products" class="text-lg font-semibold">← Back to Catalog</a>
-    </div>
-  </nav>
+<nav class="bg-slate-900 text-white fixed w-full top-0 z-50 shadow-md">
+<div class="container mx-auto px-4 py-3">
+<a href="../#products" class="text-lg font-semibold">← Back to Catalog</a>
+</div>
+</nav>
+<main class="pt-20 pb-16">
+<div class="container mx-auto px-4">
+<div class="sr-only">
+<h1>Buy Hikvision & Dahua CCTV Systems in Kenya</h1>
+<p>Morel Tech offers professional Hikvision DS-2CD2T43G0-I5, Dahua NVR4104HS-P, access control and smart security cameras at best prices in Nairobi, Nyeri, Mombasa and across Kenya. Free installation consultation.</p>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<aside class="filter-sidebar" id="filterSidebar">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-xl font-bold">Filters</h2>
+<button id="closeFilters" class="lg:hidden text-gray-500 hover:text-gray-900">✕</button>
+</div>
+<div class="space-y-5">
+<div>
+<label class="block font-medium mb-2">Search Model</label>
+<input type="text" id="modelSearch" placeholder="e.g. DS-2CD, HAC-B1A21..." class="w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-yellow-500">
+</div>
+<div>
+<label class="block font-medium mb-2">Brand</label>
+<select id="brandFilter" class="w-full p-2.5 border rounded-lg">
+<option value="">All Brands</option>
+<option value="Hikvision">Hikvision</option>
+<option value="Dahua">Dahua</option>
+<option value="D-Link">D-Link</option>
+<option value="Mikrotik">Mikrotik</option>
+<option value="WD">WD Purple</option>
+<option value="Eufy">Eufy</option>
+<option value="Imou">Imou</option>
+<option value="Google">Google Nest</option>
+<option value="TP-Link">TP-Link</option>
+<option value="ZKTeco">ZKTeco</option>
+<option value="Morel Techs">Morel Techs</option>
+<option value="Generic">Generic</option>
+<option value="Ezviz">Ezviz</option>
+</select>
+</div>
+<div>
+<label class="block font-medium mb-2">Type</label>
+<select id="typeFilter" class="w-full p-2.5 border rounded-lg">
+<option value="">All Types</option>
+<option value="surveillance">Surveillance (CCTV)</option>
+<option value="smart-cameras">Smart Cameras</option>
+<option value="access-controls">Access Control</option>
+<option value="security">Security Systems</option>
+</select>
+</div>
+</div>
+</aside>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-8">
+<h1 class="text-3xl font-bold text-slate-900">Security & Surveillance</h1>
+<button class="mobile-filter-trigger px-4 py-2 bg-yellow-600 text-white rounded font-medium" id="openFilters">
+Filters
+</button>
+</div>
+<div id="brandGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Cards generated by JS -->
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- DETAIL MODAL -->
+<div id="detailModal" class="modal" role="dialog" aria-modal="true">
+<div class="modal-content">
+<div class="p-6">
+<div class="flex justify-between items-start">
+<h2 id="modalTitle" class="text-2xl font-bold text-slate-900"></h2>
+<button id="closeModalBtn" class="text-gray-500 hover:text-gray-900 text-2xl focus:outline-none">&times;</button>
+</div>
+<div id="modalContent" class="mt-6"></div>
+</div>
+</div>
+</div>
+<!-- CART MODAL -->
+<div id="cartModal" class="modal" role="dialog" aria-modal="true">
+<div class="modal-content">
+<div class="p-6">
+<div class="flex justify-between items-start">
+<h2 class="text-2xl font-bold text-slate-900">Your Quote</h2>
+<button id="closeCartModal" class="text-gray-500 hover:text-gray-900 text-2xl focus:outline-none">&times;</button>
+</div>
+<div id="cartItems" class="mt-6">
+<!-- Cart items rendered here -->
+</div>
+<div id="cartTotal" class="mt-4 font-bold text-lg text-slate-900"></div>
+<button id="whatsappCheckoutBtn" class="mt-6 w-full py-2.5 bg-green-500 hover:bg-green-600 text-white rounded font-medium focus-ring">
+Send Quote via WhatsApp
+</button>
+</div>
+</div>
+</div>
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+<img id="lightbox-img" />
+<button onclick="closeLightbox()" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center">✕</button>
+</div>
+<!-- FLOATING WHATSAPP BUTTON -->
+<div class="fixed bottom-4 right-4 z-[999]">
+<button
+id="cart-btn"
+class="bg-yellow-500 hover:bg-yellow-600 text-white p-4 rounded-full shadow-lg flex items-center relative"
+>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+</svg>
+<span class="ml-2 font-bold hidden sm:inline"> Cart</span>
+<span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+</button>
+</div>
+<!-- OVERLAY -->
+<div class="overlay" id="filterOverlay"></div>
+<script>
+// 🛒 CART MANAGEMENT
+let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
+const securityProducts = [
+// ✅ SURVEILLANCE (CCTV)
+{ brand: "D-Link", model: "DES-1005P (4-Port PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1005P(4-Port PoE).jpg", price: 8500 },
+{ brand: "D-Link", model: "DES-1008P (8-Port PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1008P(8-Port PoE).jpg", price: 12500 },
+{ brand: "D-Link", model: "DES-1210-10P (8-Port Smart PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1210-10P(8-Port Smart PoE).jpg", price: 16000 },
+{ brand: "D-Link", model: "DES-1210-28P (24-Port PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1210-28P(24-Port PoE).jpg", price: 24000 },
+{ brand: "D-Link", model: "16-Port Smart PoE Switch", category: "surveillance", img: "surveillance/D-LINK-16-Port(Smart PoE).jpg", price: 22000 },
+{ brand: "Dahua", model: "HAC-B1A21 (2MP Bullet)", category: "surveillance", img: "surveillance/DAHUA-HAC-B1A21(2MP Bullet).jpg", price: 7500 },
+{ brand: "Dahua", model: "HAC-HDW1400EMP", category: "surveillance", img: "surveillance/DAHUA-HAC-HDW1400EMP.jpg", price: 11000 },
+{ brand: "Dahua", model: "HAC-HFW1400TLP", category: "surveillance", img: "surveillance/DAHUA-HAC-HFW1400TLP.jpg", price: 12500 },
+{ brand: "Dahua", model: "HAC-HFW1409TP-A-LED (Full Color)", category: "surveillance", img: "surveillance/DAHUA-HAC-HFW1409TP-A-LED(Full Color).jpg", price: 18000 },
+{ brand: "Dahua", model: "HAC-T1A21 (2MP Dome)", category: "surveillance", img: "surveillance/DAHUA-HAC-T1A21(2MP Dome).jpg", price: 7200 },
+{ brand: "Dahua", model: "IPC-HDW1230T1-S4", category: "surveillance", img: "surveillance/DAHUA-IPC-HDW1230T1-S4.jpg", price: 13000 },
+{ brand: "Dahua", model: "IPC-HDW1431S", category: "surveillance", img: "surveillance/DAHUA-IPC-HDW1431S.jpg", price: 16000 },
+{ brand: "Dahua", model: "IPC-HDW5442TM-AS (4MP Full Color)", category: "surveillance", img: "surveillance/DAHUA-IPC-HDW5442TM-AS(4MP Full Color).jpg", price: 29000 },
+{ brand: "Dahua", model: "IPC-HFW1230S", category: "surveillance", img: "surveillance/DAHUA-IPC-HFW1230S.jpg", price: 12500 },
+{ brand: "Dahua", model: "IPC-HFW1431S", category: "surveillance", img: "surveillance/DAHUA-IPC-HFW1431S.jpg", price: 15500 },
+{ brand: "Dahua", model: "IPC-HFW2231TP-AS (Full Color)", category: "surveillance", img: "surveillance/DAHUA-IPC-HFW2231TP-AS(Full Color).jpg", price: 22000 },
+{ brand: "Dahua", model: "IPC-HFW2431T-AS (Starlight)", category: "surveillance", img: "surveillance/DAHUA-IPC-HFW2431T-AS(Starlight).jpg", price: 26000 },
+{ brand: "Dahua", model: "NVR4104HS-P-4KS2 (4ch PoE)", category: "surveillance", img: "surveillance/DAHUA-NVR4104HS-P-4KS2(4ch PoE).jpg", price: 28000 },
+{ brand: "Dahua", model: "NVR4108HS-8P (8ch PoE)", category: "surveillance", img: "surveillance/DAHUA-NVR4108HS-8P(8ch PoE).jpg", price: 36000 },
+{ brand: "Dahua", model: "NVR4216-4KS2 (16ch NVR)", category: "surveillance", img: "surveillance/DAHUA-NVR4216-4KS2(16ch NVR).jpg", price: 52000 },
+{ brand: "Dahua", model: "SD6CE445XA-HNR (45× PTZ)", category: "surveillance", img: "surveillance/DAHUA-SD6CE445XA-HNR(45× PTZ).jpg", price: 145000 },
+{ brand: "Dahua", model: "SD22204UE-GN (2MP Mini PTZ)", category: "surveillance", img: "surveillance/DAHUA-SD22204UE-GN(2MP Mini PTZ).jpg", price: 38000 },
+{ brand: "Dahua", model: "SD49225XA-HNR (25× PTZ)", category: "surveillance", img: "surveillance/DAHUA-SD49225XA-HNR(25× PTZ).jpg", price: 95000 },
+{ brand: "Dahua", model: "XVR1B04H (4ch XVR)", category: "surveillance", img: "surveillance/DAHUA-XVR1B04H(4ch XVR).jpg", price: 14000 },
+{ brand: "Dahua", model: "XVR1B08H (8ch XVR)", category: "surveillance", img: "surveillance/DAHUA-XVR1B08H(8ch XVR).jpg", price: 19000 },
+{ brand: "Dahua", model: "XVR1B16H (16ch XVR)", category: "surveillance", img: "surveillance/DAHUA-XVR1B16H(16ch XVR).jpg", price: 28000 },
+{ brand: "Hikvision", model: "DS-2CD1T23G0-I (2MP Bullet IR 30m)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1T23G0-I(2MP Bullet IR 30m).jpg", price: 8200 },
+{ brand: "Hikvision", model: "DS-2CD2T43G0-I5 (4MP Bullet IR 50m)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD2T43G0-I5(4MP Bullet IR 50m).jpg", price: 16500 },
+{ brand: "Hikvision", model: "DS-2CD1023G0E-I (2MP IP Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1023G0E-I(2MP IP Bullet).jpg", price: 9500 },
+{ brand: "Hikvision", model: "DS-2CD1043G0-I (4MP Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1043G0-I(4MP Bullet).jpg", price: 15000 },
+{ brand: "Hikvision", model: "DS-2CD1123G0E-I (2MP IP Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1123G0E-I(2MP IP Dome).jpg", price: 9800 },
+{ brand: "Hikvision", model: "DS-2CD1143G0-IUF (4MP Audio Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1143G0-IUF(4MP Audio Dome).jpg", price: 18000 },
+{ brand: "Hikvision", model: "DS-2CD1323G0-IUF (2MP Audio Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1323G0-IUF(2MP Audio Dome).jpg", price: 13500 },
+{ brand: "Hikvision", model: "DS-2CD1343G0-I (4MP Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1343G0-I(4MP Dome).jpg", price: 14500 },
+{ brand: "Hikvision", model: "DS-2CE10DFT-F (Full Color Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE10DFT-F(Full Color Bullet).jpg", price: 12000 },
+{ brand: "Hikvision", model: "DS-2CE16D0T-IRF (2MP Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE16D0T-IRF(2MP Bullet).jpg", price: 7200 },
+{ brand: "Hikvision", model: "DS-2CE16H0T-ITF (4MP Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE16H0T-ITF(4MP Bullet).jpg", price: 11000 },
+{ brand: "Hikvision", model: "DS-2CE56D0T-IRF (2MP Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE56D0T-IRF(2MP Dome).jpg", price: 7000 },
+{ brand: "Hikvision", model: "DS-2CE56H0T-ITPF (4MP Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE56H0T-ITPF(4MP Dome).jpg", price: 10500 },
+{ brand: "Hikvision", model: "DS-2CE76D0T-EXIPF (Full Color Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE76D0T-EXIPF(Full Color Dome).jpg", price: 14000 },
+{ brand: "Hikvision", model: "DS-2DE7A425IW-AEB (DarkFighter PTZ)", category: "surveillance", img: "surveillance/HIKVISION-DS-2DE7A425IW-AEB(DarkFighter PTZ).jpg", price: 198000 },
+{ brand: "Hikvision", model: "DS-2DE2204IW-DE3 (4MP Mini PTZ 4×)", category: "surveillance", img: "surveillance/HIKVISION-DS-2DE2204IW-DE3(4MP Mini PTZ 4×).jpg", price: 42000 },
+{ brand: "Hikvision", model: "DS-2DE5425IW-AE (4MP PTZ 25×)", category: "surveillance", img: "surveillance/HIKVISION-DS-2DE5425IW-AE(4MP PTZ 25×).jpg", price: 120000 },
+{ brand: "Hikvision", model: "DS-3E0105P-E (4-Port PoE)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0105P-E(4-Port PoE).jpg", price: 9000 },
+{ brand: "Hikvision", model: "DS-3E0109P-E (8-Port PoE)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0109P-E(8-Port PoE).jpg", price: 13000 },
+{ brand: "Hikvision", model: "DS-3E0310P-E-M (8-Port Uplink)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0310P-E-M(8-Port-Uplink).jpg", price: 15000 },
+{ brand: "Hikvision", model: "DS-3E0318P-E-M (16-Port PoE)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0318P-E-M(16-Port PoE).jpg", price: 21000 },
+{ brand: "Hikvision", model: "DS-3E0526P-SI (24-Port PoE)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0526P-SI(24-Port PoE).jpg", price: 32000 },
+{ brand: "Hikvision", model: "DS-7104HGHI-K1 (4ch DVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7104HGHI-K1(4ch DVR).jpg", price: 16000 },
+{ brand: "Hikvision", model: "DS-7104NI-Q1-M (4ch NVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7104NI-Q1-M(4ch NVR).jpg", price: 18000 },
+{ brand: "Hikvision", model: "DS-7108HGHI-K1 (8ch DVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7108HGHI-K1(8ch DVR).jpg", price: 19000 },
+{ brand: "Hikvision", model: "DS-7108NI-Q1-M (8ch NVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7108NI-Q1-M(8ch NVR).jpg", price: 22000 },
+{ brand: "Hikvision", model: "DS-7116HGHI-K1 (16ch DVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7116HGHI-K1(16ch DVR).jpg", price: 26000 },
+{ brand: "Hikvision", model: "DS-7208HQHI-K1 (8ch HQ Pro DVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7208HQHI-K1(8ch HQ Pro DVR).jpg", price: 30000 },
+{ brand: "Hikvision", model: "DS-7616NI-K2 (16ch NVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7616NI-K2(16ch NVR).jpg", price: 38000 },
+{ brand: "Hikvision", model: "DS-7732NI-K4 (32ch NVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7732NI-K4(32ch NVR).jpg", price: 62000 },
+{ brand: "Mikrotik", model: "4-Port PoE", category: "surveillance", img: "surveillance/Mikrotik-4-Port-PoE.jpg", price: 10500 },
+{ brand: "Mikrotik", model: "8-Port PoE", category: "surveillance", img: "surveillance/Mikrotik-8-Port-PoE.jpg", price: 14000 },
+{ brand: "Mikrotik", model: "16-Port PoE", category: "surveillance", img: "surveillance/Mikrotik-16-Port-PoE.jpg", price: 24000 },
+{ brand: "Mikrotik", model: "24-Port PoE Rackmount", category: "surveillance", img: "surveillance/Mikrotik-24-Port-PoE-Rackmount.jpg", price: 38000 },
+{ brand: "WD", model: "Purple 1TB Surveillance HDD", category: "surveillance", img: "surveillance/WD-Purple-1TB.jpg", price: 7500 },
+{ brand: "WD", model: "Purple 2TB Surveillance HDD", category: "surveillance", img: "surveillance/WD-Purple-2TB.jpg", price: 11000 },
+{ brand: "WD", model: "Purple 3TB Surveillance HDD", category: "surveillance", img: "surveillance/WD-Purple-3TB.jpg", price: 15000 },
+{ brand: "WD", model: "Purple 4TB Surveillance HDD", category: "surveillance", img: "surveillance/WD-Purple-4TB.jpg", price: 19000 },
+// ✅ SMART CAMERAS
+{ brand: "Imou", name: "Cell Go Solar Camera", category: "smart-cameras", price: 15500, img: "smart-cameras/Imou-Cell-Go-Solar-Camera.jpg" },
+{ brand: "Imou", name: "Cruiser 4G Solar Kit", category: "smart-cameras", price: 18500, img: "smart-cameras/Imou-Cruiser-4G-Solar-Kit.jpg" },
+{ brand: "Hikvision", name: "Solar 4G Camera DS-2XS6A25G0", category: "smart-cameras", price: 32500, img: "smart-cameras/Hikvision-Solar-4G-Camera-DS-2XS6A25G0.jpg" },
+{ brand: "Generic", name: "Generic 4G Solar PTZ Camera", category: "smart-cameras", price: 8500, img: "smart-cameras/Generic-4G-Solar-PTZ-Camera.jpg" },
+{ brand: "Generic", name: "WiFi Solar Camera", category: "smart-cameras", price: 6500, img: "smart-cameras/Generic-WiFi-Solar-Camera.jpg" },
+{ brand: "Eufy", name: "SoloCam S220 Solar", category: "smart-cameras", price: 21500, img: "smart-cameras/Eufy-SoloCam-S220-Solar.jpg" },
+{ brand: "Eufy", name: "SoloCam S230 Solar Spotlight", category: "smart-cameras", price: 26500, img: "smart-cameras/Eufy-SoloCam-S230-Solar-Spotlight.jpg" },
+{ brand: "Eufy", name: "Cam 2C Kit (2 Cam + HomeBase 2)", category: "smart-cameras", price: 45500, img: "smart-cameras/Eufy-Cam-2C-Kit(2Cameras-HomeBase 2).jpg" },
+{ brand: "Eufy", name: "Cam 3 Kit (2 Cam + HomeBase 3)", category: "smart-cameras", price: 82500, img: "smart-cameras/Eufy-Cam-3-Kit(2Cameras-HomeBase 3).jpg" },
+{ brand: "Eufy", name: "Video Doorbell 2K Battery", category: "smart-cameras", price: 22500, img: "smart-cameras/Eufy-Video-Doorbell-2K-Battery.jpg" },
+{ brand: "Eufy", name: "Video Doorbell S330", category: "smart-cameras", price: 35500, img: "smart-cameras/Eufy-Video-Doorbell-S330.jpg" },
+{ brand: "Google", name: "Nest Cam Battery", category: "smart-cameras", price: 29500, img: "smart-cameras/Google-Nest-Cam-Battery.jpg" },
+{ brand: "Google", name: "Nest Cam Wired Indoor", category: "smart-cameras", price: 17500, img: "smart-cameras/Google-Nest-Cam-Wired-Indoor.jpg" },
+{ brand: "Google", name: "Nest Doorbell Battery", category: "smart-cameras", price: 28500, img: "smart-cameras/Google-NestDoorbell-Battery.jpg" },
+{ brand: "Google", name: "Nest Doorbell Wired", category: "smart-cameras", price: 26500, img: "smart-cameras/Google-NestDoorbell-Wired.jpg" },
+{ brand: "TP-Link", name: "Tapo C200", category: "smart-cameras", price: 9000, img: "smart-cameras/TP-Link-Tapo-C200.jpg" },
+{ brand: "TP-Link", name: "Tapo C210", category: "smart-cameras", price: 8500, img: "smart-cameras/TP-Link-Tapo-C210.jpg" },
+{ brand: "TP-Link", name: "Tapo C225", category: "smart-cameras", price: 11500, img: "smart-cameras/TP-Link-Tapo-C225.jpg" },
+{ brand: "Imou", name: "Ranger 2C", category: "smart-cameras", price: 8500, img: "smart-cameras/Imou-Ranger-2C.jpg" },
+{ brand: "Imou", name: "Ranger 2", category: "smart-cameras", price: 9500, img: "smart-cameras/Imou-Ranger-2.jpg" },
+{ brand: "Ezviz", name: "C6N", category: "smart-cameras", price: 7500, img: "smart-cameras/Ezviz-C6N.jpg" },
+{ brand: "Ezviz", name: "C6", category: "smart-cameras", price: 12500, img: "smart-cameras/Ezviz-C6.jpg" },
+{ brand: "Generic", name: "1080p WiFi Nanny Cam", category: "smart-cameras", price: 4500, img: "smart-cameras/Generic-1080p-WiFi-Nanny-Cam.jpg" },
+{ brand: "Generic", name: "360° Lightbulb Camera", category: "smart-cameras", price: 3800, img: "smart-cameras/360°Lightbulb-Camera.jpg" },
+// ✅ ACCESS CONTROLS
+{ brand: "Hikvision", model: "DS-KV8113-WME1", type: "Premium Outdoor Station", price: 22500, category: "access-controls", img: "access-controls/DS-KV8113-WME1(Premium WiFi + PoE Outdoor Station).jpg" },
+{ brand: "Hikvision", model: "DS-KH6320-WTE1", type: "7\" Indoor Monitor", price: 19500, category: "access-controls", img: "access-controls/DS-KH6320-WTE1(7-inch WiFi Indoor Monitor).jpg" },
+{ brand: "Dahua", model: "DHI-KTP02", type: "WiFi Intercom Kit", price: 27000, category: "access-controls", img: "access-controls/DHI-KTP02-Dahua-WiFi-Intercom-Kit.jpg" },
+{ brand: "ZKTeco", model: "MB160", type: "Face + Fingerprint", price: 29500, category: "access-controls", img: "access-controls/ZKTeco-MB160(Face + Fingerprint).jpg" },
+{ brand: "Generic", model: "180kg Magnetic Lock", type: "Magnetic Lock", price: 4500, category: "access-controls", img: "access-controls/180kg-Magnetic-Lock.jpg" },
+// ✅ GENERIC SECURITY SYSTEMS
+{
+brand: "Morel Techs",
+name: "IP Camera Bundle",
+type: "Complete CCTV Kit",
+price: "From KES 45,000",
+category: "security",
+img: "surveillance/HIKVISION-DS-2CD2T43G0-I5(4MP Bullet IR 50m).jpg"
+},
+{
+brand: "Morel Techs",
+name: "NVR + 4 Camera",
+type: "Professional Kit",
+price: 78000,
+category: "security",
+img: "surveillance/HIKVISION-DS-7108NI-Q1-M(8ch NVR).jpg"
+},
+{
+brand: "Morel Techs",
+name: "Smart Alarm Panel",
+type: "Intrusion Detection",
+price: 35000,
+category: "security",
+img: "access-controls/ZKTeco-F22(Fingerprint + WiFi + RFID).jpg"
+}
+];
 
-  <main class="pt-20 pb-16">
-    <div class="container mx-auto px-4">
-      <div class="sr-only">
-        <h1>Buy Hikvision & Dahua CCTV Systems in Kenya</h1>
-        <p>Morel Tech offers professional Hikvision DS-2CD2T43G0-I5, Dahua NVR4104HS-P, access control and smart security cameras at best prices in Nairobi, Nyeri, Mombasa and across Kenya. Free installation consultation.</p>
-      </div>
+function saveCart() {
+  localStorage.setItem('morelCart', JSON.stringify(cart));
+  renderCart();
+  updateCartBadge();
+}
 
-      <div class="flex flex-col lg:flex-row gap-8">
-        <aside class="filter-sidebar" id="filterSidebar">
-          <div class="flex justify-between items-center mb-6">
-            <h2 class="text-xl font-bold">Filters</h2>
-            <button id="closeFilters" class="lg:hidden text-gray-500 hover:text-gray-900">✕</button>
-          </div>
-          <div class="space-y-5">
-            <div>
-              <label class="block font-medium mb-2">Search Model</label>
-              <input type="text" id="modelSearch" placeholder="e.g. DS-2CD, HAC-B1A21..." class="w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-yellow-500">
-            </div>
-            <div>
-              <label class="block font-medium mb-2">Brand</label>
-              <select id="brandFilter" class="w-full p-2.5 border rounded-lg">
-                <option value="">All Brands</option>
-                <option value="Hikvision">Hikvision</option>
-                <option value="Dahua">Dahua</option>
-                <option value="D-Link">D-Link</option>
-                <option value="Mikrotik">Mikrotik</option>
-                <option value="WD">WD Purple</option>
-                <option value="Eufy">Eufy</option>
-                <option value="Imou">Imou</option>
-                <option value="Google">Google Nest</option>
-                <option value="TP-Link">TP-Link</option>
-                <option value="ZKTeco">ZKTeco</option>
-                <option value="Morel Techs">Morel Techs</option>
-                <option value="Generic">Generic</option>
-                <option value="Ezviz">Ezviz</option>
-              </select>
-            </div>
-            <div>
-              <label class="block font-medium mb-2">Type</label>
-              <select id="typeFilter" class="w-full p-2.5 border rounded-lg">
-                <option value="">All Types</option>
-                <option value="surveillance">Surveillance (CCTV)</option>
-                <option value="smart-cameras">Smart Cameras</option>
-                <option value="access-controls">Access Control</option>
-                <option value="security">Security Systems</option>
-              </select>
-            </div>
-          </div>
-        </aside>
+function isPriceNumeric(price) {
+  return typeof price === 'number' && !isNaN(price);
+}
 
+// ✅ FIXED: Accept event for visual feedback
+function addToCart(id, name, price, img = '', event) {
+  if (!isPriceNumeric(price)) {
+    showFeedback('⚠️ Custom quote required for this item.');
+    return;
+  }
+  const existing = cart.find(item => item.id === id);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ id, name, price, quantity: 1, img });
+  }
+  saveCart();
+
+  // ✅ Visual feedback
+  if (event) {
+    const btn = event.target;
+    const original = btn.textContent;
+    btn.textContent = '✓ Added!';
+    setTimeout(() => btn.textContent = original, 1200);
+  }
+
+  showFeedback(`✅ “${name}” added to your quote!`);
+}
+
+function updateQuantity(id, delta) {
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+  item.quantity += delta;
+  if (item.quantity <= 0) {
+    cart = cart.filter(i => i.id !== id);
+  }
+  saveCart();
+}
+
+function updateCartBadge() {
+  const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const badge = document.getElementById('cart-count');
+  if (badge) {
+    badge.textContent = total;
+    badge.classList.toggle('hidden', total === 0);
+  }
+}
+
+function renderCart() {
+  const cartItemsEl = document.getElementById('cartItems');
+  const cartTotalEl = document.getElementById('cartTotal');
+  if (!cartItemsEl || !cartTotalEl) return;
+  if (cart.length === 0) {
+    cartItemsEl.innerHTML = '<p class="text-gray-500">Your quote is empty.</p>';
+    cartTotalEl.textContent = '';
+    return;
+  }
+  let html = '';
+  cart.forEach(item => {
+    const total = (item.price * item.quantity).toLocaleString();
+    const imgSrc = item.img
+      ? (item.img.startsWith('http') ? item.img : `../assets/images/${item.img}`)
+      : '../assets/images/placeholder.jpg';
+    html += `
+      <div class="cart-item">
+        <img src="${imgSrc}" alt="${item.name}">
         <div class="flex-1">
-          <div class="flex justify-between items-center mb-8">
-            <h1 class="text-3xl font-bold text-slate-900">Security & Surveillance</h1>
-            <button class="mobile-filter-trigger px-4 py-2 bg-yellow-600 text-white rounded font-medium" id="openFilters">
-              Filters
-            </button>
+          <h4 class="font-bold text-slate-900">${item.name}</h4>
+          <p class="text-slate-600">KES ${item.price.toLocaleString()}</p>
+          <div class="cart-controls mt-2">
+            <button class="cart-qty-btn" onclick="updateQuantity('${item.id}', -1)">-</button>
+            <span class="cart-qty-display">${item.quantity}</span>
+            <button class="cart-qty-btn" onclick="updateQuantity('${item.id}', 1)">+</button>
+            <button class="ml-2 text-red-600 hover:underline" onclick="removeFromCart('${item.id}')">Remove</button>
           </div>
-          <div id="brandGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Cards generated by JS -->
+        </div>
+        <div class="font-bold text-slate-900">KES ${total}</div>
+      </div>
+    `;
+  });
+  cartItemsEl.innerHTML = html;
+  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  cartTotalEl.textContent = `Total: KES ${total.toLocaleString()}`;
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(item => item.id !== id);
+  saveCart();
+}
+
+function showFeedback(message) {
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  setTimeout(() => {
+    if (toast.parentNode) toast.parentNode.removeChild(toast);
+  }, 2500);
+}
+
+function checkoutViaWhatsApp() {
+  if (cart.length === 0) {
+    alert('📭 Your quote is empty!');
+    return;
+  }
+  const businessNumber = '254791864441';
+  let message = "Hi Morel Tech! I'd like a quote for:\n";
+  cart.forEach(item => {
+    message += `• ${item.name} (KES ${item.price.toLocaleString()}) ×${item.quantity}\n`;
+  });
+  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  message += `\nEstimated Total: KES ${total.toLocaleString()}\nSent from your website.`;
+  const url = `https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+}
+
+// 📱 UI CONTROLLERS
+const brandGrid = document.getElementById('brandGrid');
+const modelSearch = document.getElementById('modelSearch');
+const brandFilter = document.getElementById('brandFilter');
+const typeFilter = document.getElementById('typeFilter');
+const openFilters = document.getElementById('openFilters');
+const closeFilters = document.getElementById('closeFilters');
+const filterOverlay = document.getElementById('filterOverlay');
+const detailModal = document.getElementById('detailModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalContent = document.getElementById('modalContent');
+const closeModalBtn = document.getElementById('closeModalBtn');
+const cartModal = document.getElementById('cartModal');
+const closeCartModal = document.getElementById('closeCartModal');
+const cartBtn = document.getElementById('cart-btn');
+const whatsappCheckoutBtn = document.getElementById('whatsappCheckoutBtn');
+
+function closeModal(modalEl) {
+  modalEl.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+closeModalBtn.addEventListener('click', () => closeModal(detailModal));
+closeCartModal.addEventListener('click', () => closeModal(cartModal));
+
+cartBtn.addEventListener('click', () => {
+  cartModal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  renderCart();
+});
+
+whatsappCheckoutBtn.addEventListener('click', checkoutViaWhatsApp);
+
+// Lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+function openLightbox(src) {
+  lightboxImg.src = src;
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (detailModal.classList.contains('active')) closeModal(detailModal);
+    if (cartModal.classList.contains('active')) closeModal(cartModal);
+    if (lightbox.classList.contains('active')) closeLightbox();
+  }
+});
+
+// 📦 GROUP PRODUCTS BY BRAND
+const brands = {};
+securityProducts.forEach(item => {
+  if (!brands[item.brand]) brands[item.brand] = [];
+  brands[item.brand].push(item);
+});
+
+function getDisplayName(item) {
+  return item.model || item.name || `${item.brand} Security Device`;
+}
+
+function renderBrandCards(filteredData = securityProducts) {
+  const tempBrands = {};
+  filteredData.forEach(item => {
+    if (!tempBrands[item.brand]) tempBrands[item.brand] = [];
+    tempBrands[item.brand].push(item);
+  });
+  let html = '';
+  Object.entries(tempBrands).forEach(([brand, items]) => {
+    const images = [...new Set(items.map(i => i.img))].slice(0, 3);
+    const sample = items[0];
+    const allTypes = [...new Set(items.map(i => i.category))].map(t => {
+      if (t === 'surveillance') return 'CCTV';
+      if (t === 'smart-cameras') return 'Smart Cameras';
+      if (t === 'access-controls') return 'Access Control';
+      if (t === 'security') return 'Systems';
+      return t;
+    }).join(', ');
+    html += `
+      <div class="brand-card">
+        <div class="p-5">
+          <h3 class="text-xl font-bold text-slate-900">${brand}</h3>
+          <p class="text-slate-600 text-sm mt-1">${items.length} models • ${allTypes}</p>
+        </div>
+        <div class="px-5 pb-4">
+          <div class="flex space-x-2 overflow-x-auto py-2">
+            ${images.map(img => {
+              const displayName = getDisplayName(items.find(i => i.img === img) || sample);
+              return `
+                <img src="../assets/images/${img}"
+                     class="product-image"
+                     loading="lazy"
+                     alt="${brand} ${displayName}"
+                     onclick="openLightbox('../assets/images/${img}')">
+              `;
+            }).join('')}
+          </div>
+          <ul class="specs-list mt-3 space-y-1">
+            <li>• ${getDisplayName(sample)}</li>
+            <li>• From KES ${Math.min(...items.map(i => isPriceNumeric(i.price) ? i.price : 999999)).toLocaleString()}</li>
+          </ul>
+          <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
+                  onclick="showFullDetails('${brand}', document.getElementById('typeFilter').value)">
+            View All Models
+          </button>
+        </div>
+      </div>
+    `;
+  });
+  brandGrid.innerHTML = html;
+}
+
+function showFullDetails(brand, categoryFilter) {
+  let items = brands[brand];
+  if (categoryFilter) items = items.filter(item => item.category === categoryFilter);
+  if (items.length === 0) {
+    showFeedback("No products found.");
+    return;
+  }
+  let typeName = categoryFilter
+    ? categoryFilter
+        .replace('surveillance', 'Surveillance')
+        .replace('smart-cameras', 'Smart Cameras')
+        .replace('access-controls', 'Access Control')
+        .replace('security', 'Security Systems')
+    : 'Security Products';
+  let content = `<h3 class="text-xl font-semibold mb-4">All ${brand} ${typeName}</h3><div class="space-y-4">`;
+  items.forEach(item => {
+    const displayName = getDisplayName(item);
+    const meta = item.category === 'surveillance' ? (item.type || 'CCTV Camera') :
+                  item.category === 'smart-cameras' ? 'Smart Camera' :
+                  item.category === 'access-controls' ? 'Access Control' :
+                  item.type || 'Security System';
+    const priceDisplay = isPriceNumeric(item.price)
+      ? `KES ${item.price.toLocaleString()}`
+      : item.price;
+
+    // ✅ UNIQUE ID with sanitization
+    const fullId = `${item.brand}-${(item.model || item.name || 'default')}`
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-');
+
+    const addButton = isPriceNumeric(item.price)
+      ? `<button class="add-to-cart-btn mt-2 w-full py-1 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
+                 onclick="addToCart('${fullId}', '${displayName.replace(/'/g, "\\'")}', ${item.price}, '${item.img}', event)">
+           Add to Cart
+         </button>`
+      : `<div class="mt-2 text-gray-500 text-sm">Contact for pricing</div>`;
+
+    content += `
+      <div class="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition">
+        <div class="flex gap-4">
+          <img
+            loading="lazy"
+            src="../assets/images/${item.img}"
+            alt="${displayName}"
+            class="w-24 h-24 object-cover rounded cursor-pointer"
+            onclick="openLightbox('../assets/images/${item.img}')"
+          >
+          <div class="flex-1">
+            <h4 class="font-bold text-slate-900">${displayName}</h4>
+            <p class="text-slate-600 text-sm">${meta}</p>
+            <p class="font-bold text-lg text-yellow-600 mt-2">${priceDisplay}</p>
+            ${addButton}
           </div>
         </div>
       </div>
-    </div>
-  </main>
+    `;
+  });
+  content += `</div>`;
+  modalTitle.textContent = brand + (categoryFilter ? ` – ${typeName}` : ' Security');
+  modalContent.innerHTML = content;
+  detailModal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
 
-  <!-- DETAIL MODAL -->
-  <div id="detailModal" class="modal" role="dialog" aria-modal="true">
-    <div class="modal-content">
-      <div class="p-6">
-        <div class="flex justify-between items-start">
-          <h2 id="modalTitle" class="text-2xl font-bold text-slate-900"></h2>
-          <button id="closeModalBtn" class="text-gray-500 hover:text-gray-900 text-2xl focus:outline-none">&times;</button>
-        </div>
-        <div id="modalContent" class="mt-6"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CART MODAL -->
-  <div id="cartModal" class="modal" role="dialog" aria-modal="true">
-    <div class="modal-content">
-      <div class="p-6">
-        <div class="flex justify-between items-start">
-          <h2 class="text-2xl font-bold text-slate-900">Your Quote</h2>
-          <button id="closeCartModal" class="text-gray-500 hover:text-gray-900 text-2xl focus:outline-none">&times;</button>
-        </div>
-        <div id="cartItems" class="mt-6">
-          <!-- Cart items rendered here -->
-        </div>
-        <div id="cartTotal" class="mt-4 font-bold text-lg text-slate-900"></div>
-        <button id="whatsappCheckoutBtn" class="mt-6 w-full py-2.5 bg-green-500 hover:bg-green-600 text-white rounded font-medium focus-ring">
-          Send Quote via WhatsApp
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- LIGHTBOX -->
-  <div id="lightbox" class="lightbox">
-    <img id="lightbox-img" />
-  </div>
-
-  <!-- FLOATING WHATSAPP BUTTON -->
-  <div class="fixed bottom-4 right-4 z-[999]">
-    <button
-      id="cart-btn"
-      class="bg-yellow-500 hover:bg-yellow-600 text-white p-4 rounded-full shadow-lg flex items-center relative"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-      <span class="ml-2 font-bold hidden sm:inline"> Cart</span>
-      <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
-    </button>
-  </div>
-
-  <!-- OVERLAY -->
-  <div class="overlay" id="filterOverlay"></div>
-
-  <script>
-    // 🛒 CART MANAGEMENT
-    let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
-
-    const securityProducts = [
-      // ✅ SURVEILLANCE (CCTV)
-      { brand: "D-Link", model: "DES-1005P (4-Port PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1005P(4-Port PoE).jpg", price: 8500 },
-      { brand: "D-Link", model: "DES-1008P (8-Port PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1008P(8-Port PoE).jpg", price: 12500 },
-      { brand: "D-Link", model: "DES-1210-10P (8-Port Smart PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1210-10P(8-Port Smart PoE).jpg", price: 16000 },
-      { brand: "D-Link", model: "DES-1210-28P (24-Port PoE)", category: "surveillance", img: "surveillance/D-LINK-DES-1210-28P(24-Port PoE).jpg", price: 24000 },
-      { brand: "D-Link", model: "16-Port Smart PoE Switch", category: "surveillance", img: "surveillance/D-LINK-16-Port(Smart PoE).jpg", price: 22000 },
-      { brand: "Dahua", model: "HAC-B1A21 (2MP Bullet)", category: "surveillance", img: "surveillance/DAHUA-HAC-B1A21(2MP Bullet).jpg", price: 7500 },
-      { brand: "Dahua", model: "HAC-HDW1400EMP", category: "surveillance", img: "surveillance/DAHUA-HAC-HDW1400EMP.jpg", price: 11000 },
-      { brand: "Dahua", model: "HAC-HFW1400TLP", category: "surveillance", img: "surveillance/DAHUA-HAC-HFW1400TLP.jpg", price: 12500 },
-      { brand: "Dahua", model: "HAC-HFW1409TP-A-LED (Full Color)", category: "surveillance", img: "surveillance/DAHUA-HAC-HFW1409TP-A-LED(Full Color).jpg", price: 18000 },
-      { brand: "Dahua", model: "HAC-T1A21 (2MP Dome)", category: "surveillance", img: "surveillance/DAHUA-HAC-T1A21(2MP Dome).jpg", price: 7200 },
-      { brand: "Dahua", model: "IPC-HDW1230T1-S4", category: "surveillance", img: "surveillance/DAHUA-IPC-HDW1230T1-S4.jpg", price: 13000 },
-      { brand: "Dahua", model: "IPC-HDW1431S", category: "surveillance", img: "surveillance/DAHUA-IPC-HDW1431S.jpg", price: 16000 },
-      { brand: "Dahua", model: "IPC-HDW5442TM-AS (4MP Full Color)", category: "surveillance", img: "surveillance/DAHUA-IPC-HDW5442TM-AS(4MP Full Color).jpg", price: 29000 },
-      { brand: "Dahua", model: "IPC-HFW1230S", category: "surveillance", img: "surveillance/DAHUA-IPC-HFW1230S.jpg", price: 12500 },
-      { brand: "Dahua", model: "IPC-HFW1431S", category: "surveillance", img: "surveillance/DAHUA-IPC-HFW1431S.jpg", price: 15500 },
-      { brand: "Dahua", model: "IPC-HFW2231TP-AS (Full Color)", category: "surveillance", img: "surveillance/DAHUA-IPC-HFW2231TP-AS(Full Color).jpg", price: 22000 },
-      { brand: "Dahua", model: "IPC-HFW2431T-AS (Starlight)", category: "surveillance", img: "surveillance/DAHUA-IPC-HFW2431T-AS(Starlight).jpg", price: 26000 },
-      { brand: "Dahua", model: "NVR4104HS-P-4KS2 (4ch PoE)", category: "surveillance", img: "surveillance/DAHUA-NVR4104HS-P-4KS2(4ch PoE).jpg", price: 28000 },
-      { brand: "Dahua", model: "NVR4108HS-8P (8ch PoE)", category: "surveillance", img: "surveillance/DAHUA-NVR4108HS-8P(8ch PoE).jpg", price: 36000 },
-      { brand: "Dahua", model: "NVR4216-4KS2 (16ch NVR)", category: "surveillance", img: "surveillance/DAHUA-NVR4216-4KS2(16ch NVR).jpg", price: 52000 },
-      { brand: "Dahua", model: "SD6CE445XA-HNR (45× PTZ)", category: "surveillance", img: "surveillance/DAHUA-SD6CE445XA-HNR(45× PTZ).jpg", price: 145000 },
-      { brand: "Dahua", model: "SD22204UE-GN (2MP Mini PTZ)", category: "surveillance", img: "surveillance/DAHUA-SD22204UE-GN(2MP Mini PTZ).jpg", price: 38000 },
-      { brand: "Dahua", model: "SD49225XA-HNR (25× PTZ)", category: "surveillance", img: "surveillance/DAHUA-SD49225XA-HNR(25× PTZ).jpg", price: 95000 },
-      { brand: "Dahua", model: "XVR1B04H (4ch XVR)", category: "surveillance", img: "surveillance/DAHUA-XVR1B04H(4ch XVR).jpg", price: 14000 },
-      { brand: "Dahua", model: "XVR1B08H (8ch XVR)", category: "surveillance", img: "surveillance/DAHUA-XVR1B08H(8ch XVR).jpg", price: 19000 },
-      { brand: "Dahua", model: "XVR1B16H (16ch XVR)", category: "surveillance", img: "surveillance/DAHUA-XVR1B16H(16ch XVR).jpg", price: 28000 },
-      { brand: "Hikvision", model: "DS-2CD1T23G0-I (2MP Bullet IR 30m)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1T23G0-I(2MP Bullet IR 30m).jpg", price: 8200 },
-      { brand: "Hikvision", model: "DS-2CD2T43G0-I5 (4MP Bullet IR 50m)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD2T43G0-I5(4MP Bullet IR 50m).jpg", price: 16500 },
-      { brand: "Hikvision", model: "DS-2CD1023G0E-I (2MP IP Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1023G0E-I(2MP IP Bullet).jpg", price: 9500 },
-      { brand: "Hikvision", model: "DS-2CD1043G0-I (4MP Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1043G0-I(4MP Bullet).jpg", price: 15000 },
-      { brand: "Hikvision", model: "DS-2CD1123G0E-I (2MP IP Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1123G0E-I(2MP IP Dome).jpg", price: 9800 },
-      { brand: "Hikvision", model: "DS-2CD1143G0-IUF (4MP Audio Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1143G0-IUF(4MP Audio Dome).jpg", price: 18000 },
-      { brand: "Hikvision", model: "DS-2CD1323G0-IUF (2MP Audio Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1323G0-IUF(2MP Audio Dome).jpg", price: 13500 },
-      { brand: "Hikvision", model: "DS-2CD1343G0-I (4MP Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CD1343G0-I(4MP Dome).jpg", price: 14500 },
-      { brand: "Hikvision", model: "DS-2CE10DFT-F (Full Color Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE10DFT-F(Full Color Bullet).jpg", price: 12000 },
-      { brand: "Hikvision", model: "DS-2CE16D0T-IRF (2MP Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE16D0T-IRF(2MP Bullet).jpg", price: 7200 },
-      { brand: "Hikvision", model: "DS-2CE16H0T-ITF (4MP Bullet)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE16H0T-ITF(4MP Bullet).jpg", price: 11000 },
-      { brand: "Hikvision", model: "DS-2CE56D0T-IRF (2MP Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE56D0T-IRF(2MP Dome).jpg", price: 7000 },
-      { brand: "Hikvision", model: "DS-2CE56H0T-ITPF (4MP Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE56H0T-ITPF(4MP Dome).jpg", price: 10500 },
-      { brand: "Hikvision", model: "DS-2CE76D0T-EXIPF (Full Color Dome)", category: "surveillance", img: "surveillance/HIKVISION-DS-2CE76D0T-EXIPF(Full Color Dome).jpg", price: 14000 },
-      { brand: "Hikvision", model: "DS-2DE7A425IW-AEB (DarkFighter PTZ)", category: "surveillance", img: "surveillance/HIKVISION-DS-2DE7A425IW-AEB(DarkFighter PTZ).jpg", price: 198000 },
-      { brand: "Hikvision", model: "DS-2DE2204IW-DE3 (4MP Mini PTZ 4×)", category: "surveillance", img: "surveillance/HIKVISION-DS-2DE2204IW-DE3(4MP Mini PTZ 4×).jpg", price: 42000 },
-      { brand: "Hikvision", model: "DS-2DE5425IW-AE (4MP PTZ 25×)", category: "surveillance", img: "surveillance/HIKVISION-DS-2DE5425IW-AE(4MP PTZ 25×).jpg", price: 120000 },
-      { brand: "Hikvision", model: "DS-3E0105P-E (4-Port PoE)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0105P-E(4-Port PoE).jpg", price: 9000 },
-      { brand: "Hikvision", model: "DS-3E0109P-E (8-Port PoE)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0109P-E(8-Port PoE).jpg", price: 13000 },
-      { brand: "Hikvision", model: "DS-3E0310P-E-M (8-Port Uplink)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0310P-E-M(8-Port-Uplink).jpg", price: 15000 },
-      { brand: "Hikvision", model: "DS-3E0318P-E-M (16-Port PoE)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0318P-E-M(16-Port PoE).jpg", price: 21000 },
-      { brand: "Hikvision", model: "DS-3E0526P-SI (24-Port PoE)", category: "surveillance", img: "surveillance/HIKVISION-DS-3E0526P-SI(24-Port PoE).jpg", price: 32000 },
-      { brand: "Hikvision", model: "DS-7104HGHI-K1 (4ch DVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7104HGHI-K1(4ch DVR).jpg", price: 16000 },
-      { brand: "Hikvision", model: "DS-7104NI-Q1-M (4ch NVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7104NI-Q1-M(4ch NVR).jpg", price: 18000 },
-      { brand: "Hikvision", model: "DS-7108HGHI-K1 (8ch DVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7108HGHI-K1(8ch DVR).jpg", price: 19000 },
-      { brand: "Hikvision", model: "DS-7108NI-Q1-M (8ch NVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7108NI-Q1-M(8ch NVR).jpg", price: 22000 },
-      { brand: "Hikvision", model: "DS-7116HGHI-K1 (16ch DVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7116HGHI-K1(16ch DVR).jpg", price: 26000 },
-      { brand: "Hikvision", model: "DS-7208HQHI-K1 (8ch HQ Pro DVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7208HQHI-K1(8ch HQ Pro DVR).jpg", price: 30000 },
-      { brand: "Hikvision", model: "DS-7616NI-K2 (16ch NVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7616NI-K2(16ch NVR).jpg", price: 38000 },
-      { brand: "Hikvision", model: "DS-7732NI-K4 (32ch NVR)", category: "surveillance", img: "surveillance/HIKVISION-DS-7732NI-K4(32ch NVR).jpg", price: 62000 },
-      { brand: "Mikrotik", model: "4-Port PoE", category: "surveillance", img: "surveillance/Mikrotik-4-Port-PoE.jpg", price: 10500 },
-      { brand: "Mikrotik", model: "8-Port PoE", category: "surveillance", img: "surveillance/Mikrotik-8-Port-PoE.jpg", price: 14000 },
-      { brand: "Mikrotik", model: "16-Port PoE", category: "surveillance", img: "surveillance/Mikrotik-16-Port-PoE.jpg", price: 24000 },
-      { brand: "Mikrotik", model: "24-Port PoE Rackmount", category: "surveillance", img: "surveillance/Mikrotik-24-Port-PoE-Rackmount.jpg", price: 38000 },
-      { brand: "WD", model: "Purple 1TB Surveillance HDD", category: "surveillance", img: "surveillance/WD-Purple-1TB.jpg", price: 7500 },
-      { brand: "WD", model: "Purple 2TB Surveillance HDD", category: "surveillance", img: "surveillance/WD-Purple-2TB.jpg", price: 11000 },
-      { brand: "WD", model: "Purple 3TB Surveillance HDD", category: "surveillance", img: "surveillance/WD-Purple-3TB.jpg", price: 15000 },
-      { brand: "WD", model: "Purple 4TB Surveillance HDD", category: "surveillance", img: "surveillance/WD-Purple-4TB.jpg", price: 19000 },
-
-      // ✅ SMART CAMERAS
-      { brand: "Imou", name: "Cell Go Solar Camera", category: "smart-cameras", price: 15500, img: "smart-cameras/Imou-Cell-Go-Solar-Camera.jpg" },
-      { brand: "Imou", name: "Cruiser 4G Solar Kit", category: "smart-cameras", price: 18500, img: "smart-cameras/Imou-Cruiser-4G-Solar-Kit.jpg" },
-      { brand: "Hikvision", name: "Solar 4G Camera DS-2XS6A25G0", category: "smart-cameras", price: 32500, img: "smart-cameras/Hikvision-Solar-4G-Camera-DS-2XS6A25G0.jpg" },
-      { brand: "Generic", name: "Generic 4G Solar PTZ Camera", category: "smart-cameras", price: 8500, img: "smart-cameras/Generic-4G-Solar-PTZ-Camera.jpg" },
-      { brand: "Generic", name: "WiFi Solar Camera", category: "smart-cameras", price: 6500, img: "smart-cameras/Generic-WiFi-Solar-Camera.jpg" },
-      { brand: "Eufy", name: "SoloCam S220 Solar", category: "smart-cameras", price: 21500, img: "smart-cameras/Eufy-SoloCam-S220-Solar.jpg" },
-      { brand: "Eufy", name: "SoloCam S230 Solar Spotlight", category: "smart-cameras", price: 26500, img: "smart-cameras/Eufy-SoloCam-S230-Solar-Spotlight.jpg" },
-      { brand: "Eufy", name: "Cam 2C Kit (2 Cam + HomeBase 2)", category: "smart-cameras", price: 45500, img: "smart-cameras/Eufy-Cam-2C-Kit(2Cameras-HomeBase 2).jpg" },
-      { brand: "Eufy", name: "Cam 3 Kit (2 Cam + HomeBase 3)", category: "smart-cameras", price: 82500, img: "smart-cameras/Eufy-Cam-3-Kit(2Cameras-HomeBase 3).jpg" },
-      { brand: "Eufy", name: "Video Doorbell 2K Battery", category: "smart-cameras", price: 22500, img: "smart-cameras/Eufy-Video-Doorbell-2K-Battery.jpg" },
-      { brand: "Eufy", name: "Video Doorbell S330", category: "smart-cameras", price: 35500, img: "smart-cameras/Eufy-Video-Doorbell-S330.jpg" },
-      { brand: "Google", name: "Nest Cam Battery", category: "smart-cameras", price: 29500, img: "smart-cameras/Google-Nest-Cam-Battery.jpg" },
-      { brand: "Google", name: "Nest Cam Wired Indoor", category: "smart-cameras", price: 17500, img: "smart-cameras/Google-Nest-Cam-Wired-Indoor.jpg" },
-      { brand: "Google", name: "Nest Doorbell Battery", category: "smart-cameras", price: 28500, img: "smart-cameras/Google-NestDoorbell-Battery.jpg" },
-      { brand: "Google", name: "Nest Doorbell Wired", category: "smart-cameras", price: 26500, img: "smart-cameras/Google-NestDoorbell-Wired.jpg" },
-      { brand: "TP-Link", name: "Tapo C200", category: "smart-cameras", price: 9000, img: "smart-cameras/TP-Link-Tapo-C200.jpg" },
-      { brand: "TP-Link", name: "Tapo C210", category: "smart-cameras", price: 8500, img: "smart-cameras/TP-Link-Tapo-C210.jpg" },
-      { brand: "TP-Link", name: "Tapo C225", category: "smart-cameras", price: 11500, img: "smart-cameras/TP-Link-Tapo-C225.jpg" },
-      { brand: "Imou", name: "Ranger 2C", category: "smart-cameras", price: 8500, img: "smart-cameras/Imou-Ranger-2C.jpg" },
-      { brand: "Imou", name: "Ranger 2", category: "smart-cameras", price: 9500, img: "smart-cameras/Imou-Ranger-2.jpg" },
-      { brand: "Ezviz", name: "C6N", category: "smart-cameras", price: 7500, img: "smart-cameras/Ezviz-C6N.jpg" },
-      { brand: "Ezviz", name: "C6", category: "smart-cameras", price: 12500, img: "smart-cameras/Ezviz-C6.jpg" },
-      { brand: "Generic", name: "1080p WiFi Nanny Cam", category: "smart-cameras", price: 4500, img: "smart-cameras/Generic-1080p-WiFi-Nanny-Cam.jpg" },
-      { brand: "Generic", name: "360° Lightbulb Camera", category: "smart-cameras", price: 3800, img: "smart-cameras/360°Lightbulb-Camera.jpg" },
-
-      // ✅ ACCESS CONTROLS
-      { brand: "Hikvision", model: "DS-KV8113-WME1", type: "Premium Outdoor Station", price: 22500, category: "access-controls", img: "access-controls/DS-KV8113-WME1(Premium WiFi + PoE Outdoor Station).jpg" },
-      { brand: "Hikvision", model: "DS-KH6320-WTE1", type: "7\" Indoor Monitor", price: 19500, category: "access-controls", img: "access-controls/DS-KH6320-WTE1(7-inch WiFi Indoor Monitor).jpg" },
-      { brand: "Dahua", model: "DHI-KTP02", type: "WiFi Intercom Kit", price: 27000, category: "access-controls", img: "access-controls/DHI-KTP02-Dahua-WiFi-Intercom-Kit.jpg" },
-      { brand: "ZKTeco", model: "MB160", type: "Face + Fingerprint", price: 29500, category: "access-controls", img: "access-controls/ZKTeco-MB160(Face + Fingerprint).jpg" },
-      { brand: "Generic", model: "180kg Magnetic Lock", type: "Magnetic Lock", price: 4500, category: "access-controls", img: "access-controls/180kg-Magnetic-Lock.jpg" },
-
-      // ✅ GENERIC SECURITY SYSTEMS
-      {
-        brand: "Morel Techs",
-        name: "IP Camera Bundle",
-        type: "Complete CCTV Kit",
-        price: "From KES 45,000",
-        category: "security",
-        img: "surveillance/HIKVISION-DS-2CD2T43G0-I5(4MP Bullet IR 50m).jpg"
-      },
-      {
-        brand: "Morel Techs",
-        name: "NVR + 4 Camera",
-        type: "Professional Kit",
-        price: 78000,
-        category: "security",
-        img: "surveillance/HIKVISION-DS-7108NI-Q1-M(8ch NVR).jpg"
-      },
-      {
-        brand: "Morel Techs",
-        name: "Smart Alarm Panel",
-        type: "Intrusion Detection",
-        price: 35000,
-        category: "security",
-        img: "access-controls/ZKTeco-F22(Fingerprint + WiFi + RFID).jpg"
-      }
-    ];
-
-    function saveCart() {
-      localStorage.setItem('morelCart', JSON.stringify(cart));
-      renderCart();
-      updateCartBadge();
+function applyFilters() {
+  const searchTerm = modelSearch.value.toLowerCase().trim();
+  const brandSel = brandFilter.value;
+  const typeSel = typeFilter.value;
+  const filtered = securityProducts.filter(item => {
+    if (brandSel && item.brand !== brandSel) return false;
+    if (typeSel && item.category !== typeSel) return false;
+    if (searchTerm) {
+      const text = [item.name, item.brand, item.model, item.type].filter(Boolean).join(' ').toLowerCase();
+      return text.includes(searchTerm);
     }
+    return true;
+  });
+  renderBrandCards(filtered);
+}
 
-    function isPriceNumeric(price) {
-      return typeof price === 'number' && !isNaN(price);
-    }
+[modelSearch, brandFilter, typeFilter].forEach(el => el.addEventListener('input', applyFilters));
 
-    function addToCart(id, name, price, img = '') {
-      if (!isPriceNumeric(price)) {
-        showFeedback('⚠️ Custom quote required for this item.');
-        return;
-      }
-      const existing = cart.find(item => item.id === id);
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        cart.push({ id, name, price, quantity: 1, img });
-      }
-      saveCart();
-      showFeedback(`✅ “${name}” added to your quote!`);
-    }
+// Mobile filters
+openFilters.addEventListener('click', () => {
+  document.getElementById('filterSidebar').classList.add('active');
+  filterOverlay.classList.add('active');
+});
 
-    function updateQuantity(id, delta) {
-      const item = cart.find(i => i.id === id);
-      if (!item) return;
-      item.quantity += delta;
-      if (item.quantity <= 0) {
-        cart = cart.filter(i => i.id !== id);
-      }
-      saveCart();
-    }
+function closeFiltersHandler() {
+  document.getElementById('filterSidebar').classList.remove('active');
+  filterOverlay.classList.remove('active');
+}
 
-    function updateCartBadge() {
-      const total = cart.reduce((sum, item) => sum + item.quantity, 0);
-      const badge = document.getElementById('cart-count');
-      if (badge) {
-        badge.textContent = total;
-        badge.classList.toggle('hidden', total === 0);
-      }
-    }
+closeFilters.addEventListener('click', closeFiltersHandler);
+filterOverlay.addEventListener('click', closeFiltersHandler);
 
-    function renderCart() {
-      const cartItemsEl = document.getElementById('cartItems');
-      const cartTotalEl = document.getElementById('cartTotal');
-      if (!cartItemsEl || !cartTotalEl) return;
+// Initialize
+renderBrandCards();
+updateCartBadge();
 
-      if (cart.length === 0) {
-        cartItemsEl.innerHTML = '<p class="text-gray-500">Your quote is empty.</p>';
-        cartTotalEl.textContent = '';
-        return;
-      }
-
-      let html = '';
-      cart.forEach(item => {
-        const total = (item.price * item.quantity).toLocaleString();
-        const imgSrc = item.img
-          ? (item.img.startsWith('http') ? item.img : `../assets/images/${item.img}`)
-          : '../assets/images/placeholder.jpg';
-        html += `
-          <div class="cart-item">
-            <img src="${imgSrc}" alt="${item.name}">
-            <div class="flex-1">
-              <h4 class="font-bold text-slate-900">${item.name}</h4>
-              <p class="text-slate-600">KES ${item.price.toLocaleString()}</p>
-              <div class="cart-controls mt-2">
-                <button class="cart-qty-btn" onclick="updateQuantity('${item.id}', -1)">-</button>
-                <span class="cart-qty-display">${item.quantity}</span>
-                <button class="cart-qty-btn" onclick="updateQuantity('${item.id}', 1)">+</button>
-                <button class="ml-2 text-red-600 hover:underline" onclick="removeFromCart('${item.id}')">Remove</button>
-              </div>
-            </div>
-            <div class="font-bold text-slate-900">KES ${total}</div>
-          </div>
-        `;
-      });
-      cartItemsEl.innerHTML = html;
-      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-      cartTotalEl.textContent = `Total: KES ${total.toLocaleString()}`;
-    }
-
-    function removeFromCart(id) {
-      cart = cart.filter(item => item.id !== id);
-      saveCart();
-    }
-
-    function showFeedback(message) {
-      const toast = document.createElement('div');
-      toast.className = 'toast';
-      toast.textContent = message;
-      document.body.appendChild(toast);
-      setTimeout(() => {
-        if (toast.parentNode) toast.parentNode.removeChild(toast);
-      }, 2500);
-    }
-
-    function checkoutViaWhatsApp() {
-      if (cart.length === 0) {
-        alert('📭 Your quote is empty!');
-        return;
-      }
-      const businessNumber = '254791864441';
-      let message = "Hi Morel Tech! I'd like a quote for:\n";
-      cart.forEach(item => {
-        message += `• ${item.name} (KES ${item.price.toLocaleString()}) ×${item.quantity}\n`;
-      });
-      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-      message += `\nEstimated Total: KES ${total.toLocaleString()}\nSent from your website.`;
-      const url = `https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`;
-      window.open(url, '_blank');
-    }
-
-    // 📱 UI CONTROLLERS
-    const brandGrid = document.getElementById('brandGrid');
-    const modelSearch = document.getElementById('modelSearch');
-    const brandFilter = document.getElementById('brandFilter');
-    const typeFilter = document.getElementById('typeFilter');
-    const openFilters = document.getElementById('openFilters');
-    const closeFilters = document.getElementById('closeFilters');
-    const filterOverlay = document.getElementById('filterOverlay');
-    const detailModal = document.getElementById('detailModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalContent = document.getElementById('modalContent');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const cartModal = document.getElementById('cartModal');
-    const closeCartModal = document.getElementById('closeCartModal');
-    const cartBtn = document.getElementById('cart-btn');
-    const whatsappCheckoutBtn = document.getElementById('whatsappCheckoutBtn');
-
-    function closeModal(modalEl) {
-      modalEl.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    closeModalBtn.addEventListener('click', () => closeModal(detailModal));
-    closeCartModal.addEventListener('click', () => closeModal(cartModal));
-    cartBtn.addEventListener('click', () => {
-      cartModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      renderCart();
-    });
-    whatsappCheckoutBtn.addEventListener('click', checkoutViaWhatsApp);
-
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-
-    function openLightbox(src) {
-      lightboxImg.src = src;
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (detailModal.classList.contains('active')) closeModal(detailModal);
-        if (cartModal.classList.contains('active')) closeModal(cartModal);
-        if (lightbox.classList.contains('active')) closeLightbox();
-      }
-    });
-
-    // 📦 GROUP PRODUCTS BY BRAND
-    const brands = {};
-    securityProducts.forEach(item => {
-      if (!brands[item.brand]) brands[item.brand] = [];
-      brands[item.brand].push(item);
-    });
-
-    function getDisplayName(item) {
-      return item.model || item.name || `${item.brand} Security Device`;
-    }
-
-    function renderBrandCards(filteredData = securityProducts) {
-      const tempBrands = {};
-      filteredData.forEach(item => {
-        if (!tempBrands[item.brand]) tempBrands[item.brand] = [];
-        tempBrands[item.brand].push(item);
-      });
-
-      let html = '';
-      Object.entries(tempBrands).forEach(([brand, items]) => {
-        const images = [...new Set(items.map(i => i.img))].slice(0, 3);
-        const sample = items[0];
-        const allTypes = [...new Set(items.map(i => i.category))].map(t => {
-          if (t === 'surveillance') return 'CCTV';
-          if (t === 'smart-cameras') return 'Smart Cameras';
-          if (t === 'access-controls') return 'Access Control';
-          if (t === 'security') return 'Systems';
-          return t;
-        }).join(', ');
-
-        html += `
-          <div class="brand-card">
-            <div class="p-5">
-              <h3 class="text-xl font-bold text-slate-900">${brand}</h3>
-              <p class="text-slate-600 text-sm mt-1">${items.length} models • ${allTypes}</p>
-            </div>
-            <div class="px-5 pb-4">
-              <div class="flex space-x-2 overflow-x-auto py-2">
-                ${images.map(img => {
-                  const displayName = getDisplayName(items.find(i => i.img === img) || sample);
-                  return `
-                    <img src="../assets/images/${img}"
-                      class="product-image"
-                      loading="lazy"
-                      alt="${brand} ${displayName}"
-                      onclick="openLightbox('../assets/images/${img}')">
-                  `;
-                }).join('')}
-              </div>
-              <ul class="specs-list mt-3 space-y-1">
-                <li>• ${getDisplayName(sample)}</li>
-                <li>• From KES ${Math.min(...items.map(i => isPriceNumeric(i.price) ? i.price : 999999)).toLocaleString()}</li>
-              </ul>
-              <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
-                onclick="showFullDetails('${brand}', document.getElementById('typeFilter').value)">
-                View All Models
-              </button>
-            </div>
-          </div>
-        `;
-      });
-      brandGrid.innerHTML = html;
-    }
-
-    function showFullDetails(brand, categoryFilter) {
-      let items = brands[brand];
-      if (categoryFilter) items = items.filter(item => item.category === categoryFilter);
-      if (items.length === 0) {
-        showFeedback("No products found.");
-        return;
-      }
-
-      let typeName = categoryFilter
-        ? categoryFilter
-            .replace('surveillance', 'Surveillance')
-            .replace('smart-cameras', 'Smart Cameras')
-            .replace('access-controls', 'Access Control')
-            .replace('security', 'Security Systems')
-        : 'Security Products';
-
-      let content = `<h3 class="text-xl font-semibold mb-4">All ${brand} ${typeName}</h3><div class="space-y-4">`;
-
-      items.forEach(item => {
-        const displayName = getDisplayName(item);
-        const meta = item.category === 'surveillance' ? (item.type || 'CCTV Camera') :
-                     item.category === 'smart-cameras' ? 'Smart Camera' :
-                     item.category === 'access-controls' ? 'Access Control' :
-                     item.type || 'Security System';
-
-        const priceDisplay = isPriceNumeric(item.price)
-          ? `KES ${item.price.toLocaleString()}`
-          : item.price; // e.g., "From KES 45,000"
-
-        const addButton = isPriceNumeric(item.price)
-          ? `<button class="add-to-cart-btn mt-2 w-full py-1 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
-              onclick="addToCart('${item.brand}-${(item.model || item.name).replace(/[^a-zA-Z0-9]/g, '-')}', '${displayName.replace(/'/g, "\\'")}', ${item.price}, '${item.img}')">
-              Add to Cart
-            </button>`
-          : `<div class="mt-2 text-gray-500 text-sm">Contact for pricing</div>`;
-
-        content += `
-          <div class="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition">
-            <div class="flex gap-4">
-              <img
-                loading="lazy"
-                src="../assets/images/${item.img}"
-                alt="${displayName}"
-                class="w-24 h-24 object-cover rounded cursor-pointer"
-                onclick="openLightbox('../assets/images/${item.img}')"
-              >
-              <div class="flex-1">
-                <h4 class="font-bold text-slate-900">${displayName}</h4>
-                <p class="text-slate-600 text-sm">${meta}</p>
-                <p class="font-bold text-lg text-yellow-600 mt-2">${priceDisplay}</p>
-                ${addButton}
-              </div>
-            </div>
-          </div>
-        `;
-      });
-
-      content += `</div>`;
-      modalTitle.textContent = brand + (categoryFilter ? ` – ${typeName}` : ' Security');
-      modalContent.innerHTML = content;
-      detailModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function applyFilters() {
-      const searchTerm = modelSearch.value.toLowerCase().trim();
-      const brandSel = brandFilter.value;
-      const typeSel = typeFilter.value;
-      const filtered = securityProducts.filter(item => {
-        if (brandSel && item.brand !== brandSel) return false;
-        if (typeSel && item.category !== typeSel) return false;
-        if (searchTerm) {
-          const text = [item.name, item.brand, item.model, item.type].filter(Boolean).join(' ').toLowerCase();
-          return text.includes(searchTerm);
-        }
-        return true;
-      });
-      renderBrandCards(filtered);
-    }
-
-    [modelSearch, brandFilter, typeFilter].forEach(el => el.addEventListener('input', applyFilters));
-
-    // Mobile filters
-    openFilters.addEventListener('click', () => {
-      document.getElementById('filterSidebar').classList.add('active');
-      filterOverlay.classList.add('active');
-    });
-
-    function closeFiltersHandler() {
-      document.getElementById('filterSidebar').classList.remove('active');
-      filterOverlay.classList.remove('active');
-    }
-
-    closeFilters.addEventListener('click', closeFiltersHandler);
-    filterOverlay.addEventListener('click', closeFiltersHandler);
-
-    // Initialize
-    renderBrandCards();
-    updateCartBadge();
-
-    // 🔗 Expose globally
-    window.openLightbox = openLightbox;
-    window.showFullDetails = showFullDetails;
-    window.addToCart = addToCart;
-    window.updateQuantity = updateQuantity;
-    window.removeFromCart = removeFromCart;
-    window.checkoutViaWhatsApp = checkoutViaWhatsApp;
-  </script>
+// 🔗 Expose globally
+window.openLightbox = openLightbox;
+window.showFullDetails = showFullDetails;
+window.addToCart = addToCart;
+window.updateQuantity = updateQuantity;
+window.removeFromCart = removeFromCart;
+window.checkoutViaWhatsApp = checkoutViaWhatsApp;
+</script>
 </body>
 </html>

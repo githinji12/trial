@@ -477,7 +477,8 @@
       updateCartDisplay();
     }
 
-    function addToCart(id, name, price, image) {
+    // ✅ FIXED: Accept event for visual feedback
+    function addToCart(id, name, price, image, event) {
       const existing = cart.find(item => item.id === id);
       if (existing) {
         existing.quantity += 1;
@@ -487,10 +488,12 @@
       saveCart();
 
       // Visual feedback
-      const btn = event.target;
-      const original = btn.textContent;
-      btn.textContent = '✓ Added!';
-      setTimeout(() => btn.textContent = original, 1200);
+      if (event) {
+        const btn = event.target;
+        const original = btn.textContent;
+        btn.textContent = '✓ Added!';
+        setTimeout(() => btn.textContent = original, 1200);
+      }
     }
 
     function updateCartDisplay() {
@@ -536,7 +539,6 @@
       container.innerHTML = html;
       totalEl.textContent = total.toLocaleString();
 
-      // Attach event listeners
       document.querySelectorAll('.decrease').forEach(btn => {
         btn.addEventListener('click', () => updateQuantity(btn.dataset.id, -1));
       });
@@ -680,27 +682,30 @@
           'extenders': 'Extender'
         };
         const meta = metaMap[item.category] || item.category;
-        const id = `${item.brand}-${item.model.replace(/[^a-zA-Z0-9]/g, '-')}`;
+        // ✅ UNIQUE ID with sanitization
+        const fullId = `${item.brand}-${item.model}`.replace(/[^a-zA-Z0-9]/g, '-');
 
         content += `
           <div class="border border-gray-200 rounded-lg p-2 hover:shadow-sm transition">
-            <img 
-              loading="lazy" 
-              src="../assets/images/${item.img}" 
-              alt="${item.model}" 
-              class="w-16 h-16 object-cover rounded cursor-pointer flex-shrink-0"
-              onclick="openLightbox('${item.img}')"
-            >
-            <div class="flex-1 min-w-0">
-              <h4 class="font-bold text-sm">${item.model}</h4>
-              <p class="text-xs text-slate-600">${meta}</p>
-              <p class="font-bold text-yellow-600 mt-1">KES ${item.price.toLocaleString()}</p>
-              <button 
-                class="add-to-cart-btn mt-1 w-full py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
-                onclick="addToCart('${id}', '${item.model.replaceAll("'", "\\\\'")}', ${item.price}, '${item.img}')"
+            <div class="flex gap-2">
+              <img 
+                loading="lazy" 
+                src="../assets/images/${item.img}" 
+                alt="${item.model}" 
+                class="w-16 h-16 object-cover rounded cursor-pointer flex-shrink-0"
+                onclick="openLightbox('${item.img}')"
               >
-                Add to Cart
-              </button>
+              <div class="flex-1 min-w-0">
+                <h4 class="font-bold text-sm truncate">${item.model}</h4>
+                <p class="text-xs text-slate-600">${meta}</p>
+                <p class="font-bold text-yellow-600 mt-1">KES ${item.price.toLocaleString()}</p>
+                <button 
+                  class="add-to-cart-btn mt-1 w-full py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
+                  onclick="addToCart('${fullId}', '${item.model.replaceAll("'", "\\\\'")}', ${item.price}, '${item.img}', event)"
+                >
+                  Add to Cart
+                </button>
+              </div>
             </div>
           </div>
         `;
@@ -740,7 +745,8 @@
     document.getElementById('close-cart').addEventListener('click', closeCart);
     document.getElementById('whatsapp-btn').addEventListener('click', checkoutViaWhatsApp);
 
-    [modelSearch, brandFilter, typeFilter].forEach(el => {
+    ['modelSearch', 'brandFilter', 'typeFilter'].forEach(id => {
+      const el = document.getElementById(id);
       if (el) el.addEventListener('input', applyFilters);
     });
 

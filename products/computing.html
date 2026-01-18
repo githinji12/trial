@@ -659,7 +659,10 @@
       
       items.forEach(item => {
         const spec = getSpec(item);
-        const id = `${item.brand}-${(item.model || item.name).replace(/[^a-zA-Z0-9]/g, '-')}`;
+        // Generate unique ID including spec
+        const fullId = `${item.brand}-${(item.model || item.name)}-${item.spec || 'default'}`.replace(/[^a-zA-Z0-9]/g, '-');
+        // Build display name with spec if available
+        const displayName = (item.model || item.name) + (item.spec ? ' (' + item.spec + ')' : '');
 
         content += `
           <div class="border border-gray-200 rounded-lg p-2 hover:shadow-sm transition">
@@ -667,12 +670,12 @@
               <img 
                 loading="lazy" 
                 src="../assets/images/${item.img}" 
-                alt="${getDisplayName(item)}" 
+                alt="${displayName}" 
                 class="w-16 h-16 object-cover rounded cursor-pointer flex-shrink-0"
                 onclick="openLightbox('${item.img}')"
               >
               <div class="flex-1 min-w-0">
-                <h4 class="font-bold text-sm truncate">${getDisplayName(item)}</h4>
+                <h4 class="font-bold text-sm truncate">${displayName}</h4>
                 <p class="text-xs text-slate-600">${spec || item.category}</p>
                 <p class="text-xs ${
                   item.condition === 'NEW' ? 'text-green-600' : 'text-amber-600'
@@ -680,7 +683,7 @@
                 <p class="font-bold text-yellow-600 mt-1">KES ${typeof item.price === 'number' ? item.price.toLocaleString() : item.price}</p>
                 <button 
                   class="add-to-cart-btn mt-1 w-full py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
-                  onclick="addToCart('${id}', '${getDisplayName(item).replaceAll("'", "\\\\'")}', ${typeof item.price === 'number' ? item.price : 0}, '${item.img}')"
+                  onclick="addToCart('${fullId}', '${displayName.replaceAll("'", "\\\\'")}', ${typeof item.price === 'number' ? item.price : 0}, '${item.img}')"
                 >
                   Add to Cart
                 </button>
@@ -763,5 +766,6 @@
     window.closeLightbox = closeLightbox;
     window.addToCart = addToCart;
   </script>
+
 </body>
 </html>

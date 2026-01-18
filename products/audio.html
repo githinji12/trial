@@ -1,837 +1,826 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Buy Audio Equipment in Kenya – Denon, Yamaha, Bose & More | Morel Tech</title>
-  <meta name="description" content="Shop Denon AV receivers, Bose soundbars, JBL speakers & Sony headphones in Kenya. Best prices in Nairobi, Nyeri & nationwide. Fast delivery & expert support."/>
-  <link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
-  <!-- ✅ FIXED: Removed trailing spaces -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- ✅ STRUCTURED DATA (fixed schema URL) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Store",
-    "name": "Morel Tech Solution",
-    "image": "/assets/images/logo.jpg",
-    "url": "https://moreltech.co.ke",
-    "telephone": "+254700000000",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Nyeri Town",
-      "addressLocality": "Nyeri",
-      "addressCountry": "KE"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -0.4247,
-      "longitude": 36.9455
-    },
-    "productSupported": ["AV Receivers", "Soundbars", "Subwoofers", "Wireless Speakers", "Headphones"]
-  }
-  </script>
-
-  <style>
-    :root {
-      --bg-page: #f8fafc;
-      --bg-surface: #ffffff;
-      --ink-900: #0f172a;
-      --ink-700: #334155;
-      --ink-500: #64748b;
-      --border-subtle: #e2e8f0;
-      --accent-gold: #d4af37;
-      --radius-sm: 10px;
-      --radius-md: 14px;
-      --radius-lg: 18px;
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
-      --ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    body {
-      background-color: var(--bg-page);
-      color: var(--ink-700);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-    .brand-card {
-      background: var(--bg-surface);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      overflow: hidden;
-      transition: box-shadow 0.3s var(--ease-ui), transform 0.2s var(--ease-ui);
-    }
-    .brand-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-    .product-image {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: var(--radius-sm);
-      cursor: zoom-in;
-    }
-    .specs-list {
-      font-size: 0.875rem;
-      color: var(--ink-500);
-    }
-
-    /* Cart Modal */
-    #cart-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 2000;
-      padding: 1rem;
-      justify-content: center;
-      align-items: center;
-    }
-    #cart-modal.active {
-      display: flex;
-    }
-    #cart-modal-content {
-      background: white;
-      border-radius: var(--radius-lg);
-      max-width: 95vw;
-      width: 100%;
-      max-height: 85vh;
-      overflow-y: auto;
-    }
-    .cart-header {
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-    .cart-items {
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .cart-item {
-      display: flex;
-      gap: 0.75rem;
-    }
-    .cart-item img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: var(--radius-sm);
-    }
-    .cart-item-details {
-      flex: 1;
-    }
-    .quantity-controls {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 0.25rem;
-    }
-    .quantity-btn {
-      width: 28px;
-      height: 28px;
-      background: #e0e0e0;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .remove-btn {
-      background: #ef4444;
-      color: white;
-      border: none;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      cursor: pointer;
-      margin-top: 0.25rem;
-    }
-    .cart-footer {
-      padding: 1rem;
-      border-top: 1px solid var(--border-subtle);
-      text-align: center;
-    }
-    .whatsapp-btn {
-      background: #25D366;
-      color: white;
-      border: none;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      font-weight: 600;
-      width: 100%;
-      cursor: pointer;
-    }
-
-    /* Product Detail Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      z-index: 1000;
-      padding: 1.5rem;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal.active {
-      display: flex;
-    }
-    .modal-content {
-      background: white;
-      border-radius: var(--radius-lg);
-      max-width: 900px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    }
-
-    /* Lightbox */
-    #lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.95);
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-    #lightbox.active {
-      display: flex;
-    }
-    #lightbox-img {
-      max-width: 95vw;
-      max-height: 90vh;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-
-    /* Filters */
-    .filter-sidebar {
-      position: sticky;
-      top: 2rem;
-      height: fit-content;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-    @media (max-width: 768px) {
-      .mobile-filter-trigger { display: block !important; }
-      .filter-sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 85%;
-        height: 100vh;
-        z-index: 1000;
-        background: white;
-        padding: 1.5rem;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-      }
-      .filter-sidebar.active { transform: translateX(0); }
-      .overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.5);
-        z-index: 999;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s;
-      }
-      .overlay.active {
-        opacity: 1;
-        visibility: visible;
-      }
-    }
-    .mobile-filter-trigger { display: none; }
-    .focus-ring:focus-visible {
-      outline: 2px solid var(--accent-gold);
-      outline-offset: 3px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Buy Audio Equipment in Kenya – Denon, Yamaha, Bose & More | Morel Tech</title>
+<meta name="description" content="Shop Denon AV receivers, Bose soundbars, JBL speakers & Sony headphones in Kenya. Best prices in Nairobi, Nyeri & nationwide. Fast delivery & expert support."/>
+<link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Store",
+"name": "Morel Tech Solution",
+"image": "/assets/images/logo.jpg",
+"url": "https://moreltech.co.ke",
+"telephone": "+254700000000",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Nyeri Town",
+"addressLocality": "Nyeri",
+"addressCountry": "KE"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": -0.4247,
+"longitude": 36.9455
+},
+"productSupported": ["AV Receivers", "Soundbars", "Subwoofers", "Wireless Speakers", "Headphones"]
+}
+</script>
+<style>
+:root {
+--bg-page: #f8fafc;
+--bg-surface: #ffffff;
+--ink-900: #0f172a;
+--ink-700: #334155;
+--ink-500: #64748b;
+--border-subtle: #e2e8f0;
+--accent-gold: #d4af37;
+--radius-sm: 10px;
+--radius-md: 14px;
+--radius-lg: 18px;
+--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+--shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+--ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
+}
+body {
+background-color: var(--bg-page);
+color: var(--ink-700);
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.brand-card {
+background: var(--bg-surface);
+border-radius: var(--radius-md);
+box-shadow: var(--shadow-sm);
+overflow: hidden;
+transition: box-shadow 0.3s var(--ease-ui), transform 0.2s var(--ease-ui);
+}
+.brand-card:hover {
+transform: translateY(-4px);
+box-shadow: var(--shadow-md);
+}
+.product-image {
+width: 200px;
+height: 200px;
+object-fit: cover;
+border-radius: var(--radius-sm);
+cursor: zoom-in;
+}
+.specs-list {
+font-size: 0.875rem;
+color: var(--ink-500);
+}
+/* Cart Modal */
+#cart-modal {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0, 0, 0, 0.6);
+z-index: 2000;
+padding: 1rem;
+justify-content: center;
+align-items: center;
+}
+#cart-modal.active {
+display: flex;
+}
+#cart-modal-content {
+background: white;
+border-radius: var(--radius-lg);
+max-width: 95vw;
+width: 100%;
+max-height: 85vh;
+overflow-y: auto;
+}
+.cart-header {
+padding: 1rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-bottom: 1px solid var(--border-subtle);
+}
+.cart-items {
+padding: 1rem;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+.cart-item {
+display: flex;
+gap: 0.75rem;
+}
+.cart-item img {
+width: 60px;
+height: 60px;
+object-fit: cover;
+border-radius: var(--radius-sm);
+}
+.cart-item-details {
+flex: 1;
+}
+.quantity-controls {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+margin-top: 0.25rem;
+}
+.quantity-btn {
+width: 28px;
+height: 28px;
+background: #e0e0e0;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-weight: bold;
+}
+.remove-btn {
+background: #ef4444;
+color: white;
+border: none;
+padding: 0.25rem 0.5rem;
+border-radius: 4px;
+font-size: 0.8rem;
+cursor: pointer;
+margin-top: 0.25rem;
+}
+.cart-footer {
+padding: 1rem;
+border-top: 1px solid var(--border-subtle);
+text-align: center;
+}
+.whatsapp-btn {
+background: #25D366;
+color: white;
+border: none;
+padding: 0.75rem 1rem;
+border-radius: 8px;
+font-weight: 600;
+width: 100%;
+cursor: pointer;
+}
+/* Product Detail Modal */
+.modal {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0, 0, 0, 0.75);
+z-index: 1000;
+padding: 1.5rem;
+justify-content: center;
+align-items: center;
+}
+.modal.active {
+display: flex;
+}
+.modal-content {
+background: white;
+border-radius: var(--radius-lg);
+max-width: 900px;
+width: 100%;
+max-height: 90vh;
+overflow-y: auto;
+box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+/* Lightbox */
+#lightbox {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.95);
+z-index: 2000;
+align-items: center;
+justify-content: center;
+padding: 1rem;
+}
+#lightbox.active {
+display: flex;
+}
+#lightbox-img {
+max-width: 95vw;
+max-height: 90vh;
+object-fit: contain;
+border-radius: 8px;
+}
+/* Filters */
+.filter-sidebar {
+position: sticky;
+top: 2rem;
+height: fit-content;
+max-height: 80vh;
+overflow-y: auto;
+}
+@media (max-width: 768px) {
+.mobile-filter-trigger { display: block !important; }
+.filter-sidebar {
+position: fixed;
+top: 0;
+left: 0;
+width: 85%;
+height: 100vh;
+z-index: 1000;
+background: white;
+padding: 1.5rem;
+transform: translateX(-100%);
+transition: transform 0.3s ease;
+}
+.filter-sidebar.active { transform: translateX(0); }
+.overlay {
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.5);
+z-index: 999;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s;
+}
+.overlay.active {
+opacity: 1;
+visibility: visible;
+}
+}
+.mobile-filter-trigger { display: none; }
+.focus-ring:focus-visible {
+outline: 2px solid var(--accent-gold);
+outline-offset: 3px;
+}
+</style>
 </head>
 <body class="text-slate-800">
-  <nav class="bg-slate-900 text-white fixed w-full top-0 z-50 shadow-md">
-    <div class="container mx-auto px-4 py-3">
-      <a href="../#products" class="text-lg font-semibold">← Back to Catalog</a>
-    </div>
-  </nav>
+<nav class="bg-slate-900 text-white fixed w-full top-0 z-50 shadow-md">
+<div class="container mx-auto px-4 py-3">
+<a href="../#products" class="text-lg font-semibold">← Back to Catalog</a>
+</div>
+</nav>
+<main class="pt-20 pb-16">
+<div class="container mx-auto px-4">
+<div class="sr-only">
+<h1>Buy Audio & Home Entertainment Systems in Kenya</h1>
+<p>Purchase Denon AVR-X2800H, Bose Soundbar 900, JBL PartyBox and more from Morel Tech Solution. Authorized dealer in Nyeri with nationwide delivery across Kenya including Nairobi, Mombasa & Kisumu.</p>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<aside class="filter-sidebar" id="filterSidebar">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-xl font-bold">Filters</h2>
+<button id="closeFilters" class="lg:hidden text-gray-500 hover:text-gray-900">✕</button>
+</div>
+<div class="space-y-5">
+<div>
+<label class="block font-medium mb-2">Search Model</label>
+<input type="text" id="modelSearch" placeholder="e.g. AVR-X2800H, Soundbar 900..." class="w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-yellow-500">
+</div>
+<div>
+<label class="block font-medium mb-2">Brand</label>
+<select id="brandFilter" class="w-full p-2.5 border rounded-lg">
+<option value="">All Brands</option>
+<option value="Denon">Denon</option>
+<option value="Yamaha">Yamaha</option>
+<option value="Onkyo">Onkyo</option>
+<option value="Pioneer">Pioneer</option>
+<option value="Sony">Sony</option>
+<option value="Bose">Bose</option>
+<option value="JBL">JBL</option>
+<option value="Marantz">Marantz</option>
+<option value="Polk">Polk</option>
+<option value="Klipsch">Klipsch</option>
+<option value="Harman Kardon">Harman Kardon</option>
+<option value="Sonos">Sonos</option>
+</select>
+</div>
+<div>
+<label class="block font-medium mb-2">Type</label>
+<select id="typeFilter" class="w-full p-2.5 border rounded-lg">
+<option value="">All Types</option>
+<option value="av-receivers">AV Receivers</option>
+<option value="soundbars">Soundbars</option>
+<option value="subwoofers">Subwoofers</option>
+<option value="bookshelf-speakers">Bookshelf Speakers</option>
+<option value="speakers">In-Ceiling/In-Wall</option>
+<option value="wireless-audio">Wireless Audio</option>
+</select>
+</div>
+</div>
+</aside>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-8">
+<h1 class="text-3xl font-bold text-slate-900">Audio & Home Entertainment</h1>
+<button class="mobile-filter-trigger px-4 py-2 bg-yellow-600 text-white rounded font-medium" id="openFilters">
+Filters
+</button>
+</div>
+<div id="brandGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+</div>
+</div>
+</div>
+</main>
 
-  <main class="pt-20 pb-16">
-    <div class="container mx-auto px-4">
-      <div class="sr-only">
-        <h1>Buy Audio & Home Entertainment Systems in Kenya</h1>
-        <p>Purchase Denon AVR-X2800H, Bose Soundbar 900, JBL PartyBox and more from Morel Tech Solution. Authorized dealer in Nyeri with nationwide delivery across Kenya including Nairobi, Mombasa & Kisumu.</p>
-      </div>
+<!-- Product Detail Modal -->
+<div id="detailModal" class="modal" role="dialog" aria-modal="true">
+<div class="modal-content">
+<div class="p-6">
+<div class="flex justify-between items-start">
+<h2 id="modalTitle" class="text-2xl font-bold text-slate-900"></h2>
+<button id="closeModalBtn" class="text-gray-500 hover:text-gray-900 text-2xl focus:outline-none">&times;</button>
+</div>
+<div id="modalContent" class="mt-6"></div>
+</div>
+</div>
+</div>
 
-      <div class="flex flex-col lg:flex-row gap-8">
-        <aside class="filter-sidebar" id="filterSidebar">
-          <div class="flex justify-between items-center mb-6">
-            <h2 class="text-xl font-bold">Filters</h2>
-            <button id="closeFilters" class="lg:hidden text-gray-500 hover:text-gray-900">✕</button>
-          </div>
-          <div class="space-y-5">
-            <div>
-              <label class="block font-medium mb-2">Search Model</label>
-              <input type="text" id="modelSearch" placeholder="e.g. AVR-X2800H, Soundbar 900..." class="w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-yellow-500">
-            </div>
-            <div>
-              <label class="block font-medium mb-2">Brand</label>
-              <select id="brandFilter" class="w-full p-2.5 border rounded-lg">
-                <option value="">All Brands</option>
-                <option value="Denon">Denon</option>
-                <option value="Yamaha">Yamaha</option>
-                <option value="Onkyo">Onkyo</option>
-                <option value="Pioneer">Pioneer</option>
-                <option value="Sony">Sony</option>
-                <option value="Bose">Bose</option>
-                <option value="JBL">JBL</option>
-                <option value="Marantz">Marantz</option>
-                <option value="Polk">Polk</option>
-                <option value="Klipsch">Klipsch</option>
-                <option value="Harman Kardon">Harman Kardon</option>
-                <option value="Sonos">Sonos</option>
-              </select>
-            </div>
-            <div>
-              <label class="block font-medium mb-2">Type</label>
-              <select id="typeFilter" class="w-full p-2.5 border rounded-lg">
-                <option value="">All Types</option>
-                <option value="av-receivers">AV Receivers</option>
-                <option value="soundbars">Soundbars</option>
-                <option value="subwoofers">Subwoofers</option>
-                <option value="bookshelf-speakers">Bookshelf Speakers</option>
-                <option value="speakers">In-Ceiling/In-Wall</option>
-                <option value="wireless-audio">Wireless Audio</option>
-              </select>
-            </div>
-          </div>
-        </aside>
+<!-- Cart Modal -->
+<div id="cart-modal" class="modal" role="dialog" aria-modal="true">
+<div id="cart-modal-content">
+<div class="cart-header">
+<h2 class="text-lg font-bold">Your Quote</h2>
+<button id="close-cart" class="text-gray-500 hover:text-gray-900 text-2xl">&times;</button>
+</div>
+<div id="cart-items" class="cart-items">
+<!-- Items inserted by JS -->
+</div>
+<div class="cart-footer">
+<div class="font-bold text-lg">Total: KES <span id="total-amount">0</span></div>
+<button id="whatsapp-btn" class="whatsapp-btn">Send Quote via WhatsApp</button>
+</div>
+</div>
+</div>
 
-        <div class="flex-1">
-          <div class="flex justify-between items-center mb-8">
-            <h1 class="text-3xl font-bold text-slate-900">Audio & Home Entertainment</h1>
-            <button class="mobile-filter-trigger px-4 py-2 bg-yellow-600 text-white rounded font-medium" id="openFilters">
-              Filters
-            </button>
-          </div>
-          <div id="brandGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-        </div>
-      </div>
-    </div>
-  </main>
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+<img id="lightbox-img" />
+<button onclick="closeLightbox()" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center">✕</button>
+</div>
 
-  <!-- Product Detail Modal (RESTORED) -->
-  <div id="detailModal" class="modal" role="dialog" aria-modal="true">
-    <div class="modal-content">
-      <div class="p-6">
-        <div class="flex justify-between items-start">
-          <h2 id="modalTitle" class="text-2xl font-bold text-slate-900"></h2>
-          <button id="closeModalBtn" class="text-gray-500 hover:text-gray-900 text-2xl focus:outline-none">&times;</button>
-        </div>
-        <div id="modalContent" class="mt-6"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Cart Modal -->
-  <div id="cart-modal" class="modal" role="dialog" aria-modal="true">
-    <div id="cart-modal-content">
-      <div class="cart-header">
-        <h2 class="text-lg font-bold">Your Quote</h2>
-        <button id="close-cart" class="text-gray-500 hover:text-gray-900 text-2xl">&times;</button>
-      </div>
-      <div id="cart-items" class="cart-items">
-        <!-- Items inserted by JS -->
-      </div>
-      <div class="cart-footer">
-        <div class="font-bold text-lg">Total: KES <span id="total-amount">0</span></div>
-        <button id="whatsapp-btn" class="whatsapp-btn">Send Quote via WhatsApp</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox">
-    <img id="lightbox-img" />
-    <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center">✕</button>
-  </div>
-
-  <!-- WhatsApp Cart Button -->
-  <div class="fixed bottom-4 right-4 z-[999]">
-    <button
-      id="cart-icon"
-      class="bg-yellow-500 hover:bg-yellow-600 text-white p-4 rounded-full shadow-lg flex items-center relative"
-    >
- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+<!-- WhatsApp Cart Button -->
+<div class="fixed bottom-4 right-4 z-[999]">
+<button
+id="cart-icon"
+class="bg-yellow-500 hover:bg-yellow-600 text-white p-4 rounded-full shadow-lg flex items-center relative"
+>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
 </svg>
 <span class="ml-2 font-bold hidden sm:inline"> Cart</span>
 <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
-    </button>
-  </div>
+</button>
+</div>
 
-  <!-- Overlay -->
-  <div class="overlay" id="filterOverlay"></div>
+<!-- Overlay -->
+<div class="overlay" id="filterOverlay"></div>
 
-  <script>
-    const audioProducts = [
-      // 🎧 AV RECEIVERS
-      { name: "Sony STR-DH190", brand: "Sony", model: "STR-DH190", channels: "Stereo", price: 66995, category: "av-receivers", img: "AV.Receivers/Sony-STR-DH190(Stereo).jpg" },
-      { name: "Sony STR-DH590", brand: "Sony", model: "STR-DH590", channels: "5.2ch", price: 90995, category: "av-receivers", img: "AV.Receivers/Sony-STR-DH590(5.2ch).jpg" },
-      { name: "Denon AVR-S540BT", brand: "Denon", model: "AVR-S540BT", channels: "5.2ch", price: 80995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S540BT(5.2ch).jpg" },
-      { name: "Denon AVR-S570BT", brand: "Denon", model: "AVR-S570BT", channels: "5.2ch", price: 89995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S570BT(5.2ch).jpg" },
-      { name: "Onkyo TX-SR393", brand: "Onkyo", model: "TX-SR393", channels: "5.2ch", price: 86995, category: "av-receivers", img: "AV.Receivers/Onkyo-TX-SR393(5.2ch).jpg" },
-      {
-        name: "Onkyo TX-SR494",
-        brand: "Onkyo",
-        model: "TX-SR494",
-        category: "av-receivers",
-        channels: "5.2ch",
-        price: 94995,
-        img: "AV.Receivers/Onkyo-TX-SR494(5.2ch).jpg",
-        desc: "A premium 5.2-channel home theater receiver with full 4K/120Hz HDMI 2.1 support, Dolby Atmos & DTS:X decoding, and 80W per channel of clean, dynamic power. Features Wi-Fi, Bluetooth, Chromecast built-in, and voice control (Google Assistant, Alexa). Perfect for immersive movie nights, gaming (ALLM, VRR), and multi-room audio. Includes dual subwoofer outputs for deeper, balanced bass."
-      },
-      {
-        name: "Pioneer VSX-330",
-        brand: "Pioneer",
-        model: "VSX-330",
-        category: "av-receivers",
-        channels: "5.1ch",
-        price: 68995,
-        img: "AV.Receivers/Pioneer-VSX-330(5.1ch).jpg",
-        desc: "An affordable yet powerful 5.1-channel AV receiver with full 4K HDR passthrough, Bluetooth streaming, and Pioneer’s MCACC auto room calibration for optimized sound. Delivers 130W per channel for punchy, clear audio. Great for compact living rooms or first-time home theater setups. Easy setup with HDMI ARC and smartphone app control."
-      },
-      { name: "Pioneer VSX-534", brand: "Pioneer", model: "VSX-534", channels: "5.2ch", price: 94995, category: "av-receivers", img: "AV.Receivers/PioneerVSX-534(5.2ch).jpg" },
-      { name: "Denon AVR-S660H", brand: "Denon", model: "AVR-S660H", channels: "5.2ch", price: 107995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S660H(5.2ch).jpg" },
-      { name: "Denon AVR-S760H", brand: "Denon", model: "AVR-S760H", channels: "7.2ch", price: 124995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S760H(7.2ch).jpg" },
-      { name: "Denon AVR-S960H", brand: "Denon", model: "AVR-S960H", channels: "7.2ch", price: 139995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S960H(7.2ch).jpg" },
-      { name: "Onkyo TX-NR5100", brand: "Onkyo", model: "TX-NR5100", channels: "7.2ch", price: 142995, category: "av-receivers", img: "AV.Receivers/Onkyo-TX-NR5100(7.2ch).jpg" },
-      { name: "Onkyo TX-NR6100", brand: "Onkyo", model: "TX-NR6100", channels: "7.2ch", price: 163995, category: "av-receivers", img: "AV.Receivers/Onkyo-TX-NR6100(7.2ch).jpg" },
-      { name: "Pioneer VSX-834", brand: "Pioneer", model: "VSX-834", channels: "7.2ch", price: 133995, category: "av-receivers", img: "AV.Receivers/Pioneer-VSX-834(7.2ch).jpg" },
-      { name: "Pioneer VSX-LX103", brand: "Pioneer", model: "VSX-LX103", channels: "7.2ch", price: 154995, category: "av-receivers", img: "AV.Receivers/Pioneer-VSX-LX103(7.2ch).jpg" },
-      { name: "Yamaha RX-V4A", brand: "Yamaha", model: "RX-V4A", channels: "5.2ch", price: 127995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-V4A(5.2ch).jpg" },
-      { name: "Yamaha RX-V6A", brand: "Yamaha", model: "RX-V6A", channels: "7.2ch", price: 159995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-V6A(7.2ch).jpg" },
-      { name: "Denon AVR-X1600H", brand: "Denon", model: "AVR-X1600H", channels: "7.2ch", price: 147995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X1600H(7.2ch).jpg" },
-      { name: "Denon AVR-X1700H", brand: "Denon", model: "AVR-X1700H", channels: "7.2ch", price: 157995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X1700H(7.2ch).jpg" },
-      { name: "Denon AVR-X2700H", brand: "Denon", model: "AVR-X2700H", channels: "7.2ch", price: 182995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X2700H(7.2ch).jpg" },
-      { name: "Denon AVR-X2800H", brand: "Denon", model: "AVR-X2800H", channels: "7.2ch", price: 198995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X2800H(7.2ch).jpg" },
-      { name: "Denon AVR-X3700H", brand: "Denon", model: "AVR-X3700H", channels: "9.2ch", price: 232995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X3700H(9.2ch).jpg" },
-      { name: "Denon AVR-X3800H", brand: "Denon", model: "AVR-X3800H", channels: "9.4ch", price: 264995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X3800H(9.4ch).jpg" },
-      { name: "Denon AVR-X4700H", brand: "Denon", model: "AVR-X4700H", channels: "9.2ch", price: 282995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X4700H(9.2ch).jpg" },
-      { name: "Denon AVR-X4800H", brand: "Denon", model: "AVR-X4800H", channels: "9.4ch", price: 328995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X4800H(9.4ch).jpg" },
-      { name: "Denon AVR-X6700H", brand: "Denon", model: "AVR-X6700H", channels: "11.2ch", price: 444995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X6700H(11.2ch).jpg" },
-      { name: "Denon AVR-X6800H", brand: "Denon", model: "AVR-X6800H", channels: "11.4ch", price: 498995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X6800H(11.4ch).jpg" },
-      { name: "Marantz NR1510", brand: "Marantz", model: "NR1510", channels: "5.2ch", price: 142995, category: "av-receivers", img: "AV.Receivers/Marantz-NR1510(5.2ch).jpg" },
-      { name: "Marantz SR5015", brand: "Marantz", model: "SR5015", channels: "7.2ch", price: 237995, category: "av-receivers", img: "AV.Receivers/Marantz-SR5015(7.2ch).jpg" },
-      { name: "Marantz SR6015", brand: "Marantz", model: "SR6015", channels: "9.2ch", price: 326995, category: "av-receivers", img: "AV.Receivers/Marantz-SR6015(9.2ch).jpg" },
-      { name: "Marantz SR7015", brand: "Marantz", model: "SR7015", channels: "9.2ch", price: 394995, category: "av-receivers", img: "AV.Receivers/Marantz-SR7015(9.2ch).jpg" },
-      { name: "Pioneer VSX-LX304", brand: "Pioneer", model: "VSX-LX304", channels: "9.2ch", price: 202995, category: "av-receivers", img: "AV.Receivers/Pioneer-VSX-LX304(9.2ch).jpg" },
-      { name: "Pioneer VSX-LX505", brand: "Pioneer", model: "VSX-LX505", channels: "9.2ch", price: 258995, category: "av-receivers", img: "AV.Receivers/Pioneer-VSX-LX505(9.2ch).jpg" },
-      { name: "Yamaha RX-A2A Aventage", brand: "Yamaha", model: "RX-A2A Aventage", channels: "7.2ch", price: 207995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-A2A-Aventage(7.2ch).jpg" },
-      { name: "Yamaha RX-A4A Aventage", brand: "Yamaha", model: "RX-A4A Aventage", channels: "9.2ch", price: 277995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-A4A-Aventage(9.2ch).jpg" },
-      { name: "Yamaha RX-A6A Aventage", brand: "Yamaha", model: "RX-A6A Aventage", channels: "9.2ch", price: 356995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-A6A-Aventage(9.2ch).jpg" },
-      { name: "Yamaha RX-A8A Aventage", brand: "Yamaha", model: "RX-A8A Aventage", channels: "11.2ch", price: 469995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-A8A-Aventage(11.2ch).jpg" },
+<script>
+const audioProducts = [
+// 🎧 AV RECEIVERS
+{ name: "Sony STR-DH190", brand: "Sony", model: "STR-DH190", channels: "Stereo", price: 66995, category: "av-receivers", img: "AV.Receivers/Sony-STR-DH190(Stereo).jpg" },
+{ name: "Sony STR-DH590", brand: "Sony", model: "STR-DH590", channels: "5.2ch", price: 90995, category: "av-receivers", img: "AV.Receivers/Sony-STR-DH590(5.2ch).jpg" },
+{ name: "Denon AVR-S540BT", brand: "Denon", model: "AVR-S540BT", channels: "5.2ch", price: 80995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S540BT(5.2ch).jpg" },
+{ name: "Denon AVR-S570BT", brand: "Denon", model: "AVR-S570BT", channels: "5.2ch", price: 89995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S570BT(5.2ch).jpg" },
+{ name: "Onkyo TX-SR393", brand: "Onkyo", model: "TX-SR393", channels: "5.2ch", price: 86995, category: "av-receivers", img: "AV.Receivers/Onkyo-TX-SR393(5.2ch).jpg" },
+{
+name: "Onkyo TX-SR494",
+brand: "Onkyo",
+model: "TX-SR494",
+category: "av-receivers",
+channels: "5.2ch",
+price: 94995,
+img: "AV.Receivers/Onkyo-TX-SR494(5.2ch).jpg",
+desc: "A premium 5.2-channel home theater receiver with full 4K/120Hz HDMI 2.1 support, Dolby Atmos & DTS:X decoding, and 80W per channel of clean, dynamic power. Features Wi-Fi, Bluetooth, Chromecast built-in, and voice control (Google Assistant, Alexa). Perfect for immersive movie nights, gaming (ALLM, VRR), and multi-room audio. Includes dual subwoofer outputs for deeper, balanced bass."
+},
+{
+name: "Pioneer VSX-330",
+brand: "Pioneer",
+model: "VSX-330",
+category: "av-receivers",
+channels: "5.1ch",
+price: 68995,
+img: "AV.Receivers/Pioneer-VSX-330(5.1ch).jpg",
+desc: "An affordable yet powerful 5.1-channel AV receiver with full 4K HDR passthrough, Bluetooth streaming, and Pioneer’s MCACC auto room calibration for optimized sound. Delivers 130W per channel for punchy, clear audio. Great for compact living rooms or first-time home theater setups. Easy setup with HDMI ARC and smartphone app control."
+},
+{ name: "Pioneer VSX-534", brand: "Pioneer", model: "VSX-534", channels: "5.2ch", price: 94995, category: "av-receivers", img: "AV.Receivers/PioneerVSX-534(5.2ch).jpg" },
+{ name: "Denon AVR-S660H", brand: "Denon", model: "AVR-S660H", channels: "5.2ch", price: 107995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S660H(5.2ch).jpg" },
+{ name: "Denon AVR-S760H", brand: "Denon", model: "AVR-S760H", channels: "7.2ch", price: 124995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S760H(7.2ch).jpg" },
+{ name: "Denon AVR-S960H", brand: "Denon", model: "AVR-S960H", channels: "7.2ch", price: 139995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-S960H(7.2ch).jpg" },
+{ name: "Onkyo TX-NR5100", brand: "Onkyo", model: "TX-NR5100", channels: "7.2ch", price: 142995, category: "av-receivers", img: "AV.Receivers/Onkyo-TX-NR5100(7.2ch).jpg" },
+{ name: "Onkyo TX-NR6100", brand: "Onkyo", model: "TX-NR6100", channels: "7.2ch", price: 163995, category: "av-receivers", img: "AV.Receivers/Onkyo-TX-NR6100(7.2ch).jpg" },
+{ name: "Pioneer VSX-834", brand: "Pioneer", model: "VSX-834", channels: "7.2ch", price: 133995, category: "av-receivers", img: "AV.Receivers/Pioneer-VSX-834(7.2ch).jpg" },
+{ name: "Pioneer VSX-LX103", brand: "Pioneer", model: "VSX-LX103", channels: "7.2ch", price: 154995, category: "av-receivers", img: "AV.Receivers/Pioneer-VSX-LX103(7.2ch).jpg" },
+{ name: "Yamaha RX-V4A", brand: "Yamaha", model: "RX-V4A", channels: "5.2ch", price: 127995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-V4A(5.2ch).jpg" },
+{ name: "Yamaha RX-V6A", brand: "Yamaha", model: "RX-V6A", channels: "7.2ch", price: 159995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-V6A(7.2ch).jpg" },
+{ name: "Denon AVR-X1600H", brand: "Denon", model: "AVR-X1600H", channels: "7.2ch", price: 147995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X1600H(7.2ch).jpg" },
+{ name: "Denon AVR-X1700H", brand: "Denon", model: "AVR-X1700H", channels: "7.2ch", price: 157995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X1700H(7.2ch).jpg" },
+{ name: "Denon AVR-X2700H", brand: "Denon", model: "AVR-X2700H", channels: "7.2ch", price: 182995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X2700H(7.2ch).jpg" },
+{ name: "Denon AVR-X2800H", brand: "Denon", model: "AVR-X2800H", channels: "7.2ch", price: 198995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X2800H(7.2ch).jpg" },
+{ name: "Denon AVR-X3700H", brand: "Denon", model: "AVR-X3700H", channels: "9.2ch", price: 232995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X3700H(9.2ch).jpg" },
+{ name: "Denon AVR-X3800H", brand: "Denon", model: "AVR-X3800H", channels: "9.4ch", price: 264995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X3800H(9.4ch).jpg" },
+{ name: "Denon AVR-X4700H", brand: "Denon", model: "AVR-X4700H", channels: "9.2ch", price: 282995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X4700H(9.2ch).jpg" },
+{ name: "Denon AVR-X4800H", brand: "Denon", model: "AVR-X4800H", channels: "9.4ch", price: 328995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X4800H(9.4ch).jpg" },
+{ name: "Denon AVR-X6700H", brand: "Denon", model: "AVR-X6700H", channels: "11.2ch", price: 444995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X6700H(11.2ch).jpg" },
+{ name: "Denon AVR-X6800H", brand: "Denon", model: "AVR-X6800H", channels: "11.4ch", price: 498995, category: "av-receivers", img: "AV.Receivers/Denon-AVR-X6800H(11.4ch).jpg" },
+{ name: "Marantz NR1510", brand: "Marantz", model: "NR1510", channels: "5.2ch", price: 142995, category: "av-receivers", img: "AV.Receivers/Marantz-NR1510(5.2ch).jpg" },
+{ name: "Marantz SR5015", brand: "Marantz", model: "SR5015", channels: "7.2ch", price: 237995, category: "av-receivers", img: "AV.Receivers/Marantz-SR5015(7.2ch).jpg" },
+{ name: "Marantz SR6015", brand: "Marantz", model: "SR6015", channels: "9.2ch", price: 326995, category: "av-receivers", img: "AV.Receivers/Marantz-SR6015(9.2ch).jpg" },
+{ name: "Marantz SR7015", brand: "Marantz", model: "SR7015", channels: "9.2ch", price: 394995, category: "av-receivers", img: "AV.Receivers/Marantz-SR7015(9.2ch).jpg" },
+{ name: "Pioneer VSX-LX304", brand: "Pioneer", model: "VSX-LX304", channels: "9.2ch", price: 202995, category: "av-receivers", img: "AV.Receivers/Pioneer-VSX-LX304(9.2ch).jpg" },
+{ name: "Pioneer VSX-LX505", brand: "Pioneer", model: "VSX-LX505", channels: "9.2ch", price: 258995, category: "av-receivers", img: "AV.Receivers/Pioneer-VSX-LX505(9.2ch).jpg" },
+{ name: "Yamaha RX-A2A Aventage", brand: "Yamaha", model: "RX-A2A Aventage", channels: "7.2ch", price: 207995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-A2A-Aventage(7.2ch).jpg" },
+{ name: "Yamaha RX-A4A Aventage", brand: "Yamaha", model: "RX-A4A Aventage", channels: "9.2ch", price: 277995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-A4A-Aventage(9.2ch).jpg" },
+{ name: "Yamaha RX-A6A Aventage", brand: "Yamaha", model: "RX-A6A Aventage", channels: "9.2ch", price: 356995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-A6A-Aventage(9.2ch).jpg" },
+{ name: "Yamaha RX-A8A Aventage", brand: "Yamaha", model: "RX-A8A Aventage", channels: "11.2ch", price: 469995, category: "av-receivers", img: "AV.Receivers/Yamaha-RX-A8A-Aventage(11.2ch).jpg" },
+// SOUNDBARS
+{ brand: "JBL", name: "Bar 1000", type: "7.1.4", price: 98000, category: "soundbars", img: "soundbars/JBL-Bar-1000(7.1.4).jpg" },
+{ brand: "Bose", name: "Smart Soundbar 900", type: "Dolby Atmos", price: 196000, category: "soundbars", img: "soundbars/Bose-Smart-Soundbar-900.jpg" },
+{ brand: "Sony", name: "HT-A5000", type: "5.1.2", price: 167000, category: "soundbars", img: "soundbars/Sony-HT-A5000.jpg" },
+{ brand: "Samsung", name: "HW-Q800B", type: "3.1.2", price: 100000, category: "soundbars", img: "soundbars/Samsung-HW-Q800B.jpg" },
+// SUBWOOFERS & BASS SPEAKERS
+{ brand: "Harman Kardon", model: "Onyx Studio 6", type: "Wireless Speaker", price: 40000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Onyx-Studio.jpg", status: "Public Listing" },
+{ brand: "Harman Kardon", model: "Onyx Studio 7", type: "Wireless Speaker", price: 48000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Onyx-Studio-7.jpg", status: "Public Listing" },
+{ brand: "Harman Kardon", model: "Onyx Studio 8", type: "Wireless Speaker", price: 59000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Onyx-Studio-8.jpg", status: "Public Listing" },
+{ brand: "Harman Kardon", model: "Aura Studio 3", type: "Wireless Speaker", price: 52000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Aura-Studio-3.jpg", status: "Public Listing" },
+{ brand: "Harman Kardon", model: "Aura Studio 4", type: "Wireless Speaker", price: 62000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Aura-Studio-4.jpg", status: "Public Listing" },
+{ brand: "Harman Kardon", model: "Go + Play (2023)", type: "Wireless Speaker", price: 82000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Go-Play(2023).jpg", status: "Public Listing" },
+{ brand: "Harman Kardon", model: "SoundSticks 4", type: "Wireless Speaker", price: 59000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-SoundSticks-4.jpg", status: "Public Listing" },
+{ brand: "Harman Kardon", model: "Citation Sub S", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Citation-Sub-S.jpg", status: "Special Order", condition: "Special Order" },
+{ brand: "Polk Audio", model: "PSW10", type: "Subwoofer", price: 37000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-PSW10.jpg", status: "Public Listing" },
+{ brand: "Polk Audio", model: "PSW111", type: "Subwoofer", price: 46000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-PSW111.jpg", status: "Public Listing" },
+{ brand: "Polk Audio", model: "HTS10", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-HTS-10.jpg", status: "Special Order", condition: "Special Order" },
+{ brand: "Polk Audio", model: "HTS12", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-HTS-12.jpg", status: "Special Order", condition: "Special Order" },
+{ brand: "Polk Audio", model: "Monitor XT10", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-Monitor-XT10.jpg", status: "Special Order", condition: "Special Order" },
+{ brand: "Polk Audio", model: "Monitor XT12", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-Monitor-XT12.jpg", status: "Special Order", condition: "Special Order" },
+{ brand: "Klipsch", model: "R-100SW", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Klipsch-R-100SW.jpg", status: "Special Order", condition: "Special Order" },
+{ brand: "Klipsch", model: "R-120SW", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Klipsch-R-120SW.jpg", status: "Special Order", condition: "Special Order" },
+{ brand: "Klipsch", model: "SPL-100", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Klipsch-SPL-100.jpg", status: "Special Order", condition: "Special Order" },
+{ brand: "Klipsch", model: "SPL-120", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Klipsch-SPL-120.jpg", status: "Special Order", condition: "Special Order" },
+{ brand: "Klipsch", model: "R-41M", type: "Bookshelf Speaker", price: "Contact for Price", category: "bookshelf-speakers", img: "unified-subwoofer-and-bass-speakers/Klipsch-R-41M.jpg", status: "Special Order", condition: "Special Order" },
+{ brand: "Klipsch", model: "R-51M", type: "Bookshelf Speaker", price: "Contact for Price", category: "bookshelf-speakers", img: "unified-subwoofer-and-bass-speakers/Klipsch-R-51M.jpg", status: "Special Order", condition: "Special Order" },
+{ brand: "Klipsch", model: "RP-600M II", type: "Bookshelf Speaker", price: "Contact for Price", category: "bookshelf-speakers", img: "unified-subwoofer-and-bass-speakers/Klipsch-RP-600M-II.jpg", status: "Special Order", condition: "Special Order" },
+// BOOKSHELF SPEAKERS (Special Order)
+{ brand: "Klipsch", name: "RP-600M II", type: "Bookshelf Speaker", price: "Contact for Price", category: "bookshelf-speakers", img: "unified-subwoofer-and-bass-speakers/Klipsch-RP-600M-II.jpg", condition: "Special Order" },
+// 🎧 WIRELESS AUDIO
+{ brand: "Harman Kardon", model: "Onyx Studio 6", type: "Wireless Speaker", price: 40000, category: "wireless-audio", img: "master-wireless-audio/Onyx-Studio-6.jpg" },
+{ brand: "Harman Kardon", model: "Onyx Studio 7", type: "Wireless Speaker", price: 47000, category: "wireless-audio", img: "master-wireless-audio/Onyx-Studio-7.jpg" },
+{ brand: "Harman Kardon", model: "Onyx Studio 8", type: "Wireless Speaker", price: 56000, category: "wireless-audio", img: "master-wireless-audio/Onyx-Studio-8.jpg" },
+{ brand: "Harman Kardon", model: "Aura Studio 3", type: "Wireless Speaker", price: 52000, category: "wireless-audio", img: "master-wireless-audio/Aura-Studio-3.jpg" },
+{ brand: "Harman Kardon", model: "Aura Studio 4", type: "Wireless Speaker", price: 66000, category: "wireless-audio", img: "master-wireless-audio/Aura-Studio-4.jpg" },
+{ brand: "Harman Kardon", model: "Go + Play (2023)", type: "Wireless Speaker", price: 79000, category: "wireless-audio", img: "master-wireless-audio/Go-Play(2023).jpg" },
+{ brand: "Harman Kardon", model: "SoundSticks 4", type: "Wireless Speaker", price: 62000, category: "wireless-audio", img: "master-wireless-audio/SoundSticks-4.jpg" },
+{ brand: "JBL", model: "Go 3", type: "Portable Speaker", price: 11000, category: "wireless-audio", img: "master-wireless-audio/Go-3.jpg" },
+{ brand: "JBL", model: "Clip 4", type: "Portable Speaker", price: 13000, category: "wireless-audio", img: "master-wireless-audio/Clip-4.jpg" },
+{ brand: "JBL", model: "Flip 6", type: "Portable Speaker", price: 25000, category: "wireless-audio", img: "master-wireless-audio/Flip-6.jpg" },
+{ brand: "JBL", model: "Charge 5", type: "Portable Speaker", price: 30000, category: "wireless-audio", img: "master-wireless-audio/Charge-5.jpg" },
+{ brand: "JBL", model: "Xtreme 3", type: "Portable Speaker", price: 50000, category: "wireless-audio", img: "master-wireless-audio/Xtreme-3.jpg" },
+{ brand: "JBL", model: "Boombox 3", type: "Portable Speaker", price: 79000, category: "wireless-audio", img: "master-wireless-audio/Boombox-3.jpg" },
+{ brand: "JBL", model: "PartyBox 110", type: "Party Speaker", price: 62000, category: "wireless-audio", img: "master-wireless-audio/PartyBox-110.jpg" },
+{ brand: "JBL", model: "PartyBox 310", type: "Party Speaker", price: 92000, category: "wireless-audio", img: "master-wireless-audio/PartyBox-310.jpg" },
+{ brand: "JBL", model: "PartyBox 710", type: "Party Speaker", price: 132000, category: "wireless-audio", img: "master-wireless-audio/PartyBox-710.jpg" },
+{ brand: "JBL", model: "PartyBox 1000", type: "Party Speaker", price: 202000, category: "wireless-audio", img: "master-wireless-audio/PartyBox-1000.jpg" },
+{ brand: "Apple", model: "AirPods Max", type: "Headphones", price: 122000, category: "wireless-audio", img: "master-wireless-audio/Apple-AirPods-Max.jpg" },
+{ brand: "Sony", model: "WH-1000XM4", type: "Headphones", price: 46000, category: "wireless-audio", img: "master-wireless-audio/Sony-WH-1000XM4.jpg" },
+{ brand: "Sony", model: "WH-1000XM5", type: "Headphones", price: 59000, category: "wireless-audio", img: "master-wireless-audio/Sony-WH-1000XM5.jpg" },
+{ brand: "Bose", model: "QuietComfort 45", type: "Headphones", price: 57000, category: "wireless-audio", img: "master-wireless-audio/Bose-QuietComfort-45.jpg" },
+{ brand: "Bose", model: "QuietComfort Ultra", type: "Headphones", price: 75000, category: "wireless-audio", img: "master-wireless-audio/Bose-QuietComfort-Ultra.jpg" },
+{ brand: "JBL", model: "Live 660NC", type: "Headphones", price: 24000, category: "wireless-audio", img: "master-wireless-audio/JBL-Live-660NC.jpg" },
+{ brand: "JBL", model: "Tour One M2", type: "Headphones", price: 44000, category: "wireless-audio", img: "master-wireless-audio/JBL-Tour-One-M2.jpg" },
+{ brand: "Apple", model: "AirPods 2", type: "Earbuds", price: 28000, category: "wireless-audio", img: "master-wireless-audio/Apple-AirPods-2.jpg" },
+{ brand: "Apple", model: "AirPods 3", type: "Earbuds", price: 36000, category: "wireless-audio", img: "master-wireless-audio/AirPods-3.jpg" },
+{ brand: "Apple", model: "AirPods Pro 2", type: "Earbuds", price: 53000, category: "wireless-audio", img: "master-wireless-audio/AirPods-Pro-2.jpg" },
+{ brand: "Samsung", model: "Galaxy Buds FE", type: "Earbuds", price: 15000, category: "wireless-audio", img: "master-wireless-audio/Samsung-Galaxy-Buds-FE.jpg" },
+{ brand: "Samsung", model: "Galaxy Buds 2 Pro", type: "Earbuds", price: 28000, category: "wireless-audio", img: "master-wireless-audio/Galaxy-Buds-2-Pro.jpg" },
+{ brand: "JBL", model: "Tune 130NC", type: "Earbuds", price: 15000, category: "wireless-audio", img: "master-wireless-audio/JBL-Tune-130NC.jpg" },
+{ brand: "JBL", model: "Live Pro 2", type: "Earbuds", price: 25000, category: "wireless-audio", img: "master-wireless-audio/JBL-Live-Pro-2.jpg" },
+{ brand: "Sony", model: "WF-C500", type: "Earbuds", price: 16000, category: "wireless-audio", img: "master-wireless-audio/Sony-WF-C500.jpg" },
+{ brand: "Sony", model: "WF-1000XM4", type: "Earbuds", price: 42000, category: "wireless-audio", img: "master-wireless-audio/Sony-WF-1000XM4.jpg" },
+{ brand: "Sony", model: "WF-1000XM5", type: "Earbuds", price: 52000, category: "wireless-audio", img: "master-wireless-audio/Sony-WF-1000XM5.jpg" },
+{ brand: "Sonos", model: "Roam", type: "Premium Speaker", price: 52000, category: "wireless-audio", img: "master-wireless-audio/Sonos-Roam.jpg" },
+{ brand: "Sonos", model: "Move 2", type: "Premium Speaker", price: 99000, category: "wireless-audio", img: "master-wireless-audio/Sonos-Move-2.jpg" },
+{ brand: "Sonos", model: "Era 100", type: "Premium Speaker", price: 59000, category: "wireless-audio", img: "master-wireless-audio/Sonos-Era-100.jpg" },
+{ brand: "Sonos", model: "Era 300", type: "Premium Speaker", price: 96000, category: "wireless-audio", img: "master-wireless-audio/Sonos-Era-300.jpg" },
+// IN-CEILING
+{ brand: "Klipsch", name: "CDT-5650-C II", type: "In-Ceiling", size: "6.5\" Pivot", price: 38000, category: "speakers", img: "speakers/Klipsch-CDT-5650-C-II(6.5Pivot).jpg" },
+{ brand: "Klipsch", name: "CDT-5800-C II", type: "In-Ceiling", size: "8\" Premium", price: 52000, category: "speakers", img: "speakers/Klipsch-CDT-5800-C-II(8Premium).jpg" }
+];
 
-      // SOUNDBARS
-      { brand: "JBL", name: "Bar 1000", type: "7.1.4", price: 98000, category: "soundbars", img: "soundbars/JBL-Bar-1000(7.1.4).jpg" },
-      { brand: "Bose", name: "Smart Soundbar 900", type: "Dolby Atmos", price: 196000, category: "soundbars", img: "soundbars/Bose-Smart-Soundbar-900.jpg" },
-      { brand: "Sony", name: "HT-A5000", type: "5.1.2", price: 167000, category: "soundbars", img: "soundbars/Sony-HT-A5000.jpg" },
-      { brand: "Samsung", name: "HW-Q800B", type: "3.1.2", price: 100000, category: "soundbars", img: "soundbars/Samsung-HW-Q800B.jpg" },
+// Ensure condition field
+audioProducts.forEach(item => {
+  if (!item.condition) {
+    item.condition = item.price === "Contact for Price" ? "Special Order" : "Public Listing";
+  }
+});
 
-      // SUBWOOFERS & BASS SPEAKERS
-      { brand: "Harman Kardon", model: "Onyx Studio 6", type: "Wireless Speaker", price: 40000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Onyx-Studio.jpg", status: "Public Listing" },
-      { brand: "Harman Kardon", model: "Onyx Studio 7", type: "Wireless Speaker", price: 48000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Onyx-Studio-7.jpg", status: "Public Listing" },
-      { brand: "Harman Kardon", model: "Onyx Studio 8", type: "Wireless Speaker", price: 59000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Onyx-Studio-8.jpg", status: "Public Listing" },
-      { brand: "Harman Kardon", model: "Aura Studio 3", type: "Wireless Speaker", price: 52000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Aura-Studio-3.jpg", status: "Public Listing" },
-      { brand: "Harman Kardon", model: "Aura Studio 4", type: "Wireless Speaker", price: 62000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Aura-Studio-4.jpg", status: "Public Listing" },
-      { brand: "Harman Kardon", model: "Go + Play (2023)", type: "Wireless Speaker", price: 82000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Go-Play(2023).jpg", status: "Public Listing" },
-      { brand: "Harman Kardon", model: "SoundSticks 4", type: "Wireless Speaker", price: 59000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-SoundSticks-4.jpg", status: "Public Listing" },
-      { brand: "Harman Kardon", model: "Citation Sub S", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Harman-Kardon-Citation-Sub-S.jpg", status: "Special Order", condition: "Special Order" },
-      { brand: "Polk Audio", model: "PSW10", type: "Subwoofer", price: 37000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-PSW10.jpg", status: "Public Listing" },
-      { brand: "Polk Audio", model: "PSW111", type: "Subwoofer", price: 46000, category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-PSW111.jpg", status: "Public Listing" },
-      { brand: "Polk Audio", model: "HTS10", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-HTS-10.jpg", status: "Special Order", condition: "Special Order" },
-      { brand: "Polk Audio", model: "HTS12", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-HTS-12.jpg", status: "Special Order", condition: "Special Order" },
-      { brand: "Polk Audio", model: "Monitor XT10", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-Monitor-XT10.jpg", status: "Special Order", condition: "Special Order" },
-      { brand: "Polk Audio", model: "Monitor XT12", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Polk-Audio-Monitor-XT12.jpg", status: "Special Order", condition: "Special Order" },
-      { brand: "Klipsch", model: "R-100SW", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Klipsch-R-100SW.jpg", status: "Special Order", condition: "Special Order" },
-      { brand: "Klipsch", model: "R-120SW", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Klipsch-R-120SW.jpg", status: "Special Order", condition: "Special Order" },
-      { brand: "Klipsch", model: "SPL-100", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Klipsch-SPL-100.jpg", status: "Special Order", condition: "Special Order" },
-      { brand: "Klipsch", model: "SPL-120", type: "Subwoofer", price: "Contact for Price", category: "subwoofers", img: "unified-subwoofer-and-bass-speakers/Klipsch-SPL-120.jpg", status: "Special Order", condition: "Special Order" },
-      { brand: "Klipsch", model: "R-41M", type: "Bookshelf Speaker", price: "Contact for Price", category: "bookshelf-speakers", img: "unified-subwoofer-and-bass-speakers/Klipsch-R-41M.jpg", status: "Special Order", condition: "Special Order" },
-      { brand: "Klipsch", model: "R-51M", type: "Bookshelf Speaker", price: "Contact for Price", category: "bookshelf-speakers", img: "unified-subwoofer-and-bass-speakers/Klipsch-R-51M.jpg", status: "Special Order", condition: "Special Order" },
-      { brand: "Klipsch", model: "RP-600M II", type: "Bookshelf Speaker", price: "Contact for Price", category: "bookshelf-speakers", img: "unified-subwoofer-and-bass-speakers/Klipsch-RP-600M-II.jpg", status: "Special Order", condition: "Special Order" },
+// ========== CART SYSTEM ==========
+let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
 
-      // BOOKSHELF SPEAKERS (Special Order)
-      { brand: "Klipsch", name: "RP-600M II", type: "Bookshelf Speaker", price: "Contact for Price", category: "bookshelf-speakers", img: "unified-subwoofer-and-bass-speakers/Klipsch-RP-600M-II.jpg", condition: "Special Order" },
+function saveCart() {
+  localStorage.setItem('morelCart', JSON.stringify(cart));
+  updateCartDisplay();
+}
 
-      // 🎧 WIRELESS AUDIO
-      { brand: "Harman Kardon", model: "Onyx Studio 6", type: "Wireless Speaker", price: 40000, category: "wireless-audio", img: "master-wireless-audio/Onyx-Studio-6.jpg" },
-      { brand: "Harman Kardon", model: "Onyx Studio 7", type: "Wireless Speaker", price: 47000, category: "wireless-audio", img: "master-wireless-audio/Onyx-Studio-7.jpg" },
-      { brand: "Harman Kardon", model: "Onyx Studio 8", type: "Wireless Speaker", price: 56000, category: "wireless-audio", img: "master-wireless-audio/Onyx-Studio-8.jpg" },
-      { brand: "Harman Kardon", model: "Aura Studio 3", type: "Wireless Speaker", price: 52000, category: "wireless-audio", img: "master-wireless-audio/Aura-Studio-3.jpg" },
-      { brand: "Harman Kardon", model: "Aura Studio 4", type: "Wireless Speaker", price: 66000, category: "wireless-audio", img: "master-wireless-audio/Aura-Studio-4.jpg" },
-      { brand: "Harman Kardon", model: "Go + Play (2023)", type: "Wireless Speaker", price: 79000, category: "wireless-audio", img: "master-wireless-audio/Go-Play(2023).jpg" },
-      { brand: "Harman Kardon", model: "SoundSticks 4", type: "Wireless Speaker", price: 62000, category: "wireless-audio", img: "master-wireless-audio/SoundSticks-4.jpg" },
-      { brand: "JBL", model: "Go 3", type: "Portable Speaker", price: 11000, category: "wireless-audio", img: "master-wireless-audio/Go-3.jpg" },
-      { brand: "JBL", model: "Clip 4", type: "Portable Speaker", price: 13000, category: "wireless-audio", img: "master-wireless-audio/Clip-4.jpg" },
-      { brand: "JBL", model: "Flip 6", type: "Portable Speaker", price: 25000, category: "wireless-audio", img: "master-wireless-audio/Flip-6.jpg" },
-      { brand: "JBL", model: "Charge 5", type: "Portable Speaker", price: 30000, category: "wireless-audio", img: "master-wireless-audio/Charge-5.jpg" },
-      { brand: "JBL", model: "Xtreme 3", type: "Portable Speaker", price: 50000, category: "wireless-audio", img: "master-wireless-audio/Xtreme-3.jpg" },
-      { brand: "JBL", model: "Boombox 3", type: "Portable Speaker", price: 79000, category: "wireless-audio", img: "master-wireless-audio/Boombox-3.jpg" },
-      { brand: "JBL", model: "PartyBox 110", type: "Party Speaker", price: 62000, category: "wireless-audio", img: "master-wireless-audio/PartyBox-110.jpg" },
-      { brand: "JBL", model: "PartyBox 310", type: "Party Speaker", price: 92000, category: "wireless-audio", img: "master-wireless-audio/PartyBox-310.jpg" },
-      { brand: "JBL", model: "PartyBox 710", type: "Party Speaker", price: 132000, category: "wireless-audio", img: "master-wireless-audio/PartyBox-710.jpg" },
-      { brand: "JBL", model: "PartyBox 1000", type: "Party Speaker", price: 202000, category: "wireless-audio", img: "master-wireless-audio/PartyBox-1000.jpg" },
-      { brand: "Apple", model: "AirPods Max", type: "Headphones", price: 122000, category: "wireless-audio", img: "master-wireless-audio/Apple-AirPods-Max.jpg" },
-      { brand: "Sony", model: "WH-1000XM4", type: "Headphones", price: 46000, category: "wireless-audio", img: "master-wireless-audio/Sony-WH-1000XM4.jpg" },
-      { brand: "Sony", model: "WH-1000XM5", type: "Headphones", price: 59000, category: "wireless-audio", img: "master-wireless-audio/Sony-WH-1000XM5.jpg" },
-      { brand: "Bose", model: "QuietComfort 45", type: "Headphones", price: 57000, category: "wireless-audio", img: "master-wireless-audio/Bose-QuietComfort-45.jpg" },
-      { brand: "Bose", model: "QuietComfort Ultra", type: "Headphones", price: 75000, category: "wireless-audio", img: "master-wireless-audio/Bose-QuietComfort-Ultra.jpg" },
-      { brand: "JBL", model: "Live 660NC", type: "Headphones", price: 24000, category: "wireless-audio", img: "master-wireless-audio/JBL-Live-660NC.jpg" },
-      { brand: "JBL", model: "Tour One M2", type: "Headphones", price: 44000, category: "wireless-audio", img: "master-wireless-audio/JBL-Tour-One-M2.jpg" },
-      { brand: "Apple", model: "AirPods 2", type: "Earbuds", price: 28000, category: "wireless-audio", img: "master-wireless-audio/Apple-AirPods-2.jpg" },
-      { brand: "Apple", model: "AirPods 3", type: "Earbuds", price: 36000, category: "wireless-audio", img: "master-wireless-audio/AirPods-3.jpg" },
-      { brand: "Apple", model: "AirPods Pro 2", type: "Earbuds", price: 53000, category: "wireless-audio", img: "master-wireless-audio/AirPods-Pro-2.jpg" },
-      { brand: "Samsung", model: "Galaxy Buds FE", type: "Earbuds", price: 15000, category: "wireless-audio", img: "master-wireless-audio/Samsung-Galaxy-Buds-FE.jpg" },
-      { brand: "Samsung", model: "Galaxy Buds 2 Pro", type: "Earbuds", price: 28000, category: "wireless-audio", img: "master-wireless-audio/Galaxy-Buds-2-Pro.jpg" },
-      { brand: "JBL", model: "Tune 130NC", type: "Earbuds", price: 15000, category: "wireless-audio", img: "master-wireless-audio/JBL-Tune-130NC.jpg" },
-      { brand: "JBL", model: "Live Pro 2", type: "Earbuds", price: 25000, category: "wireless-audio", img: "master-wireless-audio/JBL-Live-Pro-2.jpg" },
-      { brand: "Sony", model: "WF-C500", type: "Earbuds", price: 16000, category: "wireless-audio", img: "master-wireless-audio/Sony-WF-C500.jpg" },
-      { brand: "Sony", model: "WF-1000XM4", type: "Earbuds", price: 42000, category: "wireless-audio", img: "master-wireless-audio/Sony-WF-1000XM4.jpg" },
-      { brand: "Sony", model: "WF-1000XM5", type: "Earbuds", price: 52000, category: "wireless-audio", img: "master-wireless-audio/Sony-WF-1000XM5.jpg" },
-      { brand: "Sonos", model: "Roam", type: "Premium Speaker", price: 52000, category: "wireless-audio", img: "master-wireless-audio/Sonos-Roam.jpg" },
-      { brand: "Sonos", model: "Move 2", type: "Premium Speaker", price: 99000, category: "wireless-audio", img: "master-wireless-audio/Sonos-Move-2.jpg" },
-      { brand: "Sonos", model: "Era 100", type: "Premium Speaker", price: 59000, category: "wireless-audio", img: "master-wireless-audio/Sonos-Era-100.jpg" },
-      { brand: "Sonos", model: "Era 300", type: "Premium Speaker", price: 96000, category: "wireless-audio", img: "master-wireless-audio/Sonos-Era-300.jpg" },
+function addToCart(id, name, price, image) {
+  const existing = cart.find(item => item.id === id);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ id, name, price: parseFloat(price) || 0, image, quantity: 1 });
+  }
+  saveCart();
 
-      // IN-CEILING
-      { brand: "Klipsch", name: "CDT-5650-C II", type: "In-Ceiling", size: "6.5\" Pivot", price: 38000, category: "speakers", img: "speakers/Klipsch-CDT-5650-C-II(6.5Pivot).jpg" },
-      { brand: "Klipsch", name: "CDT-5800-C II", type: "In-Ceiling", size: "8\" Premium", price: 52000, category: "speakers", img: "speakers/Klipsch-CDT-5800-C-II(8Premium).jpg" }
-    ];
+  // Visual feedback
+  const btn = event.target;
+  const original = btn.textContent;
+  btn.textContent = '✓ Added!';
+  setTimeout(() => btn.textContent = original, 1200);
+}
 
-    // Ensure condition field
-    audioProducts.forEach(item => {
-      if (!item.condition) {
-        item.condition = item.price === "Contact for Price" ? "Special Order" : "Public Listing";
-      }
-    });
+function updateCartDisplay() {
+  const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const badge = document.getElementById('cart-count');
+  badge.textContent = totalCount;
+  badge.classList.toggle('hidden', totalCount === 0);
+}
 
-    // ========== CART SYSTEM ==========
-    let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
+function renderCartModal() {
+  const container = document.getElementById('cart-items');
+  const totalEl = document.getElementById('total-amount');
+  
+  if (cart.length === 0) {
+    container.innerHTML = '<p class="text-center text-gray-500 py-6">Your quote is empty.</p>';
+    totalEl.textContent = '0';
+    return;
+  }
 
-    function saveCart() {
-      localStorage.setItem('morelCart', JSON.stringify(cart));
-      updateCartDisplay();
-    }
+  let total = 0;
+  let html = '';
 
-    function addToCart(id, name, price, image) {
-      const existing = cart.find(item => item.id === id);
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        cart.push({ id, name, price: parseFloat(price) || 0, image, quantity: 1 });
-      }
-      saveCart();
-
-      // Visual feedback
-      const btn = event.target;
-      const original = btn.textContent;
-      btn.textContent = '✓ Added!';
-      setTimeout(() => btn.textContent = original, 1200);
-    }
-
-    function updateCartDisplay() {
-      const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-      const badge = document.getElementById('cart-count');
-      badge.textContent = totalCount;
-      badge.classList.toggle('hidden', totalCount === 0);
-    }
-
-    function renderCartModal() {
-      const container = document.getElementById('cart-items');
-      const totalEl = document.getElementById('total-amount');
-      
-      if (cart.length === 0) {
-        container.innerHTML = '<p class="text-center text-gray-500 py-6">Your quote is empty.</p>';
-        totalEl.textContent = '0';
-        return;
-      }
-
-      let total = 0;
-      let html = '';
-
-      cart.forEach(item => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-        html += `
-          <div class="cart-item">
-            <img src="../assets/images/${item.image}" alt="${item.name}">
-            <div class="cart-item-details">
-              <h4 class="font-medium text-sm">${item.name}</h4>
-              <p class="text-xs text-slate-600">KES ${item.price.toLocaleString()}</p>
-              <div class="quantity-controls">
-                <button class="quantity-btn decrease" data-id="${item.id}">−</button>
-                <span>${item.quantity}</span>
-                <button class="quantity-btn increase" data-id="${item.id}">+</button>
-              </div>
-              <button class="remove-btn" data-id="${item.id}">Remove</button>
-            </div>
+  cart.forEach(item => {
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+    html += `
+      <div class="cart-item">
+        <img src="../assets/images/${item.image}" alt="${item.name}">
+        <div class="cart-item-details">
+          <h4 class="font-medium text-sm">${item.name}</h4>
+          <p class="text-xs text-slate-600">KES ${item.price.toLocaleString()}</p>
+          <div class="quantity-controls">
+            <button class="quantity-btn decrease" data-id="${item.id}">−</button>
+            <span>${item.quantity}</span>
+            <button class="quantity-btn increase" data-id="${item.id}">+</button>
           </div>
-        `;
-      });
+          <button class="remove-btn" data-id="${item.id}">Remove</button>
+        </div>
+      </div>
+    `;
+  });
 
-      container.innerHTML = html;
-      totalEl.textContent = total.toLocaleString();
+  container.innerHTML = html;
+  totalEl.textContent = total.toLocaleString();
 
-      // Attach event listeners
-      document.querySelectorAll('.decrease').forEach(btn => {
-        btn.addEventListener('click', () => updateQuantity(btn.dataset.id, -1));
-      });
-      document.querySelectorAll('.increase').forEach(btn => {
-        btn.addEventListener('click', () => updateQuantity(btn.dataset.id, 1));
-      });
-      document.querySelectorAll('.remove-btn').forEach(btn => {
-        btn.addEventListener('click', () => removeFromCart(btn.dataset.id));
-      });
+  document.querySelectorAll('.decrease').forEach(btn => {
+    btn.addEventListener('click', () => updateQuantity(btn.dataset.id, -1));
+  });
+  document.querySelectorAll('.increase').forEach(btn => {
+    btn.addEventListener('click', () => updateQuantity(btn.dataset.id, 1));
+  });
+  document.querySelectorAll('.remove-btn').forEach(btn => {
+    btn.addEventListener('click', () => removeFromCart(btn.dataset.id));
+  });
+}
+
+function updateQuantity(id, change) {
+  const item = cart.find(i => i.id === id);
+  if (item) {
+    item.quantity += change;
+    if (item.quantity <= 0) {
+      removeFromCart(id);
+      return;
     }
+    saveCart();
+    renderCartModal();
+  }
+}
 
-    function updateQuantity(id, change) {
-      const item = cart.find(i => i.id === id);
-      if (item) {
-        item.quantity += change;
-        if (item.quantity <= 0) {
-          removeFromCart(id);
-          return;
-        }
-        saveCart();
-        renderCartModal();
-      }
-    }
+function removeFromCart(id) {
+  cart = cart.filter(item => item.id !== id);
+  saveCart();
+  renderCartModal();
+}
 
-    function removeFromCart(id) {
-      cart = cart.filter(item => item.id !== id);
-      saveCart();
-      renderCartModal();
-    }
+function checkoutViaWhatsApp() {
+  if (cart.length === 0) return;
+  
+  const businessNumber = '254791864441';
+  let message = 'Hi Morel Tech! I\'d like a quote for:\n\n';
+  cart.forEach(item => {
+    message += `• ${item.name} ×${item.quantity} — KES ${item.price.toLocaleString()}\n`;
+  });
+  const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+  message += `\nTotal: KES ${total.toLocaleString()}\n\nSent via your website.`;
 
-    function checkoutViaWhatsApp() {
-      if (cart.length === 0) return;
-      
-      const businessNumber = '254791864441';
-      let message = 'Hi Morel Tech! I\'d like a quote for:\n\n';
-      cart.forEach(item => {
-        message += `• ${item.name} ×${item.quantity} — KES ${item.price.toLocaleString()}\n`;
-      });
-      const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
-      message += `\nTotal: KES ${total.toLocaleString()}\n\nSent via your website.`;
+  window.open(`https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`, '_blank');
+}
 
-      window.open(`https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`, '_blank');
-    }
+// ========== UI FUNCTIONS ==========
+function openCart() {
+  renderCartModal();
+  document.getElementById('cart-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
 
-    // ========== UI FUNCTIONS ==========
-    function openCart() {
-      renderCartModal();
-      document.getElementById('cart-modal').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+function closeCart() {
+  document.getElementById('cart-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
 
-    function closeCart() {
-      document.getElementById('cart-modal').classList.remove('active');
-      document.body.style.overflow = '';
-    }
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = `../assets/images/${src}`;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
 
-    function openLightbox(src) {
-      document.getElementById('lightbox-img').src = `../assets/images/${src}`;
-      document.getElementById('lightbox').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
 
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('active');
-      document.body.style.overflow = '';
-    }
+function getDisplayName(item) {
+  return item.name || `${item.brand} ${item.model}`;
+}
 
-    function getDisplayName(item) {
-      return item.name || `${item.brand} ${item.model}`;
-    }
+function getMetaValue(item) {
+  if (item.category === 'av-receivers') return item.channels || '';
+  if (item.category === 'soundbars') return item.type || '';
+  if (item.category === 'wireless-audio') return item.type || '';
+  if (item.category === 'speakers') return item.size || '';
+  return '';
+}
 
-    function getMetaValue(item) {
-      if (item.category === 'av-receivers') return item.channels || '';
-      if (item.category === 'soundbars') return item.type || '';
-      if (item.category === 'wireless-audio') return item.type || '';
-      if (item.category === 'speakers') return item.size || '';
-      return '';
-    }
+// Group products by brand
+const brands = {};
+audioProducts.forEach(item => {
+  if (!brands[item.brand]) brands[item.brand] = [];
+  brands[item.brand].push(item);
+});
 
-    // Group products by brand
-    const brands = {};
-    audioProducts.forEach(item => {
-      if (!brands[item.brand]) brands[item.brand] = [];
-      brands[item.brand].push(item);
-    });
+function renderBrandCards(filtered = audioProducts) {
+  const tempBrands = {};
+  filtered.forEach(item => {
+    if (!tempBrands[item.brand]) tempBrands[item.brand] = [];
+    tempBrands[item.brand].push(item);
+  });
 
-    function renderBrandCards(filtered = audioProducts) {
-      const tempBrands = {};
-      filtered.forEach(item => {
-        if (!tempBrands[item.brand]) tempBrands[item.brand] = [];
-        tempBrands[item.brand].push(item);
-      });
+  const html = Object.entries(tempBrands).map(([brand, items]) => {
+    const images = [...new Set(items.map(i => i.img))].slice(0, 3);
+    const sample = items[0];
+    const allTypes = [...new Set(items.map(i => i.category))]
+      .map(t => t.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()))
+      .join(', ');
+    const minPrice = Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 999999));
 
-      const html = Object.entries(tempBrands).map(([brand, items]) => {
-        const images = [...new Set(items.map(i => i.img))].slice(0, 3);
-        const sample = items[0];
-        const allTypes = [...new Set(items.map(i => i.category))]
-          .map(t => t.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()))
-          .join(', ');
-        const minPrice = Math.min(...items.map(i => typeof i.price === 'number' ? i.price : 999999));
-
-        return `
-          <div class="brand-card">
-            <div class="p-5">
-              <h3 class="text-xl font-bold text-slate-900">${brand}</h3>
-              <p class="text-slate-600 text-sm mt-1">${items.length} models • ${allTypes}</p>
-            </div>
-            <div class="px-5 pb-4">
-              <div class="flex space-x-2 overflow-x-auto py-2">
-                ${images.map(img => `
-                  <img src="../assets/images/${img}"
-                       class="product-image"
-                       loading="lazy"
-                       alt="${brand} ${getDisplayName(sample)}"
-                       onclick="openLightbox('${img}')">
-                `).join('')}
-              </div>
-              <ul class="specs-list mt-3 space-y-1">
-                <li>• ${getDisplayName(sample)}</li>
-                <li>• From KES ${minPrice.toLocaleString()}</li>
-                <li>• ${[...new Set(items.map(i => i.condition))].join(' / ')}</li>
-              </ul>
-              <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
-                      onclick="showFullDetails('${brand}')">
-                View All Models
-              </button>
-            </div>
+    return `
+      <div class="brand-card">
+        <div class="p-5">
+          <h3 class="text-xl font-bold text-slate-900">${brand}</h3>
+          <p class="text-slate-600 text-sm mt-1">${items.length} models • ${allTypes}</p>
+        </div>
+        <div class="px-5 pb-4">
+          <div class="flex space-x-2 overflow-x-auto py-2">
+            ${images.map(img => `
+              <img src="../assets/images/${img}"
+                   class="product-image"
+                   loading="lazy"
+                   alt="${brand} ${getDisplayName(sample)}"
+                   onclick="openLightbox('${img}')">
+            `).join('')}
           </div>
-        `;
-      }).join('');
+          <ul class="specs-list mt-3 space-y-1">
+            <li>• ${getDisplayName(sample)}</li>
+            <li>• From KES ${minPrice.toLocaleString()}</li>
+            <li>• ${[...new Set(items.map(i => i.condition))].join(' / ')}</li>
+          </ul>
+          <button class="mt-4 w-full py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white rounded font-medium focus-ring"
+                  onclick="showFullDetails('${brand}')">
+            View All Models
+          </button>
+        </div>
+      </div>
+    `;
+  }).join('');
 
-      document.getElementById('brandGrid').innerHTML = html;
-    }
+  document.getElementById('brandGrid').innerHTML = html;
+}
 
-    function showFullDetails(brand) {
-      const items = brands[brand];
-      let content = `<h3 class="text-lg font-semibold mb-2">All ${brand} Audio Products</h3><div class="space-y-2">`;
-      
-      items.forEach(item => {
-        const meta = getMetaValue(item);
-        const id = `${item.brand}-${(item.model || item.name).replace(/[^a-zA-Z0-9]/g, '-')}`;
+function showFullDetails(brand) {
+  const items = brands[brand];
+  let content = `<h3 class="text-lg font-semibold mb-2">All ${brand} Audio Products</h3><div class="space-y-2">`;
+  
+  items.forEach(item => {
+    const meta = getMetaValue(item);
+    // Build display name with variant
+    const displayName = getDisplayName(item) + (meta ? ` (${meta})` : '');
+    
+    // Unique ID: include variant key
+    const variantKey = meta || item.model || 'default';
+    const fullId = `${item.brand}-${(item.model || item.name)}-${variantKey}`.replace(/[^a-zA-Z0-9]/g, '-');
 
-        content += `
-          <div class="border border-gray-200 rounded-lg p-2 hover:shadow-sm transition">
-            <div class="flex gap-2">
-              <img 
-                loading="lazy" 
-                src="../assets/images/${item.img}" 
-                alt="${getDisplayName(item)}" 
-                class="w-16 h-16 object-cover rounded cursor-pointer flex-shrink-0"
-                onclick="openLightbox('${item.img}')"
-              >
-              <div class="flex-1 min-w-0">
-                <h4 class="font-bold text-sm truncate">${getDisplayName(item)}</h4>
-                ${meta ? `<p class="text-xs text-slate-600">${meta}</p>` : ''}
-                <p class="text-xs ${
-                  item.condition === 'Special Order' ? 'text-purple-600' : 'text-green-600'
-                }">${item.condition}</p>
-                <p class="font-bold text-yellow-600 mt-1">KES ${typeof item.price === 'number' ? item.price.toLocaleString() : item.price}</p>
-                <button 
-                  class="add-to-cart-btn mt-1 w-full py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
-                  onclick="addToCart('${id}', '${getDisplayName(item).replaceAll("'", "\\\\'")}', ${typeof item.price === 'number' ? item.price : 0}, '${item.img}')"
-                >
-                  Add to Cart
-                </button>
-              </div>
-            </div>
+    content += `
+      <div class="border border-gray-200 rounded-lg p-2 hover:shadow-sm transition">
+        <div class="flex gap-2">
+          <img
+            loading="lazy"
+            src="../assets/images/${item.img}"
+            alt="${displayName}"
+            class="w-16 h-16 object-cover rounded cursor-pointer flex-shrink-0"
+            onclick="openLightbox('${item.img}')"
+          >
+          <div class="flex-1 min-w-0">
+            <h4 class="font-bold text-sm truncate">${displayName}</h4>
+            ${meta ? `<p class="text-xs text-slate-600">${meta}</p>` : ''}
+            <p class="text-xs ${
+              item.condition === 'Special Order' ? 'text-purple-600' : 'text-green-600'
+            }">${item.condition}</p>
+            <p class="font-bold text-yellow-600 mt-1">KES ${typeof item.price === 'number' ? item.price.toLocaleString() : item.price}</p>
+            <button
+              class="add-to-cart-btn mt-1 w-full py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded focus-ring"
+              onclick="addToCart('${fullId}', '${displayName.replaceAll("'", "\\\\'")}', ${typeof item.price === 'number' ? item.price : 0}, '${item.img}')"
+            >
+              Add to Cart
+            </button>
           </div>
-        `;
-      });
-      content += `</div>`;
+        </div>
+      </div>
+    `;
+  });
+  content += `</div>`;
 
-      document.getElementById('modalTitle').textContent = brand;
-      document.getElementById('modalContent').innerHTML = content;
-      document.getElementById('detailModal').classList.add('active');
-      document.body.style.overflow = 'hidden';
+  document.getElementById('modalTitle').textContent = brand;
+  document.getElementById('modalContent').innerHTML = content;
+  document.getElementById('detailModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('detailModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function applyFilters() {
+  const searchTerm = document.getElementById('modelSearch').value.toLowerCase().trim();
+  const brandSel = document.getElementById('brandFilter').value;
+  const typeSel = document.getElementById('typeFilter').value;
+
+  const filtered = audioProducts.filter(item => {
+    if (brandSel && item.brand !== brandSel) return false;
+    if (typeSel && item.category !== typeSel) return false;
+    if (searchTerm) {
+      const text = [item.name, item.brand, item.model, item.type, item.channels, item.size].filter(Boolean).join(' ').toLowerCase();
+      return text.includes(searchTerm);
     }
+    return true;
+  });
+  renderBrandCards(filtered);
+}
 
-    function closeModal() {
-      document.getElementById('detailModal').classList.remove('active');
-      document.body.style.overflow = '';
-    }
+// ========== INIT ==========
+document.getElementById('cart-icon').addEventListener('click', openCart);
+document.getElementById('close-cart').addEventListener('click', closeCart);
+document.getElementById('whatsapp-btn').addEventListener('click', checkoutViaWhatsApp);
 
-    function applyFilters() {
-      const searchTerm = document.getElementById('modelSearch').value.toLowerCase().trim();
-      const brandSel = document.getElementById('brandFilter').value;
-      const typeSel = document.getElementById('typeFilter').value;
+['modelSearch', 'brandFilter', 'typeFilter'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', applyFilters);
+});
 
-      const filtered = audioProducts.filter(item => {
-        if (brandSel && item.brand !== brandSel) return false;
-        if (typeSel && item.category !== typeSel) return false;
-        if (searchTerm) {
-          const text = [item.name, item.brand, item.model, item.type, item.channels].filter(Boolean).join(' ').toLowerCase();
-          return text.includes(searchTerm);
-        }
-        return true;
-      });
-      renderBrandCards(filtered);
-    }
+document.getElementById('openFilters').addEventListener('click', () => {
+  document.getElementById('filterSidebar').classList.add('active');
+  document.getElementById('filterOverlay').classList.add('active');
+});
 
-    // ========== INIT ==========
-    document.getElementById('cart-icon').addEventListener('click', openCart);
-    document.getElementById('close-cart').addEventListener('click', closeCart);
-    document.getElementById('whatsapp-btn').addEventListener('click', checkoutViaWhatsApp);
+document.querySelectorAll('#closeFilters, #filterOverlay').forEach(el => {
+  el?.addEventListener('click', () => {
+    document.getElementById('filterSidebar').classList.remove('active');
+    document.getElementById('filterOverlay').classList.remove('active');
+  });
+});
 
-    [modelSearch, brandFilter, typeFilter].forEach(el => {
-      if (el) el.addEventListener('input', applyFilters);
-    });
+document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+document.getElementById('detailModal').addEventListener('click', (e) => {
+  if (e.target.id === 'detailModal') closeModal();
+});
 
-    document.getElementById('openFilters').addEventListener('click', () => {
-      document.getElementById('filterSidebar').classList.add('active');
-      document.getElementById('filterOverlay').classList.add('active');
-    });
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (document.getElementById('cart-modal').classList.contains('active')) closeCart();
+    if (document.getElementById('lightbox').classList.contains('active')) closeLightbox();
+    if (document.getElementById('detailModal').classList.contains('active')) closeModal();
+  }
+});
 
-    document.querySelectorAll('#closeFilters, #filterOverlay').forEach(el => {
-      el?.addEventListener('click', () => {
-        document.getElementById('filterSidebar').classList.remove('active');
-        document.getElementById('filterOverlay').classList.remove('active');
-      });
-    });
+renderBrandCards();
+updateCartDisplay();
 
-    document.getElementById('closeModalBtn').addEventListener('click', closeModal);
-    document.getElementById('detailModal').addEventListener('click', (e) => {
-      if (e.target.id === 'detailModal') closeModal();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (document.getElementById('cart-modal').classList.contains('active')) closeCart();
-        if (document.getElementById('lightbox').classList.contains('active')) closeLightbox();
-        if (document.getElementById('detailModal').classList.contains('active')) closeModal();
-      }
-    });
-
-    renderBrandCards();
-    updateCartDisplay();
-
-    // Expose globally
-    window.openLightbox = openLightbox;
-    window.closeLightbox = closeLightbox;
-    window.addToCart = addToCart;
-  </script>
+// Expose globally
+window.openLightbox = openLightbox;
+window.closeLightbox = closeLightbox;
+window.addToCart = addToCart;
+</script>
 </body>
 </html>
