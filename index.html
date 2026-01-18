@@ -1,639 +1,535 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<!-- ✅ Optimized SEO title -->
-<title>Smart Home Automation, CCTV & Starlink Installer in Nairobi – Morel Tech</title>
-<!-- ✅ Rich, location-focused meta description -->
-<meta name="description" content="Top-rated smart home installer in Nairobi & Kenya. CCTV, Starlink, audio systems, automation & security. Free site survey. Call +254 791 864 441.">
-<link rel="icon" type="image/png" href="assets/images/favicon.ico"/>
-<!-- ✅ Preconnect for performance -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script type="application/ld+json">
-{
-"@context": "https://schema.org",
-"@type": "ProfessionalService",
-"name": "Morel Tech Solution",
-"image": "https://moreltech.co.ke/assets/images/logo.png",
-"url": "https://moreltech.co.ke",
-"telephone": "+254791864441",
-"address": {
-"@type": "PostalAddress",
-"streetAddress": "Nyeri Town",
-"addressLocality": "Nyeri",
-"addressCountry": "KE"
-},
-"geo": {
-"@type": "GeoCoordinates",
-"latitude": -0.4247,
-"longitude": 36.9455
-},
-"openingHoursSpecification": {
-"@type": "OpeningHoursSpecification",
-"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-"opens": "08:00",
-"closes": "18:00"
-},
-"serviceArea": {
-"@type": "Place",
-"name": "Kenya"
-},
-"knowsAbout": ["Smart Home Automation", "CCTV Installation", "Starlink Setup", "Home Audio Systems"]
-}
-</script>
-<style>
-/* =====================
-DESIGN TOKENS
-===================== */
-:root {
---bg-page: #0b112a;
---bg-surface: #ffffff;
---ink-900: #0f172a;
---ink-700: #334155;
---ink-500: #64748b;
---border-subtle: #0b112a;
---accent-gold: #d4af37;
---radius-sm: 10px;
---radius-md: 14px;
---radius-lg: 18px;
---shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
---shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
---ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
-}
-/* =====================
-HEADER / NAVIGATION
-===================== */
-.site-header {
-  background: rgba(11, 17, 42, 0.9);
-  backdrop-filter: blur(10px);
-}
-.nav-container {
-max-width: 1200px;
-margin: 0 auto;
-padding: 0.75rem 1.25rem;
-display: flex;
-align-items: center;
-justify-content: space-between;
-}
-.brand {
-display: flex;
-align-items: center;
-gap: 0.6rem;
-font-weight: 600;
-color: #ffffff;
-}
-.brand span {
-opacity: 0.9;
-}
-.navy-button {
-background-color: #0f172a;
-color: white;
-border: 2px solid #d4af37;
-padding: 0.75rem 1.5rem;
-border-radius: 9999px;
-font-weight: 600;
-transition: background-color 0.2s;
-}
-/* Navigation */
-.nav-links {
-display: flex;
-gap: 1.75rem;
-}
-.nav-link {
-position: relative;
-font-size: 0.9rem;
-font-weight: 500;
-/* ✅ Fixed low-contrast color */
-color: rgba(255, 255, 255, 0.85);
-text-decoration: none;
-padding: 0.25rem 0;
-transition: color 0.2s ease;
-}
-.nav-link:hover {
-color: #d4af37;
-}
-.nav-link.active {
-color: #d4af37;
-font-weight: 600;
-}
-.nav-link.active::after {
-content: "";
-position: absolute;
-left: 0;
-bottom: -6px;
-width: 100%;
-height: 2px;
-background: #d4af37;
-border-radius: 2px;
-}
-/* =====================
-GLOBAL BASE
-===================== */
-html {
--webkit-text-size-adjust: 100%;
-}
-body {
-font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-background-color: var(--bg-page);
-color: var(--ink-700);
-line-height: 1.6;
-letter-spacing: -0.01em;
-margin: 0;
-}
-/* =====================
-ACCESSIBILITY
-===================== */
-.focus-ring:focus-visible {
-outline: 2px solid var(--accent-gold);
-outline-offset: 3px;
-}
-.sr-only {
-position: absolute;
-width: 1px;
-height: 1px;
-margin: -1px;
-overflow: hidden;
-clip: rect(0, 0, 0, 0);
-white-space: nowrap;
-}
-/* Buttons – Add to your existing style block */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  font-weight: 700;
-  border-radius: 9999px;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.btn-primary {
-  background: linear-gradient(135deg, #d4af37, #b8860b);
-  color: #0f172a;
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
-}
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-}
-.btn-outline {
-  background: transparent;
-  color: #d4af37;
-  border: 2px solid #d4af37;
-}
-.btn-outline:hover {
-  background: rgba(212, 175, 55, 0.08);
-}
-/* Optional: Fine-tune service cards */
-.service-card {
-  will-change: transform, box-shadow;
-}
-.service-card:hover {
-  border-color: var(--accent-gold);
-  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
-}
-/* =====================
-MODAL
-===================== */
-.modal {
-display: none;
-position: fixed;
-inset: 0;
-background: rgba(15, 23, 42, 0.85);
-z-index: 1000;
-padding: env(safe-area-inset-bottom);
-justify-content: center;
-align-items: center;
-}
-.modal.active {
-display: flex;
-}
-.modal-content {
-width: 90vw;
-height: 90vh;
-max-width: 1200px;
-max-height: 720px;
-background: #000;
-border-radius: var(--radius-lg);
-overflow: hidden;
-box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-display: flex;
-justify-content: center;
-align-items: center;
-}
-.modal-content video {
-width: 100%;
-height: 100%;
-object-fit: contain;
-}
-.modal-close {
-position: fixed;
-top: 1rem;
-right: 1rem;
-width: 44px;
-height: 44px;
-border-radius: 50%;
-background: rgba(255, 255, 255, 0.12);
-color: #fff;
-font-size: 1.5rem;
-display: flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-backdrop-filter: blur(6px);
-}
-.brand-marquee {
-animation: marquee 30s linear infinite;
-width: max-content;
-}
-@keyframes marquee {
-0% { transform: translateX(0); }
-100% { transform: translateX(-50%); }
-}
-/* =====================
-PRODUCT GRID
-===================== */
-#productGrid {
-display: grid;
-grid-template-columns: 1fr;
-gap: 1.25rem;
-margin-top: 1.5rem;
-}
-@media (min-width: 640px) {
-#productGrid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (min-width: 1024px) {
-#productGrid { grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
-}
-/* =====================
-PRODUCT CARD
-===================== */
-.product-card {
-background: var(--bg-surface);
-border-radius: var(--radius-md);
-box-shadow: var(--shadow-sm);
-overflow: hidden;
-transition: box-shadow 0.3s var(--ease-ui), transform 0.3s var(--ease-ui);
-}
-@media (hover: hover) {
-.product-card:hover {
-transform: translateY(-4px);
-box-shadow: var(--shadow-md);
-}
-}
-.product-image {
-width: 100%;
-height: 200px;
-object-fit: cover;
-border-radius: 9999px;
-background-color: #f1f5f9;
-}
-@media (min-width: 1024px) {
-.product-image-large {
-width: 100%;
-height: 180px;
-object-fit: cover;
-border-radius: var(--radius-sm);
-margin-bottom: 1rem;
-}
-}
-.product-content {
-padding: 0.75rem 1rem 1rem;
-display: flex;
-flex-direction: column;
-gap: 0.35rem;
-}
-.product-title {
-font-size: 1rem;
-font-weight: 600;
-color: var(--ink-900);
-}
-.product-meta,
-.product-desc {
-font-size: 0.875rem;
-color: var(--ink-500);
-}
-.product-price {
-margin-top: 0.75rem;
-font-size: 1.15rem;
-font-weight: 600;
-color: var(--accent-gold);
-}
-/* =====================
-PAGINATION
-===================== */
-.pagination {
-display: flex;
-justify-content: center;
-align-items: center;
-margin: 3rem 0 1rem;
-gap: 0.5rem;
-}
-.pagination-number,
-.page-button {
-min-width: 44px;
-min-height: 44px;
-border-radius: 9999px;
-border: 1px solid var(--border-subtle);
-background: var(--bg-surface);
-color: var(--ink-700);
-font-size: 0.875rem;
-font-weight: 500;
-display: inline-flex;
-align-items: center;
-justify-content: center;
-transition: background 0.2s var(--ease-ui), border-color 0.2s var(--ease-ui), color 0.2s var(--ease-ui);
-}
-.pagination-number.active,
-.pagination-number:hover,
-.page-button:hover:not(:disabled) {
-background: var(--accent-gold);
-border-color: var(--accent-gold);
-color: #fff;
-}
-.page-button:disabled {
-opacity: 0.4;
-}
-/* =====================
-SUBCATEGORY
-===================== */
-.subcategory-link {
-padding: 0.5rem 0.75rem;
-font-size: 0.875rem;
-color: var(--ink-500);
-border-radius: 9999px;
-}
-.subcategory-link.active-subcategory {
-background-color: #fff9e6;
-color: #a37c00;
-border-color: #d4af37;
-font-weight: 600;
-box-shadow: 0 2px 6px rgba(212, 175, 55, 0.2);
-color: var(--ink-900);
-background: rgba(212, 175, 55, 0.12);
-font-weight: 600;
-}
-/* =====================
-CATEGORY CARDS
-===================== */
-.category-card {
-background: white;
-padding: 2rem;
-border-radius: 1.5rem;
-box-shadow: var(--shadow-sm);
-transition: transform 0.3s ease, box-shadow 0.3s ease;
-position: relative;
-overflow: hidden;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-}
-.category-card:hover {
-transform: translateY(-6px);
-box-shadow: var(--shadow-md);
-}
-.category-card img {
-height: 120px;
-width: auto;
-max-width: 100%;
-object-fit: contain;
-margin-bottom: 1.25rem;
-opacity: 0.9;
-display: block;
-}
-.category-card h3 {
-font-size: 1.25rem;
-font-weight: 700;
-margin-bottom: 0.5rem;
-color: var(--ink-900);
-}
-.category-card p {
-font-size: 0.95rem;
-color: var(--ink-500);
-}
-.category-card-link {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-z-index: 10;
-text-decoration: none;
-}
-/* =====================
-MOTION REDUCTION
-===================== */
-@media (prefers-reduced-motion: reduce) {
-* { transition: none !important; }
-}
-/* =====================
-HERO SECTION
-===================== */
-.hero-section {
-background: linear-gradient(rgba(11,17,42,0.94), rgba(11,17,42,0.85)),
-url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Home Automation, CCTV & Starlink Installer in Nairobi – Morel Tech</title>
+  <meta name="description" content="Top-rated smart home installer in Nairobi & Kenya. CCTV, Starlink, audio systems, automation & security. Free site survey. Call +254 791 864 441.">
+  <link rel="icon" type="image/png" href="assets/images/favicon.ico"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Morel Tech Solution",
+    "image": "https://moreltech.co.ke/assets/images/logo.png",
+    "url": "https://moreltech.co.ke",
+    "telephone": "+254791864441",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nyeri Town",
+      "addressLocality": "Nyeri",
+      "addressCountry": "KE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -0.4247,
+      "longitude": 36.9455
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    "serviceArea": {
+      "@type": "Place",
+      "name": "Kenya"
+    },
+    "knowsAbout": ["Smart Home Automation", "CCTV Installation", "Starlink Setup", "Home Audio Systems"]
+  }
+  </script>
+  <style>
+    /* ===================== DESIGN TOKENS ===================== */
+    :root {
+      --bg-page: #0b112a;
+      --bg-surface: #ffffff;
+      --ink-900: #0f172a;
+      --ink-700: #334155;
+      --ink-500: #64748b;
+      --border-subtle: #0b112a;
+      --accent-gold: #d4af37;
+      --radius-sm: 10px;
+      --radius-md: 14px;
+      --radius-lg: 18px;
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+      --ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
+
+      /* Fluid typography */
+      --text-xs: clamp(0.75rem, 2vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 2.2vw, 1rem);
+      --text-base: clamp(1rem, 2.5vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 2.8vw, 1.25rem);
+      --text-xl: clamp(1.25rem, 3vw, 1.5rem);
+      --text-2xl: clamp(1.5rem, 3.5vw, 1.875rem);
+      --text-3xl: clamp(1.875rem, 4vw, 2.25rem);
+      --text-4xl: clamp(2.25rem, 5vw, 3rem);
+      --text-5xl: clamp(3rem, 6vw, 4rem);
+      --text-6xl: clamp(3.75rem, 7vw, 5rem);
+    }
+
+    /* ===================== GLOBAL BASE ===================== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--ink-700);
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+      margin: 0;
+      overflow-x: hidden;
+      font-size: var(--text-base);
+    }
+
+    /* ===================== ACCESSIBILITY ===================== */
+    .focus-ring:focus-visible {
+      outline: 2px solid var(--accent-gold);
+      outline-offset: 3px;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
+
+    /* ===================== BUTTONS ===================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 9999px;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      min-height: 48px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      color: #0f172a;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      color: #d4af37;
+      border: 2px solid #d4af37;
+    }
+    .btn-outline:hover {
+      background: rgba(212, 175, 55, 0.08);
+    }
+
+    /* ===================== HEADER / NAVIGATION ===================== */
+    .site-header {
+      background: rgba(11, 17, 42, 0.9);
+      backdrop-filter: blur(10px);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+    .brand span {
+      opacity: 0.9;
+    }
+    .nav-link {
+      position: relative;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+      color: #d4af37;
+    }
+    .nav-link.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background: #d4af37;
+      border-radius: 2px;
+    }
+
+    /* ===================== MODAL ===================== */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.85);
+      z-index: 1000;
+      padding: env(safe-area-inset-bottom);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      width: 90vw;
+      height: 90vh;
+      max-width: 1200px;
+      max-height: 720px;
+      background: #000;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .modal-close {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+    }
+
+    /* ===================== PRODUCT GRID ===================== */
+    #productGrid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      #productGrid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      #productGrid { grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+    }
+
+    /* ===================== PRODUCT CARD ===================== */
+    .product-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: box-shadow 0.3s var(--ease-ui), transform 0.3s var(--ease-ui);
+    }
+    @media (hover: hover) {
+      .product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+      }
+    }
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background-color: #f1f5f9;
+    }
+    .product-content {
+      padding: 0.75rem 1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .product-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink-900);
+    }
+    .product-meta,
+    .product-desc {
+      font-size: 0.875rem;
+      color: var(--ink-500);
+    }
+    .product-price {
+      margin-top: 0.75rem;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+    }
+
+    /* ===================== CATEGORY CARDS ===================== */
+    .category-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .category-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+    .category-card img {
+      height: 120px;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      margin-bottom: 1.25rem;
+      opacity: 0.9;
+      display: block;
+    }
+    .category-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--ink-900);
+    }
+    .category-card p {
+      font-size: 0.95rem;
+      color: var(--ink-500);
+    }
+    .category-card-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      text-decoration: none;
+    }
+
+    /* ===================== HERO SECTION ===================== */
+    .hero-section {
+      background: linear-gradient(rgba(11,17,42,0.94), rgba(11,17,42,0.85)),
+        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
+    }
+
+    /* ===================== BRAND MARQUEE ===================== */
+    .brand-marquee {
+      animation: marquee 30s linear infinite;
+      width: max-content;
+      display: flex;
+      gap: 1.5rem;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ===================== MOTION REDUCTION ===================== */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+
+    /* ===================== SWIPER ARROWS (MOBILE SAFE) ===================== */
+    .swiper-button-next,
+    .swiper-button-prev {
+      width: 44px !important;
+      height: 44px !important;
+      margin-top: -22px !important;
+    }
+    @media (min-width: 768px) {
+      .swiper-button-next { right: -20px !important; }
+      .swiper-button-prev { left: -20px !important; }
+    }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
-<a href="#main" class="sr-only focus:not-sr-only focus:bg-slate-900 focus:text-white p-2 focus:ring">Skip to main content</a>
-<nav class="bg-[#0b112a] text-white fixed w-full top-0 z-50 shadow-md">
-<div class="container mx-auto px-4 py-3 flex items-center justify-between">
-<!-- Logo -->
-<div class="flex items-center space-x-3 group">
-  <img 
-    loading="lazy" 
-    decoding="async" 
-    src="assets/images/logo.png" 
-    alt="Morel Tech Solution Logo" 
-    class="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
-  >
-  <span class="text-lg font-bold text-white hidden md:block tracking-tight transition-colors duration-300 group-hover:text-[#d4af37]">
-    Morel Tech Solution
-  </span>
-</div>
-<!-- Desktop Menu -->
-<ul id="navMenu" class="hidden md:flex space-x-3 items-center">
-<li><a href="#home" data-section="home" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Home</a></li>
-<li><a href="#about" data-section="about" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">About</a></li>
-<li><a href="#services" data-section="services" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Services</a></li>
-<li><a href="#projects" data-section="projects" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Projects</a></li>
-<li><a href="#testimonials" data-section="testimonials" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Testimonials</a></li>
-<li><a href="#products" data-section="products" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Products</a></li>
-<li><a href="#contact" data-section="contact" class="nav-link px-6 py-2 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Contact</a></li>
+  <a href="#main" class="sr-only focus:not-sr-only focus:bg-slate-900 focus:text-white p-2 focus:ring">Skip to main content</a>
 
-</ul>
-<!-- Mobile Menu Button -->
-<button id="mobileMenuButton" class="md:hidden text-white text-2xl font-bold focus-ring" aria-expanded="false" aria-controls="mobileNav">☰</button>
-</div>
-<!-- Mobile Menu -->
-<ul id="mobileNav" class="md:hidden hidden flex-col items-center space-y-2 py-6 bg-slate-900 w-full mt-2 rounded-xl shadow-2xl">
-<li><a href="#home" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Home</a></li>
-<li><a href="#about" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">About</a></li>
-<li><a href="#services" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Services</a></li>
-<li><a href="#projects" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Projects</a></li>
-<li><a href="#testimonials" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Testimonials</a></li>
-<li><a href="#products" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Products</a></li>
-<li><a href="#contact" class="mobile-nav-link block w-full text-center py-3 px-6 rounded-full border-2 border-yellow-500 text-white font-medium transition-all duration-300 hover:bg-yellow-500 hover:text-slate-900">Contact</a></li>
-
-</ul>
-</nav>
-<main id="main" class="pt-16">
-<!-- ========== HOME ========== -->
-<section id="home" data-observer-id="home" class="min-h-screen flex items-center justify-center text-center text-white pt-16 hero-section">
-  <div class="container mx-auto px-4 sm:px-6 max-w-5xl">
-    <h1 class="text-4xl md:text-6xl font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-yellow-600">
-      Morel Tech Solution
-    </h1>
-    <p class="text-xl md:text-3xl font-light mb-6 text-slate-200">Smarter Spaces, Better Living.</p>
-
-    <!-- Value Prop Badge -->
-    <div class="inline-block bg-yellow-900/20 backdrop-blur-sm border border-yellow-700/30 text-yellow-100 px-5 py-2 rounded-full font-medium mb-8 text-sm md:text-base">
-      🇰🇪 100% Kenyan-Owned • Free On-Site Consultation
-    </div>
-
-    <p class="text-lg md:text-xl max-w-4xl mx-auto mb-10 text-slate-200 leading-relaxed">
-      Premium smart home automation • CCTV • Starlink • Piped music • Security systems<br>
-      Clean installations across <strong class="text-yellow-300">Nairobi, Karen, Runda, Kiambu, Tatu City & Nationwide</strong>
-    </p>
-
-    <!-- Trust Badges -->
-    <div class="mt-8 flex flex-wrap justify-center gap-4 md:gap-6">
-      <span class="bg-slate-900/40 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-slate-200 border border-slate-700/50">✅ Licensed & Insured</span>
-      <span class="bg-slate-900/40 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-slate-200 border border-slate-700/50">✅ 2-Year Warranty</span>
-      <span class="bg-slate-900/40 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-slate-200 border border-slate-700/50">✅ Free Site Survey</span>
-      <span class="bg-slate-900/40 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-slate-200 border border-slate-700/50">✅ 500+ Installations in Kenya</span>
-    </div>
-
-    <!-- Primary CTAs -->
-    <div class="flex flex-col sm:flex-row justify-center gap-4 mt-10">
-      <a href="#contact" class="btn btn-primary px-8 py-4 text-lg font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus-ring">
-        Get a Quote
-      </a>
-      <a href="#projects" class="btn btn-outline px-8 py-4 text-lg font-bold rounded-full border-2 border-yellow-500 text-yellow-300 hover:bg-yellow-500/10 transition-all duration-300 focus-ring">
-        View Projects
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ========== ABOUT ========== -->
-<section id="about" data-observer-id="about" class="py-20 md:py-28 bg-white">
-  <div class="container mx-auto px-4 sm:px-6 max-w-4xl">
-    <h2 class="text-3xl md:text-5xl font-bold text-center text-slate-900 mb-8">Who We Are</h2>
-    <div class="prose prose-lg mx-auto text-gray-700 leading-relaxed">
-      <p>
-        Morel Tech Solution delivers <strong class="text-yellow-700">clean, reliable, premium technology</strong> for homes and businesses across Kenya.
-      </p>
-      <p>
-        We specialize in smart home automation, CCTV, piped music, Starlink internet, WiFi systems, gate automation, and security — all installed with precision and supported long-term.
-      </p>
-      <p>
-        From Karen to Tatu City, Runda to Westlands, we’ve built a reputation for <strong class="text-yellow-700">neat work, honest pricing, and systems that just work</strong>.
-      </p>
-    </div>
-  </div>
-</section>
-<!-- ========== SERVICES ========== -->
-<section id="services" data-observer-id="services" class="py-20 md:py-28 bg-slate-50">
-  <div class="container mx-auto px-4 sm:px-6">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-16">
-      Our Services
-    </h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      <!-- Service Card 1 -->
-      <div class="service-card group bg-white p-7 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-yellow-400/50">
-        <div class="w-full h-48 overflow-hidden rounded-xl mb-6">
-          <img 
-            loading="lazy" 
-            decoding="async" 
-            src="assets/images/smarthome automations.jpg" 
-            alt="Smart Home Automation" 
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          >
-        </div>
-        <h3 class="text-xl font-bold text-slate-900 mb-3">Smart Home Automation</h3>
-        <p class="text-slate-600 text-sm leading-relaxed">
-          Lighting • Curtains • Climate • Voice Control • Scenes
-        </p>
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="bg-[#0b112a] text-white fixed w-full top-0 z-50 shadow-md">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center space-x-3 group">
+        <img
+          loading="lazy"
+          decoding="async"
+          src="assets/images/logo.png"
+          alt="Morel Tech Solution Logo"
+          class="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
+        />
+        <span class="text-lg font-bold text-white hidden md:block tracking-tight transition-colors duration-300 group-hover:text-[#d4af37]">
+          Morel Tech Solution
+        </span>
       </div>
 
-      <!-- Service Card 2 -->
-      <div class="service-card group bg-white p-7 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-yellow-400/50">
-        <div class="w-full h-48 overflow-hidden rounded-xl mb-6">
-          <img 
-            loading="lazy" 
-            decoding="async" 
-            src="assets/images/Home entertainment and AV.jpg" 
-            alt="Home Entertainment & AV" 
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          >
-        </div>
-        <h3 class="text-xl font-bold text-slate-900 mb-3">Home Entertainment & AV</h3>
-        <p class="text-slate-600 text-sm leading-relaxed">
-          Home theatre • Projectors • Soundbars • TV mounting
-        </p>
-      </div>
+      <!-- Desktop Menu -->
+      <ul id="navMenu" class="hidden md:flex space-x-2 items-center">
+        <li><a href="#home" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Home</a></li>
+        <li><a href="#about" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">About</a></li>
+        <li><a href="#services" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Services</a></li>
+        <li><a href="#projects" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Projects</a></li>
+        <li><a href="#testimonials" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Testimonials</a></li>
+        <li><a href="#products" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Products</a></li>
+        <li><a href="#contact" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Contact</a></li>
+      </ul>
 
-      <!-- Service Card 3 -->
-      <div class="service-card group bg-white p-7 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-yellow-400/50">
-        <div class="w-full h-48 overflow-hidden rounded-xl mb-6">
-          <img 
-            loading="lazy" 
-            decoding="async" 
-            src="assets/images/security and surveillance.jpg" 
-            alt="Security & Surveillance" 
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          >
-        </div>
-        <h3 class="text-xl font-bold text-slate-900 mb-3">Security & Surveillance</h3>
-        <p class="text-slate-600 text-sm leading-relaxed">
-          CCTV • Smart alarms • Motion sensors • Access control
-        </p>
-      </div>
-
-      <!-- Service Card 4 -->
-      <div class="service-card group bg-white p-7 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-yellow-400/50">
-        <div class="w-full h-48 overflow-hidden rounded-xl mb-6">
-          <img 
-            loading="lazy" 
-            decoding="async" 
-            src="assets/images/networking and internet.jpg" 
-            alt="Networking & Internet" 
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          >
-        </div>
-        <h3 class="text-xl font-bold text-slate-900 mb-3">Networking & Internet</h3>
-        <p class="text-slate-600 text-sm leading-relaxed">
-          WiFi design • Structured cabling • Racks • Optimization
-        </p>
-      </div>
-
-      <!-- Service Card 5 -->
-      <div class="service-card group bg-white p-7 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-yellow-400/50">
-        <div class="w-full h-48 overflow-hidden rounded-xl mb-6">
-          <img 
-            loading="lazy" 
-            decoding="async" 
-            src="assets/images/maintenance1.jpg" 
-            alt="Maintenance & Support" 
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          >
-        </div>
-        <h3 class="text-xl font-bold text-slate-900 mb-3">Maintenance & Support</h3>
-        <p class="text-slate-600 text-sm leading-relaxed">
-          System upgrades • Diagnostics • Scheduled servicing
-        </p>
-      </div>
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuButton" class="md:hidden text-white text-2xl focus-ring" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span class="sr-only">Open main menu</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
-  </div>
-</section>
-<!-- ========== PROJECTS ========== -->
+
+    <!-- Mobile Menu -->
+    <ul id="mobileNav" class="md:hidden hidden flex-col items-stretch bg-slate-900 mt-2 pb-4 space-y-2 px-4 shadow-2xl">
+      <li><a href="#home" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Home</a></li>
+      <li><a href="#about" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">About</a></li>
+      <li><a href="#services" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Services</a></li>
+      <li><a href="#projects" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Projects</a></li>
+      <li><a href="#testimonials" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Testimonials</a></li>
+      <li><a href="#products" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Products</a></li>
+      <li><a href="#contact" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main" class="pt-16">
+
+    <!-- ========== HOME ========== -->
+    <section id="home" data-observer-id="home" class="min-h-screen flex items-center justify-center text-center text-white pt-16 hero-section">
+      <div class="container mx-auto px-4 sm:px-6 max-w-5xl">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-yellow-600">
+          Morel Tech Solution
+        </h1>
+        <p class="text-lg md:text-xl lg:text-2xl font-light mb-6 text-slate-200">Smarter Spaces, Better Living.</p>
+
+        <div class="inline-block bg-yellow-900/20 backdrop-blur-sm border border-yellow-700/30 text-yellow-100 px-5 py-2 rounded-full font-medium mb-8 text-sm md:text-base">
+          🇰🇪 100% Kenyan-Owned • Free On-Site Consultation
+        </div>
+
+        <p class="text-base md:text-lg max-w-4xl mx-auto mb-10 text-slate-200 leading-relaxed">
+          Premium smart home automation • CCTV • Starlink • Piped music • Security systems<br>
+          Clean installations across <strong class="text-yellow-300">Nairobi, Karen, Runda, Kiambu, Tatu City & Nationwide</strong>
+        </p>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-4 md:gap-6">
+          <span class="bg-slate-900/40 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-slate-200 border border-slate-700/50">✅ Licensed & Insured</span>
+          <span class="bg-slate-900/40 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-slate-200 border border-slate-700/50">✅ 2-Year Warranty</span>
+          <span class="bg-slate-900/40 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-slate-200 border border-slate-700/50">✅ Free Site Survey</span>
+          <span class="bg-slate-900/40 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-slate-200 border border-slate-700/50">✅ 500+ Installations in Kenya</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mt-8">
+          <a href="#contact" class="btn btn-primary px-6 py-3 text-base sm:text-lg font-bold rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 focus-ring">
+            Get a Quote
+          </a>
+          <a href="#projects" class="btn btn-outline px-6 py-3 text-base sm:text-lg font-bold rounded-full border-2 border-yellow-500 text-yellow-300 hover:bg-yellow-500/10 transition-all duration-300 focus-ring">
+            View Projects
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section id="about" data-observer-id="about" class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4 sm:px-6 max-w-4xl">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-8">Who We Are</h2>
+        <div class="prose prose-lg mx-auto text-gray-700 leading-relaxed">
+          <p>
+            Morel Tech Solution delivers <strong class="text-yellow-700">clean, reliable, premium technology</strong> for homes and businesses across Kenya.
+          </p>
+          <p>
+            We specialize in smart home automation, CCTV, piped music, Starlink internet, WiFi systems, gate automation, and security — all installed with precision and supported long-term.
+          </p>
+          <p>
+            From Karen to Tatu City, Runda to Westlands, we’ve built a reputation for <strong class="text-yellow-700">neat work, honest pricing, and systems that just work</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section id="services" data-observer-id="services" class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4 sm:px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-12">
+          Our Services
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+          <!-- Service cards remain unchanged but wrapped in responsive grid -->
+          <div class="service-card group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-yellow-400/50">
+            <div class="w-full h-48 overflow-hidden rounded-xl mb-4">
+              <img loading="lazy" decoding="async" src="assets/images/smarthome automations.jpg" alt="Smart Home Automation" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Smart Home Automation</h3>
+            <p class="text-slate-600 text-sm">Lighting • Curtains • Climate • Voice Control • Scenes</p>
+          </div>
+          <div class="service-card group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-yellow-400/50">
+            <div class="w-full h-48 overflow-hidden rounded-xl mb-4">
+              <img loading="lazy" decoding="async" src="assets/images/Home entertainment and AV.jpg" alt="Home Entertainment & AV" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Home Entertainment & AV</h3>
+            <p class="text-slate-600 text-sm">Home theatre • Projectors • Soundbars • TV mounting</p>
+          </div>
+          <div class="service-card group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-yellow-400/50">
+            <div class="w-full h-48 overflow-hidden rounded-xl mb-4">
+              <img loading="lazy" decoding="async" src="assets/images/security and surveillance.jpg" alt="Security & Surveillance" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Security & Surveillance</h3>
+            <p class="text-slate-600 text-sm">CCTV • Smart alarms • Motion sensors • Access control</p>
+          </div>
+          <div class="service-card group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-yellow-400/50">
+            <div class="w-full h-48 overflow-hidden rounded-xl mb-4">
+              <img loading="lazy" decoding="async" src="assets/images/networking and internet.jpg" alt="Networking & Internet" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Networking & Internet</h3>
+            <p class="text-slate-600 text-sm">WiFi design • Structured cabling • Racks • Optimization</p>
+          </div>
+          <div class="service-card group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-yellow-400/50">
+            <div class="w-full h-48 overflow-hidden rounded-xl mb-4">
+              <img loading="lazy" decoding="async" src="assets/images/maintenance1.jpg" alt="Maintenance & Support" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Maintenance & Support</h3>
+            <p class="text-slate-600 text-sm">System upgrades • Diagnostics • Scheduled servicing</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS ========== -->
 <section id="projects" data-observer-id="projects" class="py-20 md:py-28 bg-white">
   <div class="container mx-auto px-4 sm:px-6">
     <div class="flex flex-col md:flex-row justify-between items-center mb-8">
@@ -1020,514 +916,371 @@ url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3
   </div>
 </section>
 
-
-<!-- ========== TESTIMONIALS ========== -->
-<section id="testimonials" class="py-20 md:py-28 bg-white">
-  <div class="container mx-auto px-4 sm:px-6 max-w-6xl">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">What Our Clients Say</h2>
-    <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
-      Real experiences from homeowners and businesses across Kenya.
-    </p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Testimonial 1 -->
-      <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-        <div class="flex items-center mb-4">
-          <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-800 font-bold">M</div>
-          <div class="ml-3">
-            <h4 class="font-semibold text-slate-900">Mary W.</h4>
-            <p class="text-sm text-slate-600">Karen, Nairobi</p>
+    <!-- ========== TESTIMONIALS ========== -->
+    <section id="testimonials" class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4 sm:px-6 max-w-6xl">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">What Our Clients Say</h2>
+        <p class="text-center text-slate-600 mb-10 max-w-2xl mx-auto">
+          Real experiences from homeowners and businesses across Kenya.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Testimonial cards unchanged – already responsive -->
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+            <div class="flex items-center mb-4">
+              <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-800 font-bold">M</div>
+              <div class="ml-3">
+                <h4 class="font-semibold text-slate-900">Mary W.</h4>
+                <p class="text-sm text-slate-600">Karen, Nairobi</p>
+              </div>
+            </div>
+            <p class="text-slate-700 italic">“Morel Tech transformed our home with full smart lighting and CCTV. The system is so intuitive — even my parents use it! Installation was clean and done in 2 days.”</p>
+            <div class="mt-4 flex text-yellow-500">★★★★★</div>
+          </div>
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+            <div class="flex items-center mb-4">
+              <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-800 font-bold">J</div>
+              <div class="ml-3">
+                <h4 class="font-semibold text-slate-900">James K.</h4>
+                <p class="text-sm text-slate-600">Westlands, Nairobi</p>
+              </div>
+            </div>
+            <p class="text-slate-700 italic">“As a busy professional, I needed reliable security. Their 32-channel CCTV + Starlink setup gives me peace of mind from anywhere in the world. Highly recommend!”</p>
+            <div class="mt-4 flex text-yellow-500">★★★★★</div>
+          </div>
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+            <div class="flex items-center mb-4">
+              <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-800 font-bold">T</div>
+              <div class="ml-3">
+                <h4 class="font-semibold text-slate-900">Tatu City Office Park</h4>
+                <p class="text-sm text-slate-600">Corporate Client</p>
+              </div>
+            </div>
+            <p class="text-slate-700 italic">“We hired Morel Tech for full AV, access control, and network infrastructure. Flawless execution, zero downtime, and they trained our staff. Will use them for all future branches.”</p>
+            <div class="mt-4 flex text-yellow-500">★★★★★</div>
           </div>
         </div>
-        <p class="text-slate-700 italic">“Morel Tech transformed our home with full smart lighting and CCTV. The system is so intuitive — even my parents use it! Installation was clean and done in 2 days.”</p>
-        <div class="mt-4 flex text-yellow-500">
-          ★★★★★
+      </div>
+    </section>
+
+    <!-- ========== PRODUCTS ========== -->
+    <section id="products" data-observer-id="products" class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4 sm:px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
+  Our Product Catalog
+</h2>
+<p class="text-center text-slate-600 mb-6 max-w-2xl mx-auto">
+  Premium tech solutions for smart homes and businesses across Kenya.
+</p>
+<p class="text-center text-slate-700 font-medium max-w-2xl mx-auto">
+  👉 <strong>Click “View all models →” on any category below</strong> to explore our full range of products.
+</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <!-- Each product card uses fluid aspect-square and responsive padding -->
+          <a href="products/computing.html" aria-label="Browse Computing & Office Equipment" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
+            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
+              <img loading="lazy" decoding="async" src="assets/images/desktops/HP-ProDesk400G7 (i3).jpg" alt="Computing & Office Equipment" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900 text-lg mb-1">Computing & Office</h3>
+              <p class="text-slate-600 text-sm mb-2">Desktops, laptops, monitors</p>
+              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
+            </div>
+          </a>
+          <!-- Repeat for all 8 categories (TVs, Audio, etc.) – structure identical -->
+          <a href="products/tvs.html" aria-label="Browse TVs & Projectors" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
+            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
+              <img loading="lazy" decoding="async" src="assets/images/tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)55-inch.jpg" alt="TVs & Projectors" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900 text-lg mb-1">TVs & Projectors</h3>
+              <p class="text-slate-600 text-sm mb-2">LED, QLED, OLED, 4K</p>
+              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
+            </div>
+          </a>
+          <a href="products/audio.html" aria-label="Browse Audio & Home Entertainment" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
+            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
+              <img loading="lazy" decoding="async" src="assets/images/soundbars/Bose-Smart-Soundbar-700.jpg" alt="Audio & Home Entertainment" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900 text-lg mb-1">Audio & Home Entertainment</h3>
+              <p class="text-slate-600 text-sm mb-2">Receivers, soundbars, speakers</p>
+              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
+            </div>
+          </a>
+          <a href="products/appliances.html" aria-label="Browse Home Appliances" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
+            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
+              <img loading="lazy" decoding="async" src="assets/images/fridges/Samsung-RS54N3A13S8–535L.jpg" alt="Home Appliances" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900 text-lg mb-1">Home Appliances</h3>
+              <p class="text-slate-600 text-sm mb-2">Fridges, ACs, cookers, washers</p>
+              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
+            </div>
+          </a>
+          <a href="products/mobile.html" aria-label="Browse Mobile Devices & Smart Tech" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
+            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
+              <img loading="lazy" decoding="async" src="assets/images/phones/Apple-iPhone-15-Pro.jpg" alt="Mobile & Smart Tech" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900 text-lg mb-1">Mobile & Smart Tech</h3>
+              <p class="text-slate-600 text-sm mb-2">Phones, watches, smart devices</p>
+              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
+            </div>
+          </a>
+          <a href="products/power.html" aria-label="Browse Power & Solar Solutions" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
+            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
+              <img loading="lazy" decoding="async" src="assets/images/solar-panels/Morel-Techs-Complete-Solar-Kit–3kW.jpg" alt="Power & Solar Solutions" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900 text-lg mb-1">Power & Solar</h3>
+              <p class="text-slate-600 text-sm mb-2">Inverters, batteries, kits</p>
+              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
+            </div>
+          </a>
+          <a href="products/security.html" aria-label="Browse Security & Surveillance" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
+            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
+              <img loading="lazy" decoding="async" src="assets/images/surveillance/HIKVISION-DS-2CD2T43G0-I5(4MP Bullet IR 50m).jpg" alt="Security & Surveillance" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900 text-lg mb-1">Security & Surveillance</h3>
+              <p class="text-slate-600 text-sm mb-2">CCTV, access control, smart cams</p>
+              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
+            </div>
+          </a>
+          <a href="products/networking.html" aria-label="Browse Networking & Connectivity" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
+            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
+              <img loading="lazy" decoding="async" src="assets/images/networking/Starlink-Gen-3-Kit.jpg" alt="Networking & Connectivity" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900 text-lg mb-1">Networking & Connectivity</h3>
+              <p class="text-slate-600 text-sm mb-2">Starlink, routers, mesh, APs</p>
+              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
+            </div>
+          </a>
         </div>
       </div>
+    </section>
 
-      <!-- Testimonial 2 -->
-      <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-        <div class="flex items-center mb-4">
-          <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-800 font-bold">J</div>
-          <div class="ml-3">
-            <h4 class="font-semibold text-slate-900">James K.</h4>
-            <p class="text-sm text-slate-600">Westlands, Nairobi</p>
+    <!-- ========== TRUSTED BRANDS ========== -->
+    <section class="py-8 md:py-12 bg-white">
+      <div class="container mx-auto px-4">
+        <h3 class="text-center text-slate-500 text-sm font-medium mb-6 uppercase tracking-wider">Trusted by Leading Brands</h3>
+        <div class="overflow-hidden relative py-4">
+          <div class="brand-marquee">
+            <!-- Logos duplicated for seamless loop -->
+            <img loading="lazy" decoding="async" src="assets/images/brands/samsung.jpg" alt="Samsung" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/apple.jpg" alt="Apple" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/lg.jpg" alt="LG" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/sony.jpg" alt="Sony" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/hikvision.jpg" alt="Hikvision" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/dahua.jpg" alt="Dahua" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/starlink.jpg" alt="Starlink" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/ubiquiti.jpg" alt="Ubiquiti" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/denon.jpg" alt="Denon" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/jbl.jpg" alt="JBL" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/bose.jpg" alt="Bose" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/hisense.jpg" alt="Hisense" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <!-- Duplicate -->
+            <img loading="lazy" decoding="async" src="assets/images/brands/samsung.jpg" alt="Samsung" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/apple.jpg" alt="Apple" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/lg.jpg" alt="LG" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/sony.jpg" alt="Sony" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/hikvision.jpg" alt="Hikvision" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/dahua.jpg" alt="Dahua" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/starlink.jpg" alt="Starlink" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/ubiquiti.jpg" alt="Ubiquiti" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/denon.jpg" alt="Denon" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/jbl.jpg" alt="JBL" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/bose.jpg" alt="Bose" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+            <img loading="lazy" decoding="async" src="assets/images/brands/hisense.jpg" alt="Hisense" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
           </div>
         </div>
-        <p class="text-slate-700 italic">“As a busy professional, I needed reliable security. Their 32-channel CCTV + Starlink setup gives me peace of mind from anywhere in the world. Highly recommend!”</p>
-        <div class="mt-4 flex text-yellow-500">
-          ★★★★★
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact" data-observer-id="contact" class="py-16 md:py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+      <div class="container mx-auto px-6 max-w-4xl text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Upgrade Your Space?</h2>
+        <p class="text-base md:text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
+          Get a free consultation today. We respond in under 10 minutes.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+          <a href="https://wa.me/254791864441" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 focus-ring min-w-[200px]">
+            <img src="assets/images/whatsapp-icon1.jpg" alt="WhatsApp" class="w-5 h-5 object-contain" loading="lazy" decoding="async"/>
+            WhatsApp
+          </a>
+          <a href="tel:+254791864441"
+             class="inline-flex items-center justify-center gap-3 bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 focus-ring min-w-[200px]">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.629 11.333c1.228 2.396 3.333 4.499 5.729 5.727l1.897-3.672c.18-.348.53-.574.916-.574h4.166c.736 0 1.333.597 1.333 1.333v4.167c0 .386-.226.736-.574.916-5.22-2.687-9.687-7.154-12.375-12.375-.18-.348-.18-.768 0-1.116l3.672-1.897z"/>
+            </svg>
+            Call Now
+          </a>
+        </div>
+        <p class="mb-4">
+          Or email us directly:
+          <a href="mailto:moreltechsolution@gmail.com" class="text-yellow-300 font-medium hover:text-yellow-200 underline-offset-2 hover:underline transition">
+            moreltechsolution@gmail.com
+          </a>
+        </p>
+        <div class="inline-flex items-center gap-2 bg-slate-800/60 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-700">
+          <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+          <span class="text-sm text-slate-300">We reply in under 10 minutes • Mon–Sat 8am–6pm</span>
         </div>
       </div>
+    </section>
+  </main>
 
-      <!-- Testimonial 3 -->
-      <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-        <div class="flex items-center mb-4">
-          <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-800 font-bold">T</div>
-          <div class="ml-3">
-            <h4 class="font-semibold text-slate-900">Tatu City Office Park</h4>
-            <p class="text-sm text-slate-600">Corporate Client</p>
-          </div>
-        </div>
-        <p class="text-slate-700 italic">“We hired Morel Tech for full AV, access control, and network infrastructure. Flawless execution, zero downtime, and they trained our staff. Will use them for all future branches.”</p>
-        <div class="mt-4 flex text-yellow-500">
-          ★★★★★
-        </div>
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-slate-900 text-white pt-8 pb-6">
+    <div class="container mx-auto px-4 max-w-4xl text-center">
+      <div class="text-sm text-slate-400 space-y-2">
+        <p>&copy; 2025 Morel Tech Solution. All rights reserved.</p>
       </div>
     </div>
-  </div>
-</section>
+  </footer>
 
-
-<!-- ========== PRODUCTS ========== -->
-<section id="products" data-observer-id="products" class="py-20 md:py-28 bg-slate-50">
-  <div class="container mx-auto px-4 sm:px-6">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
-      Our Product Catalog
-    </h2>
-    <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
-      Premium tech solutions for smart homes and businesses across Kenya.
-    </p>
-
-    <!-- Category Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-      <!-- Computing -->
-      <a href="products/computing.html" 
-         aria-label="Browse Computing & Office Equipment"
-         class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
-        <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
-          <img 
-            loading="lazy" 
-            decoding="async" 
-            src="assets/images/desktops/HP-ProDesk400G7 (i3).jpg" 
-            alt="Computing & Office Equipment" 
-            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-          >
-        </div>
-        <div class="p-5">
-          <h3 class="font-semibold text-slate-900 text-lg mb-1">Computing & Office</h3>
-          <p class="text-slate-600 text-sm mb-2">Desktops, laptops, monitors</p>
-          <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
-        </div>
-      </a>
-
-      <!-- TVs -->
-      <a href="products/tvs.html" 
-         aria-label="Browse TVs & Projectors"
-         class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
-        <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
-          <img 
-            loading="lazy" 
-            decoding="async" 
-            src="assets/images/tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)55-inch.jpg" 
-            alt="TVs & Projectors" 
-            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-          >
-        </div>
-        <div class="p-5">
-          <h3 class="font-semibold text-slate-900 text-lg mb-1">TVs & Projectors</h3>
-          <p class="text-slate-600 text-sm mb-2">LED, QLED, OLED, 4K</p>
-          <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
-        </div>
-      </a>
-
-      <!-- Audio -->
-      <a href="products/audio.html" 
-         aria-label="Browse Audio & Home Entertainment"
-         class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
-        <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
-          <img 
-            loading="lazy" 
-            decoding="async" 
-            src="assets/images/soundbars/Bose-Smart-Soundbar-700.jpg" 
-            alt="Audio & Home Entertainment" 
-            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-          >
-        </div>
-        <div class="p-5">
-          <h3 class="font-semibold text-slate-900 text-lg mb-1">Audio & Home Entertainment</h3>
-          <p class="text-slate-600 text-sm mb-2">Receivers, soundbars, speakers</p>
-          <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
-        </div>
-      </a>
-
-      <!-- Appliances -->
-      <a href="products/appliances.html" 
-         aria-label="Browse Home Appliances"
-         class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
-        <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
-          <img 
-            loading="lazy" 
-            decoding="async" 
-            src="assets/images/fridges/Samsung-RS54N3A13S8–535L.jpg" 
-            alt="Home Appliances" 
-            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-          >
-        </div>
-        <div class="p-5">
-          <h3 class="font-semibold text-slate-900 text-lg mb-1">Home Appliances</h3>
-          <p class="text-slate-600 text-sm mb-2">Fridges, ACs, cookers, washers</p>
-          <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
-        </div>
-      </a>
-
-      <!-- Mobile -->
-      <a href="products/mobile.html" 
-         aria-label="Browse Mobile Devices & Smart Tech"
-         class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
-        <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
-          <img 
-            loading="lazy" 
-            decoding="async" 
-            src="assets/images/phones/Apple-iPhone-15-Pro.jpg" 
-            alt="Mobile & Smart Tech" 
-            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-          >
-        </div>
-        <div class="p-5">
-          <h3 class="font-semibold text-slate-900 text-lg mb-1">Mobile & Smart Tech</h3>
-          <p class="text-slate-600 text-sm mb-2">Phones, watches, smart devices</p>
-          <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
-        </div>
-      </a>
-
-      <!-- Power -->
-      <a href="products/power.html" 
-         aria-label="Browse Power & Solar Solutions"
-         class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
-        <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
-          <img 
-            loading="lazy" 
-            decoding="async" 
-            src="assets/images/solar-panels/Morel-Techs-Complete-Solar-Kit–3kW.jpg" 
-            alt="Power & Solar Solutions" 
-            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-          >
-        </div>
-        <div class="p-5">
-          <h3 class="font-semibold text-slate-900 text-lg mb-1">Power & Solar</h3>
-          <p class="text-slate-600 text-sm mb-2">Inverters, batteries, kits</p>
-          <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
-        </div>
-      </a>
-
-      <!-- Security -->
-      <a href="products/security.html" 
-         aria-label="Browse Security & Surveillance"
-         class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
-        <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
-          <img 
-            loading="lazy" 
-            decoding="async" 
-            src="assets/images/surveillance/HIKVISION-DS-2CD2T43G0-I5(4MP Bullet IR 50m).jpg" 
-            alt="Security & Surveillance" 
-            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-          >
-        </div>
-        <div class="p-5">
-          <h3 class="font-semibold text-slate-900 text-lg mb-1">Security & Surveillance</h3>
-          <p class="text-slate-600 text-sm mb-2">CCTV, access control, smart cams</p>
-          <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
-        </div>
-      </a>
-
-      <!-- Networking -->
-      <a href="products/networking.html" 
-         aria-label="Browse Networking & Connectivity"
-         class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
-        <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
-          <img 
-            loading="lazy" 
-            decoding="async" 
-            src="assets/images/networking/Starlink-Gen-3-Kit.jpg" 
-            alt="Networking & Connectivity" 
-            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-          >
-        </div>
-        <div class="p-5">
-          <h3 class="font-semibold text-slate-900 text-lg mb-1">Networking & Connectivity</h3>
-          <p class="text-slate-600 text-sm mb-2">Starlink, routers, mesh, APs</p>
-          <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-<!-- ========== TRUSTED BRANDS ========== -->
-<section class="py-8 md:py-12 bg-white">
-  <div class="container mx-auto px-4">
-    <h3 class="text-center text-slate-500 text-sm font-medium mb-6 uppercase tracking-wider">Trusted by Leading Brands</h3>
-    <div class="overflow-hidden relative py-4">
-      <!-- Marquee Wrapper -->
-      <div class="brand-marquee flex gap-12 md:gap-16 items-center">
-        <!-- Logos – First Set -->
-        <img loading="lazy" decoding="async" src="assets/images/brands/samsung.jpg" alt="Samsung" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/apple.jpg" alt="Apple" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/lg.jpg" alt="LG" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/sony.jpg" alt="Sony" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/hikvision.jpg" alt="Hikvision" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/dahua.jpg" alt="Dahua" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/starlink.jpg" alt="Starlink" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/ubiquiti.jpg" alt="Ubiquiti" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/denon.jpg" alt="Denon" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/jbl.jpg" alt="JBL" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/bose.jpg" alt="Bose" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/hisense.jpg" alt="Hisense" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        
-        <!-- Duplicate for seamless infinite loop -->
-        <img loading="lazy" decoding="async" src="assets/images/brands/samsung.jpg" alt="Samsung" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/apple.jpg" alt="Apple" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/lg.jpg" alt="LG" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/sony.jpg" alt="Sony" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/hikvision.jpg" alt="Hikvision" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/dahua.jpg" alt="Dahua" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/starlink.jpg" alt="Starlink" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/ubiquiti.jpg" alt="Ubiquiti" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/denon.jpg" alt="Denon" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/jbl.jpg" alt="JBL" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/bose.jpg" alt="Bose" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
-        <img loading="lazy" decoding="async" src="assets/images/brands/hisense.jpg" alt="Hisense" class="h-10 grayscale hover:grayscale-0 transition-all duration-300" aria-hidden="true" />
+  <!-- ========== WHATSAPP FLOATING BUTTON ========== -->
+  <a href="https://wa.me/254791864441" target="_blank" rel="noopener noreferrer"
+     class="fixed bottom-6 right-6 z-50 group">
+    <div class="relative">
+      <div class="bg-[#25D366] hover:bg-[#128C7E] text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition hover:scale-110 focus-ring">
+        <img src="assets/images/whatsapp-icon1.jpg" alt="WhatsApp" class="w-7 h-7 object-contain" loading="lazy" decoding="async"/>
+      </div>
+      <span class="absolute inset-0 rounded-full bg-[#25D366] opacity-30 animate-ping"></span>
+      <div class="absolute bottom-full mb-3 right-0 bg-gray-900 text-white text-sm px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
+        Chat on WhatsApp
       </div>
     </div>
-  </div>
-</section>
-<!-- ========== CONTACT ========== -->
-<section id="contact" data-observer-id="contact" class="py-20 md:py-28 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
-  <div class="container mx-auto px-6 max-w-4xl text-center">
-    <h2 class="text-3xl md:text-5xl font-bold mb-4">Ready to Upgrade Your Space?</h2>
-    <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
-      Get a free consultation today. We respond in under 10 minutes.
-    </p>
+  </a>
 
-    <!-- Contact Options -->
-    <div class="flex flex-col sm:flex-row justify-center gap-6 mb-10">
-      <!-- WhatsApp -->
-      <a href="https://wa.me/254791864441" target="_blank" rel="noopener noreferrer"
-   class="inline-flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full shadow-lg transition-all duration-300 focus-ring min-w-[220px]">
-  <img 
-    src="assets/images/whatsapp-icon1.jpg" 
-    alt="WhatsApp" 
-    class="w-6 h-6 object-contain"
-    loading="lazy"
-    decoding="async"
-  />
-  WhatsApp
-</a>
-
-      <!-- Call -->
-      <a href="tel:+254791864441"
-         class="inline-flex items-center justify-center gap-3 bg-slate-700 hover:bg-slate-600 text-white font-bold py-4 px-8 rounded-full shadow-lg transition-all duration-300 focus-ring min-w-[220px]">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M6.629 11.333c1.228 2.396 3.333 4.499 5.729 5.727l1.897-3.672c.18-.348.53-.574.916-.574h4.166c.736 0 1.333.597 1.333 1.333v4.167c0 .386-.226.736-.574.916-5.22-2.687-9.687-7.154-12.375-12.375-.18-.348-.18-.768 0-1.116l3.672-1.897z"/>
-        </svg>
-        Call Now
-      </a>
+  <!-- ========== VIDEO MODAL ========== -->
+  <div id="videoModal" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <video controls></video>
     </div>
-
-    <!-- Email -->
-    <p class="mb-4">
-      Or email us directly:
-      <a href="mailto:moreltechsolution@gmail.com" class="text-gold font-medium hover:text-yellow-300 underline-offset-2 hover:underline transition">
-        moreltechsolution@gmail.com
-      </a>
-    </p>
-
-    <!-- Trust Badge -->
-    <div class="inline-flex items-center gap-2 bg-slate-800/60 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-700">
-      <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-      <span class="text-sm text-slate-300">We reply in under 10 minutes • Mon–Sat 8am–6pm</span>
-    </div>
+    <button id="modalCloseButton" class="modal-close focus-ring" aria-label="Close video player">&times;</button>
   </div>
-</section>
-</main>
-<!-- ========== FOOTER ========== -->
-<footer class="bg-slate-900 text-white pt-8 pb-6">
-  <div class="container mx-auto px-4 max-w-4xl text-center">
-    <!-- Optional: Add logo or tagline above if desired -->
-    <!-- <div class="mb-4">
-      <p class="text-lg font-semibold">Morel Tech Solution</p>
-      <p class="text-slate-400 italic">Smarter Spaces, Better Living.</p>
-    </div> -->
 
-    <!-- Copyright & Contact Info -->
-    <div class="text-sm text-slate-400 space-y-2">
-      <p>&copy; 2025 Morel Tech Solution. All rights reserved.</p>
-    
-    </div>
-  </div>
-</footer>
-<!-- ========== WHATSAPP FLOATING BUTTON ========== -->
-<a href="https://wa.me/254791864441" target="_blank" rel="noopener noreferrer"
-class="fixed bottom-6 right-6 z-50 group">
-<div class="relative">
-<div class="bg-[#25D366] hover:bg-[#128C7E] text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition hover:scale-110 focus-ring">
-<img 
-  src="assets/images/whatsapp-icon1.jpg"
-  alt="WhatsApp"
-  class="w-8 h-8 object-contain"
-  loading="lazy"
-  decoding="async"
-/>
-
-</div>
-<span class="absolute inset-0 rounded-full bg-[#25D366] opacity-30 animate-ping"></span>
-<div class="absolute bottom-full mb-3 right-0 bg-gray-900 text-white text-sm px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
-Chat on WhatsApp
-</div>
-</div>
-</a>
-<!-- ========== VIDEO MODAL ========== -->
-<div id="videoModal" class="modal" role="dialog" aria-modal="true">
-<div class="modal-content">
-<video controls></video>
-</div>
-<button id="modalCloseButton" class="modal-close focus-ring" aria-label="Close video player">&times;</button>
-</div>
-
-<!-- ========== JS LIBRARIES ========== -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-// Wrap all JS in DOMContentLoaded to ensure elements exist
-document.addEventListener('DOMContentLoaded', () => {
-  // --- MOBILE MENU (Enhanced) ---
-  const mobileMenuButton = document.getElementById('mobileMenuButton');
-  const mobileNav = document.getElementById('mobileNav');
-
-  if (mobileMenuButton && mobileNav) {
-    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-
-    function toggleMobileMenu() {
-      const isExpanded = mobileNav.classList.contains('hidden');
-      mobileNav.classList.toggle('hidden');
-      mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-      mobileMenuButton.textContent = isExpanded ? '✕' : '☰';
-      if (!isExpanded) {
-        const firstLink = mobileNav.querySelector('a');
-        if (firstLink) firstLink.focus();
+  <!-- ========== JS LIBRARIES ========== -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- MOBILE MENU ---
+      const mobileMenuButton = document.getElementById('mobileMenuButton');
+      const mobileNav = document.getElementById('mobileNav');
+      if (mobileMenuButton && mobileNav) {
+        function toggleMobileMenu() {
+          const isExpanded = mobileNav.classList.contains('hidden');
+          mobileNav.classList.toggle('hidden');
+          mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
+        }
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileNav.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+          });
+        });
+        document.addEventListener('click', (e) => {
+          if (!mobileNav.contains(e.target) && !mobileMenuButton.contains(e.target) && !mobileNav.classList.contains('hidden')) {
+            mobileNav.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+          }
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !mobileNav.classList.contains('hidden')) {
+            mobileNav.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+            mobileMenuButton.focus();
+          }
+        });
       }
-    }
 
-    function closeMobileMenu() {
-      mobileNav.classList.add('hidden');
-      mobileMenuButton.setAttribute('aria-expanded', 'false');
-      mobileMenuButton.textContent = '☰';
-    }
+      // --- VIDEO MODAL ---
+      const videoModal = document.getElementById('videoModal');
+      const modalCloseButton = document.getElementById('modalCloseButton');
+      let lastFocusedElement = null;
 
-    mobileMenuButton.addEventListener('click', toggleMobileMenu);
-    mobileLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
-
-    document.addEventListener('click', (e) => {
-      if (!mobileNav.contains(e.target) &&
-          !mobileMenuButton.contains(e.target) &&
-          !mobileNav.classList.contains('hidden')) {
-        closeMobileMenu();
+      function lockBodyScroll() {
+        const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.body.style.overflow = 'hidden';
+        document.body.style.paddingRight = `${scrollBarWidth}px`;
       }
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !mobileNav.classList.contains('hidden')) {
-        closeMobileMenu();
-        mobileMenuButton.focus();
+      function unlockBodyScroll() {
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
       }
-    });
-  }
-
-  // --- VIDEO MODAL ---
-  const videoModal = document.getElementById('videoModal');
-  const modalCloseButton = document.getElementById('modalCloseButton');
-
-  let lastFocusedElement = null;
-
-  function lockBodyScroll() {
-    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-    document.body.style.overflow = 'hidden';
-    document.body.style.paddingRight = scrollBarWidth + 'px';
-  }
-
-  function unlockBodyScroll() {
-    document.body.style.overflow = '';
-    document.body.style.paddingRight = '';
-  }
-
-  function openModal(videoId) {
-    if (!videoModal) return;
-    lastFocusedElement = document.activeElement;
-    const modalVideo = videoModal.querySelector('video');
-    if (modalVideo) {
-      modalVideo.src = `assets/images/projects/${videoId}.mp4`;
-      modalVideo.load();
-      videoModal.classList.add('active');
-      lockBodyScroll();
-      setTimeout(() => modalVideo.play(), 100);
-    }
-    if (modalCloseButton) modalCloseButton.focus();
-  }
-
-  function closeModal() {
-    if (!videoModal) return;
-    const modalVideo = videoModal.querySelector('video');
-    if (modalVideo) {
-      modalVideo.pause();
-      modalVideo.src = '';
-    }
-    videoModal.classList.remove('active');
-    unlockBodyScroll();
-    if (lastFocusedElement) lastFocusedElement.focus();
-  }
-
-  if (modalCloseButton) {
-    modalCloseButton.addEventListener('click', closeModal);
-  }
-
-  if (videoModal) {
-    videoModal.addEventListener('click', (e) => {
-      if (e.target === videoModal) closeModal();
-    });
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && videoModal && videoModal.classList.contains('active')) {
-      closeModal();
-    }
-  });
-
-  // Expose openModal globally for inline onclick handlers
-  window.openModal = openModal;
-
-  // --- SWIPER ---
-  const swiperContainer = document.querySelector('.projectSwiper');
-  if (swiperContainer) {
-    new Swiper('.projectSwiper', {
-      slidesPerView: 1,
-      spaceBetween: 20,
-      loop: false,
-      pagination: { el: '.swiper-pagination', clickable: true },
-      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-      breakpoints: {
-        640: { slidesPerView: 2, spaceBetween: 30 },
-        1024: { slidesPerView: 3, spaceBetween: 40 }
+      function openModal(videoId) {
+        if (!videoModal) return;
+        lastFocusedElement = document.activeElement;
+        const modalVideo = videoModal.querySelector('video');
+        if (modalVideo) {
+          modalVideo.src = `assets/images/projects/${videoId}.mp4`;
+          modalVideo.load();
+          videoModal.classList.add('active');
+          lockBodyScroll();
+          setTimeout(() => modalVideo.play(), 100);
+        }
+        if (modalCloseButton) modalCloseButton.focus();
       }
-    });
-  }
-
-  // --- ACTIVE NAVIGATION ---
-  const sections = document.querySelectorAll('main section');
-  const navLinks = document.querySelectorAll('.nav-link');
-
-  if (sections.length > 0 && navLinks.length > 0) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => link.classList.remove('nav-link-active'));
-          const link = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
-          if (link) link.classList.add('nav-link-active');
+      function closeModal() {
+        if (!videoModal) return;
+        const modalVideo = videoModal.querySelector('video');
+        if (modalVideo) {
+          modalVideo.pause();
+          modalVideo.src = '';
+        }
+        videoModal.classList.remove('active');
+        unlockBodyScroll();
+        if (lastFocusedElement) lastFocusedElement.focus();
+      }
+      window.openModal = openModal;
+      if (modalCloseButton) modalCloseButton.addEventListener('click', closeModal);
+      if (videoModal) {
+        videoModal.addEventListener('click', (e) => {
+          if (e.target === videoModal) closeModal();
+        });
+      }
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+          closeModal();
         }
       });
-    }, { rootMargin: '0px 0px -75% 0px' });
 
-    sections.forEach(section => observer.observe(section));
-  }
-});
-</script>
+      // --- SWIPER ---
+      if (document.querySelector('.projectSwiper')) {
+        new Swiper('.projectSwiper', {
+          slidesPerView: 1,
+          spaceBetween: 20,
+          loop: false,
+          pagination: { el: '.swiper-pagination', clickable: true },
+          navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+          breakpoints: {
+            640: { slidesPerView: 2, spaceBetween: 30 },
+            1024: { slidesPerView: 3, spaceBetween: 40 }
+          }
+        });
+      }
+
+      // --- ACTIVE NAV LINKS ---
+      const sections = document.querySelectorAll('main section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+      if (sections.length && navLinks.length) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              navLinks.forEach(link => link.classList.remove('active'));
+              const activeLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+              if (activeLink) activeLink.classList.add('active');
+            }
+          });
+        }, { rootMargin: '-20% 0px -80% 0px' });
+        sections.forEach(section => observer.observe(section));
+      }
+    });
+  </script>
 </body>
 </html>
