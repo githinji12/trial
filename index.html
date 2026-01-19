@@ -528,8 +528,7 @@
         </div>
       </div>
     </section>
-
-    <!-- ========== PROJECTS ========== -->
+<!-- ========== PROJECTS ========== -->
 <section id="projects" data-observer-id="projects" class="py-20 md:py-28 bg-white">
   <div class="container mx-auto px-4 sm:px-6">
     <div class="flex flex-col md:flex-row justify-between items-center mb-8">
@@ -966,14 +965,11 @@
     <section id="products" data-observer-id="products" class="py-16 md:py-24 bg-slate-50">
       <div class="container mx-auto px-4 sm:px-6">
         <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
-  Our Product Catalog
-</h2>
-<p class="text-center text-slate-600 mb-6 max-w-2xl mx-auto">
-  Premium tech solutions for smart homes and businesses across Kenya.
-</p>
-<p class="text-center text-slate-700 font-medium max-w-2xl mx-auto">
-  👉 <strong>Click “View all models →” on any category below</strong> to explore our full range of products.
-</p>
+          Our Product Catalog
+        </h2>
+        <p class="text-center text-slate-600 mb-10 max-w-2xl mx-auto">
+          Premium tech solutions for smart homes and businesses across Kenya.
+        </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           <!-- Each product card uses fluid aspect-square and responsive padding -->
           <a href="products/computing.html" aria-label="Browse Computing & Office Equipment" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
@@ -1141,6 +1137,22 @@
       </div>
     </div>
   </footer>
+<!-- ========== FLOATING CART BUTTON ========== -->
+<button id="floatingCartButton"
+class="fixed bottom-28 right-6 z-50 px-4 py-3 bg-[#d4af37] text-slate-900 rounded-full shadow-lg flex items-center gap-2 cursor-pointer transition-all hover:scale-105 hover:shadow-xl focus-ring"
+aria-label="Open shopping cart">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+</svg>
+<span class="font-medium">Cart</span>
+<span id="cartItemCount" class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center" style="transform: translate(50%, -50%); display: none;">0</span>
+</button>
+
+<!-- Empty Cart Tooltip -->
+<div id="emptyCartTooltip" class="fixed bottom-36 right-6 bg-gray-900 text-white text-sm px-3 py-2 rounded-lg opacity-0 pointer-events-none transition-opacity duration-300 whitespace-nowrap">
+Your cart is empty. Browse products.
+</div>
+
 
   <!-- ========== WHATSAPP FLOATING BUTTON ========== -->
   <a href="https://wa.me/254791864441" target="_blank" rel="noopener noreferrer"
@@ -1163,7 +1175,22 @@
     </div>
     <button id="modalCloseButton" class="modal-close focus-ring" aria-label="Close video player">&times;</button>
   </div>
-
+<!-- ========== CART MODAL ========== -->
+<div id="cart-modal" class="modal" role="dialog" aria-modal="true">
+  <div id="cart-modal-content" class="bg-white rounded-lg max-w-md w-full max-h-[85vh] overflow-y-auto">
+    <div class="cart-header p-4 border-b border-slate-200 flex justify-between items-center">
+      <h2 class="text-lg font-bold">Your Quote</h2>
+      <button id="close-cart" class="text-gray-500 hover:text-gray-900 text-2xl">&times;</button>
+    </div>
+    <div id="cart-items" class="p-4"></div>
+    <div class="cart-footer p-4 border-t border-slate-200 text-center">
+      <div class="font-bold text-lg">Total: KES <span id="total-amount">0</span></div>
+      <button id="whatsapp-btn" class="mt-3 w-full bg-[#25D366] text-white font-bold py-2 rounded focus-ring">
+        Send Quote via WhatsApp
+      </button>
+    </div>
+  </div>
+</div>
   <!-- ========== JS LIBRARIES ========== -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
@@ -1281,6 +1308,170 @@
         sections.forEach(section => observer.observe(section));
       }
     });
+// ========== MINIMAL CART SYSTEM FOR HOMEPAGE ==========
+function getCartItemCount() {
+  const cart = JSON.parse(localStorage.getItem('morelCart')) || [];
+  return cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+}
+
+function updateCartButton() {
+  const count = getCartItemCount();
+  const badge = document.getElementById('cartItemCount');
+  if (count > 0) {
+    badge.textContent = count;
+    badge.style.display = 'flex';
+  } else {
+    badge.style.display = 'none';
+  }
+}
+
+function showEmptyTooltip() {
+  const tooltip = document.getElementById('emptyCartTooltip');
+  tooltip.classList.remove('opacity-0');
+  setTimeout(() => tooltip.classList.add('opacity-0'), 2000);
+}
+
+// ========== FLOATING CART SYSTEM ==========
+function getCartItemCount() {
+  const cart = JSON.parse(localStorage.getItem('morelCart')) || [];
+  return cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+}
+
+function updateCartButton() {
+  const count = getCartItemCount();
+  const badge = document.getElementById('cartItemCount');
+  if (count > 0) {
+    badge.textContent = count;
+    badge.style.display = 'flex';
+  } else {
+    badge.style.display = 'none';
+  }
+}
+
+function showEmptyTooltip() {
+  const tooltip = document.getElementById('emptyCartTooltip');
+  tooltip.classList.remove('opacity-0');
+  setTimeout(() => tooltip.classList.add('opacity-0'), 2000);
+}
+
+// --- Cart Modal Functions ---
+function renderCartModal() {
+  const cart = JSON.parse(localStorage.getItem('morelCart')) || [];
+  const container = document.getElementById('cart-items');
+  const totalEl = document.getElementById('total-amount');
+
+  if (cart.length === 0) {
+    container.innerHTML = '<p class="text-center text-gray-500 py-6">Your quote is empty.</p>';
+    totalEl.textContent = '0';
+    return;
+  }
+
+  let total = 0;
+  let html = '';
+  cart.forEach(item => {
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+    html += `
+      <div class="cart-item flex gap-3 mb-4 pb-4 border-b border-slate-100">
+        <img src="assets/images/${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
+        <div class="flex-1">
+          <h4 class="font-medium text-sm">${item.name}</h4>
+          <p class="text-xs text-slate-600">KES ${item.price.toLocaleString()}</p>
+          <div class="flex items-center mt-1">
+            <button class="btn-decrease w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center" data-id="${item.id}">−</button>
+            <span class="mx-2 w-8 text-center">${item.quantity}</span>
+            <button class="btn-increase w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center" data-id="${item.id}">+</button>
+            <button class="ml-2 text-red-500 hover:text-red-700" data-remove="${item.id}">Remove</button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+  totalEl.textContent = total.toLocaleString();
+
+  // Bind events
+  container.querySelectorAll('.btn-decrease').forEach(btn => {
+    btn.addEventListener('click', () => updateQuantity(btn.dataset.id, -1));
+  });
+  container.querySelectorAll('.btn-increase').forEach(btn => {
+    btn.addEventListener('click', () => updateQuantity(btn.dataset.id, 1));
+  });
+  container.querySelectorAll('[data-remove]').forEach(btn => {
+    btn.addEventListener('click', () => removeFromCart(btn.dataset.remove));
+  });
+}
+
+function updateQuantity(id, change) {
+  let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
+  const item = cart.find(i => i.id == id);
+  if (item) {
+    item.quantity += change;
+    if (item.quantity <= 0) {
+      cart = cart.filter(i => i.id != id);
+    }
+    localStorage.setItem('morelCart', JSON.stringify(cart));
+    renderCartModal();
+  }
+}
+
+function removeFromCart(id) {
+  let cart = JSON.parse(localStorage.getItem('morelCart')) || [];
+  cart = cart.filter(item => item.id !== id);
+  localStorage.setItem('morelCart', JSON.stringify(cart));
+  renderCartModal();
+}
+
+function checkoutViaWhatsApp() {
+  const cart = JSON.parse(localStorage.getItem('morelCart')) || [];
+  if (cart.length === 0) return;
+  const businessNumber = '254791864441';
+  let message = 'Hi Morel Tech! I\'d like a quote for:\n';
+  cart.forEach(item => {
+    message += `• ${item.name} ×${item.quantity} — KES ${item.price.toLocaleString()}\n`;
+  });
+  const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+  message += `\nTotal: KES ${total.toLocaleString()}\nSent via your website.`;
+  window.open(`https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`, '_blank');
+}
+
+// --- UI Handlers ---
+function openCartModal() {
+  renderCartModal();
+  document.getElementById('cart-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCartModal() {
+  document.getElementById('cart-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// --- Main Click Handler ---
+document.getElementById('floatingCartButton').addEventListener('click', () => {
+  const itemCount = getCartItemCount();
+  if (itemCount === 0) {
+    showEmptyTooltip();
+    setTimeout(() => {
+      document.querySelector('#products')?.scrollIntoView({ behavior: 'smooth' });
+    }, 800);
+  } else {
+    openCartModal();
+  }
+});
+
+// --- Close & WhatsApp buttons ---
+document.getElementById('close-cart').addEventListener('click', closeCartModal);
+document.getElementById('whatsapp-btn').addEventListener('click', checkoutViaWhatsApp);
+
+// --- Initialize ---
+updateCartButton();
+
+// --- Ensure badge updates after addToCart (call this in saveCart if you add it later) ---
+window.addEventListener('storage', updateCartButton);
+
   </script>
+
 </body>
 </html>
