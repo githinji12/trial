@@ -395,16 +395,32 @@
         </span>
       </div>
 
-      <!-- Desktop Menu -->
-      <ul id="navMenu" class="hidden md:flex space-x-2 items-center">
-        <li><a href="#home" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Home</a></li>
-        <li><a href="#about" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">About</a></li>
-        <li><a href="#services" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Services</a></li>
-        <li><a href="#projects" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Projects</a></li>
-        <li><a href="#testimonials" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Testimonials</a></li>
-        <li><a href="#products" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Products</a></li>
-        <li><a href="#contact" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Contact</a></li>
-      </ul>
+   <!-- Desktop: Nav + Search -->
+<div class="hidden md:flex items-center space-x-4">
+  <ul id="navMenu" class="flex space-x-2 items-center">
+    <li><a href="#home" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Home</a></li>
+    <li><a href="#about" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">About</a></li>
+    <li><a href="#services" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Services</a></li>
+    <li><a href="#projects" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Projects</a></li>
+    <li><a href="#testimonials" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Testimonials</a></li>
+    <li><a href="#products" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Products</a></li>
+    <li><a href="#contact" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Contact</a></li>
+  </ul>
+
+  <!-- Desktop Search -->
+  <div class="relative">
+    <input
+      type="text"
+      id="headerSearch"
+      placeholder="Search products..."
+      class="w-48 lg:w-56 px-4 py-2 pl-10 pr-4 rounded-full bg-white/10 backdrop-blur-sm border border-yellow-500/30 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-[#d4af37] transition"
+      aria-label="Search products"
+    />
+    <svg class="w-4 h-4 text-white/70 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+    </svg>
+  </div>
+</div>
 
       <!-- Mobile Menu Button -->
       <button id="mobileMenuButton" class="md:hidden text-white text-2xl focus-ring" aria-expanded="false" aria-label="Toggle navigation menu">
@@ -415,16 +431,41 @@
       </button>
     </div>
 
-    <!-- Mobile Menu -->
-    <ul id="mobileNav" class="md:hidden hidden flex-col items-stretch bg-slate-900 mt-2 pb-4 space-y-2 px-4 shadow-2xl">
-      <li><a href="#home" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Home</a></li>
-      <li><a href="#about" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">About</a></li>
-      <li><a href="#services" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Services</a></li>
-      <li><a href="#projects" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Projects</a></li>
-      <li><a href="#testimonials" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Testimonials</a></li>
-      <li><a href="#products" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Products</a></li>
-      <li><a href="#contact" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Contact</a></li>
-    </ul>
+ <!-- Mobile Menu Button -->
+<button id="mobileMenuButton" class="md:hidden text-white text-2xl focus-ring" aria-expanded="false" aria-label="Toggle navigation menu">
+  <span class="sr-only">Open main menu</span>
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+  </svg>
+</button>
+</div>
+
+<!-- Mobile Menu + Mobile Search -->
+<div id="mobileNavWrapper" class="md:hidden hidden flex-col bg-slate-900 mt-2 pb-4 px-4 shadow-2xl">
+  <ul id="mobileNav" class="flex flex-col items-stretch space-y-2 mb-4">
+    <li><a href="#home" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Home</a></li>
+    <li><a href="#about" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">About</a></li>
+    <li><a href="#services" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Services</a></li>
+    <li><a href="#projects" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Projects</a></li>
+    <li><a href="#testimonials" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Testimonials</a></li>
+    <li><a href="#products" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Products</a></li>
+    <li><a href="#contact" class="mobile-nav-link block py-3 px-4 rounded-full border border-yellow-500 text-center text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Contact</a></li>
+  </ul>
+
+  <!-- Mobile Search -->
+  <div class="relative">
+    <input
+      type="text"
+      id="mobileSearch"
+      placeholder="Search products..."
+      class="w-full px-4 py-3 pl-10 pr-4 rounded-full bg-white/10 backdrop-blur-sm border border-yellow-500/30 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-[#d4af37]"
+      aria-label="Search products"
+    />
+    <svg class="w-4 h-4 text-white/70 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+    </svg>
+  </div>
+</div>
   </nav>
 
   <main id="main" class="pt-16">
@@ -1471,6 +1512,49 @@ updateCartButton();
 // --- Ensure badge updates after addToCart (call this in saveCart if you add it later) ---
 window.addEventListener('storage', updateCartButton);
 
+// ========== SEARCH FUNCTION FOR PRODUCT CATEGORIES ==========
+document.addEventListener('DOMContentLoaded', () => {
+  const productCards = document.querySelectorAll('#products .grid > a');
+  if (productCards.length === 0) return;
+
+  // Extract searchable text once
+  const cardData = Array.from(productCards).map(card => {
+    const titleEl = card.querySelector('h3');
+    const descEl = card.querySelector('p');
+    const title = titleEl ? titleEl.textContent.trim().toLowerCase() : '';
+    const desc = descEl ? descEl.textContent.trim().toLowerCase() : '';
+    return { element: card, keywords: `${title} ${desc}`.toLowerCase() };
+  });
+
+  // Apply filtering
+  function applySearch(term) {
+    let hasMatch = false;
+    cardData.forEach(item => {
+      const show = term === '' || item.keywords.includes(term);
+      item.element.classList.toggle('hidden', !show);
+      if (show) hasMatch = true;
+    });
+    // Optional: scroll to products if searching
+    if (term && hasMatch) {
+      document.getElementById('products')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // Sync both inputs
+  const desktopInput = document.getElementById('headerSearch');
+  const mobileInput = document.getElementById('mobileSearch');
+
+  const handleInput = (e) => {
+    const term = e.target.value.trim().toLowerCase();
+    applySearch(term);
+    // Keep both inputs in sync
+    if (desktopInput) desktopInput.value = term;
+    if (mobileInput) mobileInput.value = term;
+  };
+
+  if (desktopInput) desktopInput.addEventListener('input', handleInput);
+  if (mobileInput) mobileInput.addEventListener('input', handleInput);
+});
   </script>
 
 </body>
