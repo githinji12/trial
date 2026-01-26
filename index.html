@@ -1327,38 +1327,48 @@ Your cart is empty. Browse products.
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // ==============================
-  // MOBILE MENU
-  // ==============================
-  const mobileMenuButton = document.getElementById('mobileMenuButton');
-  const mobileNav = document.getElementById('mobileNav');
-  if (mobileMenuButton && mobileNav) {
-    function toggleMobileMenu() {
-      const isExpanded = mobileNav.classList.contains('hidden');
-      mobileNav.classList.toggle('hidden');
-      mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
-    }
-    mobileMenuButton.addEventListener('click', toggleMobileMenu);
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileNav.classList.add('hidden');
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
-      });
-    });
-    document.addEventListener('click', (e) => {
-      if (!mobileNav.contains(e.target) && !mobileMenuButton.contains(e.target) && !mobileNav.classList.contains('hidden')) {
-        mobileNav.classList.add('hidden');
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
-      }
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !mobileNav.classList.contains('hidden')) {
-        mobileNav.classList.add('hidden');
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
-        mobileMenuButton.focus();
-      }
-    });
+// ==============================
+// MOBILE MENU - FIXED
+// ==============================
+const mobileMenuButton = document.getElementById('mobileMenuButton');
+const mobileNavWrapper = document.getElementById('mobileNavWrapper'); // ✅ FIX: Target wrapper
+if (mobileMenuButton && mobileNavWrapper) {
+  function toggleMobileMenu() {
+    const isExpanded = mobileNavWrapper.classList.contains('hidden');
+    mobileNavWrapper.classList.toggle('hidden');
+    mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
+    mobileMenuButton.querySelector('svg').classList.toggle('rotate-180'); // Optional: add rotation animation
   }
+  
+  mobileMenuButton.addEventListener('click', toggleMobileMenu);
+  
+  // Close menu when clicking links
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNavWrapper.classList.add('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', 'false');
+    });
+  });
+  
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!mobileNavWrapper.contains(e.target) && 
+        !mobileMenuButton.contains(e.target) && 
+        !mobileNavWrapper.classList.contains('hidden')) {
+      mobileNavWrapper.classList.add('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', 'false');
+    }
+  });
+  
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !mobileNavWrapper.classList.contains('hidden')) {
+      mobileNavWrapper.classList.add('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', 'false');
+      mobileMenuButton.focus();
+    }
+  });
+}
 
   // ==============================
   // ANIMATED TRUST STATS
