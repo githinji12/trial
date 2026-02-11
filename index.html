@@ -515,9 +515,9 @@
         <li><a href="#home" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Home</a></li>
         <li><a href="#about" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">About</a></li>
         <li><a href="#services" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Services</a></li>
+         <li><a href="#products" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Products</a></li>
         <li><a href="#projects" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Projects</a></li>
         <li><a href="#testimonials" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Testimonials</a></li>
-        <li><a href="#products" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Products</a></li>
         <li><a href="#contact" class="nav-link block px-4 py-2 rounded-full border border-yellow-500 text-white font-medium hover:bg-yellow-500 hover:text-slate-900 transition">Contact</a></li>
       </ul>
 
@@ -595,6 +595,14 @@
     </a>
   </li>
 
+   <li role="none">
+    <a href="#products" 
+       class="mobile-nav-link block w-full py-4 px-5 rounded-xl bg-gradient-to-r from-yellow-500/10 to-transparent text-white font-medium border border-yellow-500/20 hover:bg-yellow-500 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#d4af37] transition-colors duration-200"
+       role="menuitem">
+      <span aria-hidden="true">🛒</span> Products
+    </a>
+  </li>
+
   <li role="none">
     <a href="#projects" 
        class="mobile-nav-link block w-full py-4 px-5 rounded-xl bg-gradient-to-r from-yellow-500/10 to-transparent text-white font-medium border border-yellow-500/20 hover:bg-yellow-500 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#d4af37] transition-colors duration-200"
@@ -611,13 +619,7 @@
     </a>
   </li>
 
-  <li role="none">
-    <a href="#products" 
-       class="mobile-nav-link block w-full py-4 px-5 rounded-xl bg-gradient-to-r from-yellow-500/10 to-transparent text-white font-medium border border-yellow-500/20 hover:bg-yellow-500 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#d4af37] transition-colors duration-200"
-       role="menuitem">
-      <span aria-hidden="true">🛒</span> Products
-    </a>
-  </li>
+ 
 
   <li role="none">
     <a href="#contact" 
@@ -733,6 +735,103 @@
         </div>
       </div>
     </section>
+        <!-- ========== PRODUCTS ========== -->
+    <section id="products" data-observer-id="products" class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4 sm:px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
+          Our Product Catalog
+        </h2>
+        <p class="text-center text-slate-600 mb-10 max-w-2xl mx-auto">
+          Premium tech solutions for smart homes and businesses across Kenya.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <!-- Each product card uses fluid aspect-square and responsive padding -->
+          <a href="products/computing.html" aria-label="Browse Computing & Office Equipment" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
+            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
+              <img loading="lazy" decoding="async" src="assets/images/desktops/HP-ProDesk400G7 (i3).jpg" alt="Computing & Office Equipment" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900 text-lg mb-1">Computing & Office</h3>
+              <p class="text-slate-600 text-sm mb-2">Desktops, laptops, monitors</p>
+              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
+            </div>
+          </a>
+          <!-- Repeat for all 8 categories (TVs, Audio, etc.) – structure identical -->
+          <a href="products/tvs.html" aria-label="Browse TVs & Projectors" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
+            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
+              <img loading="lazy" decoding="async" src="assets/images/tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)55-inch.jpg" alt="TVs & Projectors" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900 text-lg mb-1">TVs & Projectors</h3>
+              <p class="text-slate-600 text-sm mb-2">LED, QLED, OLED, 4K</p>
+              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
+            </div>
+          </a>
+          <a href="products/audio.html" aria-label="Browse Audio & Home Entertainment" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
+            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
+              <img loading="lazy" decoding="async" src="assets/images/soundbars/Bose-Smart-Soundbar-700.jpg" alt="Audio & Home Entertainment" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900 text-lg mb-1">Audio & Home Entertainment</h3>
+              <p class="text-slate-600 text-sm mb-2">Receivers, soundbars, speakers</p>
+              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
+            </div>
+          </a>
+          <a href="products/appliances.html" aria-label="Browse Home Appliances" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
+            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
+              <img loading="lazy" decoding="async" src="assets/images/fridges/Samsung-RS54N3A13S8–535L.jpg" alt="Home Appliances" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900 text-lg mb-1">Home Appliances</h3>
+              <p class="text-slate-600 text-sm mb-2">Fridges, ACs, cookers, washers</p>
+              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
+            </div>
+          </a>
+          <a href="products/mobile.html" aria-label="Browse Mobile Devices & Smart Tech" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
+            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
+              <img loading="lazy" decoding="async" src="assets/images/phones/Apple-iPhone-15-Pro.jpg" alt="Mobile & Smart Tech" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900 text-lg mb-1">Mobile & Smart Tech</h3>
+              <p class="text-slate-600 text-sm mb-2">Phones, watches, smart devices</p>
+              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
+            </div>
+          </a>
+          <a href="products/power.html" aria-label="Browse Power & Solar Solutions" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
+            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
+              <img loading="lazy" decoding="async" src="assets/images/solar-panels/Morel-Techs-Complete-Solar-Kit–3kW.jpg" alt="Power & Solar Solutions" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900 text-lg mb-1">Power & Solar</h3>
+              <p class="text-slate-600 text-sm mb-2">Inverters, batteries, kits</p>
+              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
+            </div>
+          </a>
+          <a href="products/security.html" aria-label="Browse Security & Surveillance" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
+            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
+              <img loading="lazy" decoding="async" src="assets/images/surveillance/HIKVISION-DS-2CD2T43G0-I5(4MP Bullet IR 50m).jpg" alt="Security & Surveillance" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900 text-lg mb-1">Security & Surveillance</h3>
+              <p class="text-slate-600 text-sm mb-2">CCTV, access control, smart cams</p>
+              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
+            </div>
+          </a>
+          <a href="products/networking.html" aria-label="Browse Networking & Connectivity" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
+            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
+              <img loading="lazy" decoding="async" src="assets/images/networking/Starlink-Gen-3-Kit.jpg" alt="Networking & Connectivity" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900 text-lg mb-1">Networking & Connectivity</h3>
+              <p class="text-slate-600 text-sm mb-2">Starlink, routers, mesh, APs</p>
+              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    
 <!-- ========== PROJECTS ========== -->
 <section id="projects" data-observer-id="projects" class="py-20 md:py-28 bg-white">
   <div class="container mx-auto px-4 sm:px-6">
@@ -1166,101 +1265,6 @@
       </div>
     </section>
 
-    <!-- ========== PRODUCTS ========== -->
-    <section id="products" data-observer-id="products" class="py-16 md:py-24 bg-slate-50">
-      <div class="container mx-auto px-4 sm:px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
-          Our Product Catalog
-        </h2>
-        <p class="text-center text-slate-600 mb-10 max-w-2xl mx-auto">
-          Premium tech solutions for smart homes and businesses across Kenya.
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          <!-- Each product card uses fluid aspect-square and responsive padding -->
-          <a href="products/computing.html" aria-label="Browse Computing & Office Equipment" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
-            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
-              <img loading="lazy" decoding="async" src="assets/images/desktops/HP-ProDesk400G7 (i3).jpg" alt="Computing & Office Equipment" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
-            </div>
-            <div class="p-5">
-              <h3 class="font-semibold text-slate-900 text-lg mb-1">Computing & Office</h3>
-              <p class="text-slate-600 text-sm mb-2">Desktops, laptops, monitors</p>
-              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
-            </div>
-          </a>
-          <!-- Repeat for all 8 categories (TVs, Audio, etc.) – structure identical -->
-          <a href="products/tvs.html" aria-label="Browse TVs & Projectors" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
-            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
-              <img loading="lazy" decoding="async" src="assets/images/tv-price-list/SAMSUNG-Standard-Slim(LED-Crystal UHD)55-inch.jpg" alt="TVs & Projectors" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
-            </div>
-            <div class="p-5">
-              <h3 class="font-semibold text-slate-900 text-lg mb-1">TVs & Projectors</h3>
-              <p class="text-slate-600 text-sm mb-2">LED, QLED, OLED, 4K</p>
-              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
-            </div>
-          </a>
-          <a href="products/audio.html" aria-label="Browse Audio & Home Entertainment" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
-            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
-              <img loading="lazy" decoding="async" src="assets/images/soundbars/Bose-Smart-Soundbar-700.jpg" alt="Audio & Home Entertainment" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
-            </div>
-            <div class="p-5">
-              <h3 class="font-semibold text-slate-900 text-lg mb-1">Audio & Home Entertainment</h3>
-              <p class="text-slate-600 text-sm mb-2">Receivers, soundbars, speakers</p>
-              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
-            </div>
-          </a>
-          <a href="products/appliances.html" aria-label="Browse Home Appliances" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
-            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
-              <img loading="lazy" decoding="async" src="assets/images/fridges/Samsung-RS54N3A13S8–535L.jpg" alt="Home Appliances" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
-            </div>
-            <div class="p-5">
-              <h3 class="font-semibold text-slate-900 text-lg mb-1">Home Appliances</h3>
-              <p class="text-slate-600 text-sm mb-2">Fridges, ACs, cookers, washers</p>
-              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
-            </div>
-          </a>
-          <a href="products/mobile.html" aria-label="Browse Mobile Devices & Smart Tech" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
-            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
-              <img loading="lazy" decoding="async" src="assets/images/phones/Apple-iPhone-15-Pro.jpg" alt="Mobile & Smart Tech" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
-            </div>
-            <div class="p-5">
-              <h3 class="font-semibold text-slate-900 text-lg mb-1">Mobile & Smart Tech</h3>
-              <p class="text-slate-600 text-sm mb-2">Phones, watches, smart devices</p>
-              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
-            </div>
-          </a>
-          <a href="products/power.html" aria-label="Browse Power & Solar Solutions" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
-            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
-              <img loading="lazy" decoding="async" src="assets/images/solar-panels/Morel-Techs-Complete-Solar-Kit–3kW.jpg" alt="Power & Solar Solutions" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
-            </div>
-            <div class="p-5">
-              <h3 class="font-semibold text-slate-900 text-lg mb-1">Power & Solar</h3>
-              <p class="text-slate-600 text-sm mb-2">Inverters, batteries, kits</p>
-              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
-            </div>
-          </a>
-          <a href="products/security.html" aria-label="Browse Security & Surveillance" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
-            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
-              <img loading="lazy" decoding="async" src="assets/images/surveillance/HIKVISION-DS-2CD2T43G0-I5(4MP Bullet IR 50m).jpg" alt="Security & Surveillance" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
-            </div>
-            <div class="p-5">
-              <h3 class="font-semibold text-slate-900 text-lg mb-1">Security & Surveillance</h3>
-              <p class="text-slate-600 text-sm mb-2">CCTV, access control, smart cams</p>
-              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
-            </div>
-          </a>
-          <a href="products/networking.html" aria-label="Browse Networking & Connectivity" class="group block bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2">
-            <div class="aspect-square flex items-center justify-center bg-slate-50 p-4">
-              <img loading="lazy" decoding="async" src="assets/images/networking/Starlink-Gen-3-Kit.jpg" alt="Networking & Connectivity" class="w-full h-full object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105">
-            </div>
-            <div class="p-5">
-              <h3 class="font-semibold text-slate-900 text-lg mb-1">Networking & Connectivity</h3>
-              <p class="text-slate-600 text-sm mb-2">Starlink, routers, mesh, APs</p>
-              <p class="text-sm font-medium text-[#d4af37]">View all models →</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
 
     <!-- ========== TRUSTED BRANDS ========== -->
     <section class="py-8 md:py-12 bg-white">
