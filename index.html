@@ -689,52 +689,231 @@
       </div>
     </section>
 
-    <!-- ========== SERVICES ========== -->
-    <section id="services" data-observer-id="services" class="py-16 md:py-24 bg-slate-50">
-      <div class="container mx-auto px-4 sm:px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-12">
-          Our Services
-        </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
-          <!-- Service cards remain unchanged but wrapped in responsive grid -->
-          <div class="service-card group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-yellow-400/50">
-            <div class="w-full h-48 overflow-hidden rounded-xl mb-4">
-              <img loading="lazy" decoding="async" src="assets/images/smarthome automations.jpg" alt="Smart Home Automation" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-2">Smart Home Automation</h3>
-            <p class="text-slate-600 text-sm">Lighting • Curtains • Climate • Voice Control • Scenes</p>
-          </div>
-          <div class="service-card group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-yellow-400/50">
-            <div class="w-full h-48 overflow-hidden rounded-xl mb-4">
-              <img loading="lazy" decoding="async" src="assets/images/Home entertainment and AV.jpg" alt="Home Entertainment & AV" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-2">Home Entertainment & AV</h3>
-            <p class="text-slate-600 text-sm">Home theatre • Projectors • Soundbars • TV mounting</p>
-          </div>
-          <div class="service-card group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-yellow-400/50">
-            <div class="w-full h-48 overflow-hidden rounded-xl mb-4">
-              <img loading="lazy" decoding="async" src="assets/images/security and surveillance.jpg" alt="Security & Surveillance" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-2">Security & Surveillance</h3>
-            <p class="text-slate-600 text-sm">CCTV • Smart alarms • Motion sensors • Access control</p>
-          </div>
-          <div class="service-card group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-yellow-400/50">
-            <div class="w-full h-48 overflow-hidden rounded-xl mb-4">
-              <img loading="lazy" decoding="async" src="assets/images/networking and internet.jpg" alt="Networking & Internet" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-2">Networking & Internet</h3>
-            <p class="text-slate-600 text-sm">WiFi design • Structured cabling • Racks • Optimization</p>
-          </div>
-          <div class="service-card group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-yellow-400/50">
-            <div class="w-full h-48 overflow-hidden rounded-xl mb-4">
-              <img loading="lazy" decoding="async" src="assets/images/maintenance1.jpg" alt="Maintenance & Support" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-2">Maintenance & Support</h3>
-            <p class="text-slate-600 text-sm">System upgrades • Diagnostics • Scheduled servicing</p>
-          </div>
+
+<!-- ========== SERVICES ========== -->
+<section 
+  id="services" 
+  data-observer-id="services" 
+  class="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white"
+  aria-labelledby="services-heading"
+>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-yellow-50 text-yellow-700 mb-4">
+        Expert Solutions
+      </span>
+      <h2 
+        id="services-heading" 
+        class="text-3xl md:text-4xl font-bold text-slate-900 mb-6"
+      >
+        Tailored Smart Living Solutions
+      </h2>
+      <p class="text-slate-600 text-lg max-w-2xl mx-auto">
+        Precision-engineered systems designed for seamless integration, reliability, and effortless daily living.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
+      <!-- Service Card Template -->
+      <article 
+        class="service-card group bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:border-yellow-300/70 hover:-translate-y-1 flex flex-col"
+        role="region"
+        aria-labelledby="service-1"
+      >
+        <div class="relative pt-[60%] sm:pt-[55%] bg-slate-100 overflow-hidden">
+          <img 
+            loading="lazy" 
+            decoding="async" 
+            src="assets/images/smarthome automations.jpg" 
+            alt="Smart Home Automation system with centralized control panel" 
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            width="600"
+            height="360"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
-      </div>
-    </section>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="mb-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-yellow-50 text-yellow-600 font-bold text-sm">
+              1
+            </span>
+          </div>
+          <h3 id="service-1" class="text-xl font-bold text-slate-900 mb-2">Smart Home Automation</h3>
+          <p class="text-slate-600 mb-4 flex-1">
+            Unified control for lighting, climate, curtains, voice systems, and custom scenes. Fully integrated ecosystems.
+          </p>
+          <a 
+            href="#contact" 
+            class="inline-flex items-center font-medium text-yellow-700 hover:text-yellow-900 transition-colors group/link mt-auto"
+            aria-label="Learn more about Smart Home Automation solutions"
+          >
+            Explore Solutions
+            <svg 
+              class="ml-1.5 w-4 h-4 transition-transform group-hover/link:translate-x-1" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Repeat for other services with unique IDs/alt text -->
+      <article class="service-card group bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:border-yellow-300/70 hover:-translate-y-1 flex flex-col" role="region" aria-labelledby="service-2">
+        <div class="relative pt-[60%] sm:pt-[55%] bg-slate-100 overflow-hidden">
+          <img 
+            loading="lazy" 
+            decoding="async" 
+            src="assets/images/Home entertainment and AV.jpg" 
+            alt="Premium home theater setup with projector and acoustic panels" 
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            width="600"
+            height="360"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="mb-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-yellow-50 text-yellow-600 font-bold text-sm">2</span>
+          </div>
+          <h3 id="service-2" class="text-xl font-bold text-slate-900 mb-2">Home Entertainment & AV</h3>
+          <p class="text-slate-600 mb-4 flex-1">
+            Immersive theaters, 4K projectors, multi-room audio, acoustic calibration, and seamless TV integration.
+          </p>
+          <a 
+            href="#contact" 
+            class="inline-flex items-center font-medium text-yellow-700 hover:text-yellow-900 transition-colors group/link mt-auto"
+            aria-label="Learn more about Home Entertainment & AV solutions"
+          >
+            Explore Solutions
+            <svg class="ml-1.5 w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="service-card group bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:border-yellow-300/70 hover:-translate-y-1 flex flex-col" role="region" aria-labelledby="service-3">
+        <div class="relative pt-[60%] sm:pt-[55%] bg-slate-100 overflow-hidden">
+          <img 
+            loading="lazy" 
+            decoding="async" 
+            src="assets/images/security and surveillance.jpg" 
+            alt="Discreet security cameras and control panel monitoring home" 
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            width="600"
+            height="360"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="mb-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-yellow-50 text-yellow-600 font-bold text-sm">3</span>
+          </div>
+          <h3 id="service-3" class="text-xl font-bold text-slate-900 mb-2">Security & Surveillance</h3>
+          <p class="text-slate-600 mb-4 flex-1">
+            24/7 monitoring with smart CCTV, biometric access, motion sensors, and integrated alarm ecosystems.
+          </p>
+          <a 
+            href="#contact" 
+            class="inline-flex items-center font-medium text-yellow-700 hover:text-yellow-900 transition-colors group/link mt-auto"
+            aria-label="Learn more about Security & Surveillance solutions"
+          >
+            Explore Solutions
+            <svg class="ml-1.5 w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="service-card group bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:border-yellow-300/70 hover:-translate-y-1 flex flex-col" role="region" aria-labelledby="service-4">
+        <div class="relative pt-[60%] sm:pt-[55%] bg-slate-100 overflow-hidden">
+          <img 
+            loading="lazy" 
+            decoding="async" 
+            src="assets/images/networking and internet.jpg" 
+            alt="Professional network rack with organized cabling and switches" 
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            width="600"
+            height="360"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="mb-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-yellow-50 text-yellow-600 font-bold text-sm">4</span>
+          </div>
+          <h3 id="service-4" class="text-xl font-bold text-slate-900 mb-2">Networking & Internet</h3>
+          <p class="text-slate-600 mb-4 flex-1">
+            Whole-home WiFi 6/6E, structured cabling, enterprise-grade racks, and bandwidth optimization.
+          </p>
+          <a 
+            href="#contact" 
+            class="inline-flex items-center font-medium text-yellow-700 hover:text-yellow-900 transition-colors group/link mt-auto"
+            aria-label="Learn more about Networking & Internet solutions"
+          >
+            Explore Solutions
+            <svg class="ml-1.5 w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="service-card group bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:border-yellow-300/70 hover:-translate-y-1 flex flex-col" role="region" aria-labelledby="service-5">
+        <div class="relative pt-[60%] sm:pt-[55%] bg-slate-100 overflow-hidden">
+          <img 
+            loading="lazy" 
+            decoding="async" 
+            src="assets/images/maintenance1.jpg" 
+            alt="Technician performing system diagnostics on control panel" 
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            width="600"
+            height="360"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="mb-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-yellow-50 text-yellow-600 font-bold text-sm">5</span>
+          </div>
+          <h3 id="service-5" class="text-xl font-bold text-slate-900 mb-2">Maintenance & Support</h3>
+          <p class="text-slate-600 mb-4 flex-1">
+            Proactive monitoring, firmware updates, emergency diagnostics, and scheduled system health checks.
+          </p>
+          <a 
+            href="#contact" 
+            class="inline-flex items-center font-medium text-yellow-700 hover:text-yellow-900 transition-colors group/link mt-auto"
+            aria-label="Learn more about Maintenance & Support services"
+          >
+            Explore Solutions
+            <svg class="ml-1.5 w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Optional CTA below cards -->
+    <div class="text-center mt-16 max-w-3xl mx-auto">
+      <a 
+        href="#contact" 
+        class="inline-block bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+        aria-label="Request a personalized consultation for your smart home project"
+      >
+        Get Your Custom Solution Plan
+      </a>
+      <p class="mt-4 text-slate-500 text-sm">
+        All systems include 24-month warranty and dedicated technical support
+      </p>
+    </div>
+  </div>
+</section>
+
         <!-- ========== PRODUCTS ========== -->
     <section id="products" data-observer-id="products" class="py-16 md:py-24 bg-slate-50">
       <div class="container mx-auto px-4 sm:px-6">
